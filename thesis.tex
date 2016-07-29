@@ -25,6 +25,20 @@ None of them are server-less and do not  provide anonymity in any shape or form.
 Social media platforms typically have an incentive to de-anonymize the user to serve targeted advertisement and sell the information about user interests with advertisers.
 
 
+tribler and dispersy intro, what is it (read thesis independently)
+
+
+being first
+engineering perfection
+time to market
+popularity
+make a difference
+Tribler mobile vs periscope
+fully functional prototype, but poor user interface (unpolished)
+real world impact proven insufficient
+we want to change the world implicit
+
+
 \section{Existing Mobile Streaming Software}
 % NOT related work or problem description
 From re-decentralized: top projects that match/compare.
@@ -43,6 +57,15 @@ The server-less technique of Tribler is resistant to Internet kill-switches that
 
 \chapter{Problem description}
 % FIRST and scientific, then figures and then filling in the holes
+
+
+% http://www.internetsociety.org/articles/moving-toward-censorship-free-internet
+% https://tools.ietf.org/html/draft-pouwelse-censorfree-scenarios-01#page-4
+
+Automonous operation
+the businesmodel of the internet is no user privacy and profiling and targeted advertising
+
+
 
 The business model of social media directly conflicts with user privacy. % FINAL
 
@@ -72,6 +95,14 @@ No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of sco
 
 \chapter{Architecture and Design}
 
+Viral spreading
+Multi user view
+Autonomous region
+Spreading app
+Single leak to Internet
+Solution to problem description
+
+
 Show complete technology stack
 
 
@@ -90,12 +121,29 @@ Picture of the technology stack and all components.
 \chapter{Implementation}
 
 
+Verkopen: app build with reactive programming paradigm, Rx founded by TU Delft professor
+
+code example
+modular functional programming
+
+
+
+\subsection{Toolchain architecture}
+
+
 we transfered the first generation bash script into a more involved python tool chain ecosystem
 the p4a project accepted our first contribution the same day
 our approach for this .. we focused on the low hanging fruit first to benefit from the learning effect
 the first task consisted of porting the python bindings for 15 - 30+ commonly used libraries to Android [recipe example code block]
 
+
+table of lines of code
+
+modules app
+
+
 \subsection*{List of problems encountered}
+
 cross-compile boost libs compileflags just PTHREADS
 python bindings libtorrent soname conflict
 
@@ -114,9 +162,10 @@ Open source project Python-for-Android is capable of running python code.
 
 \emph{My contributions:}
 \begin{itemize}
-	\item add service only bootstrap
+	\item add service only bootstrap with templates
 	\item recipe (missing) for all dependencies
 	\item bug fixes in build tool chain
+	\item service interface binder
 \end{itemize}
 
 
@@ -164,31 +213,78 @@ Gui for common core back-end and rest api in between.
 
 
 \chapter{Performance Analysis}
+Performance experiments:
+
+\section{Startup time}
+Startup experience
+
+\section{GUI Responose Time}
+Latency during first hour, after first hour
+What does it say about the design?
+
+\section{Content Discovery Performance}
+First discovered content, latency, cdf
+
+\section{Search Performance}
+Search results response time, latency, cdf
+
+
+
+
 
 \section{Typical System Load}
-Graph showing cpu and memory consumption from fresh install to an hour idling. No tunnels.
+y: cpu usage
+x: time 0-3 uur
+
+Graph showing cpu and memory consumption from fresh install to an hour idling. 0 tunnels.
 
 Graph showing cpu and memory consumption with max. 10 tunnels after an hour idling.
 
-Graph showing cpu and memory consumption during single download after an hour idling. No tunnels.
+Graph showing cpu and memory consumption during single download after an hour idling. 0 tunnels.
 
-Graph showing cpu and memory consumption during streaming HD video after an hour idling. No tunnels.
+Graph showing cpu and memory consumption during streaming HD video after an hour idling. 0 tunnels.
 
+
+
+stacking of cost, turn all off, turn on one by one or peel off some functionality, look at resulting workload / impact on performace / give relative cost of component
 
 \section{CProfiler Analysis}
 Graph showing wall clock time spend on functions running 10 minutes during first half hour with max. 10 tunnels.
-
+flame graph
 
 \section{Test Suite Performance}
 Graph showing total run time and average run time per test.
 
+Code coverage?
 
 \section{Multi-chain Scalability Experiment}
+Multichain record creation cost
 Graph showing scalability or lack thereof of the multi-chain record creation cost.
+
+
+\section{Phone-to-Phone new content discover time}
+
+
+
+\section{Transfer time of app}
+
+
+
+\section{DAS5 1 to 1000000} 
+
 
 
 \chapter{Conclusions and Future Work}
 app needs wifi access points
 
 
-\end{document}          
+integreren met self compile, stealth app, thumbnail navigation, no live streaming still
+periscope central server
+
+gui socked shared with network ? if BAD else
+
+
+
+
+
+\end{document}
