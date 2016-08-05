@@ -1,290 +1,78 @@
-\documentclass[]{report}
+\documentclass[whitelogo]{tudelft-report}
 
-\title{Autonomous operation of attack-resilient and self-organizing video-on-demand  platform for mobile devices}
-\author{P.W.G. Brussee}
+\usepackage{natbib}
+\usepackage{changes}
+\usepackage{todonotes}
+\usepackage{tabularx}
+\usepackage{listings}
 
 \begin{document}
-\maketitle
 
-\begin{abstract}
-	Abstract
-\end{abstract}
-
-% related work = related scientific articles
-% NOT engineering (tsap, at3, tribler-mobile (ppsp-twitter))
-% https://scholar.google.nl/scholar?hl=en&q=video+on+demand+android&btnG=&as_sdt=1%2C5&as_sdtp=
-
-
-\chapter{Introduction}
-% 3 to 4 pages with screenshots
-% related work in citations in between text
-
-Video sharing is a big part of social media nowadays.
-Huge video streaming providers like Youtube, Twitch, Periscope, etc. currently dominate the market.
-None of them are server-less and do not  provide anonymity in any shape or form.
-Social media platforms typically have an incentive to de-anonymize the user to serve targeted advertisement and sell the information about user interests with advertisers.
-
-
-tribler and dispersy intro, what is it (read thesis independently)
-
-
-being first
-engineering perfection
-time to market
-popularity
-make a difference
-Tribler mobile vs periscope
-fully functional prototype, but poor user interface (unpolished)
-real world impact proven insufficient
-we want to change the world implicit
-
-
-\section{Existing Mobile Streaming Software}
-% NOT related work or problem description
-From re-decentralized: top projects that match/compare.
-
-Youtube screenshot, GNUnet
-
-
-\section{Tribler}
-Tribler introduces a server-less video-sharing platform with privacy enhancing technologies and giving a Youtube-like, social media experience at the same time.
-The capability of hiding your identity is greatly advantageous to the user if his or her human rights are violated, like free speech.
-
-The server-less technique of Tribler is resistant to Internet kill-switches that are typically deployed for the purpose of censorship.
-
-
-
-
-\chapter{Problem description}
-% FIRST and scientific, then figures and then filling in the holes
-
-
-% http://www.internetsociety.org/articles/moving-toward-censorship-free-internet
-% https://tools.ietf.org/html/draft-pouwelse-censorfree-scenarios-01#page-4
-
-Automonous operation
-the businesmodel of the internet is no user privacy and profiling and targeted advertising
-
-
-
-The business model of social media directly conflicts with user privacy. % FINAL
-
-Social media on phones
-You want to express freedom of expression with that all the time
-
-Existing apps use central server design
-Vulnarable for Internet kill switches and censorship
-
-Offline viral spreading image (hacking lab)
-
-
-
-
-
-\section{Scope}
-No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later.
-
-
-
-
-
-
-
-
-
-
-\chapter{Architecture and Design}
-
-Viral spreading
-Multi user view
-Autonomous region
-Spreading app
-Single leak to Internet
-Solution to problem description
-
-
-Show complete technology stack
-
-
-\section{Common Core}
-10 years of Python code 
-reusable multi-platform: Windows Mac Linux
-
-
-Native Android app for Tribler with Java+xml GUI.
-Using https://github.com/kivy/python-for-android to run Tribler python code as a native Android service.
-The app communicates with the python service via the new rest api.
-
-Picture of the technology stack and all components.
-
-
-\chapter{Implementation}
-
-
-Verkopen: app build with reactive programming paradigm, Rx founded by TU Delft professor
-
-code example
-modular functional programming
-
-
-
-\subsection{Toolchain architecture}
-
-
-we transfered the first generation bash script into a more involved python tool chain ecosystem
-the p4a project accepted our first contribution the same day
-our approach for this .. we focused on the low hanging fruit first to benefit from the learning effect
-the first task consisted of porting the python bindings for 15 - 30+ commonly used libraries to Android [recipe example code block]
-
-
-table of lines of code
-
-modules app
-
-
-\subsection*{List of problems encountered}
-
-cross-compile boost libs compileflags just PTHREADS
-python bindings libtorrent soname conflict
-
-
-sqlite3 builtin module (CPPFLAGS instead of CFLAGS, no patch setup.py after all, dispersy doesn't use aspw)
-
-
-no shell acces from Popen() means only single binaries instead of normal commands
-
-adding a native jni start environment shifts keyword arguments
-
-
-
-\section{Python on Android}
-Open source project Python-for-Android is capable of running python code.
-
-\emph{My contributions:}
-\begin{itemize}
-	\item add service only bootstrap with templates
-	\item recipe (missing) for all dependencies
-	\item bug fixes in build tool chain
-	\item service interface binder
-\end{itemize}
-
-
-\section{Rest API}
-
-\emph{My contributions:}
-\begin{itemize}
-	\item create channel
-	\item create torrent
-	\item add torrent to channel
-	\item async download and add torrent to channel from url and magnet links
-	\item remote shutdown
-\end{itemize}
-
-\section{Common Core}
-
-\emph{My contributions:}
-\begin{itemize}
-	\item correct paths for Android
-	\item setup.py rewrite
-	\item improve error handling in test runner
-	\item various threading bug fixes
-\end{itemize}
-
-
-\section{Native Android App}
-Gui for common core back-end and rest api in between.
-
-\emph{My contributions:}
-\begin{itemize}
-	\item Native service wrapper for Python process
-	\item GUI:
-	\item create own channel
-	\item record video
-	\item create torrent file
-	\item add torrent to own channel
-	\item search torrents and channels
-	\item voice search integration
-	\item view channel contents
-	\item download torrent
-	\item launch video viewer
-	\item mark and un-mark channel as favorite
-\end{itemize}
-
-
-
-\chapter{Performance Analysis}
-Performance experiments:
-
-\section{Startup time}
-Startup experience
-
-\section{GUI Responose Time}
-Latency during first hour, after first hour
-What does it say about the design?
-
-\section{Content Discovery Performance}
-First discovered content, latency, cdf
-
-\section{Search Performance}
-Search results response time, latency, cdf
-
-
-
-
-
-\section{Typical System Load}
-y: cpu usage
-x: time 0-3 uur
-
-Graph showing cpu and memory consumption from fresh install to an hour idling. 0 tunnels.
-
-Graph showing cpu and memory consumption with max. 10 tunnels after an hour idling.
-
-Graph showing cpu and memory consumption during single download after an hour idling. 0 tunnels.
-
-Graph showing cpu and memory consumption during streaming HD video after an hour idling. 0 tunnels.
-
-
-
-stacking of cost, turn all off, turn on one by one or peel off some functionality, look at resulting workload / impact on performace / give relative cost of component
-
-\section{CProfiler Analysis}
-Graph showing wall clock time spend on functions running 10 minutes during first half hour with max. 10 tunnels.
-flame graph
-
-\section{Test Suite Performance}
-Graph showing total run time and average run time per test.
-
-Code coverage?
-
-\section{Multi-chain Scalability Experiment}
-Multichain record creation cost
-Graph showing scalability or lack thereof of the multi-chain record creation cost.
-
-
-\section{Phone-to-Phone new content discover time}
-
-
-
-\section{Transfer time of app}
-
-
-
-\section{DAS5 1 to 1000000} 
-
-
-
-\chapter{Conclusions and Future Work}
-app needs wifi access points
-
-
-integreren met self compile, stealth app, thumbnail navigation, no live streaming still
-periscope central server
-
-gui socked shared with network ? if BAD else
-
-
-
-
-
+%% Use Roman numerals for the page numbers of the title pages and table of contents.
+\frontmatter
+
+\title[tudelft-white]{Autonomous operation of attack-resilient and self-organizing video-on-demand  platform for mobile devices}
+%\subtitle[tudelft-black]{Optional subtitle}
+%\subtitle[tudelft-cyan]{Optional subtitle}
+\author[tudelft-white]{P.W.G. Brussee}
+\affiliation{Technische Universiteit Delft}
+
+%% Picture covering entire page.
+%\coverimage{cover.jpg}
+%\titleoffsetx{10cm}
+%\titleoffsety{10cm}
+%\afiloffsetx{1cm}
+%\afiloffsety{18cm}
+%
+%\covertext[tudelft-white]{
+%    \textbf{Cover Text} \\
+%    possibly \\
+%    spanning 
+%    multiple 
+%    lines
+%    \vfill
+%    ISBN 000-00-0000-000-0
+%}
+%\makecover
+
+%% Picture covering half the page.
+%\coverimage{tank.jpg}
+%\covertext[tudelft-white]{
+%	\textbf{Cover Text} \\
+%	possibly \\
+%	spanning 
+%	multiple 
+%	lines
+%	\vfill
+%	ISBN 000-00-0000-000-0
+%}
+%\setpagecolor{tudelft-cyan}
+%\makecover[split]
+
+%% Include an optional title page.
+\input{title}
+
+\input{abstract}
+\input{preface}
+
+\tableofcontents
+
+%% Use Arabic numerals for the page numbers of the chapters.
+\mainmatter
+
+%\input{chapter-1}
+\input{introduction}
+\input{problem}
+\input{architecture}
+\input{implementation}
+\input{analysis}
+\input{conclusion}
+
+%% Use letters for the chapter numbers of the appendices.
+\appendix
+
+%\input{appendix-a}
+
+\bibliography{thesis}
+	
 \end{document}

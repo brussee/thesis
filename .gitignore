@@ -181,3 +181,4 @@ TSWLatexianTemp*
 
 # Compiled
 /thesis.pdf
+*.soc
