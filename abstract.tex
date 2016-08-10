@@ -1,1 +1,14 @@
-Abstract
+\chapter*{Abstract}
+
+The business model of social media directly conflicts with user privacy.
+Human rights like the protection of privacy, honour and reputation are endangered by this.
+An anonymous and fully distributed solution is required to solve this.
+Mobile devices with peer-to-peer communication technology can be used to build a server-less distributed system.
+The ubiquity of smart phones with the free and open source Android platform is ideal for this purpose.
+An attack-resilient and self-organizing video-on-demand platform called Tribler exists on desktop platforms but not yet on mobile devices.
+This report shows a solution by giving an implementation and evaluation of such a platform on an average smart phone.
+With this implementation all functionality of Tribler is now available on all mobile devices running Android version 4.3 or higher.
+This is done by enhancing the open source project python-for-android and retooling the entire code base of Tribler and its dependencies.
+Re-factoring to make Tribler more modular was also necessary to separate the GUI from reusable core functionality and introducing a representational state transfer (REST) API for interprocess communication.
+The implementation usability in terms of performance and latency is found to be good enough on an average smart phone like the Nexus 5.
+Based on the analysis and great fit in event based systems, the reactive programming paradigm is recommended for use in the entire current code base, making it fully asynchronous and shift from imperative to the functional programming paradigm.
