@@ -1,5 +1,7 @@
-
 \chapter{Implementation}
+
+\section{Develop and organize} %implementation
+%low prio
 
 
 Verkopen: app build with reactive programming paradigm, Rx founded by TU Delft professor
@@ -9,7 +11,7 @@ modular functional programming
 
 
 
-\subsection{Toolchain architecture}
+\section{Tool-chain architecture}
 
 
 we transfered the first generation bash script into a more involved python tool chain ecosystem
@@ -17,29 +19,21 @@ the p4a project accepted our first contribution the same day
 our approach for this .. we focused on the low hanging fruit first to benefit from the learning effect
 the first task consisted of porting the python bindings for 15 - 30+ commonly used libraries to Android [recipe example code block]
 
+\subsection{Python-for-android}
+Open source project p4a uses python toolchain with bootstraps, recipes, ant, make, Android SDK (aapt), Android NDK, zipalign, ..., setuptools, ...
 
+\subsection{Gradle experimental}
+Use Android SDK, jni, Android NDK, ...
+
+
+\section{System architecture}
 table of lines of code
-
 modules app
 
-
-\subsection*{List of problems encountered}
-
-cross-compile boost libs compileflags just PTHREADS
-python bindings libtorrent soname conflict
-
-
-sqlite3 builtin module (CPPFLAGS instead of CFLAGS, no patch setup.py after all, dispersy doesn't use aspw)
-
+\subsection{Python on Android}
+Open source project Python-for-Android is capable of running python code.
 
 no shell acces from Popen() means only single binaries instead of normal commands
-
-adding a native jni start environment shifts keyword arguments
-
-
-
-\section{Python on Android}
-Open source project Python-for-Android is capable of running python code.
 
 \emph{My contributions:}
 \begin{itemize}
@@ -50,7 +44,7 @@ Open source project Python-for-Android is capable of running python code.
 \end{itemize}
 
 
-\section{Rest API}
+\subsection{Rest API}
 
 \emph{My contributions:}
 \begin{itemize}
@@ -61,7 +55,7 @@ Open source project Python-for-Android is capable of running python code.
 	\item remote shutdown
 \end{itemize}
 
-\section{Common Core}
+\subsection{Common python core}
 
 \emph{My contributions:}
 \begin{itemize}
@@ -72,7 +66,7 @@ Open source project Python-for-Android is capable of running python code.
 \end{itemize}
 
 
-\section{Native Android App}
+\subsection{Native Android GUI}
 Gui for common core back-end and rest api in between.
 
 \emph{My contributions:}

@@ -41,49 +41,80 @@ In fact the business model of social media appears to be serving targeted advert
 What's even worse is social media integrated into regular websites to de-anonymize and track the whereabouts of users even outside of the social media realm.
 Whenever users lose control over their privacy it becomes a serious problem.
 
-Various initiatives have been started to deal with one or both of these problems.
-Figure \ref{fig:youbroketheinternet} shows a mapping of projects that are or have been working on that.
-%From re-decentralized: top projects that match/compare.
-\\
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{youbroketheinternet}
-	\caption{Map of projects trying to fix the Internet according to youbroketheinternet.org, last updated October 2015\\
-		\\
-		Colour coding:\\
-		\\
-		\textcolor[RGB]{51,204,51}{Green:} Projects that are available today.\\
-		\textcolor[RGB]{86,149,38}{Dark green:} Projects that are available, but are not fully protective of meta-data.\\
-		\textcolor[RGB]{89,204,255}{Blue:} Projects in development.\\
-		\textcolor[RGB]{17,153,211}{Dark blue:} Projects in development which will have little or no protection of meta-data (but that does not mean they can't be an excellent piece in the general puzzle).\\
-		\textcolor[RGB]{226,228,27}{Yellow:} Projects that may be okay but depend too much on the security of servers.\\
-		\textcolor[RGB]{255,153,51}{Orange:} Products whose end-to-end encrypting client side has been open-sourced but whose server side remains proprietary.\\
-		\textcolor[RGB]{225,77,93}{Red:} Brands that currently occupy the respective layers with unsafe technology.\\
-		\textcolor[RGB]{155,35,25}{Dark red:} Possibly cool but unsafe technologies that we need to replace.}
-	\label{fig:youbroketheinternet}
-\end{figure}
 
-% Youtube screenshot, GNUnet
+\section{Problem description}
+% FIRST and scientific, then figures and then filling in the holes
 
 
-
-being first
-engineering perfection
-time to market
-popularity
-make a difference
-Tribler mobile vs periscope
-fully functional prototype, but poor user interface (unpolished)
-real world impact proven insufficient
-we want to change the world implicit
+% http://www.internetsociety.org/articles/moving-toward-censorship-free-internet
+% https://tools.ietf.org/html/draft-pouwelse-censorfree-scenarios-01#page-4
+% http://www.un.org/en/universal-declaration-human-rights/
 
 
-\section{Tribler}
-% tribler and dispersy intro, what is it (read thesis independently)
+The business model of social media directly conflicts with user privacy.
+Targeted advertising becomes trivial when the user profile is provided by the user itself with accurate and current information.
+When the information is shared with parties outside of the specific social media website it effectively becomes a privacy leak.
+Subsequently users will be confronted with their information being misused in various ways, beyond their control.
+This lack of control over your own privacy is a problem and can lead to arbitrary interference, possibly even unknowingly. %ref, example, human rights watch, nelie kroes, etc.
+The Universal Declaration of Human Rights (UDHR) declares in article 12 that everyone has the right to protection against such interference.
 
-Tribler introduces a server-less video-sharing platform with privacy enhancing technologies and giving a Youtube-like, social media experience at the same time.
-The capability of hiding your identity is greatly advantageous to the user if his or her human rights are violated, like free speech.
+\begin{displayquote}
+	No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+	(Article 12. UDHR)
+\end{displayquote}
 
-The server-less technique of Tribler is resistant to Internet kill-switches that are typically deployed for the purpose of censorship.
+Integration of social media on regular websites can easily de-anonymize the visiting user, directly benefiting the business model of targeted advertisements, aggravating this problem.
+This incentive not only causes a lack of privacy, but also, paradoxically, a potential lack of freedom of expression.
+Every interest and opinion expressed on social media and beyond, whether that is by clicking on anything or publishing videos, is traceable to an individual due to this integration and business model.
+If the controlling party of any website connected to social media wants to silence a certain opinion, it can use this connection to trace the individual and any like minded people connected by social interaction.
+Particularly on social media do people exercise their right to freedom of opinion and expression.
+The UDHR declares in article 19 that everyone has the right to do so without any interference whatsoever.
+
+\begin{displayquote}
+	Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference and to seek, receive and impart information and ideas through any media and regardless of frontiers.
+	(Article 19. UDHR)
+\end{displayquote}
+
+%scope
+To ensure that no controlling party can exercise censorship we \textbf{distribute authority} over all users, creating an \emph{autonomous} system.
+If all information is located in one or a few places, the parties in charge of that location will still have control over it, so we must \textbf{distribute information} over all users, creating a \emph{communication} system.
+Then if all users want to use this system to share, order and appreciate each others information, in other words the essence of social media: social interaction, with everyone being able to interact in the same way, we need to  \textbf{distribute functionality} over all users, creating a \emph{cooperation} system.
+Fully distributed systems capture these characteristics. %move to solution?
+Without any central component in the system it is no longer susceptible to censorship without everyone participating.
+
+Peer-to-peer communication technology is essential for a server-less distributed system.
+Mobile devices typically do not require infrastructure to exchange information, like those equipped with Bluetooth or capable of ad hoc Wi-Fi.
+Smart phones are ubiquitous everywhere in the world and used to access social media and retrieve information from the Internet.
+Fortuitously these are also the type of mobile devices that can communicate peer-to-peer.
+
+\section{Thesis definition}
+The main question thus becomes:
+How to create a \textbf{self-organising} \textbf{video-on-demand} platform that is \textbf{attack-resilient} and can \textbf{operate autonomously} on a \textbf{mobile device}?
+
+Self-organising in the sense that the platform coordinates the exchange of videos and meta-data fully automatically.
+
+Video-on-demand in the sense that users can simply click and play videos in a streaming fashion, so without waiting for the entire video to be present on the device.
+
+Attack-resilient in the sense that:
+First: censorship does not have an effect if the majority of users does not cooperate with the censor.
+Second: the privacy of users remains protected while they actively participate on the platform
+Third: no network infrastructure required for viral spreading of the entire video platform.
+
+Autonomous operation in the sense that users do not have to manage any files or configuration manually at all to be active on the platform.
+
+Mobile device in the sense that it is low-powered and portable including the network interface and power supply.
+
+These properties will ensure social media with resilience against Internet kill switches, natural disasters and censorship.
+
+
+
+\section{Research Limitations} %project scope
+Software development / technical aspect only
+Not policy making, organisational perspective, decision making, normative, ethical,
+Time limit of 9 months
+
+
+
+%LEESWIJZER
 
 

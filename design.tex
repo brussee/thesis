@@ -1,0 +1,71 @@
+\chapter{Design}
+
+
+\section{Define objectives} %sub-questions of problem definition
+%CLOSE GAP: connect all the puzzle piezes that is maintainable, sustainable, usable, ... and it all has to work on mobile
+%!! refer back to problem definition
+% good software product satisfies: ..... quality assurance/control %REF %to confront the product 
+
+
+
+%soort roos, wat is 'raak'
+
+The key performance indicators (KPI) will be \emph{scalability}, \emph{resource usage} of cpu, memory and power, and \emph{usability} in terms of latency.
+
+\subsection{Scalability}
+Just like the current server-centric design of social media
+A fully distributed system needs to scale to potentially all smart phones in the world, just like the current architecture of social media with central server locations.
+
+\subsection{Resource usage}
+
+
+\subsection{Usability}
+
+
+
+\section{Define alternatives} %design space
+%low prio
+
+%just python+kivy OR java+xml+python+jni, etc...
+
+
+%scope
+Why no iOS?
+No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later.
+
+\section{Function design}
+%Product design involves determining the objectives of the system. Central questions in this process are “what is feasible?”, “what is required?” and “what functions need to be fulfilled by the system?” It is a strategic decision process and it will be termed the function design 
+%Function design distinguishes between innovation and improvement. Improvement usually only concerns the reorganisation or reengineering of an existing system, which implies a rearrangement of existing functions or a different interpretation of these functions. Innovation concerns the extension, reduction or modification of functions due to the introduction of new technology, resources and/or organisation.
+
+Top/System level: common core, user friendly, not vulnerable to kill switches and censorship, ....
+
+
+Functional level
+
+Design level
+
+Prototype level
+
+
+
+Alternatives: choices, decision process
+know what you don't know
+Aware of what you did not do.
+
+
+describe: chosen based on time investment, other 
+P4A only app OR java + p4a app
+imperative OR reactive
+
+
+
+\subsubsection{Common Core}
+10 years of Python code 
+reusable multi-platform: Windows Mac Linux
+
+
+Native Android app for Tribler with Java+xml GUI.
+Using https://github.com/kivy/python-for-android to run Tribler python code as a native Android service.
+The app communicates with the python service via the new rest api.
+
+Picture of the technology stack and all components.
