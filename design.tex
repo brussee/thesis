@@ -1,5 +1,92 @@
 \chapter{Design}
 
+%OO book
+
+knowledge of requirements
+knowledge of design as created so far
+knowledge of technology available
+knowledge of software design principles and best practices
+knowledge of what has worked well in the past
+
+
+\section{Design principles}
+
+Top down: high-level issues like software architecture and kind of database, down to details like format of data items and individual algorithms
+
+Bottom up: decide reusable low-level utilities and then how these are put together to create high-level constructs
+
+\subsection{Divide and conquer}
+
+\subsection{Increase cohesion where possible}
+
+functional
+layer
+communicational
+sequential
+procedural
+temporal
+utility
+
+\subsection{Reduce coupling where possible}
+
+content
+common
+control
+stamp
+data
+routine call
+type use
+inclusion/import
+external
+
+\subsection{Keep the level of abstraction as high as possible}
+
+\subsection{Increase re-usability where possible}
+
+design for reuse
+
+\subsection{Reuse existing designs and code where possible}
+
+design with reuse
+
+reuse of expertise
+reuse of standard designs and algorithms
+reuse of libraries of classes or procedures, of of powerful commands built into languages and operating systems
+reuse of frameworks
+reuse of complete applications
+
+\subsection{Design for flexibility} %adaptability
+
+reduce coupling and increase cohesion
+create abstractions
+no hard-coding
+leave all options open, like exception handling by caller instead of callee
+use reusable code and make code reusable, like hooks
+
+\subsection{Anticipate obsolescence}
+
+avoid early releases
+avoid environment dependencies
+avoid undocumented features or little used features, like libtorrent geo
+avoid smaller companies/projects due to lack of long term support
+use standard languages and technologies supported by multiple vendors
+
+\subsection{Design for portability}
+
+\subsection{Design for testability}
+
+avoid static
+
+\subsection{Design defensively}
+
+check all inputs and preconditions
+design by contract !!!
+preconditions
+postconditions
+invariants
+-> assertions
+
+
 
 \section{Define objectives} %sub-questions of problem definition
 %CLOSE GAP: connect all the puzzle piezes that is maintainable, sustainable, usable, ... and it all has to work on mobile
@@ -12,14 +99,33 @@
 
 The key performance indicators (KPI) will be \emph{scalability}, \emph{resource usage} of cpu, memory and power, and \emph{usability} in terms of latency.
 
-\subsection{Scalability}
+%SA book
+
+\subsection{Accessibility}
+
+\subsection{Availability and resilience}
+
+\subsection{Development resource}
+
+\subsection{Evolution}
+
+\subsection{Internationalization}
+
+\subsection{Location}
+
+\subsection{Performance and scalability}
 Just like the current server-centric design of social media
 A fully distributed system needs to scale to potentially all smart phones in the world, just like the current architecture of social media with central server locations.
 
-\subsection{Resource usage}
+\subsubsection{Resource usage}
 
+\subsection{Regulation}
+
+\subsection{Security}
 
 \subsection{Usability}
+
+
 
 
 
@@ -33,9 +139,101 @@ A fully distributed system needs to scale to potentially all smart phones in the
 Why no iOS?
 No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later.
 
-\section{Function design}
+
+\section{Architecture design}
+
+better understanding
+individual pieces worked on in isolation
+prepare for extension
+facilitate reuse and re-usability
+
+logical breakdown into subsystems, package diagrams
+dynamics of interaction among components at run time
+data shared among subsystems
+components existing at runtime and machines/devices on which they are located
+
+Architectural patterns:
+
+\subsection{Client-Server}
+REST API
+
+\subsection{Broker}
+objects are actually remote
+
+\subsection{Transaction processing}
+atomicity
+
+\subsection{Pipe-and-Filter}
+Rx data flow pipeline
+
+\subsection{Model-View-Controller}
+model: JSON de-serialized objects
+view: xml layout
+controller: activity, fragment, adapter
+
+\subsection{Service-Oriented}
+app is collection of services that communicate with each other through well defined interfaces
+http request behind the scenes
+JSON REST API
+videoserver
+
+\subsection{Message-Oriented}
+message-oriented middle-ware (MOM)
+communicating apps do not have to be available at the same time
+virtual channels, topics
+publishers, broadcasters
+subscribe to topic
+android intents, intent filters, broadcasts, bundle, messages, handlers
+
+\section{Class design}
+
+\section{User interface design}
+
+\section{Database design}
+
+\section{Algorithm design}
+
+\section{Protocol design}
+
+
+\section{Requirements} % 
+
+\subsection{Functional requirements} % Function design
 %Product design involves determining the objectives of the system. Central questions in this process are “what is feasible?”, “what is required?” and “what functions need to be fulfilled by the system?” It is a strategic decision process and it will be termed the function design 
 %Function design distinguishes between innovation and improvement. Improvement usually only concerns the reorganisation or reengineering of an existing system, which implies a rearrangement of existing functions or a different interpretation of these functions. Innovation concerns the extension, reduction or modification of functions due to the introduction of new technology, resources and/or organisation.
+
+inputs, commands and conditions
+outputs, conditions
+store, reuse data, backup
+computations
+timing and synchronization
+
+\subsection{Quality requirements}
+
+response time
+throughput
+resource usage
+reliability
+availability
+recover from failure
+maintainability and enhancement
+re-usability
+
+\subsection{Platform requirements}
+
+computing platform: min. system specs and features, api level
+technology to be used: programming language, db
+
+\subsection{Process requirements}
+
+development process / methodology
+cost
+delivery date
+
+
+
+
+
 
 Top/System level: common core, user friendly, not vulnerable to kill switches and censorship, ....
 
