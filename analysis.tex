@@ -5,7 +5,13 @@ Performance experiments:
 %statistical restrictions, show you are aware of restricitons. what you have tested only once, twice, etc..
 
 \section{Startup time}
-Startup experience
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{startup_time}
+	\caption{Startup experience}
+	\label{fig:startup_time}
+\end{figure}
 
 \section{GUI Responose Time}
 Latency during first hour, after first hour
@@ -15,8 +21,13 @@ What does it say about the design?
 First discovered content, latency, cdf
 
 \section{Search Performance}
-Search results response time, latency, cdf
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{search_cdf}
+	\caption{Search results response time, latency, cdf}
+	\label{fig:search_cdf}
+\end{figure}
 
 
 
@@ -41,14 +52,28 @@ stacking of cost, turn all off, turn on one by one or peel off some functionalit
 Graph showing wall clock time spend on functions running 10 minutes during first half hour with max. 10 tunnels.
 flame graph
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{profile_1468515157}
+	\caption{}
+	\label{fig:profile_1468515157}
+\end{figure}
+
 \section{Test Suite Performance}
 Graph showing total run time and average run time per test.
 
 Code coverage?
 
 \section{Multi-chain Scalability Experiment}
-Multichain record creation cost
 Graph showing scalability or lack thereof of the multi-chain record creation cost.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{multichain_scale}
+	\caption{Multichain record creation cost}
+	\label{fig:multichain_scale}
+\end{figure}
+
 
 
 \section{Phone-to-Phone new content discover time}
