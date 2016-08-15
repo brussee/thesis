@@ -1,0 +1,24 @@
+Samsung S3 clean install:
+
+08-15 08:42:37.435 3943-6817/system_process I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=org.tribler.android/.MainActivity} from uid 2000 on display 0
+08-15 08:43:12.945 18365-18462/org.tribler.android V/readLine: {"type": "events_start"}
+
+08-15 08:43:27.920 18365-18365/org.tribler.android V/MainActivity: onNewIntent: android.intent.action.ACTION_SHUTDOWN
+08-15 08:43:29.525 3943-4661/system_process I/ActivityManager: Process org.tribler.android:service_Triblerd (pid 18439) has died
+
+
+
+08-15 08:45:05.580 3943-6159/system_process I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=org.tribler.android/.MainActivity} from uid 2000 on display 0
+08-15 08:45:44.235 19414-19542/org.tribler.android V/readLine: {"type": "events_start"}
+
+08-15 08:46:10.600 19414-19414/org.tribler.android V/MainActivity: onNewIntent: android.intent.action.ACTION_SHUTDOWN
+08-15 08:46:15.470 3943-6093/system_process I/ActivityManager: Process org.tribler.android:service_Triblerd (pid 19474) has died
+
+
+
+08-15 08:47:40.675 3943-4307/system_process I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=org.tribler.android/.MainActivity} from uid 2000 on display 0
+08-15 08:48:18.635 20927-21032/org.tribler.android V/readLine: {"type": "events_start"}
+
+08-15 08:48:38.440 20927-20927/org.tribler.android V/MainActivity: onNewIntent: android.intent.action.ACTION_SHUTDOWN
+08-15 08:48:40.475 3943-6817/system_process I/ActivityManager: Process org.tribler.android:service_Triblerd (pid 20977) has died
+

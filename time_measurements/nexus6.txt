@@ -1,0 +1,24 @@
+Nexus6 clean install:
+
+08-15 08:30:46.721 24090-24860/system_process I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=org.tribler.android/.MainActivity} from uid 2000 on display 0
+08-15 08:31:00.772 11783-11846/org.tribler.android V/readLine: {"type": "events_start"}
+
+08-15 08:32:38.775 11783-11783/org.tribler.android V/MainActivity: onNewIntent: android.intent.action.ACTION_SHUTDOWN
+08-15 08:32:45.639 24090-24920/system_process I/ActivityManager: Process org.tribler.android:service_Triblerd (pid 11810) has died
+
+
+
+08-15 08:36:53.783 24090-24385/system_process I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=org.tribler.android/.MainActivity} from uid 2000 on display 0
+08-15 08:37:12.223 13710-13749/org.tribler.android V/readLine: {"type": "events_start"}
+
+08-15 08:37:39.169 13710-13710/org.tribler.android V/MainActivity: onNewIntent: android.intent.action.ACTION_SHUTDOWN
+08-15 08:37:51.298 24090-24495/system_process I/ActivityManager: Process org.tribler.android:service_Triblerd (pid 13732) has died
+
+
+
+08-15 08:39:32.003 24090-25206/system_process I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=org.tribler.android/.MainActivity} from uid 2000 on display 0
+08-15 08:39:45.433 14704-14741/org.tribler.android V/readLine: {"type": "events_start"}
+
+08-15 08:40:09.102 14704-14704/org.tribler.android V/MainActivity: onNewIntent: android.intent.action.ACTION_SHUTDOWN
+08-15 08:40:09.721 24090-24927/system_process I/ActivityManager: Process org.tribler.android:service_Triblerd (pid 14728) has died
+
