@@ -18,6 +18,11 @@ plot "pc-pim-[#2175].dat" using 2:1 title 'PC' with linespoints, \
      "galaxy-S3-[#2452].dat" using 1:2 title 'S3' with linespoints, \
      "galaxy-S3-[#2452]-2.dat" using 1:2 title 'S3' with linespoints, \
      "nexus-6-[#2594].dat" using 2:1 title 'Nexus 6' with linespoints, \
-     "nexus-10-[#2594].dat" using 2:1 title 'Nexus 10' with linespoints
+     "nexus-10-[#2594].dat" using 2:1 title 'Nexus 10' with linespoints, \
+     "GT_I9300.[#2599].dat" using 2:1 title 'S3' with linespoints, \
+     "Galaxy_Nexus.[#2599].dat" using 2:1 title 'Galaxy Nexus' with linespoints, \
+     "Nexus_6.[#2599].dat" using 2:1 title 'Nexus 6' with linespoints, \
+     "Nexus_10.[#2599].dat" using 2:1 title 'Nexus 10' with linespoints, \
+     "laptop-[#2599].dat" using 2:1 title 'Laptop' with linespoints
 
 unset output
