@@ -5,6 +5,7 @@ Performance experiments:
 %statistical restrictions, show you are aware of restricitons. what you have tested only once, twice, etc..
 
 \section{Startup time}
+% TODO
 
 \begin{figure}[h]
 	\centering
@@ -12,6 +13,9 @@ Performance experiments:
 	\caption{Startup experience}
 	\label{fig:startup_time}
 \end{figure}
+
+Startup time of Tribler also briefly Youtube (same hardware clean slate). Include log snippits in thesis (code quote style). Real data + graph + text of experiment: what you did and results. Repeat 10-ish time or so for accuracy; on 2 phone models. Graph bar chart with certainty intervals (1 bar Nexus 5, 1 bar Nexus 6). Split: Java GUI, Core started (known variance).
+
 
 
 \section{GUI Responose Time}
@@ -69,6 +73,8 @@ Code coverage?
 
 
 \section{Multi-chain Scalability Experiment}
+%TODO describe multichain experiment
+
 Graph showing scalability or lack thereof of the multi-chain record creation cost.
 
 \begin{figure}[h]
@@ -89,6 +95,8 @@ Figure \ref{fig:multichain_scale} shows that the curve is not scaling linearly.
 
 The database size appear to have a large impact on the performance. \cite{db_performance}
 
+target: 5 blokjes per 10 minuten
+
 cpu, io
 
 7 transactions Bitcoin, this is higher
@@ -98,10 +106,8 @@ decentralized, inherently parallel, 1 transaction per 10 min.
 direct signatures vs global consensus
 
 
-Clean ex
-
-
 \section{Phone-to-Phone new content discover time}
+%TODO
 
 \begin{figure}[h]
 	\centering
@@ -110,6 +116,16 @@ Clean ex
 	\label{fig:phones}
 \end{figure}
 
+Key experiment: content dissemination experiment with a several phones.
+
+Graph: time on X-axes, Y-axes number of phones which received the content. Timepoint 0: file added at source.
+
+1 phone has channel.
+10 phones get subscribed to the same channel
+continuously add file to source phone (10+ swarms in seconds)
+see them appear at the various screens with a refresh
+
+describe experiment above with content dissemination. 1 photo of the phones "experimental setup".
 
 
 \section{Transfer time of app}
