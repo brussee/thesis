@@ -1,0 +1,57 @@
+Tribler is a fully decentralized search and video-on-demand platform.
+It also offers privacy by a TOR-like overlay network 
+In addition to that a reputation system is build with blockchain technique.
+
+The research question is now: can Tribler be fully used on mobile devices?
+
+First, what is required to run Tribler on Android?
+Tribler is written in Python and uses various libraries written in C++.
+To use these libraries on a mobile platform all their dependencies need to be available on that platform.
+
+
+What alternatives are there to run python code on Android? (QT, P4A, older projects)
+Why is P4A chosen: previous work (legacy code), best match
+
+What have I done: cross compiling libraries (dependencies) with python bindings
+... etc. (@see "my contributions" in thesis)
+
+
+Reuse entire existing core
+Multi-threading with twisted in python is not perfect: busy reactor thread: API timeouts
+Choosen for multi-process: java front-end with python back-end: at least responsive gui with loading indicators
+
+
+
+How well does it perform? (per feature / key performance indicator)
+Compared to laptop?
+Compared to centralized solution? (Youtube)
+
+What advantages does a smart phone have compared to a laptop and desktop?
+Bluetooth, NFC, WiFi + p2p, camera, ... etc. all integrated
+NFC channel subscription
+
+Reactive programming paradigm on Android
+
+Future work:
+comparative analysis
+WiFi direct
+cutting long running methods in smaller pieces, so multi-threading is smoother (only discovered now, earlier: why is gui hanging?)
+release GIL in native C code, mainly for heavy crypto tasks
+streaming API for big responses (dumping all known channels from db)
+
+
+
+5 min. verhaal, rode lijn
+welke keuzes
+waarom keuzes zo
+
+functionaliteiten vereist
+
+
+wat heb ik gedaan, dan pas boek erbij
+
+
+bijdrage: faciliterend voor future research, nuttig. Tribler features + phone benefits
+aantonen? ja, nee, beide is resultaat
+significance: demo paper, grand challenge
+
