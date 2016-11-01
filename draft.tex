@@ -17,17 +17,40 @@ Expanding the Tribler network would not only benefit the users thanks to an incr
 Currently Linux, Mac and Windows are supported by Tribler. 
 Since Android dominates the smart-phone market it is the first candidate to support for mobile devices.
 
-%Autonomous Operation of Attack-Resilient and Self-Organising Video-On-Demand Platform for Mobile Devices
+
 The research question is: can Tribler be used on mobile devices to defeat large scale monitoring and censorship?
 Secondary question is: using the unique properties of smart-phones, what features can be added or enhanced?
 
 First, what is required to run Tribler on Android?
-Tribler is written in Python and uses various libraries written in C++.
+Tribler is written in Python and uses various libraries written in C or C++.
 To use these libraries on a mobile device they need to be compiled for the right embedded-application binary interface (EABI) including all nonstandard dependencies.
 Since ARMv7 is currently supported by most Android phones it is the first to be supported by Tribler for now.
 
 
-What alternatives are there to run python code on Android? (QT, P4A, older projects)
+https://kos.gd/posts/5-ways-to-use-python-with-native-code/
+Calling C code directly from Python is possible by using the Python ctypes module to load a native dynamic-link library (.so files on Android) or by using the Python/C API of CPython directly.
+This API enables a library to define functions that are written in C to be callable from Python.
+These Python bindings are the glue between pure Python and pure C code.
+SWIG can generate the boiler plate code for this.
+Libtorrent, one of Triblers' main components, uses Boost.Python to provide a standard C++ API on top of the Python/C API.
+Kivy uses Cython; P4A itself?
+
+The API is actually so powerful it even provides access to the internals of the interpreter to mess with the global interpreter lock (GIL) which could be released during native C calls to improve the multi-threading performance of Tribler crypto.
+
+The Python-for-Android tool-chain provides a way (called recipes) to build these libraries and bindings with the required build tools.
+
+P4A uses the Java native interface (JNI), between Java and C/C++ code, to launch the CPython interpreter from a thin Java Android application.
+JNI enables to define functions that are written in C to be callable from Java.
+
+
+Since API level 18 (Android 4.3 codenamed Jelly Bean MR2) loading native libraries dynamically from Python works properly.
+Earlier versions of Android supported NDEF Push with NFC and Wi-Fi P2P since API level 14, and initiate large file transfers over Bluetooth via NFC since API level 16.
+83.7\% of devices on the Google Play Store run Android 4.3 or higher.
+In addition API level 18 added support for Bluetooth Low Energy (LE), WiFi scan only mode, key store for app-private keys, hardware credential storage and automated UI testing.
+All very useful to Tribler.
+
+
+What alternatives are there to run python code on Android? (QPython, P4A, older projects: PGS4A, SL4A)
 Why is P4A chosen: previous work (legacy code), best match
 
 What have I done: cross compiling libraries (dependencies) with python bindings
