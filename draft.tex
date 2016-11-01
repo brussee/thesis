@@ -1,12 +1,30 @@
-Tribler is a fully decentralized search and video-on-demand platform.
-It also offers privacy by a TOR-like overlay network 
-In addition to that a reputation system is build with blockchain technique.
+The Internet is "broken" due to large scale monitoring and censorship.
+Social media is important to people for distributing news and opinion.
+Social media is largely consumed on smart-phones (and news on a smart-tv).
+A big part of news and social media is video.
 
-The research question is now: can Tribler be fully used on mobile devices?
+To solve the issues with large scale monitoring and censorship, particularly on social media a fully decentralized system is proposed.
+
+Tribler is a fully decentralized video-on-demand platform.
+It uses network overlays, called communities, to offer features like search and manage contributions to channels, for discover-ability of content
+It offers privacy through multiple layered encrypted tunnels similar the TOR network, using UDP rather than TCP.
+This privacy feature requires a lot more bandwidth of the network than without anonymity: a ratio of 13 GB for every anonymous 1 GB of data.
+Since bandwidth is limited and transitory it can be beneficial to exchange unused bandwidth for a promise of bandwidth in the future, or another reward.
+The research group behind Tribler is currently building a fully decentralized accounting system and open exchange market using block-chain technology with the purpose of building trust on-line and creating the Internet of Money.
+
+Expanding the Tribler network would not only benefit the users thanks to an increase of available bandwidth, but more importantly improve the usefulness of experiments on the live network for this large scale system.
+
+Currently Linux, Mac and Windows are supported by Tribler. 
+Since Android dominates the smart-phone market it is the first candidate to support for mobile devices.
+
+%Autonomous Operation of Attack-Resilient and Self-Organising Video-On-Demand Platform for Mobile Devices
+The research question is: can Tribler be used on mobile devices to defeat large scale monitoring and censorship?
+Secondary question is: using the unique properties of smart-phones, what features can be added or enhanced?
 
 First, what is required to run Tribler on Android?
 Tribler is written in Python and uses various libraries written in C++.
-To use these libraries on a mobile platform all their dependencies need to be available on that platform.
+To use these libraries on a mobile device they need to be compiled for the right embedded-application binary interface (EABI) including all nonstandard dependencies.
+Since ARMv7 is currently supported by most Android phones it is the first to be supported by Tribler for now.
 
 
 What alternatives are there to run python code on Android? (QT, P4A, older projects)
