@@ -27,7 +27,7 @@ To use these libraries on a mobile device they need to be compiled for the right
 Since ARMv7 is currently supported by most Android phones it is the first to be supported by Tribler for now.
 
 
-https://kos.gd/posts/5-ways-to-use-python-with-native-code/
+% https://kos.gd/posts/5-ways-to-use-python-with-native-code/
 Calling C code directly from Python is possible by using the Python ctypes module to load a native dynamic-link library (.so files on Android) or by using the Python/C API of CPython.
 This API enables a library to define functions that are written in C to be callable from Python.
 These Python bindings are the glue between pure Python and pure C code.
@@ -66,7 +66,7 @@ I changed this behavior to avoid having the GUI and back-end running in the same
 This approach is also superior to having two separate Python interpreters in distinct processes talking to each other, because that means using a very resource heavy Python GUI instead of the regular and lightweight native Android Java XML GUI.
 The latter has tools available for automated UI testing.
 
-... etc. (@see "my contributions" in thesis)
+% ... etc. (@see "my contributions" in thesis)
 
 However this approach still suffers from performance issues due to imperfect multi-threaded coding of Tribler.
 The Twisted module is used, which uses a single thread to coordinate all others, called the reactor thread.
@@ -78,11 +78,41 @@ How well does it perform? (per feature / key performance indicator)
 Compared to laptop?
 Compared to centralized solution? (Youtube)
 
-What advantages does a smart phone have compared to a laptop and desktop?
-Bluetooth, NFC, WiFi + p2p, camera, ... etc. all integrated
-NFC channel subscription
 
-Reactive programming paradigm on Android
+
+What advantages does a smart phone have compared to a laptop and desktop?
+A smart-phone has the unique property of being a ubiquitous device that is highly mobile and extremely connectible.
+Most smart-phones even have one or more cameras to produce content that can be shared immediately from the device.
+Via WiFi the device can connect to the Tribler network via existing infrastructure, but Android also supports peer-to-peer WiFi.
+Using NFC Tribler can start a Bluetooth connection and transfer the installation package peer-to-peer.
+Also via NFC Tribler can exchange channel ID's to subscribe to another Tribler channel peer-to-peer.
+In the future the same method can be used to exchange bootstrap peers for the Tribler network.
+The peer-to-peer Bluetooth file transfer could be made much faster if the WiFi Direct would be used.
+
+
+Traditionally applications with a user interface execute tasks in the background while showing the progress to the user.
+Due to the fact that Android targets mobile devices it is very optimized for low resource usage.
+Therefore memory is freed more aggressively and the application is often paused or stopped and restarted if the user switches to another app.
+
+To run in the background Tribler uses an Android service and all communication is performed asynchronously.
+The reactive programming paradigm is a perfect fit for asynchronous tasks.
+Thanks to RxJava and RxAndroid asychronous multi-threaded coding is made very enjoyable:
+% code example
+As shown in the code example performing IO tasks on the dedicated Android thread and making UI changes on the main thread becomes trivial.
+
+The Retrofit library enables a very declarative API client.
+% code example?
+
+
+The latency of the API is shown in this figure:
+% latency figure
+
+The performance of Multichain:
+% block creation graph
+
+
+
+
 
 Future work:
 comparative analysis
