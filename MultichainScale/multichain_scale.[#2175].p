@@ -12,7 +12,7 @@ plot \
     "GT_I9300.[#2175].dat" using 2:1 title 'S3' with linespoints, \
     "Nexus_5.[#2175].dat" using 2:1 title 'Nexus 5' with linespoints, \
     "Nexus_6.[].dat" using 2:1 title 'Nexus 6' with linespoints, \
-    "PC_Pim.[#2175].dat" using 2:1 title 'Laptop' with linespoints, \
+    "PC_Pim.[#2175].dat" using 2:1 title 'Old PC' with linespoints, \
     "S6_Edge.[#2175].dat" using 2:1 title 'S6 Edge' with linespoints
 
 unset output
