@@ -1,8 +1,26 @@
-Design and Architecture
-% new design chapter: no bullets but text
+\chapter{Design and Architecture}
+% Intro per chapter, refer to problem definition each time, where are we now, what now (for reader)
+% Why this chapter
+% Paragraphs
+% Conclusion of contents of this chapter
+% Link to next chapter
+
+We now present a design to address the challenges and utilize the opportunities of working on a mobile device as put forward in the previous chapter.
+First in terms of functionality and other requirements, second the overall system architecture.
+
+\section{Functional requirements} % Function design
+%Product design involves determining the objectives of the system. Central questions in this process are “what is feasible?”, “what is required?” and “what functions need to be fulfilled by the system?” It is a strategic decision process and it will be termed the function design 
+%Function design distinguishes between innovation and improvement. Improvement usually only concerns the reorganisation or reengineering of an existing system, which implies a rearrangement of existing functions or a different interpretation of these functions. Innovation concerns the extension, reduction or modification of functions due to the introduction of new technology, resources and/or organisation.
+
+inputs, commands and conditions
+outputs, conditions
+store, reuse data, backup
+computations
+timing and synchronization
 
 
-1. Functionality (functional and non-functional requirements)
+Functional requirements
+% Functional level
 
 Live production (screenshots) and dissemination
 
@@ -17,6 +35,97 @@ GUI
 Nosetests CI
 
 
+All functionality of Tribler must be usable directly from the mobile device, without the need or support for any other external device.
+
+Because of the ubiquity of smart-phones with built-in camera one is always at hand and ready to record.
+Such mobile devices are much more manageable than for example laptops with built-in camera that Tribler has been capable of running on in the past.
+No opportunity has to be missed due to hassle of getting a dedicated camera and transferring the recording to a connectible device afterwards.
+Therefore the camera built-in the mobile device should be used to record video or photographs with Tribler.
+The usability of Tribler as a content generating tool is greatly improved by this. 
+
+Publishing content should be one simple step for the user to perform, especially right after creating new content.
+Every user must be able create his/her own channel in Tribler to publish their content, just like channels in YouTube, directly from the mobile device.
+Newly discovered channels and content may be added to the GUI without user interaction.
+
+To easily share your own channel with others the id could be transferred via NFC from device to device.
+With just one-click-confirmation it should be send, and the receiving device must then be able to subscribe to this channel and start discovering the contents automatically right away.
+Because this may require both devices having Tribler installed, it also must be able to share the installation package via Bluetooth or WiFi without any prerequisites on the receiving device.
+
+Self-created content must be stored on the internal memory and processed automatically on the mobile device itself in order to avoid dependency any external processing unit.
+This includes the creation of .torrent files required to share content via the bit-torrent protocol.
+
+
+\section{Non-functional requirements}
+
+All processing tasks should be performed in the background, so as to allow the user to continue working with Tribler or otherwise, while indicating about ongoing processing.
+
+
+
+\subsection{Quality requirements}
+
+response time
+throughput
+resource usage
+reliability
+availability
+recover from failure
+maintainability and enhancement
+re-usability
+
+\subsection{Platform requirements}
+
+computing platform: min. system specs and features, api level
+technology to be used: programming language, db
+
+\subsection{Process requirements}
+
+development process / methodology
+cost
+delivery date
+
+
+
+
+%%
+
+To design Tribler-mobile 
+The research question is: how feasible is it to run all Tribler functionality on mobile devices? % to defeat or mitigate large scale monitoring and censorship?
+Secondary question is: using the unique properties of mobile devices, what features can be added or enhanced?
+
+%%
+
+
+How to create a \emph{self-organising} \emph{video-on-demand} platform that is \emph{attack-resilient} and can \emph{operate autonomously} on a \emph{mobile device}?
+
+Self-organising in the sense that the platform coordinates the exchange of videos and meta-data fully automatically.
+
+Video-on-demand in the sense that users can simply click and play videos in a streaming fashion, so without waiting for the entire video to be present on the device.
+
+Attack-resilient in the sense that:
+First: censorship does not have an effect if the majority of users does not cooperate with the censor.
+Second: the privacy of users remains protected while they actively participate on the platform
+Third: no network infrastructure required for viral spreading of the entire video platform.
+
+Autonomous operation in the sense that users do not have to manage any files or configuration manually at all to be active on the platform.
+
+Mobile device in the sense that it is low-powered and portable including the network interface and power supply.
+
+These properties will ensure social media with resilience against Internet kill switches, natural disasters and censorship.
+
+
+
+
+
+
+
+
+
 2. Architecture, systeemdiagram
+% Design level
 
 
+
+
+---
+Implementation
+% Prototype level
