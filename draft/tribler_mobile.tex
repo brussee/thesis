@@ -1,9 +1,37 @@
-Towards Tribler on mobile devices
+\chapter{Towards Tribler on mobile devices}
+
+In the last chapter we discussed the usefulness of Tribler functionality running on desktop and server machines.
+To bring that to mobile devices will give access to the usefulness of Tribler for people on the move.
+Expanding the Tribler network would also improve the usefulness of experiments on the live network for this large scale system.
+
+Properties (positive and negative) that come from these features are transferred to mobile devices, which will add their own distinct properties to the mix.
 
 
-Functionality
-a) Opportunities
+How to create a \emph{self-organising} \emph{video-on-demand} platform that is \emph{attack-resilient} and can \emph{operate autonomously} on a \emph{mobile device}?
+
+Mobile device in the sense that it is low-powered and portable including the network interface and power supply.
 
 
-b) Challenges
+% In terms of Functionality
+
+\section{Opportunities}
+
+Mobile devices are inherently easy to move around and very portable.
+In case of a breakdown in communication infrastructure the mobile devices with wireless radio transmitters can still connect ad hoc and moved within range if necessary.
+
+Via WiFi a device can connect to the Tribler network via existing infrastructure or other peers via ad-hoc WiFi.
+Using NFC Tribler can start a Bluetooth connection and transfer the installation package peer-to-peer.
+Also via NFC Tribler can exchange channel ID's to subscribe to another Tribler channel peer-to-peer.
+In the future the same method can be used to exchange bootstrap peers for the Tribler network.
+The peer-to-peer Bluetooth file transfer could be made much faster if the WiFi Direct would be used.
+
+
+\section{Challenges}
+
 What does working on mobile phone mean?
+
+Mobile-devices are typically equipped with batteries to operate without a power cord.
+Considering the size and weight the capacity is limited.
+Smart-phone batteries usually barely hold a charge that would sustain a day of heavy usage.
+Tribler could potentially drain the battery fast.
+Heavy encrypted network traffic not only demand constant radio transmissions, but also CPU processing.
