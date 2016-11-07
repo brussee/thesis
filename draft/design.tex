@@ -24,7 +24,16 @@ timing and synchronization
 Functional requirements
 % Functional level
 
+
+
+
+
+
 Live production (screenshots) and dissemination
+Record video
+Create My Channel
+Add to My Channel
+Search results
 
 MultiChain
 
@@ -66,20 +75,22 @@ impliceert: gewoon opschrijven: 2 processes means communication: impliceert API
 
 \section{Non-functional requirements}
 
+
+\subsection{Quality requirements}
+
+
 All processing tasks should be performed in the background, so as to allow the user to continue working with Tribler or otherwise, while indicating about ongoing processing.
+The GUI must be responsive to the users' input at all times, even if the amount of data shown on screen is very large.
 
+If an error occurs that is recoverable the app should automatically retry or ask the user to correct the input if applicable.
 
-
-
-gebruiken build server
-zoveel mogelijk coverage
+To keep the project maintainable the entire build tool-chain must be integrated in the continuous integration and build server of Tribler.
+All existing tests should also be performed on Android, with modifications for platform specific tests.
+Also all unit tests and integration tests must cover as much code as possible and should be executed on every build.
 
 non-bloated
 
 alleen key dingen hiervan:
-
-
-\subsection{Quality requirements}
 
 response time
 throughput
@@ -95,6 +106,10 @@ re-usability
 computing platform: min. system specs and features, api level
 technology to be used: programming language, db
 
+The minimum API level of Android should support WiFi, Bluetooth and NFC features.
+
+
+
 \subsection{Process requirements}
 
 development process / methodology
@@ -107,13 +122,21 @@ delivery date
 
 
 
-
-2. Architecture, systeemdiagram
+\section{System architecture}
 % Design level
 
+systeemdiagram
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{system_architecture}
+	\caption{System architecture}
+	\label{fig:system_architecture}
+\end{figure}
 
 
+Previous attempts at creating an Android version of Tribler failed with regards to maintainability.
+Poor separation of front-end and back-end meant re-use of the core modules was hard to maintain.
+The new architecture clearly separates tasks of the GUI and background operations.
 
----
-Implementation
-% Prototype level
+
