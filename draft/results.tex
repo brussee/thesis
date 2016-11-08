@@ -1,19 +1,26 @@
 
-To verify if running all Tribler functionality on mobile devices is feasible we take a look at relevant performance characteristics and run initial experiments.
+To verify if running all Tribler functionality on mobile devices is feasible we take a look at relevant performance characteristics and take several measurements.
 For scale a laptop and old computer are included in some experiments.
 We focus on the design aspects and evaluate per feature / key performance indicator.
 
 
 % setup of experiments
+% rationale
 
 
 \section{API latency}
 The user expects operations to take a consistent amount of time.
 The performance of the API is tested in terms of latency.
+
+define latency
+%more why
 We want to see that response times are bounded, consistent and generally low.
 
+eerder gedaan bij Laurens, daar dit en dat gezien
+hetzelfde gedaan op Andorid / mobile
+
 \subsection{Setup}
-To measure this we request the discovered channels from the API 1000 times and measure the response time.
+To measure this we request the discovered channels from the API 1000 times and measure the response time. As done before by Laurens REF
 A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in this benchmark.
 
 \subsection{Results}
@@ -25,6 +32,9 @@ The following figure shows the latency for every request.
 \subsection{Conclusions}
 The results shows large spikes and an unexpected pattern.
 It turns out this approach still suffers from performance issues due to imperfect multi-threaded coding of Tribler.
+Looks like more things are at play here.
+CPU freq?
+Create and show laurens' histogram from his data. difference!
 
 
 \section{Testing and coverage}
@@ -60,6 +70,9 @@ Profiler
 1 device
 wall clock time
 10 minutes run
+
+Results as expected: crypto lets other things wait, significant part of wall-clock-time.
+
 
 
 Startup time
