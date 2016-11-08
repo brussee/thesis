@@ -106,7 +106,11 @@ The latter has tools available for automated UI testing.
 
 % ... etc. (@see "my contributions" in thesis)
 
-However this approach still suffers from performance issues due to imperfect multi-threaded coding of Tribler.
+
 The Twisted module is used, which uses a single thread to coordinate all others, called the reactor thread.
 If this thread is busy, the REST API can not even receive incoming requests resulting in timeouts.
-Thanks to the separation of GUI and back-end this does not result in an unresponsive GUI, like older versions of Tribler are used to.
+We will investigate this in the next chapter.
+
+Thanks to the design choice of separating the GUI from the back-end this does not result in an unresponsive GUI, like older versions of Tribler are used to.
+
+
