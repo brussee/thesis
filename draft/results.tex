@@ -1,29 +1,58 @@
 
-
-How well does it perform? (per feature / key performance indicator)
-Compared to laptop?
-
-feasibility of all Tribler functionality on mobile devices
+To verify if running all Tribler functionality on mobile devices is feasible we take a look at relevant performance characteristics and run initial experiments.
+For scale a laptop and old computer are included in some experiments.
+We focus on the design aspects and evaluate per feature / key performance indicator.
 
 
-setup of experiments
+% setup of experiments
 
 
+\section{API latency}
+The user expects operations to take a consistent amount of time.
+The performance of the API is tested in terms of latency.
+We want to see that response times are bounded, consistent and generally low.
 
-API latency
+\subsection{Setup}
+To measure this we request the discovered channels from the API 1000 times and measure the response time.
+A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in this benchmark.
+
+\subsection{Results}
+The following figure shows the latency for every request.
+
 1 graph
 1 device
 
-The latency of the API is shown in this figure:
-% latency figure
-
+\subsection{Conclusions}
+The results shows large spikes and an unexpected pattern.
 It turns out this approach still suffers from performance issues due to imperfect multi-threaded coding of Tribler.
 
 
-Nosetests
+\section{Testing and coverage}
+The design choice of reusing all Tribler core source code means we need to verify its correctness.
+To make sure all code on Android works the same as on other supported platforms we need to test all code.
+Tribler has some unit tests and integration tests that cover a large portion of the code, but not all.
+The nosetests module together with the coverage module are used to evaluate this.
+A nexus 
+
+\subsection{Results}
+The followinng table shows the results of two times.
+
 1 table
 1 device
-successrate
+
+1.
+testsuite name="nosetests" tests="711" errors="14" failures="13" skip="30"
+coverage branch-rate="0" line-rate="0.7241" timestamp="1468681674588" version="4.1"
+2.
+testsuite name="nosetests" tests="749" errors="12" failures="15" skip="3"
+coverage branch-rate="0" line-rate="0.7861" timestamp="1478016138747" version="4.1"
+
+\subsection{Conclusions}
+
+
+
+
+
 
 
 Profiler
