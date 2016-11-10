@@ -1,35 +1,46 @@
 
 To verify if running all Tribler functionality on mobile devices is feasible we take a look at relevant performance characteristics and take several measurements.
-For scale a laptop and old computer are included in some experiments.
+For scale a laptop and old computer are included in some measurements.
 We focus on the design aspects and evaluate per feature / key performance indicator.
 
+% Rationale
+% Metrics
+% Expected / desired results
+% Setup
+% Results
+% Conclusions
 
-% setup of experiments
-% rationale
-
-
-\section{API latency}
-The user expects operations to take a consistent amount of time.
-The performance of the API is tested in terms of latency.
-
-define latency
-%more why
+\section{API response time}
+% Rationale
+The user expects operations to take a consistent and reasonable amount of time.
+By design all functionality is going through the API.
+% Metrics
+To test if the API is adding a significant amount of delay we measure the latency.
+% XOR: latency vs response time
+The response time is measured to verify if the API is responding consistently within a reasonable amount of time.
+This includes the round trip latency.
+Latency is the amount of time between sending a request and receiving it at the destination.
+It excludes the time needed to process the request and latency on the way back.
+Round trip latency includes the latency of the response.
+The response time is the sum of the round trip latency and the processing time at the destination.
+% Expected / desired results
 We want to see that response times are bounded, consistent and generally low.
 
+Previous research has shown the following results on 
 eerder gedaan bij Laurens, daar dit en dat gezien
 hetzelfde gedaan op Andorid / mobile
 
-\subsection{Setup}
+% Setup
 To measure this we request the discovered channels from the API 1000 times and measure the response time. As done before by Laurens REF
 A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in this benchmark.
 
-\subsection{Results}
+% Results
 The following figure shows the latency for every request.
 
 1 graph
 1 device
 
-\subsection{Conclusions}
+% Conclusions
 The results shows large spikes and an unexpected pattern.
 It turns out this approach still suffers from performance issues due to imperfect multi-threaded coding of Tribler.
 Looks like more things are at play here.
@@ -38,13 +49,17 @@ Create and show laurens' histogram from his data. difference!
 
 
 \section{Testing and coverage}
+% Rationale
 The design choice of reusing all Tribler core source code means we need to verify its correctness.
 To make sure all code on Android works the same as on other supported platforms we need to test all code.
 Tribler has some unit tests and integration tests that cover a large portion of the code, but not all.
+% Metrics
+% Expected / desired results
+% Setup
 The nosetests module together with the coverage module are used to evaluate this.
 A nexus 
 
-\subsection{Results}
+% Results
 The followinng table shows the results of two times.
 
 1 table
@@ -57,7 +72,7 @@ coverage branch-rate="0" line-rate="0.7241" timestamp="1468681674588" version="4
 testsuite name="nosetests" tests="749" errors="12" failures="15" skip="3"
 coverage branch-rate="0" line-rate="0.7861" timestamp="1478016138747" version="4.1"
 
-\subsection{Conclusions}
+% Conclusions
 
 
 
@@ -66,21 +81,40 @@ coverage branch-rate="0" line-rate="0.7861" timestamp="1478016138747" version="4
 
 
 Profiler
+% Rationale
+% Metrics
+% Expected / desired results
+% Setup
+
 1 graph
 1 device
 wall clock time
 10 minutes run
 
+% Results
 Results as expected: crypto lets other things wait, significant part of wall-clock-time.
 
+% Conclusions
 
 
 Startup time
+% Rationale
+% Metrics
+% Expected / desired results
+% Setup
+% Results
+% Conclusions
 1 graph
 5 devices
 
 
 Multichain
+% Rationale
+% Metrics
+% Expected / desired results
+% Setup
+% Results
+% Conclusions
 4 graphs
 5 devices
 
