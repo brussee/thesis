@@ -30,7 +30,7 @@ We did the same benchmark with a slightly different setup.
 A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was connected via USB to a laptop running JMeter.
 The API tcp-port was forwarded with ADB.
 With JMeter we request the discovered channels from the API a 1000 times and measure the latency.
-JMeter is also capable of setting a desired amount of requests per minute, provided the device can handle it.
+JMeter is also capable of setting a desired number of requests per minute, provided the device can handle it.
 We set this parameter to 300 requests per minute, equal to the other benchmark.
 % Results
 Our database to be queried is not equal to one used in figure \ref{fig:api_laurens}.
@@ -71,7 +71,7 @@ The ratio of tested lines of code with respect to the total number of lines of c
 We expect to see a line-rate value close to 1, but not 1 since we know the tests do not cover everything.
 % Setup
 All tests were run two times on the same device with 11 weeks of development in between.
-The nosetests module was used for running the tests together with the coverage module for gathering coverage data.
+The nose module was used for running the tests together with the coverage module for gathering coverage data.
 The same Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in both runs.
 % Results
 The following table shows the results of both executions.
@@ -89,12 +89,12 @@ A failure means an assertion was not met and an error represents an exception wh
 % Conclusions
 Therefore seeing that the number of failures increased is not that bad since the number of errors decreased.
 If the line-rate is 1 you still need the the branch-rate to be 1 as well before you can be confident the code will work as expected.
-The branch-rate is the amount of code paths tested with respect to the total amount of code paths possible.
+The branch-rate is the number of code paths tested with respect to the total number of code paths possible.
 Unfortunately this metric is not part of the current test plan.
 Nevertheless the metrics show improvement overall.
 
 
-Profiler
+\section{Profiling}
 % Rationale
 % Metrics
 % Expected / desired results
