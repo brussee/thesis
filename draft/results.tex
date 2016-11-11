@@ -40,7 +40,7 @@ The plot shows large spikes and seemingly a curious and unexpected pattern.
 Table \ref{table:api_benchmark} shows the large difference in statistics.
 \begin{table}[h]
   \begin{tabular}{l | *{8}{c}}
-  	 & # Samples & Average (ms) & Min. (ms) & Max. (ms) & σ (ms) & Throughput & KB/second & Avg. Bytes \\ \hline
+  	 & N & \overline{x} (ms) & Min. (ms) & Max. (ms) & σ (ms) & Throughput & KB/second & Avg. Bytes \\ \hline
 	Nexus 6 & 1000 & 1803 & 1292 & 3292 & 301.25 & 33.3 req/minute & 347.44 & 641709.0 \\ \hline
 	PC         & 1000 & 5        & 3      & 107   & 4.42     & 140.8 req/second & 2548.00 & 18525.0 \\ \hline
   \end{tabular}
@@ -133,10 +133,26 @@ We expect consistent loading times because right after starting we shut Tribler 
 To get a good idea of how the user experience may differ we measure the startup time 10 times on 5 different devices.
 % Results
 %FIG startup_time
-
+Table \ref{table:startup_time} shows the statistics per device.
+\begin{table}[h]
+	\begin{tabular}{l | *{5}{c}}
+		Device & N & \overline{x} (s) & Min. (s) & Max. (s) & s (s) \\ \hline
+		Nexus 10        & 10 & \\ \hline
+		Nexus 6          & 10 & 4.319 & 4.124 & 4.670 & 0.179 \\ \hline
+		Nexus 5          & 10 & 3.353 & 3.273 & 3.459 & 0.081 \\ \hline
+		Galaxy Nexus & 10 & 7.086 & 6.161 & 7.772 & 0.454 \\ \hline
+		S3                   & 10 & 31.935 & 30.616 & 33.940 & 1.116 \\ \hline
+	\end{tabular}
+	\caption[Total response time statistics]{These numbers are based on elapsed time, not latency, from the entire benchmark.}
+	\label{table:starup_time}
+\end{table}
+The results show a very small sample standard deviation and a very low startup time.
+The S3 is performing worse than may be expected judging from the results of the other devices.
 % Conclusions
-1 graph
-5 devices
+The reason for that may be that this phone was not wiped and given a fresh install of Android.
+That could mean that other applications installed on a device could significantly impact the performance of Tribler.
+The sample standard deviation is relatively small though, which contradicts this hypothesis.
+This should be investigated further including if anything can be done on the part of Tribler.
 
 
 Multichain
