@@ -118,12 +118,22 @@ The significant chunk of time that the crypto takes is as expected.
 Since this task is actually delegated to the C library M2Crypto it should be possible to release the GIL of the Python interpreter so other Python code that does not depend on it can be executed.
 
 
-Startup time
+\section{Startup time}
 % Rationale
+One of the design objectives of separating the front-end from the back-end was responsiveness.
+If an user decides to use Tribler we want to put no obstacle in the way.
+Therefore the service starts up in the background, separately from the GUI.
+However before any task can be executed by the service it needs to be actually started.
 % Metrics
+To measure the time it takes Tribler to fully start we measure the time from starting the app up to the moment the Tribler-started-event is fired.
+This events is sent over the API event-stream and signifies that Tribler is fully started and ready to accept all incoming requests.
 % Expected / desired results
+We expect consistent loading times because right after starting we shut Tribler down again.
 % Setup
+To get a good idea of how the user experience may differ we measure the startup time 10 times on 5 different devices.
 % Results
+%FIG startup_time
+
 % Conclusions
 1 graph
 5 devices
