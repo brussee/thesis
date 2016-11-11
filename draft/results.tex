@@ -10,29 +10,28 @@ We focus on the design aspects and evaluate per feature / key performance indica
 % Results
 % Conclusions
 
-\section{API response time}
+\section{API latency}
 % Rationale
 The user expects operations to take a consistent and reasonable amount of time.
 By design all functionality is going through the API.
 % Metrics
-To test if the API is adding a significant amount of delay we measure the latency.
-% XOR: latency vs response time
-The response time is measured to verify if the API is responding consistently within a reasonable amount of time.
-This includes the round trip latency.
-Latency is the amount of time between sending a request and receiving it at the destination.
-It excludes the time needed to process the request and latency on the way back.
-Round trip latency includes the latency of the response.
-The response time is the sum of the round trip latency and the processing time at the destination.
+We use Apache JMeter to verify if the API is responding consistently within a reasonable amount of time by measuring the latency.
+JMeter measures the latency from just before sending the request to just after the first response has been received. \cite{jmeter_glossary}
+Thus the measurement includes the time needed to assemble the request as well as processing it and returning a response with latency on the way back.
+It excludes the transfer time of the complete response and subsequent processing and rendering time.
+Any client can process and render a response differently, possibly in a streaming fashion.
+By leaving out that element this metric is measuring the operation time via the API.
 % Expected / desired results
-We want to see that response times are bounded, consistent and generally low.
-
-Previous research has shown the following results on 
-eerder gedaan bij Laurens, daar dit en dat gezien
-hetzelfde gedaan op Andorid / mobile
-
+We want to see that the latency is bounded, consistent and generally low.
+Previous research has shown the following results on a computer:
+%FIG api_laurens
 % Setup
-To measure this we request the discovered channels from the API 1000 times and measure the response time. As done before by Laurens REF
-A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in this benchmark.
+We did the same benchmark with a slightly different setup.
+A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was connected via usb to a laptop running JMeter.
+The API tcp-port was forwarded with ADB.
+With JMeter we request the discovered channels from the API a 1000 times with 300 requests per minute and measure the latency.
+The requested data is not equal to the data used in figure \ref{fig:ap_laurens}.
+
 
 % Results
 The following figure shows the latency for every request.
@@ -117,6 +116,8 @@ Multichain
 % Conclusions
 4 graphs
 5 devices
+
+without clearing the database, running the experiment a second time shows a significant delay on all devices.
 
 The performance of Multichain:
 % block creation graph
