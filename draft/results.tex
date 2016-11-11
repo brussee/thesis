@@ -66,30 +66,32 @@ The design choice of reusing all Tribler core source code means we need to verif
 To make sure all code on Android works the same as on other supported platforms we need to test all code.
 Tribler has some unit tests and integration tests that cover a large portion of the code, but not all.
 % Metrics
+The ratio of tested lines of code with respect to the total number of lines of code is the coverage line-rate.
 % Expected / desired results
+We expect to see a line-rate value close to 1, but not 1 since we know the tests do not cover everything.
 % Setup
-The nosetests module together with the coverage module are used to evaluate this.
-A nexus 
-
+All tests were run two times on the same device with 11 weeks of development in between.
+The nosetests module was used for running the tests together with the coverage module for gathering coverage data.
+The same Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in both runs.
 % Results
-The followinng table shows the results of two times.
-
-1 table
-1 device
-
-1.
-testsuite name="nosetests" tests="711" errors="14" failures="13" skip="30"
-coverage branch-rate="0" line-rate="0.7241" timestamp="1468681674588" version="4.1"
-2.
-testsuite name="nosetests" tests="749" errors="12" failures="15" skip="3"
-coverage branch-rate="0" line-rate="0.7861" timestamp="1478016138747" version="4.1"
-
+The following table shows the results of both executions.
+\begin{table}[h]
+	\begin{tabular}{l | *{5}{c}}
+		Run & Tests & Errors & Failures & Skipped & Line-rate \\ \hline
+		1     & 711   & 14       & 13          & 30          & 0.7241 \\ \hline
+		2     & 749   & 12       & 15          & 3            & 0.7861 \\ \hline
+	\end{tabular}
+	\caption[Total response time statistics]{These numbers are based on elapsed time, not latency, from the entire benchmark.}
+	\label{table:testing_coverage}
+\end{table}
+The number of tests has increased as well as the coverage line-rate while the number of errors and skipped tests have decreased.
+A failure means an assertion was not met and an error represents an exception while running a test.
 % Conclusions
-
-
-
-
-
+Therefore seeing that the number of failures increased is not that bad since the number of errors decreased.
+If the line-rate is 1 you still need the the branch-rate to be 1 as well before you can be confident the code will work as expected.
+The branch-rate is the amount of code paths tested with respect to the total amount of code paths possible.
+Unfortunately this metric is not part of the current test plan.
+Nevertheless the metrics show improvement overall.
 
 
 Profiler
