@@ -27,24 +27,37 @@ Previous research has shown the following results on a computer:
 %FIG api_laurens
 % Setup
 We did the same benchmark with a slightly different setup.
-A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was connected via usb to a laptop running JMeter.
+A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was connected via USB to a laptop running JMeter.
 The API tcp-port was forwarded with ADB.
-With JMeter we request the discovered channels from the API a 1000 times with 300 requests per minute and measure the latency.
-The requested data is not equal to the data used in figure \ref{fig:ap_laurens}.
-
-
+With JMeter we request the discovered channels from the API a 1000 times and measure the latency.
+JMeter is also capable of setting a desired amount of requests per minute, provided the device can handle it.
+We set this parameter to 300 requests per minute, equal to the other benchmark.
 % Results
+Our database to be queried is not equal to one used in figure \ref{fig:api_laurens}.
 The following figure shows the latency for every request.
-
-1 graph
-1 device
-
+%FIG api_benchmark
+The plot shows large spikes and seemingly a curious and unexpected pattern.
+Table \ref{table:api_benchmark} shows the large difference in statistics.
+\begin{table}[h]
+  \begin{tabular}{l | *{8}{c}}
+  	 & # Samples & Average (ms) & Min. (ms) & Max. (ms) & σ (ms) & Throughput & KB/second & Avg. Bytes \\ \hline
+	Nexus 6 & 1000 & 1803 & 1292 & 3292 & 301.25 & 33.3 req/minute & 347.44 & 641709.0 \\ \hline
+	PC         & 1000 & 5        & 3      & 107   & 4.42     & 140.8 req/second & 2548.00 & 18525.0 \\ \hline
+  \end{tabular}
+  \caption[Total response time statistics]{These numbers are based on elapsed time, not latency, from the entire benchmark.}
+  \label{table:api_benchmark}
+\end{table}
+The set rate of 300 requests per minute is clearly not reached by the smart-phone in our benchmark by a factor of 9.
+The difference in amount of response data turned out to be much bigger than expected with a factor of 35.
 % Conclusions
-The results shows large spikes and an unexpected pattern.
-It turns out this approach still suffers from performance issues due to imperfect multi-threaded coding of Tribler.
-Looks like more things are at play here.
-CPU freq?
-Create and show laurens' histogram from his data. difference!
+Considering the difference in amount of response data and the bandwidth of USB versus internal memory it is an unfair comparison.
+However, based on our result we may conclude that the API does not respond consistently and appear to behave differently than the other benchmark.
+The device not being able to process 5 requests per second possibly reveals information about the connection bandwidth and the multi-threaded processing capability.
+We assume that the 480MB/s theoretical bandwidth of USB2.0 is not a bottleneck considering the 2,5 MB/s result of the PC.
+Being a mobile device also other aspects my be at play here, like CPU frequency scaling.
+However this was turned off by acquiring a wake lock from the Android OS.
+It appears then that our design approach still suffers from performance issues due to imperfect multi-threaded performance.
+Because if the CPU is simply not powerful enough we expect to see a linear pattern instead of what we actually see in \ref{fig:api_benchmark}.
 
 
 \section{Testing and coverage}
