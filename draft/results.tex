@@ -96,19 +96,26 @@ Nevertheless the metrics show improvement overall.
 
 \section{Profiling}
 % Rationale
-% Metrics
+Because of the challenges put forward in chapter \ref{ch:tribler_mobile} we investigate if time is spent disproportionately on some function.
 % Expected / desired results
+We expect that the limited resources of a mobile device may impact particular features more than others.
+If hardware acceleration is not present the less powerful CPU may struggle with encryption tasks.
+% Metrics
+Instead of CPU time, time actually spent processing by the CPU, we measure wall-clock time.
+This way we measure the amount of time a user would have to wait for a certain function to be executed.
 % Setup
-
-1 graph
-1 device
-wall clock time
-10 minutes run
-
+With the cProfile Python module and the visualisation tool SnakeViz we can see if any function takes a disproportionate amount of time.
+A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used for this.
+The profiler was running for 10 minutes with Tribler during normal operation and without any user input.
 % Results
-Results as expected: crypto lets other things wait, significant part of wall-clock-time.
-
+%FIG profile_1468515157-2
+Figure \ref{fig:profile} shows that 27\% of the time is spent on verifying cryptographic signatures.
+The bright pink represents the update function, which signifies various business logic upon receiving a torrent.
+Also notable is the same stack of functions within and outside of a community on top of the wrapper.
+This can be explained by the fact that torrents can be discovered outside of a community too.
 % Conclusions
+The significant chunk of time that the crypto takes is as expected.
+Since this task is actually delegated to the C library M2Crypto it should be possible to release the GIL of the Python interpreter so other Python code that does not depend on it can be executed.
 
 
 Startup time
