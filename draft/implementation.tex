@@ -2,39 +2,6 @@
 % Prototype level
 % geen documentatie manual, maar keuzes en uitdagingen
 
-API: JSON HTTP server from twisted
-
-API client: retrofit, okhttp
-
-
-vlc as hard to maintain library, done that
-afterwards decided packaging installer is more maintainable and much easier.
-
-
-
-
-verdedig P4A keuze
-python and toolchain aspect
-
-stable with common tools
-
-Alternatieven QT, P4A, oudere python projecten
-Keuze voor P4A door eerder werk en beste match (legacy)
-Crosscompilen met python bindings libraries (en dependencies)
-
-What alternatives are there, besides P4A, to run python code on Android?
-0. QPython: scripting, cannot build regular .apk
-1. QtAndroid, inmiddels alternative, niet gereed toen wij hieraan werkte (juni 2016, qt 5.7 android service)
-2. PGS4A: no longer in development
-3. SL4A: no longer in development
-Why is P4A chosen?
-Because this project continued from previous work (legacy code) build on P4A.
-Even though the revamp version was build from scratch, it still is the best choice because it not only provides the Python interpreter, it also is a complete tool-chain to build a standalone .apk.
-
-
-threading, gaat niet goed met python, wel met api en java
-
-
 
 Traditionally applications with a user interface execute tasks in the background while showing the progress to the user.
 Due to the fact that Android targets mobile devices it is very optimized for low resource usage.
@@ -45,6 +12,22 @@ The reactive programming paradigm is a perfect fit for asynchronous tasks.
 Thanks to RxJava and RxAndroid asychronous multi-threaded coding is made very enjoyable:
 % code example
 As shown in the code example performing IO tasks on the dedicated Android thread and making UI changes on the main thread becomes trivial.
+
+
+
+Tribler also uses the event-driven networking engine Twisted, which is written in Python.
+API: JSON HTTP server from twisted
+
+API client: retrofit, okhttp
+
+
+The video player VLC can be integrated as hard to maintain library and a custom GUI.
+This was done first, but afterwards we decided to improve maintainability by packaging the entire Android app installation package (.apk).
+Which was also much easier to accomplish in hindsight.
+
+The API combined with Java is better for parallelization than the coarse grained locking by the CPython interpreter.
+Shared memory threading in Python code is restricted to single-thread performance because of the global interpreter lock (GIL).
+
 
 The Retrofit library enables a very declarative API client.
 % code example?
@@ -88,13 +71,24 @@ Earlier versions of Android already supported NDEF Push with NFC and Wi-Fi P2P (
 83.7\% of devices on the Google Play Store run Android 4.3 or higher.
 
 
+python and toolchain aspect
+
+stable with common tools
+
+
+% Alternatieven QT, P4A, oudere python projecten
 What alternatives are there, besides P4A, to run python code on Android?
-1. QPython: scripting, cannot build regular .apk
+0. QPython: scripting, cannot build regular .apk
+1. QtAndroid, inmiddels alternative, niet gereed toen wij hieraan werkte (juni 2016, qt 5.7 android service)
 2. PGS4A: no longer in development
 3. SL4A: no longer in development
+% Verdedig P4A keuze
 Why is P4A chosen?
+% Keuze voor P4A door eerder werk en beste match (legacy)
 Because this project continued from previous work (legacy code) build on P4A.
-Even though the revamp version was build from scratch, it still is the best choice because it not only provides the Python interpreter, it also is a complete tool-chain to build a standalone .apk.
+% Crosscompilen met python bindings libraries (en dependencies)
+Even though the revamp version was build from scratch, it still is the best choice because it not only provides the Python interpreter, it also is a complete tool-chain to cross-compile native libraries with bindings and build a standalone Android app installation package (.apk).
+
 
 The Python-for-Android toolchain is used to cross compile the C/C++ libraries (and dependencies) with Python bindings for Android ARMv7.
 On top of that the entire core of Tribler can run, containing a REST HTTP API module also written in Python.
