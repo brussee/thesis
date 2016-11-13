@@ -1,3 +1,35 @@
-Is it feasible to run all Tribler functionality on mobile devices?
+\chapter{Conclusions}
+After validating and verifying our design in the previous chapter, we now come to the conclusions with regards to the main research question.
 
-Yes/No, too slow?
+The main research question was: how feasible is it to run all Tribler functionality on mobile devices? % to defeat or mitigate large scale monitoring and censorship?
+
+The feasibility in terms of functionality, performance and scalability were measured.
+Several of these measurements give raise to some minor considerations.
+% Profiler
+The profiling revealed that crypto tasks are a significant part of processing messages.
+These tasks should be offloaded to a separate computational core to release the global interpreter lock.
+That would enable Python code to run in parallel, which in turn would improve performance and responsiveness.
+% cpu
+The CPU utilization measurement showed this approach is likely to succeed.
+% Multichain
+The Multichain measurement showed that database performance in that instance was stringent in the current implementation.
+It is also the most easy to resolve by keeping the hash of the last block for connected peers in memory .
+% Tests
+All existing tests can be run on Android just as well as on other platforms.
+This means, in combination with the modularity of the new design and re-use of the Tribler core, that maintainability and testability are very fit.
+% Startup
+In terms of user experience the measurement of startup time showed to be very consistent and reasonable.
+% Latency
+The latency of the API however seemingly showed a curious pattern that cannot be explained right away.
+It is only known to occur if hundreds of requests per minute are fired at the API, which is unexpected behavior from the user.
+
+Finally, to answer the secondary question: using the unique properties of mobile devices, what features can be added or enhanced?
+% Bluetooth
+We added the capability to transfer the app to another device that doesn't have it yet via Bluetooth.
+% nfc
+If NFC is enabled on both devices the app can be transfered by just holding the devices next to each other.
+Also adding a channel to your favorites can be done this way.
+Using your real life social network you can build your on-line trusted network this way.
+% P2P Wifi
+And thanks to built-in hardware capability you can setup an ad hoc WiFi network to avoid any infrastructure completely.
+
