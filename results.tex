@@ -41,8 +41,8 @@ The following figure shows the latency for every request.
 The plot shows large spikes and seemingly a curious and unexpected pattern.
 Table \ref{table:api_benchmark} shows the large difference in statistics.
 \begin{table}[h]
-  \begin{tabular}{l | *{8}{r}}
-  	 & N & \overline{x} (ms) & Min. (ms) & Max. (ms) & σ (ms) & Throughput & KB/second & Avg. Bytes \\ \hline
+  \begin{tabular}{l | *{8}{r}} \hline
+  	 & N & Avg. (ms) & Min. (ms) & Max. (ms) & $\sigma$ (ms) & Throughput & KB/second & Avg. Bytes \\ \hline \hline
 	Nexus 6 & 1000 & 1803 & 1292 & 3292 & 301.25 & 33.3 req/minute & 347.44 & 641709.0 \\ \hline
 	PC         & 1000 & 5        & 3      & 107   & 4.42     & 140.8 req/second & 2548.00 & 18525.0 \\ \hline
   \end{tabular}
@@ -80,8 +80,8 @@ The same Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in both ru
 % Results
 The following table shows the results of both executions.
 \begin{table}[h]
-	\begin{tabular}{l | *{5}{r}}
-		Run & Tests & Errors & Failures & Skipped & Line-rate \\ \hline
+	\begin{tabular}{l | *{5}{r}} \hline
+		Run & Tests & Errors & Failures & Skipped & Line-rate \\ \hline \hline
 		1     & 711   & 14       & 13          & 30          & 0.7241 \\ \hline
 		2     & 749   & 12       & 15          & 3            & 0.7861 \\ \hline
 	\end{tabular}
@@ -115,13 +115,44 @@ The profiler was running for 10 minutes with Tribler during normal operation and
 %FIG profile_1468515157-2
 
 \begin{table}[h]
-	\begin{tabular}{*{3}{r} | l}
-		\hline
-		# Calls & Total time & Time per call & Function \\\hline\hline
-		\csvreader[separator=tab,late after line=\\\hline]
-		{Profiler/native_functions.csv}
-		{ncalls=\ncalls,tottime=\tottime,percall=\percall,function=\function}
-		{\ncalls & \tottime & \function}
+	\begin{tabular}{*{3}{r} | l} \hline
+		\# Calls & Total time & Time per call & Function \\ \hline \hline
+		15 & 0.4867 & 0.03245 & method 'commit' of 'sqlite3.Connection' objects \\ \hline
+		1 & 0.01692 & 0.01692 & method 'executescript' of 'sqlite3.Cursor' objects \\ \hline
+		3820 & 64.28 & 0.01683 & method 'poll' of 'select.epoll' objects \\ \hline
+		2 & 0.01048 & 0.005241 & \_\_m2crypto.ec\_key\_gen\_key \\ \hline
+		31075 & 162 & 0.005212 & \_\_m2crypto.ecdsa\_verify \\ \hline
+		1650 & 7.133 & 0.004323 & \_\_m2crypto.ecdsa\_sign \\ \hline
+		1 & 0.001708 & 0.001708 & \_socket.gethostbyaddr \\ \hline
+		1 & 0.001284 & 0.001284 & built-in method SSL\_library\_init \\ \hline
+		567 & 0.565 & 0.0009965 & method 'executemany' of 'sqlite3.Cursor' objects \\ \hline
+		8 & 0.005731 & 0.0009552 & \_\_import\_\_ \\ \hline
+		12 & 0.01083 & 0.0009029 & method 'connect\_ex' of '\_socket.socket' objects \\ \hline
+		1 & 0.00055 & 0.00055 & built-in method SSL\_load\_error\_strings \\ \hline
+		5 & 0.002515 & 0.000503 & method 'recv' of '\_socket.socket' objects \\ \hline
+		6989 & 3.436 & 0.0004917 & method 'executemany' of 'apsw.Cursor' objects \\ \hline
+		1 & 0.000485 & 0.000485 & dir \\ \hline
+		63677 & 20 & 0.000314 & method 'execute' of 'apsw.Cursor' objects \\ \hline
+		5546 & 1.38 & 0.0002488 & \_\_m2crypto.ec\_key\_read\_pubkey \\ \hline
+		15943 & 3.414 & 0.0002141 & method 'sendto' of '\_socket.socket' objects \\ \hline
+		44 & 0.009405 & 0.0002137 & open \\ \hline
+		1 & 0.000212 & 0.000212 & built-in method OpenSSL\_add\_all\_algorithms \\ \hline
+		2 & 0.000405 & 0.0002025 & \_\_m2crypto.ec\_key\_new\_by\_curve\_name \\ \hline
+		2 & 0.000394 & 0.000197 & netifaces.interfaces \\ \hline
+		296 & 0.05179 & 0.000175 & method 'sort' of 'list' objects \\ \hline
+		5 & 0.000826 & 0.0001652 & \_\_m2crypto.ec\_key\_read\_bio \\ \hline
+		1 & 0.000147 & 0.000147 & \_\_m2crypto.rand\_seed \\ \hline
+		4 & 0.00058 & 0.000145 & netifaces.ifaddresses \\ \hline
+		47 & 0.005664 & 0.0001205 & androidembed.log \\ \hline
+		12 & 0.001445 & 0.0001204 & thread.start\_new\_thread \\ \hline
+		8 & 0.000936 & 0.000117 & posix.mkdir \\ \hline
+		2240 & 0.2615 & 0.0001167 & posix.open \\ \hline
+		17 & 0.001964 & 0.0001155 & compile \\ \hline
+		3 & 0.00034 & 0.0001133 & \_\_m2crypto.ec\_key\_write\_bio\_no\_cipher \\ \hline
+		5553 & 0.6196 & 0.0001116 & \_\_m2crypto.ec\_key\_write\_pubkey \\ \hline
+		7 & 0.000777 & 0.000111 & method 'send' of '\_socket.socket' objects \\ \hline
+		140069 & 15.4 & 0.00011 & method 'execute' of 'sqlite3.Cursor' objects \\ \hline
+		16 & 0.001759 & 0.0001099 & method 'shutdown' of '\_socket.socket' objects \\ \hline
 	\end{tabular}
 	\caption[Profiling details]{Native function calls.}
 	\label{table:profiling_details}
@@ -134,7 +165,7 @@ This can be explained by the fact that torrents can be discovered outside of a c
 The significant chunk of time that the crypto takes is as expected.
 Since this task is actually delegated to the C library M2Crypto it should be possible to release the GIL of the Python interpreter so other Python code that does not depend on it can be executed.
 The main alternative provided in the standard library for CPU bound applications is the multiprocessing module, which works well for workloads that consist of relatively small numbers of long running computational tasks, but results in excessive message passing overhead if the duration of individual operations is short \cite{http://python-notes.curiousefficiency.org/en/latest/python3/multicore_python.html}.
-As seen from the time per call for __m2crypto.ecdsa_verify in table \ref{table:profiling_details} the multiprocessing module would likely cause too much overhead.
+As seen from the time per call for \_\_m2crypto.ecdsa\_verify in table \ref{table:profiling_details} the multiprocessing module would likely cause too much overhead.
 
 
 \section{CPU utilization}
@@ -182,9 +213,9 @@ To get a good idea of how the user experience may differ we measure the startup 
 %FIG startup_time
 Table \ref{table:startup_time} shows the statistics per device.
 \begin{table}[h]
-	\begin{tabular}{l | *{5}{r}}
-		Device & N & \overline{x} (s) & Min. (s) & Max. (s) & s (s) \\ \hline
-		Nexus 10        & 10 & \\ \hline
+	\begin{tabular}{l | *{5}{r}} \hline
+		Device & N & Avg. (s) & Min. (s) & Max. (s) & s (s) \\ \hline \hline
+		Nexus 10        & 10 &           &           &           &          \\ \hline
 		Nexus 6          & 10 & 4.319 & 4.124 & 4.670 & 0.179 \\ \hline
 		Nexus 5          & 10 & 3.353 & 3.273 & 3.459 & 0.081 \\ \hline
 		Galaxy Nexus & 10 & 7.086 & 6.161 & 7.772 & 0.454 \\ \hline
