@@ -26,7 +26,7 @@ By leaving out that element this metric is measuring the operation time via the 
 % Expected / desired results
 We want to see that the latency is bounded, consistent and generally low.
 Previous research has shown the following results on a computer:
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{api_laurens}
 	\caption{API latency with synchronous dispersy (left) and a-synchronous dispersy (right)}
@@ -42,15 +42,15 @@ We set this parameter to 300 requests per minute, equal to the other benchmark.
 % Results
 Our database to be queried is not equal to one used in figure \ref{fig:api_laurens}.
 The following figure shows the latency for every request.
-\begin{figure}[h]
+\begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{api_benchmark}
+	\includegraphics[width=0.5\textwidth]{api_benchmark}
 	\caption{API latency on Nexus 6 smart-phone}
 	\label{fig:api_benchmark}
 \end{figure}
 The plot shows large spikes and seemingly a curious and unexpected pattern.
 Table \ref{table:api_benchmark} shows the large difference in statistics.
-\begin{table}[h]
+\begin{table}
   \begin{tabular}{l | *{8}{r}} \hline
   	 & N & Avg. (ms) & Min. (ms) & Max. (ms) & $\sigma$ (ms) & Throughput & KB/second & Avg. Bytes \\ \hline \hline
 	Nexus 6 & 1000 & 1803 & 1292 & 3292 & 301.25 & 33.3 req/minute & 347.44 & 641709.0 \\ \hline
@@ -89,7 +89,7 @@ The nose module was used for running the tests together with the coverage module
 The same Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in both runs.
 % Results
 The following table shows the results of both executions.
-\begin{table}[h]
+\begin{table}
 	\begin{tabular}{l | *{5}{r}} \hline
 		Run & Tests & Errors & Failures & Skipped & Line-rate \\ \hline \hline
 		1     & 711   & 14       & 13          & 30          & 0.7241 \\ \hline
@@ -122,13 +122,13 @@ With the cProfile Python module and the visualisation tool SnakeViz we can see i
 A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used for profiling Tribler.
 The profiler was running for 10 minutes with Tribler during normal operation and without any user input.
 % Results
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{profile_1468515157-2}
-	\caption{Profiler results of 10 minutes Tribler run time}
+	\caption{Profiler results of 10 minutes Tribler run time (bright pink represents business logic upon receiving a torrent)}
 	\label{fig:profile}
 \end{figure}
-\begin{table}[h]
+\begin{table}
 	\begin{tabular}{*{3}{r} | l} \hline
 		\# Calls & Total time & Time per call & Function \\ \hline \hline
 		15 & 0.4867 & 0.03245 & method 'commit' of 'sqlite3.Connection' objects \\ \hline
@@ -202,14 +202,14 @@ If there is any performance to gain by releasing the GIL the CPU must be under-u
 % Setup
 The same Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used for this measurement.
 % Results
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{monitor}
+\begin{figure}
+	\centering % trim={<left> <lower> <right> <upper>}
+	\includegraphics[trim={0.9cm 1.4cm 1.6cm 3.2cm},clip,width=\textwidth]{monitor}
 	\caption{Memory, CPU and network usage on a Nexus 6 smart-phone}
 	\label{fig:monitor}
 \end{figure}
 The results show that indeed not al 4 cores of the CPU are utilized by a large margin.
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{cpu_usage_2}
 	\caption{CPU usage snapshot while running all tests and Multichain experiment}
@@ -233,10 +233,17 @@ This events is sent over the API event-stream and signifies that Tribler is full
 We expect consistent loading times because right after starting we shut Tribler down again.
 % Setup
 To get a good idea of how the user experience may differ we measure the startup time 10 times on 5 different devices.
+Figure \ref{fig:phones} shows the devices with about Android OS on screen.
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{phones}
+	\caption{Mobile devices used for measurements: Nexus 10 (top) Nexus 6, Nexus 5, Galaxy Nexus, S3 (left to right)}
+	\label{fig:phones}
+\end{figure}
 % Results
 %FIG startup_time
 Table \ref{table:startup_time} shows the statistics per device.
-\begin{table}[h]
+\begin{table}
 	\begin{tabular}{l | *{5}{r}} \hline
 		Device & N & Avg. (s) & Min. (s) & Max. (s) & s (s) \\ \hline \hline
 		Nexus 10        & 10 &           &           &           &          \\ \hline
@@ -274,28 +281,28 @@ The database containing these blocks will grow over time, but should not slow do
 Measurements were taken on six different devices on multiple moments during development.
 % Results
 The following figures show the performance graphs of every measurement.
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{multichain_scale_2175}
-	\caption{}
+	\caption{First execution of experiment with 10.000 blocks (source code of PR 2175)}
 	\label{fig:multichain_1}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{multichain_scale_2452}
-	\caption{}
+	\caption{Second execution of experiment with 10.000 blocks (source code of PR 2452)}
 	\label{fig:multichain_2}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{multichain_scale_2599}
-	\caption{}
+	\caption{Third execution of experiment with 10.000 blocks (source code of PR 2599)}
 	\label{fig:multichain_3}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{multichain_scale_2599_25k}
-	\caption{}
+	\caption{Last and longer execution of experiment with 25.000 blocks (source code of PR 2599)}
 	\label{fig:multichain_25}
 \end{figure}
 Each figure contains mutually comparable results.
