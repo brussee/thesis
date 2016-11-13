@@ -105,6 +105,14 @@ Because this project continued from previous work (legacy code) build on P4A.
 Even though the revamp version was build from scratch, it still is the best choice because it not only provides the Python interpreter, it also is a complete tool-chain to cross-compile native libraries with bindings and build a standalone Android app installation package (.apk).
 
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{build_tool_chain}
+	\caption{High level overview of the build tool-chain}
+	\label{fig:build_tool_chain}
+\end{figure}
+
+
 The Python-for-Android toolchain is used to cross compile the C/C++ libraries (and dependencies) with Python bindings for Android ARMv7.
 On top of that the entire core of Tribler can run, containing a REST HTTP API module also written in Python.
 The GUI is created by a native Android Java application, which talks to the REST API module.
@@ -127,6 +135,14 @@ software stats, delivered, reference github
 lang aan gewerkt
 
 code coverage in results chapter
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dependency_tree}
+	\caption{Tribler dependencies in terms of Python-for-Android recipes}
+	\label{fig:dependency_tree}
+\end{figure}
 
 
 The key performance indicators (KPI) will be \emph{scalability}, \emph{resource usage} of cpu, memory and power, and \emph{usability} in terms of latency.
