@@ -17,26 +17,33 @@ Mobile device in the sense that it is low-powered and portable including the net
 \section{Opportunities}
 
 What does mobile allow in addition to desktop?
-
+% Portable
 Mobile devices are inherently easy to move around and very portable.
+% Ad hoc WiFi
 In case of a breakdown in communication infrastructure the mobile devices with wireless radio transmitters can still connect ad hoc and moved within range if necessary.
-
+% WiFi
 Via WiFi a device can connect to the Tribler network via existing infrastructure or other peers via ad-hoc WiFi.
+% Bluetooth
 Using NFC Tribler can start a Bluetooth connection and transfer the installation package peer-to-peer.
+% nfc
 Also via NFC Tribler can exchange channel ID's to subscribe to another Tribler channel peer-to-peer.
-In the future the same method can be used to exchange bootstrap peers for the Tribler network.
-The peer-to-peer Bluetooth file transfer could be made much faster if the WiFi Direct would be used.
+The same method can be used to exchange bootstrap peers for the Tribler network.
+% WiFi transfer
+The peer-to-peer WiFi Direct file transfer would be much faster than Bluetooth.
 
 
 \section{Challenges}
 
 What does working on mobile phone mean?
-
-Mobile-devices are typically equipped with batteries to operate without a power cord.
+% Battery
+Mobile devices are typically equipped with batteries to operate without a power cord.
 Considering the size and weight the capacity is limited.
 Smart-phone batteries usually barely hold a charge that would sustain a day of heavy usage.
-Tribler could potentially drain the battery fast.
+Tribler could potentially drain the battery much faster than normal.
+% Crypto
 Heavy encrypted network traffic not only demand constant radio transmissions, but also CPU processing.
+In case of hidden seeding building circuits of 3 tunnels with layered encryption quadruples  the amount of crypto work.
+% disk IO
+Because Multichain punishes cheating like double spending by a permanent ban, it must never loose information and flush everything to permanent storage before continuing.
+Mobile devices typically have flash memory with limited write-cycles compared to classic hard drives that are commonly found in desktop computers.
 
-
-3 tunnels = 3x heavy
