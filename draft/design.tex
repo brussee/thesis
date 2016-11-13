@@ -10,10 +10,65 @@ First in terms of functionality and other requirements, second the overall syste
 
 % now we move Tribler to mobile, so... we need these:
 
-What is the gap?
-No connection between puzzle pieces, that actually works on mobile
+\section{Design principles}
+Previous attempts at designing a mobile version of Tribler failed to properly separate re-usable components.
+This resulted in unmaintainable code and increased difficulty in testing.
+We use a top down approach to come to a high level system architecture and in determining the reusable components or the current Tribler code.
+% What is the gap?
+Some functionality of Tribler has been shown to work on Android before.
+Our design will fill in the gap of connecting the pieces of the grand puzzle to make Tribler fully work on mobile.
 
-What are the existing modules we re-use?
+% Divide and conquer
+Recent refactoring of the Tribler code has divided functionality into core modules.
+% Increase cohesion where possible
+% Reduce coupling where possible
+The purpose of this was to increase cohesion inside modules and the core, and reduce coupling between modules where possible.
+This makes porting the core and individual modules easier.
+% Increase re-usability where possible
+Our design also attempts to maximize re-use-ability with separation of components and clearly defined interfaces.
+An API between front-end and back-end is the industry standard of choice here.
+% Reuse existing designs and code where possible
+% What are the existing modules we re-use?
+Having separated the GUI from the back-end, we can easily re-use the Tribler core and ditch the outdated wxPython GUI.
+The new GUI can concentrate on Android and smart-phone user interaction.
+% Keep the level of abstraction as high as possible
+Many established best practices, like Google's "material design", and support libraries that abstract from platform specifics can be re-used.
+% reuse of expertise
+% reuse of standard designs and algorithms
+% reuse of libraries of classes or procedures, of of powerful commands built into languages and operating systems
+% reuse of frameworks
+% reuse of complete applications
+Instead of re-implementing multi-media functionality and player interface, we should re-use an existing library or preferably an entire app.
+% Design for flexibility / adaptability
+The flexibility of the design benefits from cohesive components with a clearly defined role.
+For example: being able to swap out components like the GUI makes Tribler much more adaptable to various mobile devices that may or may not have a display.
+The configuration of Tribler core is stored separately from the data and can be altered externally by users since it is saved in a human readable form.
+% Anticipate obsolescence
+% niet echt iets mee gedaan
+
+% Design for portability
+All functionality of Tribler must be packaged in a single installable container.
+% Design for testability
+The GUI must be able to be tested separately from the back-end and vice-versa.
+Also the API must be able to be tested independently and be clearly documented for other developers.
+
+% Design defensively
+All Android intents should be explicit. \cite{paper Analysing inter-application communication in Android}
+Expose / Export only Android activities and services that should be public
+
+% Availability and resilience
+A distinction must be made between user input error and internal exceptions.
+The user must be given a chance to correct the input without starting over.
+If Tribler crashes it should resume normal operation by just restarting it and optionally ask the user to do so.
+% Internationalization
+The GUI should support other languages to be added without changing source code.
+% Resource usage
+The separation of front-end and back-end should not lead to resources being loaded into memory twice or anything of that matter.
+% Usability
+Make use of universally recognizable icons that are native to the platform UI.
+The responsiveness of the GUI must not be significantly impacted by the amount of data presented on screen.
+The responsiveness of the GUI must also not be significantly impacted by the amount of computational work, or otherwise, done in the background.
+
 
 \section{Functional requirements}
 % Functional level
