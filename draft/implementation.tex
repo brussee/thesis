@@ -3,6 +3,11 @@
 % geen documentatie manual, maar keuzes en uitdagingen
 
 
+%\section{Scope}
+% Why no iOS?
+% No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later.
+
+
 Traditionally applications with a user interface execute tasks in the background while showing the progress to the user.
 Due to the fact that Android targets mobile devices it is very optimized for low resource usage.
 Therefore memory is freed more aggressively and the application is often paused or stopped and restarted if the user switches to another app.
@@ -57,6 +62,14 @@ These Python bindings are the glue between pure Python and pure C code.
 SWIG can generate the boiler plate code for this.
 Libtorrent, one of Triblers' main components, uses Boost.Python to provide a standard C++ API on top of the Python/C API.
 Kivy uses Cython
+% Many parts are written in C using Cython. \cite{kivy.org}
+% The major alternative approach promoted by the community is best represented by Cython. Cython is a Python superset designed to be compiled down to CPython C extension modules. One of the features Cython offers (as is possible from any binary extension module) is the ability to explicitly release the GIL around a section of code. By releasing the GIL in this fashion, Cython code can fully exploit all cores on a machine for computationally intensive sections of the code, while retaining all the benefits of Python for other parts of the application. \cite{http://python-notes.curiousefficiency.org/en/latest/python3/multicore_python.html}
+
+
+Running two interpreters with Python Kivy front-end and Python Tribler back-end would be doubling memory usage for the interpreter itself and require an inter-process protocol as well.
+Native Java with XML front-end and Python Tribler back-end brings the user experience seamlessly in line with the native UI.
+
+
 
 The Python/C API is actually so powerful it even provides access to the internals of the interpreter to mess with the global interpreter lock (GIL) which could be released during native C calls to improve the multi-threading performance of Tribler crypto.
 
