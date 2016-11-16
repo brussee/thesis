@@ -1,0 +1,23 @@
+11-16 18:19:54.255 1574-1574/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-16_18_19_44.mp4 } Bundle[null]
+11-16 18:19:54.355 1574-1574/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-16 18:19:54.360 1574-1574/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-16_18_19_44.mp4
+11-16 18:19:54.455 1574-1574/org.tribler.android V/MyChannelFragment: onAttach
+11-16 18:19:54.455 1574-1574/org.tribler.android V/MyChannelFragment: onCreate
+11-16 18:19:55.220 1574-1574/org.tribler.android V/MyChannelFragment: onViewCreated
+11-16 18:19:55.240 1574-1574/org.tribler.android I/Choreographer: Skipped 46 frames!  The application may be doing too much work on its main thread.
+11-16 18:19:55.240 1574-1574/org.tribler.android V/MyChannelFragment: onCreateOptionsMenu
+11-16 18:19:55.625 1574-1574/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-16_18_19_44.mp4
+11-16 18:19:55.625 1574-1574/org.tribler.android V/showLoading: Creating torrent…
+11-16 18:19:55.630 1574-1574/org.tribler.android V/MyChannelFragment: invalidateOptionsMenu
+11-16 18:19:55.630 1574-1574/org.tribler.android V/MainActivity: invalidateOptionsMenu
+11-16 18:19:55.655 1574-1574/org.tribler.android V/MyChannelFragment: onCreateOptionsMenu
+11-16 18:19:56.125 1574-1621/org.tribler.android V/RenderScript: 0x57fb0058 Launching thread(s), CPUs 4
+11-16 18:19:56.365 1574-1574/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-16_18_19_44.mp4/VID_2016-11-16_18_19_44.mp4
+11-16 18:19:56.425 1574-1574/org.tribler.android V/showLoading: null
+11-16 18:19:56.425 1574-1574/org.tribler.android I/Choreographer: Skipped 42 frames!  The application may be doing too much work on its main thread.
+11-16 18:19:56.670 1574-1574/org.tribler.android V/createTorrent: Torrent is now created!
+11-16 18:19:56.675 1574-1574/org.tribler.android V/showLoading: Adding torrent…
+11-16 18:19:56.765 1574-1605/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-16_18_19_44.mp4", 1857177]], "name": "VID_2016-11-16_18_19_44.mp4", "trackers": [], "timestamp": 1479316796, "dispersy_cid": "c235de3ce848b60468f613a7b5f18ad8f318a828", "infohash": "da75ae0efa64827203faea871c2a13acc5198444"}}
+11-16 18:19:56.765 1574-1605/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 0
+11-16 18:19:56.770 1574-1574/org.tribler.android V/addTorrent: Torrent is now added!
+11-16 18:19:56.985 1574-1574/org.tribler.android V/showLoading: null
