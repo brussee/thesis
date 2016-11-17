@@ -2,14 +2,11 @@ clear;
 format longG;
 
 % Define t0
-startdate = '11-16';
-starttime = '18:19:56.770';
-
-t0 = posixtime(datetime(strcat(startdate, {' '}, starttime), 'InputFormat', 'MM-yy HH:mm:ss.SSS'));
+t0 = posixtime(datetime('11-17 17:21:31.724', 'InputFormat', 'MM-yy HH:mm:ss.SSS'));
 timestamps = [];
 
 % Loop all phones
-for i=1:3
+for i=1:12
     
     fileName = strcat('phone', string(i), '.dat');
     fileID = fopen(fileName);
