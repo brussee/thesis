@@ -1,3 +1,1 @@
-11-16 06:20:01.057 17984-18002/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-16_18_19_44.mp4", 1857177]], "name": "VID_2016-11-16_18_19_44.mp4", "trackers": [], "timestamp": 1479316796, "dispersy_cid": "c235de3ce848b60468f613a7b5f18ad8f318a828", "infohash": "da75ae0efa64827203faea871c2a13acc5198444"}}
-11-16 06:20:01.058 17984-18002/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
-11-16 06:20:01.058 17984-17984/org.tribler.android V/AddedToChannel: VID_2016-11-16_18_19_44.mp4 dispersy_cid: c235de3ce848b60468f613a7b5f18ad8f318a828 (da75ae0efa64827203faea871c2a13acc5198444)
+11-16 18:20:01.058 17984-17984/org.tribler.android V/AddedToChannel: VID_2016-11-16_18_19_44.mp4 dispersy_cid: c235de3ce848b60468f613a7b5f18ad8f318a828 (da75ae0efa64827203faea871c2a13acc5198444)
