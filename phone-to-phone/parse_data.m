@@ -11,7 +11,7 @@ timestamps = [];
 % Loop all phones
 for i=1:3
     
-    fileName = strcat('phone', string(i), '.txt');
+    fileName = strcat('phone', string(i), '.dat');
     fileID = fopen(fileName);
     
     %11-16 18:20:00.256 30270-30270/org.tribler.android V/AddedToChannel: VID_2016-11-16_18_19_44.mp4
