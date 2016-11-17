@@ -1,0 +1,169 @@
+
+11-17 18:32:40.085 6948-6948/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_18_32_26.mp4 flg=0x1 } Bundle[null]
+11-17 18:32:40.089 6948-6948/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 18:32:40.089 6948-6948/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_18_32_26.mp4
+11-17 18:32:40.089 6948-6948/org.tribler.android V/showLoading: Creating torrent…
+11-17 18:32:41.892 6948-6948/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_18_32_26.mp4/VID_2016-11-17_18_32_26.mp4
+11-17 18:32:42.528 6948-6948/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 18:32:42.532 6948-6948/org.tribler.android V/showLoading: Adding torrent…
+11-17 18:32:42.649 6948-6948/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 18:32:42.658 6948-6962/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-17_18_32_26.mp4", 25931067]], "name": "VID_2016-11-17_18_32_26.mp4", "trackers": [], "timestamp": 1479403962, "dispersy_cid": "ab6c688d72ea6b5d603021963a3395fb702bb408", "infohash": "7a369a541716894da72917163b9d2e6a56c73de3"}}
+11-17 18:32:42.659 6948-6962/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
+11-17 18:32:42.681 6948-6948/org.tribler.android V/showLoading: null
+
+11-17 18:39:43.531 6948-6948/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_18_39_25.mp4 flg=0x1 } Bundle[null]
+11-17 18:39:43.534 6948-6948/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 18:39:43.535 6948-6948/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_18_39_25.mp4
+11-17 18:39:43.535 6948-6948/org.tribler.android V/showLoading: Creating torrent…
+11-17 18:39:46.010 6948-6948/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_18_39_25.mp4/VID_2016-11-17_18_39_25.mp4
+11-17 18:39:46.414 6948-6948/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 18:39:46.422 6948-6948/org.tribler.android V/showLoading: Adding torrent…
+11-17 18:39:46.589 6948-6962/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-17_18_39_25.mp4", 34111536]], "name": "VID_2016-11-17_18_39_25.mp4", "trackers": [], "timestamp": 1479404386, "dispersy_cid": "ab6c688d72ea6b5d603021963a3395fb702bb408", "infohash": "6a4db9865f259c6b9158a2462243056addfe2cb4"}}
+11-17 18:39:46.591 6948-6962/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
+11-17 18:39:46.603 6948-6948/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 18:39:46.667 6948-6948/org.tribler.android V/showLoading: null
+
+11-17 18:41:25.104 6948-6948/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_18_41_13.mp4 flg=0x1 } Bundle[null]
+11-17 18:41:25.107 6948-6948/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 18:41:25.107 6948-6948/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_18_41_13.mp4
+11-17 18:41:25.108 6948-6948/org.tribler.android V/showLoading: Creating torrent…
+11-17 18:41:26.542 6948-6948/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_18_41_13.mp4/VID_2016-11-17_18_41_13.mp4
+11-17 18:41:26.727 6948-6948/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 18:41:26.730 6948-6948/org.tribler.android V/showLoading: Adding torrent…
+11-17 18:41:26.848 6948-6962/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-17_18_41_13.mp4", 19886271]], "name": "VID_2016-11-17_18_41_13.mp4", "trackers": [], "timestamp": 1479404486, "dispersy_cid": "ab6c688d72ea6b5d603021963a3395fb702bb408", "infohash": "31020d449eda52590874631463b85de45a58c71e"}}
+11-17 18:41:26.849 6948-6962/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
+11-17 18:41:26.862 6948-6948/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 18:41:26.880 6948-6948/org.tribler.android V/showLoading: null
+
+11-17 18:44:42.986 6948-6948/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_18_44_16.mp4 flg=0x1 } Bundle[null]
+11-17 18:44:42.990 6948-6948/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 18:44:42.990 6948-6948/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_18_44_16.mp4
+11-17 18:44:42.990 6948-6948/org.tribler.android V/showLoading: Creating torrent…
+11-17 18:44:45.115 6948-6948/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_18_44_16.mp4/VID_2016-11-17_18_44_16.mp4
+11-17 18:44:45.397 6948-6948/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 18:44:45.400 6948-6948/org.tribler.android V/showLoading: Adding torrent…
+11-17 18:44:45.556 6948-6962/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-17_18_44_16.mp4", 29609041]], "name": "VID_2016-11-17_18_44_16.mp4", "trackers": [], "timestamp": 1479404685, "dispersy_cid": "ab6c688d72ea6b5d603021963a3395fb702bb408", "infohash": "35fe389f5d918c468fe66c8edbfc0dc5ea7e492b"}}
+11-17 18:44:45.557 6948-6962/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
+11-17 18:44:45.569 6948-6948/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 18:44:45.616 6948-6948/org.tribler.android V/showLoading: null
+
+11-17 18:46:05.522 6948-6948/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_18_45_52.mp4 flg=0x1 } Bundle[null]
+11-17 18:46:05.528 6948-6948/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 18:46:05.529 6948-6948/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_18_45_52.mp4
+11-17 18:46:05.529 6948-6948/org.tribler.android V/showLoading: Creating torrent…
+11-17 18:46:07.277 6948-6948/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_18_45_52.mp4/VID_2016-11-17_18_45_52.mp4
+11-17 18:46:07.527 6948-6948/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 18:46:07.530 6948-6948/org.tribler.android V/showLoading: Adding torrent…
+11-17 18:46:07.725 6948-6962/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-17_18_45_52.mp4", 21775350]], "name": "VID_2016-11-17_18_45_52.mp4", "trackers": [], "timestamp": 1479404767, "dispersy_cid": "ab6c688d72ea6b5d603021963a3395fb702bb408", "infohash": "1f5e58993e8ea6857069797215c32ab3592af22d"}}
+11-17 18:46:07.726 6948-6962/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
+11-17 18:46:07.729 6948-6948/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 18:46:07.747 6948-6948/org.tribler.android V/showLoading: null
+
+11-17 18:47:28.754 6948-6948/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_18_47_18.mp4 flg=0x1 } Bundle[null]
+11-17 18:47:28.757 6948-6948/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 18:47:28.757 6948-6948/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_18_47_18.mp4
+11-17 18:47:28.758 6948-6948/org.tribler.android V/showLoading: Creating torrent…
+11-17 18:47:29.874 6948-6948/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_18_47_18.mp4/VID_2016-11-17_18_47_18.mp4
+11-17 18:47:30.042 6948-6948/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 18:47:30.045 6948-6948/org.tribler.android V/showLoading: Adding torrent…
+11-17 18:47:30.162 6948-6962/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-17_18_47_18.mp4", 15859836]], "name": "VID_2016-11-17_18_47_18.mp4", "trackers": [], "timestamp": 1479404850, "dispersy_cid": "ab6c688d72ea6b5d603021963a3395fb702bb408", "infohash": "199e774f6e8e5de2dc32da61037199985da771e3"}}
+11-17 18:47:30.162 6948-6962/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
+11-17 18:47:30.176 6948-6948/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 18:47:30.210 6948-6948/org.tribler.android V/showLoading: null
+
+11-17 19:05:38.032 6948-6948/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_19_05_26.mp4 flg=0x1 } Bundle[null]
+11-17 19:05:38.035 6948-6948/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 19:05:38.035 6948-6948/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_19_05_26.mp4
+11-17 19:05:38.035 6948-6948/org.tribler.android V/showLoading: Creating torrent…
+11-17 19:05:39.255 6948-6948/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_19_05_26.mp4/VID_2016-11-17_19_05_26.mp4
+11-17 19:05:39.439 6948-6948/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 19:05:39.443 6948-6948/org.tribler.android V/showLoading: Adding torrent…
+11-17 19:05:39.596 6948-6962/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-17_19_05_26.mp4", 16813734]], "name": "VID_2016-11-17_19_05_26.mp4", "trackers": [], "timestamp": 1479405939, "dispersy_cid": "ab6c688d72ea6b5d603021963a3395fb702bb408", "infohash": "b675b98bad8fd82a715b54960d3a085b690efb6b"}}
+11-17 19:05:39.597 6948-6962/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
+11-17 19:05:39.607 6948-6948/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 19:05:39.626 6948-6948/org.tribler.android V/showLoading: null
+
+11-17 19:07:37.909 6948-6948/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_19_07_23.mp4 flg=0x1 } Bundle[null]
+11-17 19:07:37.913 6948-6948/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 19:07:37.913 6948-6948/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_19_07_23.mp4
+11-17 19:07:37.913 6948-6948/org.tribler.android V/showLoading: Creating torrent…
+11-17 19:07:40.321 6948-6948/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_19_07_23.mp4/VID_2016-11-17_19_07_23.mp4
+11-17 19:07:40.792 6948-6948/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 19:07:40.796 6948-6948/org.tribler.android V/showLoading: Adding torrent…
+11-17 19:07:40.941 6948-6962/org.tribler.android V/readLine: {"type": "torrent_discovered", "event": {"files": [["VID_2016-11-17_19_07_23.mp4", 34505842]], "name": "VID_2016-11-17_19_07_23.mp4", "trackers": [], "timestamp": 1479406060, "dispersy_cid": "ab6c688d72ea6b5d603021963a3395fb702bb408", "infohash": "954ec598fe546ae7fc33443d69e60cc0631e51ea"}}
+11-17 19:07:40.942 6948-6962/org.tribler.android V/onEvent: TorrentDiscoveredEvent; handlers: 1
+11-17 19:07:40.962 6948-6948/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 19:07:41.008 6948-6948/org.tribler.android V/showLoading: null
+
+11-17 19:46:01.983 1518-1518/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_19_45_43.mp4 flg=0x1 } Bundle[null]
+11-17 19:46:01.987 1518-1518/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 19:46:01.987 1518-1518/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_19_45_43.mp4
+11-17 19:46:01.987 1518-1518/org.tribler.android V/showLoading: Creating torrent…
+11-17 19:46:02.075 1518-1518/org.tribler.android V/MyChannelFragment: onCreateOptionsMenu
+11-17 19:46:04.214 1518-1518/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_19_45_43.mp4/VID_2016-11-17_19_45_43.mp4
+11-17 19:46:04.565 1518-1518/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 19:46:04.569 1518-1518/org.tribler.android V/showLoading: Adding torrent…
+11-17 19:46:04.699 1518-1518/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 19:46:04.733 1518-1518/org.tribler.android V/showLoading: null
+
+11-17 19:59:18.845 1518-1518/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_19_59_02.mp4 flg=0x1 } Bundle[null]
+11-17 19:59:18.849 1518-1518/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 19:59:18.850 1518-1518/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_19_59_02.mp4
+11-17 19:59:18.850 1518-1518/org.tribler.android V/showLoading: Creating torrent…
+11-17 19:59:21.480 1518-1518/org.tribler.android V/MyChannelFragment: onCreateOptionsMenu
+11-17 19:59:21.959 1518-1518/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_19_59_02.mp4/VID_2016-11-17_19_59_02.mp4
+11-17 19:59:22.294 1518-1518/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 19:59:22.298 1518-1518/org.tribler.android V/showLoading: Adding torrent…
+11-17 19:59:22.445 1518-1518/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 19:59:22.484 1518-1518/org.tribler.android V/showLoading: null
+
+11-17 20:02:49.565 1518-1518/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_20_02_33.mp4 flg=0x1 } Bundle[null]
+11-17 20:02:49.569 1518-1518/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 20:02:49.569 1518-1518/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_20_02_33.mp4
+11-17 20:02:49.570 1518-1518/org.tribler.android V/showLoading: Creating torrent…
+11-17 20:02:52.381 1518-1518/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_20_02_33.mp4/VID_2016-11-17_20_02_33.mp4
+11-17 20:02:52.781 1518-1518/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 20:02:52.789 1518-1518/org.tribler.android V/showLoading: Adding torrent…
+11-17 20:02:52.957 1518-1518/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 20:02:52.998 1518-1518/org.tribler.android V/showLoading: null
+
+11-17 20:07:32.620 1518-1518/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_20_07_19.mp4 flg=0x1 } Bundle[null]
+11-17 20:07:32.626 1518-1518/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 20:07:32.626 1518-1518/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_20_07_19.mp4
+11-17 20:07:32.626 1518-1518/org.tribler.android V/showLoading: Creating torrent…
+11-17 20:07:34.528 1518-1518/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_20_07_19.mp4/VID_2016-11-17_20_07_19.mp4
+11-17 20:07:34.815 1518-1518/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 20:07:34.819 1518-1518/org.tribler.android V/showLoading: Adding torrent…
+11-17 20:07:34.947 1518-1518/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 20:07:34.968 1518-1518/org.tribler.android V/showLoading: null
+
+11-17 20:08:53.810 1518-1518/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_20_08_34.mp4 flg=0x1 } Bundle[null]
+11-17 20:08:53.813 1518-1518/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 20:08:53.813 1518-1518/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_20_08_34.mp4
+11-17 20:08:53.813 1518-1518/org.tribler.android V/showLoading: Creating torrent…
+11-17 20:08:58.114 1518-1518/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_20_08_34.mp4/VID_2016-11-17_20_08_34.mp4
+11-17 20:08:58.616 1518-1518/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 20:08:58.619 1518-1518/org.tribler.android V/showLoading: Adding torrent…
+11-17 20:08:58.750 1518-1518/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 20:08:58.768 1518-1518/org.tribler.android V/showLoading: null
+
+11-17 20:09:45.664 1518-1518/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_20_09_30.mp4 flg=0x1 } Bundle[null]
+11-17 20:09:45.667 1518-1518/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 20:09:45.667 1518-1518/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_20_09_30.mp4
+11-17 20:09:45.668 1518-1518/org.tribler.android V/showLoading: Creating torrent…
+11-17 20:09:47.741 1518-1518/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_20_09_30.mp4/VID_2016-11-17_20_09_30.mp4
+11-17 20:09:48.043 1518-1518/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 20:09:48.045 1518-1518/org.tribler.android V/showLoading: Adding torrent…
+11-17 20:09:48.265 1518-1518/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 20:09:48.311 1518-1518/org.tribler.android V/showLoading: null
+
+11-17 20:10:42.349 1518-1518/org.tribler.android V/videoResult: Intent { dat=file:///storage/emulated/0/Movies/VID_2016-11-17_20_10_30.mp4 flg=0x1 } Bundle[null]
+11-17 20:10:42.352 1518-1518/org.tribler.android V/MainActivity: onNewIntent: org.tribler.android.PUBLISH
+11-17 20:10:42.352 1518-1518/org.tribler.android V/ACTION_PUBLISH: file:///storage/emulated/0/Movies/VID_2016-11-17_20_10_30.mp4
+11-17 20:10:42.353 1518-1518/org.tribler.android V/showLoading: Creating torrent…
+11-17 20:10:43.790 1518-1518/org.tribler.android V/createTorrent: /data/user/0/org.tribler.android/cache/VID_2016-11-17_20_10_30.mp4/VID_2016-11-17_20_10_30.mp4
+11-17 20:10:44.025 1518-1518/org.tribler.android V/createTorrent: Torrent is now created!
+11-17 20:10:44.029 1518-1518/org.tribler.android V/showLoading: Adding torrent…
+11-17 20:10:44.126 1518-1518/org.tribler.android V/addTorrent: Torrent is now added!
+11-17 20:10:44.161 1518-1518/org.tribler.android V/showLoading: null
+
