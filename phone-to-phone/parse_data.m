@@ -2,16 +2,15 @@ clear;
 format longG;
 
 % Define t0
-t0 = posixtime(datetime('11-17 18:32:42.649', 'InputFormat', 'MM-yy HH:mm:ss.SSS'));
+t0 = posixtime(datetime('11-16 18:19:56.770', 'InputFormat', 'MM-yy HH:mm:ss.SSS'));
 timestamps = [];
 
 % Loop all phones
-for i=1:13
+for i=1:3
     
     fileName = strcat('phone', string(i), '.dat');
     fileID = fopen(fileName);
     
-    %11-16 18:20:00.256 30270-30270/org.tribler.android V/AddedToChannel: VID_2016-11-16_18_19_44.mp4
     log = textscan(fileID,'%s %s %s %s %s %*[^\n]');
     fclose(fileID);
     
