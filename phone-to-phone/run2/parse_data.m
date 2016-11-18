@@ -2,8 +2,8 @@ clear;
 format longG;
 
 % Define t0
-t0 = posixtime(datetime('11-17 17:21:31.724', 'InputFormat', 'MM-yy HH:mm:ss.SSS'));
-timestamps = [];
+t0 = toTimestamp('11-17 17:21:31.724');
+timestamps = zeros(1, 12);
 
 % Loop all phones
 for i=1:12
@@ -20,11 +20,16 @@ for i=1:12
     tag   = log{4};
     video = log{5};
     
-    timestamps{i} = posixtime(datetime(strcat(dates, {' '}, times), 'InputFormat', 'MM-yy HH:mm:ss.SSS')) - t0;
+    t = toTimestamp(strcat(dates, {' '}, times));
+    timestamps(i) = t - t0;
     
 end
 
-timestamps = cell2mat(timestamps);
+[h,stats] = cdfplot(timestamps);
 
-cdfplot(timestamps)
+stats
 
+
+function t = toTimestamp(input_string)
+    t = posixtime(datetime(input_string, 'InputFormat', 'MM-yy HH:mm:ss.SSS'));
+end
