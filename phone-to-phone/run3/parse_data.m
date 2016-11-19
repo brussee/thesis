@@ -41,16 +41,16 @@ for i=1:13
     
 end
 
-
+% Loop all runs
 for j=1:15
     
-    [h,stats] = cdfplot(timestamps(j,:));
-    hold on
-    
-    stats;
+    % Sort per run
+    timestamps(j, :) = sort(timestamps(j, :));
     
 end
-    
+
+boxplot(timestamps);
+
 
 function t = toTimestamp(input_string)
     t = posixtime(datetime(input_string, 'InputFormat', 'MM-yy HH:mm:ss.SSS'));
