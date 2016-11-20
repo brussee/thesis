@@ -13,7 +13,7 @@ sizes = [
     34505842
 ] / 1024 / 1024;
 
-fileName = strcat('torrent_creation.dat');
+fileName = strcat('create_add.dat');
 fileID = fopen(fileName);
 
 log = textscan(fileID,'%s %s %*[^\n]');
