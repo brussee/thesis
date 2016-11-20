@@ -12,6 +12,45 @@ We focus on the design aspects and evaluate per feature / key performance indica
 % Results
 % Conclusions
 
+\section{Content discovery}
+% Rationale
+New content is generated on the device, like for example a video that has been recorded.
+Before anyone can view that content it has to be added to a channel and discovered by other devices.
+% Metrics
+We measure the amount of time it takes for other devices, which are subscribed to the channel, to discover new content.
+We also measure the amount of time it takes for content to be added to a channel in the form of a torrent.
+The amount of time it takes for a torrent to be created is relative to the size of the content.
+Therefore these measurements are normalized to a file of 1 MB.
+% Expected / desired results
+Depending on the random walk in the channel's community content can be discovered either very quickly or after a while due to property of eventual consistency.
+% Setup
+On one Nexus 6 device a channel is created to which 13 other devices subscribe via NFC.
+Then repeatedly a new video is recorded and added to that channel.
+A content discovered event is registered on each device individually and all devices are synced with NTP.
+Each device is connected to the same WLAN and within 1 to 2 meters distance from the access point.
+% Results
+Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a number of devices to discover new content on a subscribed channel.
+\begin{figure}
+	\centering % trim={<left> <lower> <right> <upper>}
+	\includegraphics[trim={0.9cm 0 0 0},clip,width=\textwidth]{boxplot-nrofdevices-130}
+	\caption{Elapsed time from adding new content to a channel and it being discovered by subscribed peers.}
+	\label{fig:boxplot-nr.of.devices-130}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{boxplot-per-mb-torrent-create-add}
+	\caption{Time required to create a torrent and add it to a channel, normalized for 1 MB of content.}
+	\label{fig:boxplot-per-mb-torrent-create-add}
+\end{figure}
+The results show that within 4 seconds 9 devices have discovered the new content.
+From the 10th device and beyond an increase in discovery time is noticeable.
+% Conclusions
+This could be explained by the fact that only 10 peers are connected at the a time.
+Much more peers are needed to give an accurate representation in terms of scalability.
+What can be concluded from this experiment is that on the same local network the first device discovers the new content in less than 2 seconds.
+From the 10th device onwards the dissemination slows down.
+
+
 \section{API latency}
 % Rationale
 The user expects operations to take a consistent and reasonable amount of time.
@@ -227,8 +266,8 @@ If an user decides to use Tribler we want to put no obstacle in the way.
 Therefore the service starts up in the background, separately from the GUI.
 However before any task can be executed by the service it needs to be actually started.
 % Metrics
-To measure the time it takes Tribler to fully start we measure the time from starting the app up to the moment the Tribler-started-event is fired.
-This events is sent over the API event-stream and signifies that Tribler is fully started and ready to accept all incoming requests.
+To measure the startup time we register the time of launching the app and the moment the Tribler-started-event occurs.
+This event is sent over the API event-stream and signifies that Tribler is fully started and ready to accept all incoming requests.
 % Expected / desired results
 We expect consistent loading times because right after starting we shut Tribler down again.
 % Setup
@@ -240,6 +279,7 @@ Figure \ref{fig:phones} shows the devices with about Android OS on screen.
 	\caption{Mobile devices used for measurements: Nexus 10 (top) Nexus 6, Nexus 5, Galaxy Nexus, S3 (left to right)}
 	\label{fig:phones}
 \end{figure}
+The app is launched with Android Debug Bridge (adb) from a laptop and the Tribler-started-event is read from logcat over adb and timed on the same laptop so they use the same clock.
 % Results
 \begin{figure}
 	\centering % trim={<left> <lower> <right> <upper>}
