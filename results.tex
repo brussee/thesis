@@ -286,26 +286,29 @@ During normal operation equivalent to the profiler measurement, we take a snapsh
 % Expected / desired results
 If there is any performance to gain by releasing the GIL the CPU must be under-utilized right now.
 % Setup
-The same Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used for this measurement.
+A Galaxy S3 smart-phone with Android 6.0.1 Cyanogen mod was used for this measurement.
 % Results
 \begin{figure}[ht]
+\begin{minipage}{.4\textwidth}
 	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
 						CPU usage on a Galaxy S3 smart-phone, about 3 hours into normal operation
 			}\end{minipage}},rotate=90,center}
 		\includegraphics[scale=0.6]{monitor-cpu}
 	\end{adjustbox}
 	\label{fig:monitor-cpu}
+\end{minipage}
+~~~~~~~~~~~~~~~~~~~~
+\begin{minipage}{.4\textwidth}
+	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
+						CPU usage on a Galaxy S3 smart-phone, about 2 minutes into the Multichain performance measurement
+			}\end{minipage}},rotate=90,center}
+		\includegraphics[scale=0.6]{monitor-cpu-experiment}
+	\end{adjustbox}
+	\label{fig:monitor-cpu-experiment}
+\end{minipage}
 \end{figure}
 The results show that indeed not al 4 cores of the CPU are utilized by a large margin.
-\begin{figure}[ht]
-	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-						CPU usage snapshot while running all tests and Multichain experiment
-			}\end{minipage}},rotate=90,center}
-		\includegraphics[scale=0.4]{cpu_usage_2}
-	\end{adjustbox}
-	\label{fig:cpu_usage_2}
-\end{figure}
-Even when performing intensive crypto work of the Multichain experiment while running all tests the CPU 1 core is mostly idling.
+Even when performing the intensive crypto work of the Multichain experiment 2 CPU cores appear to be idling.
 % Conclusions
 This suggests that releasing the GIL during heavy crypto work could result in a significant performance gain.
 However our results are inconclusive and warrant further research.
