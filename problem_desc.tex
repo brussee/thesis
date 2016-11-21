@@ -5,7 +5,8 @@ The goal of Tribler is to become an information sharing platform / video-on-dema
 The goal of this thesis project is to enable all Tribler functionality on mobile Android devices.
 
 
-\section{Shift to social media}
+\section{Media during crisis}
+%% Shift to social media
 % Production
 Sharing opinion and discussion is enabled on social media.
 A global dialog is possible through social media like Twitter, Instagram and Facebook.
@@ -23,12 +24,18 @@ As shown in this age distribution graph, figure \ref{fig:reuters-news-sources-ag
 Not only is social media more and more becoming a major distribution channel for news, it also starts delivering input for news and story creation.
 This way social media has become both the source and outlet for investigative journalism.
 
-
-\section{Rise of the smart-phone}
+%% Rise of the smart-phone
 % Ubiquity
 A smart-phone has the unique property of being a ubiquitous device that is highly mobile and extremely connectible.
-The entire world has a smart-phone.
+Figure \ref{fig:smartphone-sales} shows that world-wide 1,4 billion smart-phones were sold to end-users last year.
+And this number keeps rising.
 Even or especially areas without traditional infrastructure they are ubiquitous.
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{smartphone-sales}
+	\caption{Number of smartphones sold to end users worldwide from 2007 to 2015 (in million units) \cite{https://www.statista.com/statistics/263437/global-smartphone-sales-to-end-users-since-2007/}}
+	\label{fig:smartphone-sales}
+\end{figure}
 
 The capabilities and versatility of smart-phones enable it to be used for production and consumption of news and social media.
 The users themselves are turning from con-sumers into pro-sumers.
@@ -45,8 +52,7 @@ The ease of reaching a global audience by an individual with a smart-phone dimin
 % Consumption
 Also with regard to the consumption medium mobile devices increasingly replace the role of traditional outlets like TV, newspapers and other physical media.
 
-
-\section{Communication during crisis}
+%% Communication during crisis
 In crisis situations, like natural disaster or unrest, people need to communicate and coordinate their efforts to restore safety.
 In this context the smart-phone becomes particularly important because it is often carried on person and provides connectibility.
 
@@ -57,23 +63,22 @@ However, several natural disasters have taken out the necessary infrastructure o
 Therefore we require a solution to enable social media on smart-phones that does not require infrastructure. % persistent, established ??
 
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\textwidth]{viral_spreading}
-	\caption{Anonymity via proxies}
-	\label{fig:viral_spreading}
-\end{figure}
-
-
-\section{Invasion of privacy}
+\section{Privacy and censorship}
+%% Invasion of privacy
 Social media companies use targeted advertisement as part of their business model.
 Information considered private by users of social media is actually used to broker targeted advertisements.
 Subsequently users can be confronted with their information being misused in various ways beyond their control.
 This lack of control over your own privacy can lead to arbitrary interference as defined in UDHR article 12. %ref, example, human rights watch, nelie kroes, etc.
 Integration of social media on regular websites makes every page-view and click on these websites traceable to an individual, directly benefiting the business model of targeted advertisements
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{viral_spreading}
+	\caption{Viral spreading from one device to another within an off-line region}
+	\label{fig:viral_spreading}
+\end{figure}
 
-\section{Censorship}
+%% Censorship
 Pervasive monitoring of digital citizens by Internet providers on behalf of governments to enforce censorship laws raises severe privacy concerns.
 % Large scale monitoring
 The lack of anonymity becomes a problem when the users privacy is being invaded.
@@ -129,6 +134,13 @@ Networks that are not fully decentralized can be disrupted by taking down a limi
 Thanks to a server-less design we can say:
 The only way to take Tribler down is to take the entire Internet down.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{youbroketheinternet}
+	\caption{Source: www.youbroketheinternet.org}
+	\label{fig:youbroketheinternet}
+\end{figure}
+
 Mobile devices are essential to take the next step in the face of censorship.
 If we can use smart-phones to create a fully decentralized social network we can say:
 The only way to take Tribler down is to take everybody's smart-phones away.
@@ -146,13 +158,6 @@ Example: Arab spring \cite{Johan_2001}
 % Fragmented
 Various initiatives have been started to deal with one or both of these problems. \cite{re_decentralize}
 %FIG? From re-decentralized: top projects that match/compare.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{youbroketheinternet}
-	\caption{Source: www.youbroketheinternet.org}
-	\label{fig:youbroketheinternet}
-\end{figure}
 
 Figure \ref{fig:youbroketheinternet} shows a mapping of projects that are or have been working on that.
 The fragmentation is clear from the figure.
@@ -197,8 +202,15 @@ Previous attempts failed to deliver all functionality. \cite{bsc_1,2,3}
 Maintainability issues with earlier designs were a large part of the reasons why.
 We changed the architecture of Tribler for our approach.
 
-\section{Contributions}
-The main contributions of this thesis are making Tribler available on mobile devices.
+%% Contributions
+\emph{
+The main contribution of this work is the application of privacy-enhancing and attack-resilient technology to mobile devices and utilization of their unique properties in the context of censorship and communication during crises.
+The scientific contributions of this work are the experiments to verify the feasibility of Tribler on mobile devices and the ability to perform research with Tribler fully geared towards mobile devices in the future.
+}
+
+\emph{
+The main contribution of this thesis is making Tribler available on mobile devices.
 By doing that all research with regard to the problems that Tribler tries to solve becomes possible on the mobile platform.
 And the resilience of Tribler against attacks on the Internet is greatly increased.
+}
 
