@@ -1,69 +1,14 @@
 \chapter{Problem description}
+\label{ch:problem_desc}
 % News & generic usage
 
-The goal of Tribler is to become an information sharing platform / video-on-demand platform that protects the privacy of its users and is resilient to attacks while not relying on existing infrastructure.
-The goal of this thesis project is to enable all Tribler functionality on mobile Android devices.
-
-
-\section{Media during crisis}
-%% Shift to social media
-% Production
-Sharing opinion and discussion is enabled on social media.
-A global dialog is possible through social media like Twitter, Instagram and Facebook.
-% Consumption
-People receive local and global news perceived relevant to their group on their social media feed.
-Young people in particular are shifting to social media as their number one source. \cite{reuters_social_media}
-As shown in this age distribution graph, figure \ref{fig:reuters-news-sources-ages}.
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{reuters-news-sources-ages}
-	\caption{Main news sources split by age \cite{reuters_social_media}}
-	\label{fig:reuters-news-sources-ages}
-\end{figure}
-% Distribution
-Not only is social media more and more becoming a major distribution channel for news, it also starts delivering input for news and story creation.
-This way social media has become both the source and outlet for investigative journalism.
-
-%% Rise of the smart-phone
-% Ubiquity
-A smart-phone has the unique property of being a ubiquitous device that is highly mobile and extremely connectible.
-Figure \ref{fig:smartphone-sales} shows that world-wide 1,4 billion smart-phones were sold to end-users last year.
-And this number keeps rising.
-Even or especially areas without traditional infrastructure they are ubiquitous.
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{smartphone-sales}
-	\caption{Number of smartphones sold to end users worldwide from 2007 to 2015 (in million units) \cite{https://www.statista.com/statistics/263437/global-smartphone-sales-to-end-users-since-2007/}}
-	\label{fig:smartphone-sales}
-\end{figure}
-
-The capabilities and versatility of smart-phones enable it to be used for production and consumption of news and social media.
-The users themselves are turning from con-sumers into pro-sumers.
-% Production
-% Distribution
-With regards to production most smart-phones have one or more cameras to record multi-media content that can be shared immediately from the device.
-Eye-witnesses often have smart-phones at hand to immediately record an event with and post it on social media.
-No news desk or professional equipment is necessary to relay news directly from eye-witnesses to the masses anymore.
-% Social journalism
-People with camera phones can reach millions of people with multi-media in a very short timespan, becoming social journalists.
-% Editorial / Journalism / Processing
-The ease of reaching a global audience by an individual with a smart-phone diminishes the role of an expert curator handling incoming information.
-
-% Consumption
-Also with regard to the consumption medium mobile devices increasingly replace the role of traditional outlets like TV, newspapers and other physical media.
-
-%% Communication during crisis
-In crisis situations, like natural disaster or unrest, people need to communicate and coordinate their efforts to restore safety.
-In this context the smart-phone becomes particularly important because it is often carried on person and provides connectibility.
-
-In recent calamities people could mark themselves as safe on social media, effectively broadcasting that information to all their family and friends on social media instead of contacting them one by one or not at all due to congestion in the communication channels.
-
-However, several natural disasters have taken out the necessary infrastructure on numerous occasions for a prolonged period of time. %katrina
-
-Therefore we require a solution to enable social media on smart-phones that does not require infrastructure. % persistent, established ??
-
-
 \section{Privacy and censorship}
+%% Censorship
+Pervasive monitoring of digital citizens by Internet providers on behalf of governments to enforce censorship laws raises severe privacy concerns.
+% Large scale monitoring
+The lack of anonymity becomes a problem when the users privacy is being invaded.
+Revealing personal information can be deduced from search queries for example, or associations on social platforms.
+When this information can be used for targeted advertising it becomes very valuable, and creates an incentive for the parties that have access to this information to sell it to third parties.
 %% Invasion of privacy
 Social media companies use targeted advertisement as part of their business model.
 Information considered private by users of social media is actually used to broker targeted advertisements.
@@ -71,23 +16,16 @@ Subsequently users can be confronted with their information being misused in var
 This lack of control over your own privacy can lead to arbitrary interference as defined in UDHR article 12. %ref, example, human rights watch, nelie kroes, etc.
 Integration of social media on regular websites makes every page-view and click on these websites traceable to an individual, directly benefiting the business model of targeted advertisements
 
+In fact the business model of social media appears to be serving targeted advertisements to its users on behalf of third parties.
+What's even worse is social media integrated into regular websites to de-anonymize and track the whereabouts of users even outside of the social media realm.
+Whenever users lose control over their privacy it becomes a serious problem.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{viral_spreading}
 	\caption{Viral spreading from one device to another within an off-line region}
 	\label{fig:viral_spreading}
 \end{figure}
-
-%% Censorship
-Pervasive monitoring of digital citizens by Internet providers on behalf of governments to enforce censorship laws raises severe privacy concerns.
-% Large scale monitoring
-The lack of anonymity becomes a problem when the users privacy is being invaded.
-Revealing personal information can be deduced from search queries for example, or associations on social platforms.
-When this information can be used for targeted advertising it becomes very valuable, and creates an incentive for the parties that have access to this information to sell it to third parties.
-In fact the business model of social media appears to be serving targeted advertisements to its users on behalf of third parties.
-What's even worse is social media integrated into regular websites to de-anonymize and track the whereabouts of users even outside of the social media realm.
-Whenever users lose control over their privacy it becomes a serious problem.
-
 
 % Dissent
 The incentive to de-anonymize the user, not only causes a lack of privacy, but also a potential lack of freedom of expression, as it hands key information to a censor: who is expressing dissent and who is associated with this person on-line.
@@ -197,10 +135,16 @@ Previous research has shown that there is no solution that solves the problem en
 Tribler is our attempt to solve this problem entirely in a sustainable way.
 To see if it is feasible to apply it in a mobile context as described above, we need to port it.
 
+
+The goal of Tribler is to become an information sharing platform / video-on-demand platform that protects the privacy of its users and is resilient to attacks while not relying on existing infrastructure.
+The goal of this thesis project is to enable all Tribler functionality on mobile Android devices.
+
+
 % Previous Tribler-mobile app's
 Previous attempts failed to deliver all functionality. \cite{bsc_1,2,3}
 Maintainability issues with earlier designs were a large part of the reasons why.
 We changed the architecture of Tribler for our approach.
+
 
 %% Contributions
 \emph{

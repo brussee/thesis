@@ -1,17 +1,20 @@
 \chapter{Implementation}
+\label{ch:implementation}
 % Prototype level
 % geen documentatie manual, maar keuzes en uitdagingen
 
 
 %\section{Scope}
 % Why no iOS?
+Due to time constraints we need to focus our implementation effort on a single platform.
+Of all mobile devices smart-phones fit our design requirements best.
+On smart-phones Android has the largest market share \cite{https://www.statista.com/statistics/266136/global-market-share-held-by-smartphone-operating-systems/}.
+We therefore aim our implementation at the largest group of users.
+
 % No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later.
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{smartphone-os}
-	\caption{Global mobile OS market share in sales to end users from 1st quarter 2009 to 1st quarter 2016 \cite{https://www.statista.com/statistics/266136/global-market-share-held-by-smartphone-operating-systems/}}
-	\label{fig:smartphone-os}
-\end{figure}
+We focus on implementing all the features of Tribler as described chapter \ref{ch:tribler} first.
+We won't modify the networking capabilities based on the opportunities because that would warrant a dedicated study.
+
 
 Traditionally applications with a user interface execute tasks in the background while showing the progress to the user.
 Due to the fact that Android targets mobile devices it is very optimized for low resource usage.
@@ -139,7 +142,50 @@ Thanks to the design choice of separating the GUI from the back-end this does no
 software stats, delivered, reference github
 lang aan gewerkt
 
-code coverage in results chapter
+
+The implementation consists of:
+12.806 + X lines of code in the Tribler repository in 35 pull requests and
+Y lines of code in the Python-for-Android (P4A) repository in 46 pull requests and
+2 lines of code in the M2Crypto repository in 1 pull request.
+This excludes the work of reviving the old P4A toolchain.
+
+Of the X lines (x \%) consists of unit testing code.
+Y lines (y \%) is made up of Android specific libraries, and the remainder is..
+Table \ref{table:loc}X shows the 25 largest source file contributions for this thesis work. 
+
+\begin{table}
+	\begin{tabular}{l | l | l} \hline
+		LOC & File & Path \\ \hline \hline
+		718 &		MainActivity.java &		.../org/tribler/android/MainActivity.java \\ \hline
+		666 &		MyChannelFragment.java &		.../org/tribler/android/MyChannelFragment.java \\ \hline
+		482 &		MyUtils.java &		.../org/tribler/android/MyUtils.java \\ \hline
+		403 &		DefaultInteractionListFragment.java &		.../org/tribler/android/DefaultInteractionListFragment.java \\ \hline
+		318 &		start.c &		android/TriblerApp/app/src/main/jni/src/start.c \\ \hline
+		314 &		TriblerViewAdapter.java &		.../org/tribler/android/TriblerViewAdapter.java \\ \hline
+		281 &		build.gradle &		android/TriblerApp/app/build.gradle \\ \hline
+		256 &		IRestApi.java &		.../org/tribler/android/restapi/IRestApi.java \\ \hline
+		234 &		ChannelFragment.java &		.../org/tribler/android/ChannelFragment.java \\ \hline
+		186 &		AssetExtract.java &		.../org/kivy/android/AssetExtract.java \\ \hline
+		182 & 		BeamActivity.java &		.../org/tribler/android/BeamActivity.java \\ \hline
+		175 &		ListFragment.java &		.../org/tribler/android/ListFragment.java \\ \hline
+		172 &		CopyFilesActivity.java &		.../org/tribler/android/CopyFilesActivity.java \\ \hline
+		166 &		AndroidManifest.xml &		android/TriblerApp/app/src/main/AndroidManifest.xml \\ \hline
+		166 &		EventStreamCallback.java &		.../org/tribler/android/restapi/EventStreamCallback.java \\ \hline
+		155 &		ChannelActivity.java &		.../org/tribler/android/ChannelActivity.java \\ \hline
+		150 &		ViewFragment.java &		.../org/tribler/android/ViewFragment.java \\ \hline
+		149 &		PythonService.java & 		.../org/kivy/android/PythonService.java \\ \hline
+		149 &		SearchActivity.java &		.../org/tribler/android/SearchActivity.java \\ \hline
+		141 &		EditChannelActivity.java &		.../org/tribler/android/EditChannelActivity.java \\ \hline
+		131 &		FilterableRecyclerViewAdapter.java &		.../org/tribler/android/FilterableRecyclerViewAdapter.java \\ \hline
+		130 & 		BaseActivity.java &		.../org/tribler/android/BaseActivity.java \\ \hline
+		114 &		SearchFragment.java &		.../org/tribler/android/SearchFragment.java \\ \hline
+		112 & 		TriblerDownload.java &		.../org/tribler/android/restapi/json/TriblerDownload.java \\ \hline
+	\end{tabular}
+	\caption{Top 25 of largest source file contributions.}
+	\label{table:loc}
+\end{table}
+
+Code coverage and testing details are further explained in chapter \ref{ch:results}.
 
 
 \begin{figure}
@@ -161,9 +207,9 @@ The key performance indicators (KPI) will be \emph{scalability}, \emph{resource 
 \end{minipage}
 ~
 \begin{minipage}{.4\textwidth}
-	\includegraphics[angle=90,origin=c,width=\textwidth]{device-2016-10-20-install-vlc}
-	\caption{User is prompted to install VLC}
-	\label{fig:install-vlc}
+	\includegraphics[width=\textwidth]{device-2016-08-28-beam}
+	\caption{NFC+Bluetooth transfer of app or channel}
+	\label{fig:beam}
 \end{minipage}
 
 \begin{minipage}{.4\textwidth}
@@ -178,31 +224,3 @@ The key performance indicators (KPI) will be \emph{scalability}, \emph{resource 
 	\label{fig:channel-content-discovered}
 \end{minipage}
 \end{figure}
-
-\begin{figure}
-	\centering
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\textwidth]{device-2016-08-28-my-channel-create}
-	\caption{Create your own channel}
-	\label{fig:my-channel-create}
-\end{minipage}
-~
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\textwidth]{device-2016-08-28-my-channel-add}
-	\caption{Add content to your own channel}
-	\label{fig:my-channel-add}
-\end{minipage}
-
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\textwidth]{device-2016-08-28-beam}
-	\caption{NFC+Bluetooth transfer of app or channel}
-	\label{fig:beam}
-\end{minipage}
-~
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\textwidth]{device-2016-08-28-my-channel-sent}
-	\caption{Received channel via NFC transfer}
-	\label{fig:my-channel-sent}
-\end{minipage}
-\end{figure}
-

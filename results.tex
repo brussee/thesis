@@ -1,4 +1,5 @@
 \chapter{Verification and validation}
+\label{ch:results}
 % Validation: Are we building the right system?
 % Verification: Are we building the system right?
 To verify if running all Tribler functionality on mobile devices is feasible we take a look at relevant performance characteristics and take several measurements.
@@ -31,7 +32,7 @@ Each device is connected to the same WLAN and within 1 to 2 meters distance from
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{phones_2}
-	\caption{All devices used in the experiment.}
+	\caption{All devices used in the experiment showing the about Android screen.}
 	\label{fig:phones_2}
 \end{figure}
 \begin{figure}[h]
@@ -77,13 +78,6 @@ This event is sent over the API event-stream and signifies that Tribler is fully
 We expect consistent loading times because right after starting we shut Tribler down again.
 % Setup
 To get a good idea of how the user experience may differ we measure the startup time 10 times on 5 different devices.
-Figure \ref{fig:phones} shows the devices with about Android OS on screen.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{phones}
-	\caption{Mobile devices used for measurements: Nexus 10 (top) Nexus 6, Nexus 5, Galaxy Nexus, S3 (left to right)}
-	\label{fig:phones}
-\end{figure}
 The app is launched with Android Debug Bridge (adb) from a laptop and the Tribler-started-event is read from logcat over adb and timed on the same laptop so they use the same clock.
 % Results
 \begin{figure}[h]
@@ -91,12 +85,6 @@ The app is launched with Android Debug Bridge (adb) from a laptop and the Trible
 	\includegraphics[trim={4cm 0cm 4cm 0cm},clip,width=\textwidth]{boxplot-startup}
 	\caption{Startup times per device}
 	\label{fig:boxplot-startup}
-\end{figure}
-\begin{figure}[h]
-	\centering % trim={<left> <lower> <right> <upper>}
-	\includegraphics[trim={4cm 0cm 4cm 0cm},clip,width=\textwidth]{boxplot-shutdown}
-	\caption{Shutdown times per device}
-	\label{fig:boxplot-shutdown}
 \end{figure}
 Table \ref{table:startup_time} shows the statistics per device.
 \begin{table}
@@ -365,12 +353,10 @@ The database containing these blocks will grow over time, but should not slow do
 Measurements were taken on six different devices on multiple moments during development.
 % Results
 Figure \ref{fig:multichain_25} show the performance graphs of every measurement.
-\begin{figure}[ht]
-	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-						Creating and signing of 25.000 blocks between two peers
-			}\end{minipage}},rotate=90,center}
-		\includegraphics[scale=0.4]{multichain_scale_2599_25k}
-	\end{adjustbox}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{multichain_scale_2599_25k}
+	\caption{Creating and signing of 25.000 blocks between two peers}
 	\label{fig:multichain_25}
 \end{figure}
 Clearly visible from the graphs is that Multichain does not scale linearly on any device.
