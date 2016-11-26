@@ -54,8 +54,11 @@ The GUI must be able to be tested separately from the back-end and vice-versa.
 Also the API must be able to be tested independently and be clearly documented for other developers.
 
 % Design defensively
-All Android intents should be explicit. \cite{paper Analysing inter-application communication in Android}
-Expose / Export only Android activities and services that should be public
+Secure inter-application communication of Android intents:
+An Intent is a messaging object to request an action from another app component \cite{android-intents}.
+All Android intents should be explicit for internal actions. \cite{paper Analysing inter-application communication in Android}
+Expose only the activities and services that should be public.
+Check the action of all received broadcasts.
 
 % Availability and resilience
 A distinction must be made between user input error and internal exceptions.
