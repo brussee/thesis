@@ -14,7 +14,7 @@ Tribler is written entirely in Python, but most of its dependencies are written 
 To use these libraries on a mobile device they need to be compiled for the right embedded-application binary interface (EABI) including all nonstandard dependencies.
 Figure \ref{fig:dependency_tree} shows the dependency tree.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{dependency_tree}
 	\caption{Tribler dependencies in terms of Python-for-Android recipes}
@@ -88,7 +88,7 @@ The latter has tools available for automated UI testing.
 The Python-for-Android tool-chain uses recipes to cross compile the C/C++ libraries with Python bindings with the necessary build tools.
 These recipes are like a high level make file.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{build_tool_chain}
 	\caption{High level overview of the build tool-chain}
@@ -181,7 +181,7 @@ Code coverage and testing details are further explained in chapter \ref{ch:resul
 
 
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 \begin{minipage}{.4\textwidth}
 	\includegraphics[width=\textwidth]{device-2016-08-28-menu-popular}

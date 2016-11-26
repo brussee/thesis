@@ -35,27 +35,27 @@ On one Nexus 6 device a channel is created to which 13 other devices subscribe v
 Then repeatedly a new video is recorded and added to that channel.
 A content discovered event is registered on each device individually and all devices are synced with NTP.
 Each device is connected to the same WLAN and within 1 to 2 meters distance from the access point.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{phones_2}
 	\caption{All devices used in the experiment showing the about Android screen.}
 	\label{fig:phones_2}
 \end{figure}
-\begin{figure}[h]
+% Results
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{content_dissemination}
 	\caption{Sequence of events with time values from median of results.}
 	\label{fig:content_dissemination}
 \end{figure}
-% Results
 Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a number of devices to discover new content on a subscribed channel.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={0.9cm 0 0 0},clip,width=\textwidth]{boxplot-nrofdevices-130}
 	\caption{Elapsed time from adding new content to a channel and it being discovered by subscribed peers.}
 	\label{fig:boxplot-nr.of.devices-130}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{boxplot-per-mb-torrent-create-add}
 	\caption{Time required to create a torrent and add it to a channel, normalized for 1 MB of content.}
@@ -86,7 +86,7 @@ We expect consistent loading times because right after starting we shut Tribler 
 To get a good idea of how the user experience may differ we measure the startup time 10 times on 5 different devices.
 The app is launched with Android Debug Bridge (adb) from a laptop and the Tribler-started-event is read from logcat over adb and timed on the same laptop so they use the same clock.
 % Results
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={4cm 0cm 4cm 0cm},clip,width=\textwidth]{boxplot-startup}
 	\caption{Startup times per device}
@@ -128,7 +128,7 @@ By leaving out that element this metric is measuring the operation time via the 
 % Expected / desired results
 We want to see that the latency is bounded, consistent and generally low.
 Previous research has shown the following results on a computer:
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={0 0 23cm 0},clip,width=0.9\textwidth]{api_laurens}
 	\caption{API latency on PC}
@@ -144,7 +144,7 @@ We set this parameter to 300 requests per minute, equal to the other benchmark.
 % Results
 Our database to be queried is not equal to one used in figure \ref{fig:api_laurens}.
 The following figure shows the latency for every request.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{api_benchmark}
 	\caption{API latency on Nexus 6 smart-phone}
@@ -195,7 +195,7 @@ With the cProfile Python module and the visualisation tool SnakeViz we can see i
 A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used for profiling Tribler.
 The profiler was running for 10 minutes with Tribler during normal operation and without any user input.
 % Results
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{profile_1468515157-2}
 	\caption{Profiler results of 10 minutes Tribler run time (bright pink represents business logic upon receiving a torrent)}
@@ -282,7 +282,7 @@ If there is any performance to gain by releasing the GIL the CPU must be under-u
 % Setup
 A Galaxy S3 smart-phone with Android 6.0.1 Cyanogen mod was used for this measurement.
 % Results
-\begin{figure}[ht]
+\begin{figure}[H]
 \begin{minipage}{.4\textwidth}
 	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
 						CPU usage on a Galaxy S3 smart-phone, about 3 hours into normal operation
@@ -359,7 +359,7 @@ The database containing these blocks will grow over time, but should not slow do
 Measurements were taken on six different devices on multiple moments during development.
 % Results
 Figure \ref{fig:multichain_25} show the performance graphs of every measurement.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{multichain_scale_2599_25k}
 	\caption{Creating and signing of 25.000 blocks between two peers}
