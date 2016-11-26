@@ -3,8 +3,14 @@
 % Validation: Are we building the right system?
 % Verification: Are we building the system right?
 To verify if running all Tribler functionality on mobile devices is feasible we take a look at relevant performance characteristics and take several measurements.
-For scale a laptop and old computer are included in some measurements.
-We focus on the design aspects and evaluate per feature / key performance indicator.
+For scale a laptop and PC are included in some measurements.
+We focus on the design aspects and evaluate the key performance indicators:
+\begin{itemize}
+	\item{\emph{usability} in terms of latency and startup time,}
+	\item{\emph{resource usage} in terms of CPU utilization,}
+	\item{\emph{performance} in terms of frequency and duration of function calls,}
+	\item{\emph{scalability} in terms of discovery time and bandwidth accounting.}
+\end{itemize}
 
 % Rationale
 % Metrics
@@ -66,10 +72,10 @@ From the 10th device onwards the dissemination slows down.
 
 \section{Startup time}
 % Rationale
-The key to a good user experience is a fast startup time.
-We want a large and happy user-base, therefore startup time is a prime concern for us.
-One of the design objectives for separating the front-end from the back-end was responsiveness.
+Key to user retention is a fast startup time.
 Therefore the service starts up in the background, separately from the GUI.
+This way at the GUI is responsive to user input while the service may still be loading.
+One of the design objectives for separating the front-end from the back-end was responsiveness.
 However before any task can be executed by the service it needs to be actually started.
 % Metrics
 To measure the startup time we register the time of launching the app and the moment the Tribler-started-event occurs.
