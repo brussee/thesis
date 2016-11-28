@@ -165,7 +165,8 @@ PC is added for reference.
 The set rate of 300 requests per minute is clearly not reached by the smart-phone in our benchmark by a factor of 9.
 The difference in amount of response data turned out to be much bigger than expected with a factor of 35.
 % Conclusions
-IO bound + crappy Python code WHY?
+%TODO: IO bound + crappy Python code WHY?
+% busy Twisted reactor?
 Considering the difference in amount of response data and the bandwidth of USB versus internal memory it is an unfair comparison.
 However, based on our result we may conclude that the API does not respond consistently and appear to behave differently than the other benchmark.
 The device not being able to process 5 requests per second possibly reveals information about the connection bandwidth and the multi-threaded processing capability.
@@ -260,7 +261,8 @@ The significant chunk of time that the crypto takes is as expected.
 Since this task is actually delegated to the C library M2Crypto it should be possible to release the GIL of the Python interpreter so other Python code that does not depend on it can be executed.
 The main alternative provided in the standard library for CPU bound applications is the multiprocessing module, which works well for workloads that consist of relatively small numbers of long running computational tasks, but results in excessive message passing overhead if the duration of individual operations is short \cite{http://python-notes.curiousefficiency.org/en/latest/python3/multicore_python.html}.
 As seen from the time per call for \_\_m2crypto.ecdsa\_verify in table \ref{table:profiling_details} the multiprocessing module would likely cause too much overhead.
-
+%TODO
+Another way to optimize is multiprocessing, which avoids the GIL completely \cite{quinten}.
 
 \section{CPU utilization}
 % Rationale
