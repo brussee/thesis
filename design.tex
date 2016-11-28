@@ -181,11 +181,12 @@ The Tribler core is written in Python so the platform must support that.
 \end{figure}
 
 Previous attempts at creating an Android version of Tribler failed with regards to maintainability.
-Poor separation of front-end and back-end meant re-use of the core modules was hard to maintain.
-The Tribler core patching for example meant that all patches would have to be re-applied ever change and that has proven to not be workable.
+Poor separation of front-end and back-end meant re-use of the core modules was hard to maintain \cite{bsc1,2}.
+The Tribler core patching \cite{bsc3} for example meant that all patches would have to be re-applied ever change and that has proven to not be workable.
 
-The new architecture clearly separates tasks of the GUI and background operations.
-Figure \ref{fig:system_architecture} shows the distinct modules of the system architecture of Tribler for mobile.
+The new architecture is specifically designed for maintainability and clearly separates modules with a distinct responsibility.
+This way tasks of the GUI are clearly separated from background operations.
+Figure \ref{fig:system_architecture} shows the system architecture of Tribler for mobile.
 The Java app is considered the front-end and the Java service and other components are considered the back-end.
 The HTTP Client communicates with the REST API in JSON.
 The Java app starts the Java service with an Android intent.
