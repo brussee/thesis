@@ -118,6 +118,36 @@ Because of the nature of Android to destroy interface elements if a configuratio
 To detect notorious memory leaks on Android we use another library made to do exactly that: LeakCanary.
 Android provides a way to deal with continuity of activities with fragments that can remain in memory which were used in conjunction with composite subscriptions of RxJava.
 
+\subsection{Screenshots}
+%TODO: verwijzen en doorspreken
+
+\begin{figure}[p]
+	\centering
+	\begin{minipage}{.4\textwidth}
+		\includegraphics[width=\textwidth]{device-2016-08-28-menu-popular}
+		\caption{Navigation menu of the Tribler app}
+		\label{fig:menu-popular}
+	\end{minipage}
+	~
+	\begin{minipage}{.4\textwidth}
+		\includegraphics[width=\textwidth]{device-2016-08-28-beam}
+		\caption{NFC+Bluetooth transfer of app or channel}
+		\label{fig:beam}
+	\end{minipage}
+	
+	\begin{minipage}{.4\textwidth}
+		\includegraphics[width=\textwidth]{device-2016-08-28-search-pioneer}
+		\caption{Search results showing video content}
+		\label{fig:search-pioneer}
+	\end{minipage}
+	~
+	\begin{minipage}{.4\textwidth}
+		\includegraphics[width=\textwidth]{device-2016-08-28-channel-content-discovered}
+		\caption{Channel with newly discovered content}
+		\label{fig:channel-content-discovered}
+	\end{minipage}
+\end{figure}
+
 
 \subsection{Videoplayer}
 The video player VLC can be integrated as hard to maintain library and a custom GUI.
@@ -129,11 +159,10 @@ Shared memory threading in Python code is restricted to single-thread performanc
 
 
 
-
-%software stats, delivered, reference github
+\section{Implementation statistics}
+All requirements have been met.
+%TODO software stats, delivered, reference github
 %lang aan gewerkt
-
-
 The implementation consists of:
 12.806 + X lines of code in the Tribler repository in 35 pull requests and
 Y lines of code in the Python-for-Android (P4A) repository in 46 pull requests and
@@ -181,29 +210,5 @@ Code coverage and testing details are further explained in chapter \ref{ch:resul
 
 
 
-\begin{figure}[H]
-	\centering
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\textwidth]{device-2016-08-28-menu-popular}
-	\caption{Navigation menu of the Tribler app}
-	\label{fig:menu-popular}
-\end{minipage}
-~
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\textwidth]{device-2016-08-28-beam}
-	\caption{NFC+Bluetooth transfer of app or channel}
-	\label{fig:beam}
-\end{minipage}
 
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\textwidth]{device-2016-08-28-search-pioneer}
-	\caption{Search results showing video content}
-	\label{fig:search-pioneer}
-\end{minipage}
-~
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\textwidth]{device-2016-08-28-channel-content-discovered}
-	\caption{Channel with newly discovered content}
-	\label{fig:channel-content-discovered}
-\end{minipage}
-\end{figure}
+
