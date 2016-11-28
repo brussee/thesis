@@ -120,32 +120,61 @@ Android provides a way to deal with continuity of activities with fragments that
 
 \subsection{Screenshots}
 %TODO: verwijzen en doorspreken
+Figure \ref{fig:menu-popular} shows the main menu of the Tribler app.
+The first three items presented to the user are the main views: the user's favorite channels, their own channel and discovering popular content.
+The next four items are actions related to creating new content or related to the application.
+It is organized this way to benefit from the simplicity of a flat menu while the actions are grouped by context with a header for clarity.
+
+One of the actions is sending the application to a nearby phone.
+This near field communication (NFC) feature has to be enabled in the device's settings and the app will prompt the user to do so if necessary.
+The instructions for this easy hand-over are shown in Figure \ref{fig:beam}: just hold the phones back to back.
+If NFC is not available all other options to transfer a file are presented to the user to choose from instead.
+Blue-tooth and all these other available options are also accessible via a button with the Blue-tooth icon on the action bar.
+
+Users can browse through a list of popular channels or their own favorites.
+Each channel has an indicator of the amount of users that have added that channel to their list of favorites, as can be seen behind the menu in Figure \ref{fig:menu-popular}.
+Channels contain multi-media content added by their respective channel owner or everyone, depending on the security policy of that channel.
+Tribler allows three settings: open, semi-open and closed.
+
+%CHANNEL_CLOSED, CHANNEL_SEMI_OPEN, CHANNEL_OPEN, CHANNEL_MODERATOR = range(4)
+%CHANNEL_ALLOWED_MESSAGES = (
+%[],
+%["comment", "mark_torrent"],
+%["torrent", "comment", "modification", "playlist_torrent", "moderation", "mark_torrent"],
+%["channel", "torrent", "playlist", "comment", "modification", "playlist_torrent", "moderation", "mark_torrent"]
+%)
+
+The favorite channels and popular channels views both show a list of channels  contain content
+
+Search is accessible from any channel view.
+Upon typing keywords into the search bar
+debounce
 
 \begin{figure}[p]
-	\centering
-	\begin{minipage}{.4\textwidth}
-		\includegraphics[width=\textwidth]{device-2016-08-28-menu-popular}
-		\caption{Navigation menu of the Tribler app}
-		\label{fig:menu-popular}
-	\end{minipage}
-	~
-	\begin{minipage}{.4\textwidth}
-		\includegraphics[width=\textwidth]{device-2016-08-28-beam}
-		\caption{NFC+Bluetooth transfer of app or channel}
-		\label{fig:beam}
-	\end{minipage}
-	
-	\begin{minipage}{.4\textwidth}
-		\includegraphics[width=\textwidth]{device-2016-08-28-search-pioneer}
-		\caption{Search results showing video content}
-		\label{fig:search-pioneer}
-	\end{minipage}
-	~
-	\begin{minipage}{.4\textwidth}
-		\includegraphics[width=\textwidth]{device-2016-08-28-channel-content-discovered}
-		\caption{Channel with newly discovered content}
-		\label{fig:channel-content-discovered}
-	\end{minipage}
+\centering
+\begin{minipage}{.4\textwidth}
+	\includegraphics[width=\textwidth]{device-2016-08-28-menu-popular}
+	\caption{Navigation menu of the Tribler app}
+	\label{fig:menu-popular}
+\end{minipage}
+~
+\begin{minipage}{.4\textwidth}
+	\includegraphics[width=\textwidth]{device-2016-08-28-beam}
+	\caption{NFC+Bluetooth transfer of app or channel}
+	\label{fig:beam}
+\end{minipage}
+
+\begin{minipage}{.4\textwidth}
+	\includegraphics[width=\textwidth]{device-2016-08-28-channel-content-discovered}
+	\caption{Channel with newly discovered content}
+	\label{fig:channel-content-discovered}
+\end{minipage}
+~
+\begin{minipage}{.4\textwidth}
+	\includegraphics[width=\textwidth]{device-2016-08-28-search-pioneer}
+	\caption{Search results showing video content}
+	\label{fig:search-pioneer}
+\end{minipage}
 \end{figure}
 
 
