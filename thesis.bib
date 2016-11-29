@@ -2515,4 +2515,83 @@ enough for cross-compilation.},
   timestamp   = {2016-11-29},
 }
 
+@PhdThesis{coop_p2p,
+  author      = {Niels Zeilemaker},
+  title       = {Privacy and Cooperation in Peer-to-Peer Systems},
+  institution = {Delft University of Technology},
+  year        = {2015},
+  date        = {2015-05-22},
+  abstract    = {P2P-netwerken maken gebruik van de beschikbare middelen van peers voor het redu-
+ceren, of elimineren van de noodzaak van een server. Om dit mogelijk te maken zijn
+protocollen ontwikkeld die tot doel hebben om peers efficient samen te werken. Toch
+kunnen dezelfde protocollen peers een gemakkelijk doelwit maken, omdat hun be-
+reidheid om samen te werken gevoelig voor aanvallen is. Er bestaat een aanzienlijke
+hoeveelheid onderzoek naar het verminderen van kwetsbaarheden van peers, echter
+de meeste onderzoeken zijn gedaan in de context van file-sharing of in een back-up
+oplossingen. In dit proefschrift kijken we naar andere vormen van samenwerking in
+een P2P-systeem waarbij nadelen van gecentraliseerde oplossingen, bijvoorbeeld het
+gebrek aan privacy, worden verminderd.
+In Hoofdstuk 2 introduceren we Tribler, een programma dat in ons onderzoek
+gebruikt is als testbed en ons in staat stelt de prestaties van nieuwe protocollen in
+het wild te evalueren. Tribler is een open-source BitTorrent-client, die is ontwikkeld
+met behulp van meerdere Europese projecten. Naast het downloaden van BitTorrent
+bestanden, voegt Tribler decentraal zoeken, kanalen en video-on-demand toe.
+In Hoofdstuk 3 ontwerpen, implementeren en evalueren wij een platform waarmee
+peers hun databases kunnen sychronizeren in een netwerk. Met ons platform kunnen
+peers successvol synchroniseren wanneer ze worden blootgesteld aan wegvallende
+netwerkverbindingen, NAT-firewalls, en substantiele churn. Peers synchroniseren
+met elkaar mbv Bloom filters, die hun in staat stellen om de huidige stand van
+hun database uit te drukken in een 1500 byte UDP bericht. Na ontvangst van een
+dergelijk synchronisatie verzoek, zal een peer antwoorden met de rijen niet in de
+Bloom filter zitten.
+Voortbouwend op het in het vorige hoofdstuk geintroduceerde platform, intro-
+duceren we Open2Edit in Hoofdstuk 4. Open2Edit is bedoeld om de samenwerking
+tussen peers in een gedecentraliseerde manier te verbeteren. Het bouwt voort op
+ideeen gebruikt door gecentraliseerde websites zoals Wikipedia en StackExchange.
+Echter in tegenstelling tot vergelijkbare papers, implementeren we niet nog een de-
+centrale versie van Wikipedia, maar een flexibel samenwerkingsplatform dat in staat
+is om in een breed scala aan gebruiksscenarios toegepast te worden. Door Open2Edit
+combineren met Tribler, implementeren en evalueren we een Youtube-achtig media
+sharing systeem waarin gebruikers kanalen kunnen aanmaken, bestaande uit de in-
+houd die zij zelf uit kiezen. Andere peers kunnen een kanaal markeren als favoriet,
+en door het combineren van deze stemmen ontdekken ze de populairste kanalen.
+Tijdens de integratie in Tribler werden meer dan 100.000 stemmen uitgebracht door
+gebruikers.
+Vervolgens benutten we in Hoofdstuk 5 bestaande oplossingen voor het Private
+Set Intersection probleem om een semantisch netwerk te bouwen met behoud van
+privacy. Een semantisch netwerk levert aanzienlijke prestatieverbeteringen op tij-
+dens het zoeken naar informatie in een P2P-systeem, omdat relevante informatie
+zich dichter bij de peer die de zoekopdracht uitvoert bevind. Echter de zijn de pres-
+taties van de PSI algoritmen zijn nooit vergeleken met elkaar met betrekking tot
+processortijd, bandbreedte, en hun invloed bij het bepalen overlap. Dat doen wij in
+dit hoofdstuk.
+In Hoofdstuk 6, gebruikmakend van een van de geevalueerde PSI algoritmen,
+implementeren we een file sharing system dat de privacy van zijn gebruikers waar-
+borgt. In tegenstelling tot vergelijkbare papers, gebruikt 4P geen flooding om het
+P2P systeem te doorzoeken. Het maakt gebruik van de semantisch netwwerk, waar-
+door 4P het aantal berichten wat wordt verzonden per query kan verminderen. In
+dit hoofdstuk passen wij anonimisering technieken toe om het zoek pad te verhullen.
+Daarnaast sturen peers probabilistich berichten door, en gebruiken zij versleutelde
+verbindingen. Door een kleine wijziging in het PSI algoritme, voegen we een mecha-
+nisme toe waarmee twee peers een sessie-sleutel kunnen afspreken die wordt gebruikt
+om de verbinding te versleutelen. Deze sessie-sleutel kan niet worden onderschept,
+of aangepast door een man-in-the-middle omdat hij versleuteld is met de sleutel van
+de initierende peer. Tijdens de evaluatie vergelijken we 4P met andere technieken
+en laten zien dat het aanzienlijk minder berichten (300 in plaats van 10.000) vereist
+per zoek opdracht.
+Tenslotte, in Hoofdstuk 7, ontwerpen en evalueren wij een volledig gedecentra-
+liseerd sociaal netwerk dat hetzelfde PSI algoritme gebruikt om vrienden te vinden
+die nu online zijn. Na het opbouwen van een directe verbinding met die vrienden, of
+peers die ten minste een vriend gemeen hebben, synchronizeren deze peers berichten
+met behulp van een licht aangepast algoritme zoals geintroduceerd in Hoofdstuk 3.
+Elke update wordt versleuteld met de publieke sleutel van de uiteindelijke bestem-
+ming, en wordt gerepliceert naar alle van de vrienden van de bestemming. Dit
+resulteert in een cooperatief sociaal netwerk waarin vrienden berichten opslaan be-
+stemt voor hun vrienden en vice versa. Dit heeft als voordeel dat het systeem geen
+replicatie strategieen nodig heeft, omdat hun vrienden voldoende replicas bieden.},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/DOC Privacy and Cooperation in Peer-to-Peer Systems.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-11-29},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
