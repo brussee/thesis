@@ -2594,4 +2594,42 @@ replicatie strategieen nodig heeft, omdat hun vrienden voldoende replicas bieden
   timestamp   = {2016-11-29},
 }
 
+@PhdThesis{Wang_2013,
+  author      = {Qiyan Wang},
+  title       = {Robust censorship-resistant communications},
+  institution = {Delft University of Technology},
+  year        = {2013},
+  abstract    = {A key challenge in censorship circumvention is being able to direct legitimate
+users to redirection proxies while preventing censors, posing as insiders, from
+discovering their addresses and blocking them. In this thesis, we study how to
+protect and/or design censorship circumvention systems to resist the insider
+attacks.
+Tor is one of the most popular censorship circumvention systems; it uses
+bridges run by volunteers as proxies to evade censorship. We propose rBridge–
+a user reputation system for bridge distribution; it assigns bridges according
+to the past history of users to limit corrupt users from repeatedly blocking
+bridges, and employs an introduction-based mechanism to invite new users
+while resisting Sybil attacks. Our evaluation results show that rBridge pro-
+vides much stronger protection for bridges than any existing scheme. We also
+address another important challenge to the bridge distribution—preserving
+the privacy of users’ bridge assignment information, which can be exploited
+by malicious parties to degrade users’ anonymity in anonymous communica-
+tion.
+We propose a new framework for censorship-resistant web browsing called
+CensorSpoofer that addresses this challenge by exploiting the asymmetric na-
+ture of web browsing traffic and making use of IP spoofing. CensorSpoofer de-
+couples the upstream and downstream channels, using a low-bandwidth indi-
+rect channel for delivering outbound requests (URLs) and a high-bandwidth
+direct channel for downloading web content. The upstream channel hides
+the request contents using steganographic encoding within Email or instant
+messages, whereas the downstream channel uses IP address spoofing so that
+the real address of the proxies is not revealed either to legitimate users or
+censors. We built a proof-of-concept prototype that uses encrypted VoIP
+for this downstream channel and demonstrated the feasibility of using the
+CensorSpoofer framework in a realistic environment.},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/DOC Robust Censorship-Resistant Communication.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-11-29},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
