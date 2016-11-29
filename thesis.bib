@@ -2694,4 +2694,41 @@ traffic in onion routing.},
   timestamp   = {2016-11-29},
 }
 
+@MastersThesis{tor_bittorrent,
+  author      = {Rob J. Ruigrok},
+  title       = {BitTorrent file sharing using Tor-like hidden services},
+  institution = {Delft University of Technology},
+  year        = {2015},
+  date        = {2015-08-31},
+  abstract    = {The Internet is a large public network of networks and computers. When no coun-
+termeasures are taken, all information and activities taking place on the public
+Internet are subject to traffic analysis, threatening personal freedom and privacy.
+The first measure to take is securing all transferred information by applying encryp-
+tion on it, which makes it at least very hard to tap the contents of the transferred
+information. But encryption does not add any value when it comes to anonymity.
+Although the contents of the message are not known (because it is encrypted), it
+is still possible to track down where a message comes from, and where it is going
+to by analyzing the network infrastructure. Governments or Internet providers may
+apply censorship or block any kind of network traffic coming or going from some-
+where. This is where hidden services come in. The idea of hidden services was
+described by the authors of Tor (The onion router). The hidden services protocol
+hides the location of both the sender and receiver by transferring and encrypting
+messages over multiple hops, without revealing the true identity or contents of the
+messages in transit.
+This thesis proposes a design for implementing Tor-like hidden services in a de-
+centralized peer-to-peer system, enabling the possibility of downloading and seed-
+ing anonymously. A proof-of-concept will be implemented into Tribler, a BitTorrent
+client developed at Delft University of Technology. Tribler already supports anony-
+mous downloading using encryption over circuits with multiple hops, but to make
+hidden services work, an end-to-end encrypted circuit between both the seeder
+and downloader needs to be established. This is not as easy as it seems, because
+the seeder and downloader do not know each other. The implementation details of
+hidden services are part of this work, as well as experiments on the performance of
+the system. Furthermore, a number of issues related to transforming the original
+idea of hidden services into a fully distributed context are solved.},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/MSc BitTorrent file sharing using Tor-like hidden services.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-11-29},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
