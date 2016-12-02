@@ -352,6 +352,10 @@ If mobile devices are to become full-fletched nodes on the network they must sup
 With Multichain any peer registers the bandwidth it exchanges with other peers.
 It aggregates these exchanges in blocks and signs them like a receipt and sends that to the other party to sign as well.
 These blocks are linked in a block-chain to foil attempts of cheating the system.
+
+Multichain is explicitly designed to not use a global state.
+Syncing a global state is less scalable in terms of storage and network bandwidth.
+
 % Metrics
 The creation and signing of these blocks is measured to determine if it scales well.
 Multichain signs a block every 10 minutes, meaning our experiment of generating 25.000 blocks represent about half a year (173,6 days) of continuous effort.

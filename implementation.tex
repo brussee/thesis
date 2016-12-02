@@ -3,8 +3,14 @@
 % Prototype level
 % geen documentatie manual, maar keuzes en uitdagingen
 
-Tribler 
-To implement our design in chapter \ref{ch:design} we
+We now describe the implementation of our design in chapter \ref{ch:design}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{system_architecture_implementation}
+	\caption{System architecture}
+	\label{fig:system_architecture_implementation}
+\end{figure}
 
 \section{Common Tribler core}
 Re-usability is an important design objective that can greatly improve maintainability as well.
@@ -57,6 +63,12 @@ API level 18 also added support for Bluetooth Low Energy (LE), WiFi scan only mo
 All very useful to Tribler.
 Earlier versions of Android already supported NDEF Push with NFC and Wi-Fi P2P (since API level 14), and initiate large file transfers over Bluetooth via NFC (since API level 16).
 83.7\% of devices on the Google Play Store run Android 4.3 or higher.
+
+
+For inter-application security the communication of Android intents must be secured.
+An Intent is a messaging object to request an action from another app component \cite{android-intents}.
+All Android intents should be explicit for internal actions and the action must be checked of all received intents, especially broadcasted intents. \cite{paper Analysing inter-application communication in Android}
+Also only the activities and services that should be public must be exported in the application manifest.
 
 
 \section{Python on Android}
