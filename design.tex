@@ -11,7 +11,7 @@ First in terms of functionality and other requirements, second the overall syste
 
 Previous attempts at designing a mobile version of Tribler failed to properly separate re-usable components.
 This resulted in unmaintainable code and increased difficulty in testing.
-We use a top down approach to come to a high level system architecture and in determining the reusable components or the current Tribler code.
+We use a top down approach to come to a high level system architecture and in determining the reusable components or the current Tribler application.
 % What is the gap?
 Some functionality of Tribler has been shown to work on Android before \cite{bsc1,2,3}.
 Our design will fill in the gap of connecting the pieces of the grand puzzle to make Tribler fully work on mobile.
@@ -46,7 +46,7 @@ Because this may require both devices having Tribler installed, it also must be 
 Self-created content must be stored on the internal memory and processed automatically on the mobile device itself in order to avoid dependency any external processing unit.
 This includes the creation of .torrent files required to share content via the bit-torrent protocol.
 
-\begin{enumerate}[label=A\arabic*.]
+\begin{enumerate}[label=A\arabic*.,ref=req. A\arabic*]
 	
 	\item The implementation must be capable of publishing videos to other devices with and without an Internet connection.
 	\item The implementation must be capable of recording videos.
@@ -72,26 +72,26 @@ This includes the creation of .torrent files required to share content via the b
 
 Due to the challenges and opportunities as described in Section \ref{ch:tribler_mobile}, we define the following non-functional requirements:
 
-\begin{enumerate}[label=B\arabic*.]
+\begin{enumerate}[label=B\arabic*.,ref=req. B\arabic*]
 	
-	\item The mobile device must be capable of running Tribler independently.
-	%response time
-	\item Search results ought to appear in less than 1 second for local content.
-	%throughput
+	\item \label{rq1}The mobile device must be capable of running Tribler independently.
 	%re-usability
-	\item The implementation must incorporate the existing Tribler code.
+	\item The implementation must incorporate the existing Tribler Python core and the required C/C++ libraries.
 	%technology to be used: programming language, db
-	\item The platform must support running Python and Tribler's C/C++ dependencies.
 	%resource usage
 	\item The implementation may not exceed 512MB of RAM usage while running.
 	\item The implementation must be capable of running on ARMv7 or compatible mobile processors.
 	%computing platform: min. system specs and features, api level
 	\item The implementation must support WiFi, Bluetooth and NFC peer-to-peer features.
 	\item The implementation must utilize the built-in camera for recording videos.
-	\item The mobile device must be connectible via WiFi or mobile data connection.
+	\item The mobile device must be connectible via WiFi or mobile data connection
+	%response time
+	\item Search results ought to appear in less than 1 second for local content.
+	%throughput
 	% Design for portability
 	\item The implementation must be distributed as a single installable container.
 %	\item The app must communicate with the JSON REST API of the Tribler core.
+	\item The implementation must be able to keep running in the background even if the user is not actively using it.
 	\item All processing tasks must be performed asynchronously.
 	\item The user must be able to interact with the implementation via a graphical user interface (GUI).
 	\item All ongoing tasks must be indicated as such in the GUI.
@@ -140,8 +140,9 @@ Due to the challenges and opportunities as described in Section \ref{ch:tribler_
 \section{System architecture}
 % Design level
 
-async front-back means rest api
-
+The requirements dictate how the system architecture of Tribler on mobile devices will take shape.
+% Increase re-usability where possible
+The proposed architecture as shown in Figure \ref{fig:system_architecture_design} is specifically designed for maintainability and clearly separates components with a distinct responsibility.
 
 \begin{figure}[H]
 	\centering
@@ -150,36 +151,27 @@ async front-back means rest api
 	\label{fig:system_architecture_design}
 \end{figure}
 
-Figure \ref{fig:system_architecture_design} shows the system architecture of Tribler for mobile.
-The Java app is considered the front-end and the Java service and other components are considered the back-end.
-The HTTP Client communicates with the REST API in JSON.
-The Java app starts the Java service with an Android intent.
-The Java service loads the native libraries and starts the CPython interpreter with a call over JNI.
-The Python code loads other Python and native modules directly.
-
-Previous attempts to bring Tribler to mobile devices did not yield a maintainable solution.
-Poor separation of front-end and back-end meant re-use of the core modules was hard to maintain \cite{bsc1,2}.
-The Tribler core patching \cite{bsc3} for example meant that all patches would have to be re-applied ever change and that has proven to not be workable.
-Therefore, the new architecture is specifically designed for maintainability and clearly separates modules with a distinct responsibility.
-This way tasks of the GUI are clearly separated from background operations.
-
-% Divide and conquer
-Recent refactoring of the Tribler code \cite{thesis_martijn} has divided functionality into core modules.
-% Increase cohesion where possible
-% Reduce coupling where possible
-The purpose of this was to increase cohesion inside modules and the core, and reduce coupling between modules where possible.
-This makes porting the core and individual modules easier.
-% Increase re-usability where possible
-Our design also attempts to maximize re-use-ability with separation of components and clearly defined interfaces.
-An API between front-end and back-end is the industry standard of choice here.
+The requirement of re-using the Tribler Python core and its C/C++ dependencies requires the architecture to incorporate these as is.
+As a consequence, a Python interpreter must be added to the design as well.
+Since mobile platforms are not required to support running Python code natively, but the application must be distributed as a single installable package and run independently (\ref{rq1}), the interpreter is packaged inside the application.
 % Reuse existing designs and code where possible
 % What are the existing modules we re-use?
-Having separated the GUI from the back-end, we can easily re-use the Tribler core and replace the outdated wxPython GUI with something modern.
-A new GUI can be made and optimized for any specific platform and target device for improved for user interaction.
-For instance a separate GUI design can be made for large surface displays and another one for small touch-screens, like a smart-phone.
+%Having separated the GUI from the back-end, we can easily re-use the Tribler core and replace the outdated wxPython GUI with something modern.
+The user must interact with the implementation via a GUI \ref{}.
+As such a GUI is not part of the Tribler core, it has to be included separately in the design.
+
+The requirements on asynchronous communication and responsiveness \ref{}require the decoupling of the GUI from the back-end. % async front-back means rest api
 % Design for flexibility / adaptability
-The flexibility of the design benefits from cohesive components with a clearly defined role.
-For example: being able to swap out components like the GUI makes Tribler much more adaptable to various mobile devices that may or may not have a display.
+A separate GUI can be made and optimized for any specific platform and target device. % native user interface interaction.
+For instance, a design can be made for large surface displays and another one for small touch-screens, like a smart-phone.
+This leads to the design choice of creating an API that allows for a common interface across all platforms to let the GUI communicate with the existing Tribler core.
 
+The API will yield a more maintainable solution than previous attempts to bring Tribler to mobile devices \cite{bsc1,2,3} that did not include such an API.
 
+% Divide and conquer
+%Recent refactoring of the Tribler code \cite{thesis_martijn} has divided functionality into core modules.
+% Increase cohesion where possible
+% Reduce coupling where possible
+%The purpose of this was to increase cohesion inside modules and the core, and reduce coupling between modules where possible.
+%This makes porting the core and individual modules easier.
 

@@ -4,6 +4,13 @@
 % geen documentatie manual, maar keuzes en uitdagingen
 
 We now describe the implementation of our design in chapter \ref{ch:design}.
+% Why no iOS?
+Due to time constraints we need to focus our implementation effort on a single platform: ARMv7.
+Of all mobile devices smart-phones fit our design requirements best.
+On smart-phones Android has the largest market share \cite{https://www.statista.com/statistics/266136/global-market-share-held-by-smartphone-operating-systems/}.
+We therefore aim our implementation at the largest group of users.
+
+
 
 \begin{figure}[H]
 	\centering
@@ -11,6 +18,18 @@ We now describe the implementation of our design in chapter \ref{ch:design}.
 	\caption{System architecture}
 	\label{fig:system_architecture_implementation}
 \end{figure}
+
+
+
+
+Figure \ref{fig:system_architecture_design} shows the system architecture of Tribler for mobile.
+The Java app is considered the front-end and the Java service and other components are considered the back-end.
+The HTTP Client communicates with the REST API in JSON.
+The Java app starts the Java service with an Android intent.
+The Java service loads the native libraries and starts the CPython interpreter with a call over JNI.
+The Python code loads other Python and native modules directly.
+
+
 
 \section{Common Tribler core}
 Re-usability is an important design objective that can greatly improve maintainability as well.
@@ -50,11 +69,6 @@ We will investigate this in the next chapter.
 
 
 \section{Android platform}
-% Why no iOS?
-Due to time constraints we need to focus our implementation effort on a single platform.
-Of all mobile devices smart-phones fit our design requirements best.
-On smart-phones Android has the largest market share \cite{https://www.statista.com/statistics/266136/global-market-share-held-by-smartphone-operating-systems/}.
-We therefore aim our implementation at the largest group of users.
 
 ARMv7 is currently supported by most Android phones and a large part of mobile devices are also compatible with this EABI, so it is the first to be supported by Tribler for now.
 
@@ -106,6 +120,8 @@ These recipes are like a high level make file.
 	\caption{High level overview of the build tool-chain}
 	\label{fig:build_tool_chain}
 \end{figure}
+
+The libraries are compiled for any ARMv7 compatible platform, and little effort is required to replace Android with another OS in this respect.
 
 
 \section{Native GUI}
