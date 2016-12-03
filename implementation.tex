@@ -3,38 +3,49 @@
 % Prototype level
 % geen documentatie manual, maar keuzes en uitdagingen
 
-We now describe the implementation of our design in chapter \ref{ch:design}.
+In Chapter \ref{ch:design} we proposed a generic design to enable Tribler on mobile devices.
+Many types of connectible mobile devices exist.
+In the context of the problem description from Chapter \ref{ch:problem_desc}, devices used for human communication, such as smart-phones, will be our prime focus.
+
 % Why no iOS?
-Due to time constraints we need to focus our implementation effort on a single platform: ARMv7.
-Of all mobile devices smart-phones fit our design requirements best.
-On smart-phones Android has the largest market share \cite{https://www.statista.com/statistics/266136/global-market-share-held-by-smartphone-operating-systems/}.
-We therefore aim our implementation at the largest group of users.
+The largest potential user base in the smart-phone market can be reached by targeting Android OS \cite{https://www.statista.com/statistics/266136/global-market-share-held-by-smartphone-operating-systems/}.
+Android supports multiple hardware platforms, such as ARM, x86, and x86-64.
+Almost all smart-phones running Android are compatible with the ARMv7 embedded application binary interface (EABI) \cite{}.
+Therefore, to reach the largest potential user base, our implementation will target Android OS on ARMv7 compatible platforms.
 
-
+Following the choice for Android, the generic design in Figure \ref{fig:system_architecture_design} can be further specified as presented in Figure \ref{fig:system_architecture_implementation}.
+Our implementation uses Java, because it is the standard programming language on Android.
+To run an application in the background, even when the screen is turned off, it must be run as a service.
+Using Java, design requirement \ref{rq2} means we can use the Java native interface (JNI) to communicate with the C/C++ libraries and start the Python interpreter.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{system_architecture_implementation}
+	\includegraphics[width=\textwidth]{system_architecture_implementation}
 	\caption{System architecture}
 	\label{fig:system_architecture_implementation}
 \end{figure}
 
-
-
-
-Figure \ref{fig:system_architecture_design} shows the system architecture of Tribler for mobile.
-The Java app is considered the front-end and the Java service and other components are considered the back-end.
-The HTTP Client communicates with the REST API in JSON.
 The Java app starts the Java service with an Android intent.
 The Java service loads the native libraries and starts the CPython interpreter with a call over JNI.
 The Python code loads other Python and native modules directly.
+Finally, the REST API communicates with an HTTP Client on the user interface side via JSON.
+
+In the following sections, each component from Figure \ref{fig:system_architecture_implementation} will be described in more detail.
+Lastly, the complete tool-chain is presented in Section \ref{sec:build_toolchain}, which is put together to build the final Android application package (APK).
 
 
 
-\section{Common Tribler core}
+
+\section{Tribler Java back-end service}
+
+\subsection{Tribler Python core}
 Re-usability is an important design objective that can greatly improve maintainability as well.
 Therefore we aim to completely re-use the Tribler core, meaning everything but the GUI.
 We focus on implementing all the features of Tribler as described chapter \ref{ch:tribler}.
+Tribler is written entirely in Python, but Android OS does not support this natively.
+As said in the design chapter we incorporate a Python interpreter into our design.
+
+
 Tribler is written entirely in Python, but most of its dependencies are written in C/C++.
 To use these libraries on a mobile device they need to be compiled for the right embedded-application binary interface (EABI) including all nonstandard dependencies.
 Figure \ref{fig:dependency_tree} shows the dependency tree.
@@ -46,46 +57,14 @@ Figure \ref{fig:dependency_tree} shows the dependency tree.
 	\label{fig:dependency_tree}
 \end{figure}
 
-% https://kos.gd/posts/5-ways-to-use-python-with-native-code/
-Calling C code directly from Python is possible by using the Python ctypes module to load a native dynamic-link library (.so files on Android) or by using the Python/C API of CPython.
-This API enables a library to define functions that are written in C to be callable from Python.
-These Python bindings are the glue between pure Python and pure C code.
-SWIG can generate the boiler plate code for this.
-Libtorrent, one of Triblers' main components, uses Boost.Python to provide a standard C++ API on top of the Python/C API.
-%Kivy uses Cython, but was later dropped
-% Many parts are written in C using Cython. \cite{kivy.org}
-% The major alternative approach promoted by the community is best represented by Cython. Cython is a Python superset designed to be compiled down to CPython C extension modules. One of the features Cython offers (as is possible from any binary extension module) is the ability to explicitly release the GIL around a section of code. By releasing the GIL in this fashion, Cython code can fully exploit all cores on a machine for computationally intensive sections of the code, while retaining all the benefits of Python for other parts of the application. \cite{http://python-notes.curiousefficiency.org/en/latest/python3/multicore_python.html}
-
-The Python/C API is actually so powerful it even provides access to the internals of the interpreter to mess with the global interpreter lock (GIL) which could be released during native C calls to improve the multi-threading performance of Tribler crypto.
+\section{CPython interpreter}
 
 
-\subsection{REST API}
-Tribler uses the event-driven networking engine Twisted, which is also written in Python.
-Twisted allows you to build inter-process communication protocols and provides a HTTP server which was used to build the REST API.
-
-Twisted uses a single thread to coordinate all others, called the reactor thread.
-If this thread is busy, the REST API can not receive incoming requests resulting in timeouts.
-We will investigate this in the next chapter.
+Tribler uses C++ implementation of torrent protocol, called libtorrent.
+To use this C/C++ library from within Python a certain capable interpreter is required.
+P4A offers such an interpreter: CPython.
 
 
-\section{Android platform}
-
-ARMv7 is currently supported by most Android phones and a large part of mobile devices are also compatible with this EABI, so it is the first to be supported by Tribler for now.
-
-Since API level 18 (Android 4.3 codenamed Jelly Bean MR2) loading native libraries dynamically from Python works properly (apparently).
-API level 18 also added support for Bluetooth Low Energy (LE), WiFi scan only mode, key store for app-private keys, hardware credential storage and automated UI testing.
-All very useful to Tribler.
-Earlier versions of Android already supported NDEF Push with NFC and Wi-Fi P2P (since API level 14), and initiate large file transfers over Bluetooth via NFC (since API level 16).
-83.7\% of devices on the Google Play Store run Android 4.3 or higher.
-
-
-For inter-application security the communication of Android intents must be secured.
-An Intent is a messaging object to request an action from another app component \cite{android-intents}.
-All Android intents should be explicit for internal actions and the action must be checked of all received intents, especially broadcasted intents. \cite{paper Analysing inter-application communication in Android}
-Also only the activities and services that should be public must be exported in the application manifest.
-
-
-\section{Python on Android}
 % Alternatieven QT, P4A, oudere python projecten
 What alternatives are there, besides P4A, to run python code on Android?
 0. QPython: scripting, cannot build regular .apk
@@ -99,35 +78,68 @@ Because this project continued from previous work (legacy code) build on P4A.
 % Crosscompilen met python bindings libraries (en dependencies)
 Even though the revamp version was build from scratch, it still is the best choice because it not only provides the Python interpreter, it also is a complete tool-chain to cross-compile native libraries with bindings and build a standalone Android app installation package (.apk).
 
+\subsection{C/C++ libraries}
+% https://kos.gd/posts/5-ways-to-use-python-with-native-code/
+Calling C code directly from Python is possible by using the Python ctypes module to load a native dynamic-link library (.so files on Android) or by using the Python/C API of CPython.
+This API enables a library to define functions that are written in C to be callable from Python.
+These Python bindings are the glue between pure Python and pure C code.
+SWIG can generate the boiler plate code for this.
+Libtorrent, one of Triblers' main components, uses Boost.Python to provide a standard C++ API on top of the Python/C API.
+%Kivy uses Cython, but was later dropped
+% Many parts are written in C using Cython. \cite{kivy.org}
+% The major alternative approach promoted by the community is best represented by Cython. Cython is a Python superset designed to be compiled down to CPython C extension modules. One of the features Cython offers (as is possible from any binary extension module) is the ability to explicitly release the GIL around a section of code. By releasing the GIL in this fashion, Cython code can fully exploit all cores on a machine for computationally intensive sections of the code, while retaining all the benefits of Python for other parts of the application. \cite{http://python-notes.curiousefficiency.org/en/latest/python3/multicore_python.html}
 
+The Python/C API is actually so powerful it even provides access to the internals of the interpreter to mess with the global interpreter lock (GIL) which could be released during native C calls to improve the multi-threading performance of Tribler crypto.
+
+
+\section{JNI}
 P4A uses the Java native interface (JNI), between Java and C/C++ code, to launch the CPython interpreter from a thin Java Android application.
 JNI enables to define functions that are written in C to be callable from Java.
 On top of that the entire core of Tribler can run, containing a REST HTTP API module also written in Python.
 The GUI is created by a native Android Java application, which talks to the REST API module.
 This Java application contains an Android service that wraps the original P4A CPython launcher.
-I changed this behavior to avoid having the GUI and back-end running in the same Python process, hindered by the GIL.
+I changed this behavior to avoid having the GUI and back-end running in the same Python process, hindered by the GIL. %TODO <- klopt niet! multiproces kan ook
 This approach is also superior to having two separate Python interpreters in distinct processes talking to each other, because that means using a very resource heavy Python GUI instead of the regular and lightweight native Android Java XML GUI.
 The latter has tools available for automated UI testing.
 
 
-\subsection{Build tool-chain}
-The Python-for-Android tool-chain uses recipes to cross compile the C/C++ libraries with Python bindings with the necessary build tools.
-These recipes are like a high level make file.
+\subsubsection{REST API}
+Tribler uses the event-driven networking engine Twisted, which is also written in Python.
+Twisted allows you to build inter-process communication protocols and provides a HTTP server which was used to build the REST API.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{build_tool_chain}
-	\caption{High level overview of the build tool-chain}
-	\label{fig:build_tool_chain}
-\end{figure}
-
-The libraries are compiled for any ARMv7 compatible platform, and little effort is required to replace Android with another OS in this respect.
+Twisted uses a single thread to coordinate all others, called the reactor thread.
+If this thread is busy, the REST API can not receive incoming requests resulting in timeouts.
+We will investigate this in the next chapter.
 
 
-\section{Native GUI}
+\section{Android OS}
+Since API level 18 (Android 4.3 codenamed Jelly Bean MR2) loading native libraries dynamically from Python works properly (apparently).
+API level 18 also added support for Bluetooth Low Energy (LE), WiFi scan only mode, key store for app-private keys, hardware credential storage and automated UI testing.
+All very useful to Tribler.
+Earlier versions of Android already supported NDEF Push with NFC and Wi-Fi P2P (since API level 14), and initiate large file transfers over Bluetooth via NFC (since API level 16).
+83.7\% of devices on the Google Play Store run Android 4.3 or higher.
+
+
+For inter-application security the communication of Android intents must be secured.
+An Intent is a messaging object to request an action from another app component \cite{android-intents}.
+All Android intents should be explicit for internal actions and the action must be checked of all received intents, especially broadcasted intents. \cite{paper Analysing inter-application communication in Android}
+Also only the activities and services that should be public must be exported in the application manifest.
+
+
+\section{Videoplayer}
+The video player VLC can be integrated as hard to maintain library and a custom GUI.
+This was done first, but afterwards we decided to improve maintainability by packaging the entire Android app installation package (.apk).
+Which was also much easier to accomplish in hindsight.
+
+The API combined with Java is better for parallelization than the coarse grained locking by the CPython interpreter.
+Shared memory threading in Python code is restricted to single-thread performance because of the global interpreter lock (GIL).
+
+
+\section{Tribler Java front-end}
 Traditionally applications with a user interface execute tasks in the background while showing the progress to the user.
 The design choice of separating the GUI from the back-end means no longer an unresponsive GUI, like older versions of Tribler are used to.
 
+\subsection{XML GUI} % native gui
 Due to the fact that Android targets mobile devices it is very optimized for low resource usage.
 Therefore memory is freed more aggressively and the application is often paused or stopped and restarted if the user switches to another app.
 Running two interpreters with Python Kivy front-end and Python Tribler back-end would be doubling memory usage for the interpreter itself and require an inter-process protocol as well.
@@ -138,6 +150,8 @@ The reactive programming paradigm is a perfect fit for asynchronous tasks.
 Thanks to RxJava and RxAndroid asychronous multi-threaded coding is made very enjoyable:
 %FIG code example
 As shown in the code example performing IO tasks on the dedicated Android thread and making UI changes on the main thread becomes trivial.
+
+\subsection{HTTP Client}
 The HTTP client that talks in JSON with the REST API is build on the popular library OkHttp and fits perfectly to RxJava with a library called Retrofit.
 The Retrofit library enables a very declarative API client.
 %FIG code example
@@ -146,8 +160,11 @@ Because of the nature of Android to destroy interface elements if a configuratio
 To detect notorious memory leaks on Android we use another library made to do exactly that: LeakCanary.
 Android provides a way to deal with continuity of activities with fragments that can remain in memory which were used in conjunction with composite subscriptions of RxJava.
 
-\subsection{Screenshots}
-%TODO: verwijzen en doorspreken
+
+\section{Screenshots}
+The implementation of features dictated by our functional requirements in Section \ref{sec:func_req} is shown in the following screenshots.
+
+%TODO: Figuren en REQUIREMENTS verwijzen en doorspreken
 Figure \ref{fig:menu-popular} shows the main menu of the Tribler app.
 The first three items presented to the user are the main views: the user's favorite channels, their own channel and discovering popular content.
 The next four items are actions related to creating new content or related to the application.
@@ -206,14 +223,18 @@ debounce
 \end{figure}
 
 
-\subsection{Videoplayer}
-The video player VLC can be integrated as hard to maintain library and a custom GUI.
-This was done first, but afterwards we decided to improve maintainability by packaging the entire Android app installation package (.apk).
-Which was also much easier to accomplish in hindsight.
+\section{Build tool-chain}\label{sec:build_toolchain}
+The Python-for-Android tool-chain uses recipes to cross compile the C/C++ libraries with Python bindings with the necessary build tools.
+These recipes are like a high level make file.
 
-The API combined with Java is better for parallelization than the coarse grained locking by the CPython interpreter.
-Shared memory threading in Python code is restricted to single-thread performance because of the global interpreter lock (GIL).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{build_tool_chain}
+	\caption{High level overview of the build tool-chain}
+	\label{fig:build_tool_chain}
+\end{figure}
 
+The libraries are compiled for any ARMv7 compatible platform, and little effort is required to replace Android with another OS in this respect.
 
 
 \section{Implementation statistics}

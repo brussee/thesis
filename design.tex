@@ -17,7 +17,7 @@ Some functionality of Tribler has been shown to work on Android before \cite{bsc
 Our design will fill in the gap of connecting the pieces of the grand puzzle to make Tribler fully work on mobile.
 
 
-\section{Functional requirements}
+\section{Functional requirements}\label{sec:func_req}
 % Functional level
 % Function design
 %Product design involves determining the objectives of the system. Central questions in this process are “what is feasible?”, “what is required?” and “what functions need to be fulfilled by the system?” It is a strategic decision process and it will be termed the function design 
@@ -28,6 +28,9 @@ Our design will fill in the gap of connecting the pieces of the grand puzzle to 
 %store, reuse data, backup
 %computations
 %timing and synchronization
+
+No client on receiving end, therefore to spread virally, no client required.
+Bluetooth has standard file transfer protocol, WiFi does not.
 
 Because of the ubiquity of smart-phones with built-in camera one is always at hand and ready to record.
 Such mobile devices are much more manageable than for example laptops with built-in camera that Tribler has been capable of running on in the past.
@@ -46,18 +49,19 @@ Because this may require both devices having Tribler installed, it also must be 
 Self-created content must be stored on the internal memory and processed automatically on the mobile device itself in order to avoid dependency any external processing unit.
 This includes the creation of .torrent files required to share content via the bit-torrent protocol.
 
-\begin{enumerate}[label=A\arabic*.,ref=req. A\arabic*]
+\begin{enumerate}[label=A\arabic*.,ref=A\arabic*]
 	
-	\item The implementation must be capable of publishing videos to other devices with and without an Internet connection.
-	\item The implementation must be capable of recording videos.
+	\item The implementation must be capable of effortless peer-to-peer transfer of itself.
+	\item The implementation must be capable of publishing videos to other devices without the need for an Internet connection.
 	\item Any video available on the device must be directly publishable. %acquisition
+	\item The implementation must enable a user to record videos.
 	\item The implementation must enable a user to create a channel.
 	\item The implementation must enable the owner of an existing channel to edit it.
 %	\item The implementation should enable the user to add torrents by url
 	\item The implementation must enable creating a torrent file from a file available on the device.
 	\item A user must be able to manually configure the Tribler configuration on the device.
 %	\item The configuration of Tribler core must be stored separately from the data in a human readable form to enable users to alter it with an external editor.
-	\item The implementation must support video playback.
+	\item The implementation must support streaming video playback.
 	\item The implementation must support all other Tribler functionality not mentioned above.
 %	\item The app must enable the user to search local and remote content in parallel.
 %	\item The app must support Multichain
@@ -68,19 +72,20 @@ This includes the creation of .torrent files required to share content via the b
 \end{enumerate}
 
 
-\section{Non-functional requirements}
+\section{Non-functional requirements}\label{sec:non_func_req}
 
 Due to the challenges and opportunities as described in Section \ref{ch:tribler_mobile}, we define the following non-functional requirements:
 
-\begin{enumerate}[label=B\arabic*.,ref=req. B\arabic*]
+\begin{enumerate}[label=B\arabic*.,ref=B\arabic*]
 	
 	\item \label{rq1}The mobile device must be capable of running Tribler independently.
 	%re-usability
-	\item The implementation must incorporate the existing Tribler Python core and the required C/C++ libraries.
+	\item \label{rq2} The implementation must incorporate the existing Tribler Python core and the required C/C++ libraries.
 	%technology to be used: programming language, db
 	%resource usage
-	\item The implementation may not exceed 512MB of RAM usage while running.
-	\item The implementation must be capable of running on ARMv7 or compatible mobile processors.
+	\item The implementation must consider the restricted resources of a mobile platform in terms of RAM and processing power.
+%	\item The implementation may not exceed 512MB of RAM usage while running.
+%	\item The implementation must be capable of running on ARMv7 or compatible mobile processors.
 	%computing platform: min. system specs and features, api level
 	\item The implementation must support WiFi, Bluetooth and NFC peer-to-peer features.
 	\item The implementation must utilize the built-in camera for recording videos.
@@ -153,7 +158,7 @@ The proposed architecture as shown in Figure \ref{fig:system_architecture_design
 
 The requirement of re-using the Tribler Python core and its C/C++ dependencies requires the architecture to incorporate these as is.
 As a consequence, a Python interpreter must be added to the design as well.
-Since mobile platforms are not required to support running Python code natively, but the application must be distributed as a single installable package and run independently (\ref{rq1}), the interpreter is packaged inside the application.
+Since mobile platforms are not required to support running Python code natively, but the application must be distributed as a single installable package and run independently (req. \ref{rq1}), the interpreter is packaged inside the application.
 % Reuse existing designs and code where possible
 % What are the existing modules we re-use?
 %Having separated the GUI from the back-end, we can easily re-use the Tribler core and replace the outdated wxPython GUI with something modern.

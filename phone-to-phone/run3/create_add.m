@@ -28,8 +28,8 @@ created = zeros(8, 1);
 added = zeros(8, 1);
 
 for j=0:7
-    created(j+1) = ( t(j*3+2) - t(j*3+1) ) / sizes(j+1);
-    added(j+1) = ( t(j*3+3) - t(j*3+2) ) / sizes(j+1);
+    created(j+1) = ( t(j*3+2) - t(j*3+1) );% / sizes(j+1);
+    added(j+1) = ( t(j*3+3) - t(j*3+2) );% / sizes(j+1);
 end
 
 boxplot([created, added], 'Labels',{'Create torrent','Add torrent'});
