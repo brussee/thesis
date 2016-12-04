@@ -51,18 +51,18 @@ This includes the creation of .torrent files required to share content via the b
 
 \begin{enumerate}[label=A\arabic*.,ref=A\arabic*]
 	
-	\item The implementation must be capable of effortless peer-to-peer transfer of itself.
-	\item The implementation must be capable of publishing videos to other devices without the need for an Internet connection.
-	\item Any video available on the device must be directly publishable. %acquisition
-	\item The implementation must enable a user to record videos.
-	\item The implementation must enable a user to create a channel.
-	\item The implementation must enable the owner of an existing channel to edit it.
+	\item \label{rq:BeamApp} The implementation must be capable of effortless peer-to-peer transfer of itself.
+	\item \label{rq:PublishOffline} The implementation must be capable of publishing videos to other devices without the need for an Internet connection.
+	\item \label{rq:PublishAny} Any video available on the device must be directly publishable. %acquisition
+	\item \label{rq:Rec} The implementation must enable a user to record videos.
+	\item \label{rq:MyChannelCreate} The implementation must enable a user to create a channel.
+	\item \label{rq:MyChannelEdit} The implementation must enable the owner of an existing channel to edit it.
 %	\item The implementation should enable the user to add torrents by url
-	\item The implementation must enable creating a torrent file from a file available on the device.
-	\item A user must be able to manually configure the Tribler configuration on the device.
+	\item \label{rq:CreateTorrent} The implementation must enable creating a torrent file from a file available on the device.
+%	\item A user must be able to manually configure the Tribler configuration on the device.
 %	\item The configuration of Tribler core must be stored separately from the data in a human readable form to enable users to alter it with an external editor.
-	\item The implementation must support streaming video playback.
-	\item The implementation must support all other Tribler functionality not mentioned above.
+	\item \label{rq:StreamingVideo} The implementation must support streaming video playback.
+	\item \label{rq:AllTribler} The implementation must support all other Tribler functionality not mentioned above.
 %	\item The app must enable the user to search local and remote content in parallel.
 %	\item The app must support Multichain
 %	\item The app must support streaming video playback
@@ -78,45 +78,45 @@ Due to the challenges and opportunities as described in Section \ref{ch:tribler_
 
 \begin{enumerate}[label=B\arabic*.,ref=B\arabic*]
 	
-	\item \label{rq1}The mobile device must be capable of running Tribler independently.
+	\item \label{rq:Independence} The mobile device must be capable of running Tribler independently.
 	%re-usability
-	\item \label{rq2} The implementation must incorporate the existing Tribler Python core and the required C/C++ libraries.
+	\item \label{rq:PythonClibs} The implementation must incorporate the existing Tribler Python core and the required C/C++ libraries.
 	%technology to be used: programming language, db
 	%resource usage
-	\item The implementation must consider the restricted resources of a mobile platform in terms of RAM and processing power.
+	\item \label{rq:LimitedResources} The implementation must consider the restricted resources of a mobile platform in terms of RAM and processing power.
 %	\item The implementation may not exceed 512MB of RAM usage while running.
 %	\item The implementation must be capable of running on ARMv7 or compatible mobile processors.
 	%computing platform: min. system specs and features, api level
-	\item The implementation must support WiFi, Bluetooth and NFC peer-to-peer features.
-	\item The implementation must utilize the built-in camera for recording videos.
-	\item The mobile device must be connectible via WiFi or mobile data connection
+	\item \label{rq:P2P} The implementation must support WiFi, Bluetooth and NFC peer-to-peer features.
+	\item \label{rq:BuiltinCam} The implementation must utilize the built-in camera for recording videos.
+	\item\label{rq:Connectible}  The mobile device must be connectible via WiFi or mobile data connection
 	%response time
-	\item Search results ought to appear in less than 1 second for local content.
+	\item \label{rq:SubsecondSearch} Search results ought to appear in less than 1 second for local content.
 	%throughput
 	% Design for portability
-	\item The implementation must be distributed as a single installable container.
+	\item \label{rq:DistSingleApk} The implementation must be distributed as a single installable container.
 %	\item The app must communicate with the JSON REST API of the Tribler core.
-	\item The implementation must be able to keep running in the background even if the user is not actively using it.
-	\item All processing tasks must be performed asynchronously.
-	\item The user must be able to interact with the implementation via a graphical user interface (GUI).
-	\item All ongoing tasks must be indicated as such in the GUI.
-	\item The GUI must stay responsive to the users' input while performing a background task.
-	\item The GUI must stay responsive to the users' input while presenting large amounts of data on screen.
+	\item \label{rq:Service} The implementation must be able to keep running in the background even if the user is not actively using it.
+	\item \label{rq:Async} All processing tasks must be performed asynchronously.
+	\item \label{rq:Gui} The user must be able to interact with the implementation via a graphical user interface (GUI).
+	\item \label{rq:Progressbar} All ongoing tasks must be indicated as such in the GUI.
+	\item \label{rq:Responsive} The GUI must stay responsive to the users' input while performing a background task.
+	\item \label{rq:ResponsiveList} The GUI must stay responsive to the users' input while presenting large amounts of data on screen.
 	%reliability
-	\item If invalid input is provided by the user through the GUI the user must be asked to correct the input.
+	\item \label{rq:UserRetry} If invalid input is provided by the user through the GUI the user must be asked to correct the input.
 	%availability
 	%recover from failure
-	\item If a recoverable error occurs, the implementation must automatically retry.
-	\item If an exception occurs, the user must be able to restart Tribler.
-	\item Upon restarting, the implementation must return to a working state.
+	\item \label{rq:AutoRetry} If a recoverable error occurs, the implementation must automatically retry.
+	\item \label{rq:Restart} If an exception occurs, the user must be able to restart Tribler.
+	\item \label{rq:Recover} Upon restarting, the implementation must return to a working state.
 	%maintainability and enhancement
-	\item The entire build tool-chain must be integrated on the build server of Tribler. % for continuous integration. To keep the project maintainable
+	\item \label{rq:CI} The entire build tool-chain must be integrated on the build server of Tribler. % for continuous integration. To keep the project maintainable
 %	\item All existing tests, except platform specific and desktop GUI tests, must be performed for every build.
-	\item As much code as possible must be covered by tests.
+	\item \label{rq:Coverage} As much code as possible must be covered by tests.
 	% Keep the level of abstraction as high as possible
-	\item The implementation must be agnostic to version differences of supported platforms and operating systems.
+	\item \label{rq:SupportLibs} The implementation must be agnostic to version differences of supported platforms and operating systems.
 	% reuse of expertise
-	\item The user interface design must follow established best practices.%, like Google's "material design".
+	\item \label{rq:MaterialDesign} The user interface design must follow established best practices.%, like Google's "material design".
 	% reuse of standard designs and algorithms
 	% reuse of libraries of classes or procedures, of of powerful commands built into languages and operating systems
 	% reuse of frameworks
@@ -129,7 +129,7 @@ Due to the challenges and opportunities as described in Section \ref{ch:tribler_
 %	\item The API should be consistent.
 %	\item The API should be clearly documented for other developers.
 	% Design defensively
-	\item The implementation must be attack-resilient.
+	\item \label{rq:AttackResilient} The implementation must be attack-resilient.
 	% Internationalization
 %	The GUI should support other languages to be added without changing source code.
 	% Resource usage
@@ -138,7 +138,7 @@ Due to the challenges and opportunities as described in Section \ref{ch:tribler_
 %	Make use of universally recognizable icons that are native to the platform UI.
 %	The responsiveness of the GUI must not be significantly impacted by the amount of data presented on screen.
 %	The responsiveness of the GUI must also not be significantly impacted by the amount of computational work, or otherwise, done in the background.
-
+	
 \end{enumerate}
 
 
@@ -158,7 +158,7 @@ The proposed architecture as shown in Figure \ref{fig:system_architecture_design
 
 The requirement of re-using the Tribler Python core and its C/C++ dependencies requires the architecture to incorporate these as is.
 As a consequence, a Python interpreter must be added to the design as well.
-Since mobile platforms are not required to support running Python code natively, but the application must be distributed as a single installable package and run independently (req. \ref{rq1}), the interpreter is packaged inside the application.
+Since mobile platforms are not required to support running Python code natively, but the application must be distributed as a single installable package and run independently (req. \ref{rq:Independence}), the interpreter is packaged inside the application.
 % Reuse existing designs and code where possible
 % What are the existing modules we re-use?
 %Having separated the GUI from the back-end, we can easily re-use the Tribler core and replace the outdated wxPython GUI with something modern.
