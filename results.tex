@@ -225,6 +225,11 @@ The difference in amount of response data turned out to be much bigger than expe
 % Conclusions
 %TODO: IO bound + crappy Python code WHY?
 % busy Twisted reactor?
+Tribler uses the event-driven networking engine Twisted, which is also written in Python.
+Twisted allows you to build inter-process communication protocols and provides a HTTP server which was used to build the REST API.
+Twisted uses a single thread to coordinate all others, called the reactor thread.
+If this thread is busy, the REST API can not receive incoming requests resulting in timeouts.
+
 Considering the difference in amount of response data and the bandwidth of USB versus internal memory it is an unfair comparison.
 However, based on our result we may conclude that the API does not respond consistently and appear to behave differently than the other benchmark.
 The device not being able to process 5 requests per second possibly reveals information about the connection bandwidth and the multi-threaded processing capability.
