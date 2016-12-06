@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11.20151206">
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13.20161028">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="request_benchmark_tribler_api" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -64,7 +64,7 @@
           <intProp name="calcMode">0</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>300.0</value>
+            <value>60.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -96,9 +96,10 @@
               <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
               <assertionsResultsToSave>0</assertionsResultsToSave>
               <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
             </value>
           </objProp>
-          <stringProp name="filename">api_requests_summary.csv</stringProp>
+          <stringProp name="filename">/home/paul/repos/thesis/api_benchmark/api_requests_summary.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
