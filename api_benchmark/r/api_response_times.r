@@ -16,8 +16,8 @@ generate_response_time_graph <- function(path) {
 	return(plot)
 }
 
-current = "api_requests_summary.csv"
-upstream = "../upstream/api_requests_summary.csv"
+current = "../Nexus_6.csv"
+upstream = "../Laptop.csv"
 
 if(file.exists(current)){
 	# If we have an upstream version, we are going to make a side comparison graph
