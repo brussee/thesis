@@ -3,7 +3,7 @@ library("ggplot2")
 library("gridExtra")
 
 # Load the comparison function
-source(paste(Sys.getenv('R_SCRIPTS_PATH'), 'side_comparison.r', sep='/'))
+source(paste(Sys.getenv('R_SCRIPTS_PATH', '.'), 'side_comparison.r', sep='/'))
 
 # Generates the response time graph given a path to a jmeter summary csv file
 generate_response_time_graph <- function(path) {
