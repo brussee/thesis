@@ -13,10 +13,9 @@ We take several measurements to quantify how well it works in terms of our non-f
 For scale a laptop and PC are included in some measurements.
 We focus on the design aspects and evaluate the key performance indicators:
 \begin{itemize}
-	\item{\emph{usability} in terms of latency and startup time,}
-	\item{\emph{resource usage} in terms of CPU utilization,}
-	\item{\emph{performance} in terms of frequency and duration of function calls,}
 	\item{\emph{scalability} in terms of discovery time and bandwidth accounting.}
+	\item{\emph{performance} in terms of frequency and duration of function calls, in terms of latency and startup time,}
+	\item{\emph{resource usage} in terms of CPU utilization,}
 \end{itemize}
 
 % Rationale
@@ -25,6 +24,7 @@ We focus on the design aspects and evaluate the key performance indicators:
 % Setup
 % Results
 % Conclusions
+
 
 \section{Content discovery}
 %TODO: 2 subvragen: creation "req.X" (8) & adding "req.Y" (8) & discovery "req.Z" (15)
@@ -170,6 +170,11 @@ The reason for that may be that this phone was not wiped and given a fresh insta
 That could mean that other applications installed on a device could significantly impact the performance of Tribler.
 The sample standard deviation is relatively small though, which contradicts this hypothesis.
 This should be investigated further, including if anything can be done on the part of Tribler.
+
+
+\section{Content creation}
+%TODO
+%grote scenario
 
 
 \section{API latency}
@@ -403,11 +408,16 @@ The following table shows the results of both executions.
 		1     & 711   & 14       & 13          & 30          & 0.7241 \\ \hline
 		2     & 749   & 12       & 15          & 3            & 0.7861 \\ \hline
 		3	  & 782	  & 10		 & 18		   & 4			  & 0.7871 \\ \hline
-		PC  & 812   & 0         & 0            & 30         & 0.7894 \\ \hline
+		PC   & 812   & 0         & 0            & 30          & 0.7894 \\ \hline
+		PC   & 812   & 0         & 0            & 30          & 0.7901 \\ \hline
+		4     & 782   & 10       & 18          & 4            & 0.7897 \\ \hline
 	\end{tabular}
 	\caption{Tests results and coverage line-rate at different points in time during development}
 	\label{table:testing_coverage}
 \end{table}
+%TODO explain failures and 30 vs 4 skipped
+%GUI test fail because import Qt above @skip
+
 The number of tests has increased as well as the coverage line-rate while the number of errors and skipped tests have decreased.
 A failure means an assertion was not met and an error represents an exception while running a test.
 % Conclusions
