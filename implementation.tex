@@ -48,9 +48,9 @@ Our implementation supports API version 18 and higher, because of reasons explai
 85.6\% of Android devices run API version 18 or higher \cite{android-dashboard}.
 Android support libraries are used to abstract from differences between API versions (req. \ref{rq:SupportLibs}).
 
-Inter-application communication, via Android intents, must to be secured (req. \ref{rq:AttackResilient}) .
+Inter-application communication, via Android intents, must be secured (req. \ref{rq:AttackResilient}) .
 An Intent is a messaging object to request an action from another app component \cite{android-intents}.
-Therefore, all Android intents are explicit for internal actions and the action of all received intents is checked, especially broadcasted intents \cite{intent-secure}. 
+Therefore, all Android intents are explicit for internal actions and the action of all received intents is checked, especially broadcast intents \cite{intent-secure}. 
 Also, only the activities and services that should be publicly accessible are exported in the application manifest.
 
 

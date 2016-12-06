@@ -337,6 +337,7 @@ Another way to optimize is multiprocessing, which avoids the GIL completely \cit
 
 \section{CPU utilization}
 %IO bound or CPU bound?
+%TODO: tijdens HD streaming: net cpu over, nu nog steeds??
 % let it run and measure
 We saw in X that the cryptography takes a lot of time.
 We need to know if this is CPU bound or not for optimization purposes.
@@ -384,10 +385,6 @@ Even when performing the intensive crypto work of the Multichain experiment 2 CP
 % Conclusions
 This suggests that releasing the GIL during heavy crypto work could result in a significant performance gain.
 However our results are inconclusive and warrant further research.
-
-
-\section{HD video streaming}
-%TODO net cpu over, nu nog steeds??
 
 
 \section{Testing and coverage}
