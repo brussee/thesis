@@ -67,12 +67,6 @@ Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a n
 	\caption{Elapsed time from adding new content to a channel and it being discovered by subscribed peers.}
 	\label{fig:boxplot-nr.of.devices-130}
 \end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{boxplot-per-mb-torrent-create-add}
-	\caption{Time required to create a torrent and add it to a channel, normalized for 1 MB of content.}
-	\label{fig:boxplot-per-mb-torrent-create-add}
-\end{figure}
 The results show that within 4 seconds 9 devices have discovered the new content.
 From the 10th device and beyond an increase in discovery time is noticeable.
 % Conclusions
@@ -175,6 +169,12 @@ This should be investigated further, including if anything can be done on the pa
 \section{Content creation}
 %TODO
 %grote scenario
+\begin{figure}[H]
+	\centering % trim={<left> <lower> <right> <upper>}
+	\includegraphics[trim={0cm 6.5cm 0cm 7cm},clip,width=.5\textwidth]{torrent-create-scatterplot}
+	\caption{Time required to create a torrent.}
+	\label{fig:torrent-create-scatterplot}
+\end{figure}
 
 
 \section{API latency}
@@ -236,7 +236,7 @@ PC is added for reference.
   	 Laptop   & 1000 & 181   & 101   & 416   & 42.72   & 60.0 & 579.49 & 592791.3 \\ \hline
   	 Nexus 6 & 1000 & 1671 & 1390 & 2925 & 174.14 & 35.9 & 345.94 & 592649.8 \\ \hline
   \end{tabular}
-  \caption{These numbers are based on elapsed time, not latency, from the entire benchmark}
+  \caption{??}
   \label{table:api_benchmark}
 \end{table}
 The set rate of 300 requests per minute is clearly not reached by the smart-phone in our benchmark by a factor of 9.

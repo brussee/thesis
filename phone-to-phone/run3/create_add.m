@@ -32,7 +32,8 @@ for j=0:7
     added(j+1) = ( t(j*3+3) - t(j*3+2) );% / sizes(j+1);
 end
 
-boxplot([created, added], 'Labels',{'Create torrent','Add torrent'});
+scatter(created, sizes)
+%boxplot([created, added], 'Labels',{'Create torrent','Add torrent'});
 
 
 function t = toTimestamp(input_string)
