@@ -11,7 +11,7 @@ generate_response_time_graph <- function(path) {
 	plot = ggplot(data, aes(x=seq(1, length(Latency)), y=Latency)) +
 	    geom_line() +
 	    xlab("Request") +
-	    ylab("Latency (milliseconds)")
+	    ylab("Response time (ms)")
 
 	return(plot)
 }
@@ -25,7 +25,7 @@ if(file.exists(current)){
 		current_response_times <- generate_response_time_graph(current)
 		upstream_response_times <- generate_response_time_graph(upstream)
 
-        create_comparison(upstream_response_times, current_response_times, "response_times.png")
+        create_comparison(upstream_response_times, current_response_times, "response_time_comparison.png")
 	} else { # If not, we will just save this graph as-is.
 		current_response_times <- generate_response_time_graph(current)
 		current_response_times
