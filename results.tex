@@ -190,13 +190,6 @@ Any client can process and render a response differently, possibly in a streamin
 By leaving out that element this metric is measuring the operation time via the API.
 % Expected / desired results
 We want to see that the latency is bounded, consistent and generally low.
-Previous research has shown the following results on a computer:
-\begin{figure}[H]
-	\centering % trim={<left> <lower> <right> <upper>}
-	\includegraphics[trim={0 0 23cm 0},clip,width=0.9\textwidth]{api_laurens}
-	\caption{API latency on PC}
-	\label{fig:api_laurens}
-\end{figure}
 % Setup
 We did the same benchmark with a slightly different setup.
 A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was connected via USB to a laptop running JMeter.
@@ -205,27 +198,43 @@ With JMeter we request the discovered channels from the API a 1000 times and mea
 JMeter is also capable of setting a desired number of requests per minute, provided the device can handle it.
 We set this parameter to 300 requests per minute, equal to the other benchmark.
 % Results
-Our database to be queried is not equal to one used in figure \ref{fig:api_laurens}.
-The following figure shows the latency for every request.
+The following figures show the response times for every request.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{api_benchmark}
-	\caption{API latency on Nexus 6 smart-phone}
-	\label{fig:api_benchmark}
+	\begin{minipage}{.49\textwidth}
+		\includegraphics[width=\textwidth]{api_Laptop}
+		\caption{API response times right after first launch on a decent laptop}
+		\label{fig:api_Laptop}
+	\end{minipage}
+	~
+	\begin{minipage}{.49\textwidth}
+		\includegraphics[width=\textwidth]{api_Nexus_6}
+		\caption{API response times right after first launch on Nexus 6 smart-phone}
+		\label{fig:api_Nexus_6}
+	\end{minipage}
+	
+	\begin{minipage}{.49\textwidth}
+		\includegraphics[width=\textwidth]{api_Laptop-2}
+		\caption{API response times on a decent laptop}
+		\label{fig:api_Laptop-2}
+	\end{minipage}
+	~
+	\begin{minipage}{.49\textwidth}
+		\includegraphics[width=\textwidth]{api_Nexus_6-2}
+		\caption{API response times on a Nexus 6 smart-phone}
+		\label{fig:api_Nexus_6-2}
+	\end{minipage}
 \end{figure}
 The plot shows large spikes and seemingly a curious and unexpected pattern.
 Table \ref{table:api_benchmark} shows the large difference in statistics.
 PC is added for reference.
 \begin{table}
   \begin{tabular}{l | *{8}{r}} \hline
-  	 & N & Avg. (ms) & Min. (ms) & Max. (ms) & $\sigma$ (ms) & Throughput & KB/second & Avg. Bytes \\ \hline \hline
-	Nexus 6 & 1000 & 1803 & 1292 & 3292 & 301.25 & 33.3 req/minute & 347.44 & 641709.0 \\ \hline
-	PC         & 1000 & 5        & 3      & 107    & 4.42     & 140.8 req/second & 2548.00 & 18525.0 \\ \hline
-	Laptop  & 1000 & 101    & 3       & 1712  & 137.70 & 1.0 req/second     & 117.27 & 120042.2 \\ \hline
-	Nexus 6 & 1000 & 3975 & 8       & 39477 & 5362.51 & 14.4 req/minute & 49.19 & 210506.8 \\ \hline
-	Laptop   & 1000 & 65     & 1       & 1021    & 99.00 & 1.0 req/second      & 73.72 & 75410.6 \\ \hline
-	Nexus 6 & 1000 & 1671 & 1390 & 2925 & 174.14 & 35.9 req/minute & 345.94 & 592649.8 \\ \hline
-	Laptop   & 1000 & 181   & 101   & 416   & 42.72   & 1.0 req/second   & 579.49 & 592791.3 \\ \hline
+  	 & N & Avg. (ms) & Min. (ms) & Max. (ms) & $\sigma$ (ms) & Req./min. & KB/second & Avg. Bytes \\ \hline \hline
+  	 Laptop   & 1000 & 65     & 1       & 1021 & 99.00 & 60.0 & 73.72 & 75410.6 \\ \hline
+  	 Nexus 6 & 1000 & 3975 & 8       & 39477 & 5362.51 & 14.4 & 49.19 & 210506.8 \\ \hline
+  	 Laptop   & 1000 & 181   & 101   & 416   & 42.72   & 60.0 & 579.49 & 592791.3 \\ \hline
+  	 Nexus 6 & 1000 & 1671 & 1390 & 2925 & 174.14 & 35.9 & 345.94 & 592649.8 \\ \hline
   \end{tabular}
   \caption{These numbers are based on elapsed time, not latency, from the entire benchmark}
   \label{table:api_benchmark}
