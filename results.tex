@@ -1,5 +1,4 @@
-\chapter{Verification and validation}
-\label{ch:results}
+\chapter{Verification and validation}\label{ch:results}
 % Validation: Are we building the right system?
 % Verification: Are we building the system right?
 
@@ -26,7 +25,7 @@ We focus on the design aspects and evaluate the key performance indicators:
 % Conclusions
 
 
-\section{Content discovery}
+\section{Content discovery}\label{sec:content_discovery}
 %TODO: 2 subvragen: creation "req.X" (8) & adding "req.Y" (8) & discovery "req.Z" (15)
 % laat zien dat linair verband aannemelijk is voor creation & adding
 %TODO: acquisitie van data uitbreiden
@@ -76,7 +75,7 @@ What can be concluded from this experiment is that on the same local network the
 From the 10th device onwards the dissemination slows down.
 
 
-\section{Multichain performance}
+\section{Multichain performance}\label{sec:multichain_perf}
 % Rationale
 Multichain is the new accounting system of Tribler.
 This feature is central to the concept of trust in the Tribler network and is very important for the future as other functionality will be built upon it.
@@ -117,7 +116,7 @@ The capacity to store enough Multichain blocks to audit past exchanges should al
 If not, other more powerful nodes could be queried to supply the necessary history about a peer, that requests your bandwidth, to verify if that peer is trustworthy.
 
 
-\section{Startup time}
+\section{Startup time}\label{sec:startup_time}
 %TODO previous chapter: implementation architecture startup sequence nice design, how does it perform?
 % when is gui ready for real? do not say gui is response blabla because we do not measure.
 
@@ -166,18 +165,27 @@ The sample standard deviation is relatively small though, which contradicts this
 This should be investigated further, including if anything can be done on the part of Tribler.
 
 
-\section{Content creation}
-%TODO
-%grote scenario
+\section{Content creation}\label{sec:content_creation}
+%TODO grote scenario
+% Rationale
+How quick one can create content and distribute it depends not only on the discovery time, as measured in Section \ref{sec:content_discovery}, but firstly on the speed of the torrent creation process.
+% Metrics
+% Expected / desired results
+% Setup
+The setup for this measurement is exactly the same as in Section \ref{sec:content_discovery} with one phone creating the torrent file of the video content.
+% Results
+Figure \ref{fig:torrent-create-scatterplot} shows the relation between the size of the content and the time required to create a torrent file for it.
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={0cm 6.5cm 0cm 7cm},clip,width=.5\textwidth]{torrent-create-scatterplot}
 	\caption{Time required to create a torrent.}
 	\label{fig:torrent-create-scatterplot}
 \end{figure}
+% Conclusions
 
 
-\section{API latency}
+
+\section{API responsiveness}\label{sec:api_responsiveness}
 % Rationale
 The user expects operations to take a consistent and reasonable amount of time.
 By design all functionality is going through the API.
@@ -261,7 +269,7 @@ This phenomenon is not of great importance though, because users are not expecte
 Further investigation should figure out if this phenomenon is also observed with lower amounts of requests per minute.
 
 
-\section{Profiling}
+\section{Profiling}\label{sec:profiling}
 % Rationale
 Because of the challenges put forward in chapter \ref{ch:tribler_mobile} we investigate if time is spent disproportionately on some function.
 % Expected / desired results
@@ -346,7 +354,7 @@ As seen from the time per call for \_\_m2crypto.ecdsa\_verify in table \ref{tabl
 %TODO
 Another way to optimize is multiprocessing, which avoids the GIL completely \cite{quinten}.
 
-\section{CPU utilization}
+\section{CPU utilization}\label{sec:cpu_utilization}
 %IO bound or CPU bound?
 %TODO: tijdens HD streaming: net cpu over, nu nog steeds??
 % let it run and measure
@@ -398,7 +406,7 @@ This suggests that releasing the GIL during heavy crypto work could result in a 
 However our results are inconclusive and warrant further research.
 
 
-\section{Testing and coverage}
+\section{Testing and coverage}\label{sec:testing_coverage}
 % Rationale
 The design choice of reusing all Tribler core source code means we need to verify its correctness.
 To make sure all code on Android works the same as on other supported platforms we need to test all code.
