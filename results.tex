@@ -1,21 +1,11 @@
-\chapter{Verification and validation}\label{ch:results}
+\chapter{Performance analysis}\label{ch:results}
 % Validation: Are we building the right system?
 % Verification: Are we building the system right?
-
-To verify if running all Tribler functionality on mobile devices is feasible we take a look at relevant performance characteristics.
-We take several measurements to quantify how well it works in terms of our non-functional requirements.
-%TODO Measure waar staan we nu, wat is er mogelijk
-%Functionality: Meet requirements in implementation
-%Device vs PC
-%Device vs device
-
-For scale a laptop and PC are included in some measurements.
-We focus on the design aspects and evaluate the key performance indicators:
-\begin{itemize}
-	\item{\emph{scalability} in terms of discovery time and bandwidth accounting.}
-	\item{\emph{performance} in terms of frequency and duration of function calls, in terms of latency and startup time,}
-	\item{\emph{resource usage} in terms of CPU utilization,}
-\end{itemize}
+To analyze how feasible is it to run all Tribler functionality on mobile devices, we measure several performance characteristics relevant to the functional and non-functional requirements in Chapter \ref{ch:design}.
+We take several measurements on different devices to quantify the performance and resource usage in the context of the scenario in the problem description in Chapter \ref{ch:problem_desc}.
+The results will indicate the state of the art, before any optimization, in functionality of Tribler on mobile devices as described in Chapter \ref{ch:tribler}.
+From the results, possible angles for optimization will emerge and further described in Chapter \ref{ch:conclusions}.
+The results also show that all requirements have been met.
 
 % Rationale
 % Metrics
@@ -23,7 +13,6 @@ We focus on the design aspects and evaluate the key performance indicators:
 % Setup
 % Results
 % Conclusions
-
 
 \section{Content discovery}\label{sec:content_discovery}
 %TODO: 2 subvragen: creation "req.X" (8) & adding "req.Y" (8) & discovery "req.Z" (15)
@@ -41,6 +30,12 @@ The amount of time it takes for a torrent to be created is relative to the size 
 Therefore these measurements are normalized to a file of 1 MB.
 % Expected / desired results
 Depending on the random walk in the channel's community content can be discovered either very quickly or after a while due to property of eventual consistency.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{content_dissemination}
+	\caption{Sequence of events when a video is recorded and distributed.}
+	\label{fig:content_dissemination}
+\end{figure}
 % Setup
 On one Nexus 6 device a channel is created to which 13 other devices subscribe via NFC.
 Then repeatedly a new video is recorded and added to that channel.
@@ -49,16 +44,20 @@ Each device is connected to the same WLAN and within 1 to 2 meters distance from
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{phones_2}
-	\caption{All devices used in the experiment showing the about Android screen.}
+	\caption{All devices used in the experiment showing the About Android screen.}
 	\label{fig:phones_2}
 \end{figure}
+\begin{table}[H]
+	\begin{tabular}{l | l} \hline
+		Laptop & Dell Latitude E6520 \\ \hline \hline
+		CPU & i7-2760QM @ 2.4GHz \\ \hline
+		RAM & 8 GB @ 1333 MHz \\ \hline %% NT4GC64B8HG0NS-CG
+		SSD & 80GB X25-M \\ \hline %% SSDSA2M080G2GC
+	\end{tabular}
+	\caption{Hardware specifications of the used laptop.}
+	\label{table:specs_laptop}
+\end{table}
 % Results
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{content_dissemination}
-	\caption{Sequence of events with time values from median of results.}
-	\label{fig:content_dissemination}
-\end{figure}
 Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a number of devices to discover new content on a subscribed channel.
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
@@ -190,6 +189,7 @@ Figure \ref{fig:torrent-create-scatterplot} shows the relation between the size 
 The user expects operations to take a consistent and reasonable amount of time.
 By design all functionality is going through the API.
 % Metrics
+connection time + latency + request processing + response processing + return latency
 We use Apache JMeter to verify if the API is responding consistently within a reasonable amount of time by measuring the latency.
 JMeter measures the latency from just before sending the request to just after the first response has been received. \cite{jmeter_glossary}
 Thus the measurement includes the time needed to assemble the request as well as processing it and returning a response with latency on the way back.
