@@ -37,16 +37,24 @@ Depending on the random walk in the channel's community content can be discovere
 	\label{fig:content_dissemination}
 \end{figure}
 % Setup
-On one Nexus 6 device a channel is created to which 13 other devices subscribe via NFC.
-Then repeatedly a new video is recorded and added to that channel.
-A content discovered event is registered on each device individually and all devices are synced with NTP.
-Each device is connected to the same WLAN and within 1 to 2 meters distance from the access point.
+Figure \ref{fig:phones_2} shows the experimental setup with various smart-phones and one tablet.
+Each device is connected to the same wireless network and within 1 to 2 meters distance from the same access point.
+Different versions of Android OS are installed, ranging from 4.3 to 7.1, and some run a CyanogenMod.
+Each device is installed with the same version of Tribler and the same database, containing up to date information about existing channels and their content.
+This database was gathered in the days before this experiment and installed manually.
+On one device, a Nexus 6, from now on referred to as the source, a new channel is created to which the other 13 devices subscribe via NFC.
+Then, repeatedly a new video is recorded and added to that channel by the source.
+The new videos are discovered, and the event logged, by each device individually.
+All devices devices are synced with NTP to be able to have a common timeline for this experiment.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{phones_2}
-	\caption{All devices used in the experiment showing the About Android screen.}
+	\caption{Experimental setup with various smart-phones and one tablet, all showing the About Android screen.}
 	\label{fig:phones_2}
 \end{figure}
+
+\begin{minipage}{.35\textwidth}
 \begin{table}[H]
 	\begin{tabular}{l | l} \hline
 		Laptop & Dell Latitude E6520 \\ \hline \hline
@@ -54,17 +62,32 @@ Each device is connected to the same WLAN and within 1 to 2 meters distance from
 		RAM & 8 GB @ 1333 MHz \\ \hline %% NT4GC64B8HG0NS-CG
 		SSD & 80GB X25-M \\ \hline %% SSDSA2M080G2GC
 	\end{tabular}
-	\caption{Hardware specifications of the used laptop.}
+	\caption{Hardware specifications of the laptop used in the Multichain and API measurements.}
 	\label{table:specs_laptop}
 \end{table}
+\end{minipage}
+~~~~~~~~~~~~~~~
+\begin{minipage}{.69\textwidth}
+\begin{table}[H]
+	\begin{tabular}{l | l} \hline
+		Amount & Device \\ \hline \hline
+		6 & Galaxy Nexus \\ \hline
+		4 & Nexus 6 \\ \hline
+		1 & Nexus 5, Nexus 10, Galaxy S3, OnePlus One \\ \hline
+	\end{tabular}
+	\caption{Devices used in the content discovery experiment.\\}
+	\label{table:devices}
+\end{table}
+\end{minipage}
+
 % Results
-Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a number of devices to discover new content on a subscribed channel.
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={0.9cm 0 0 0},clip,width=\textwidth]{boxplot-nrofdevices-130}
 	\caption{Elapsed time from adding new content to a channel and it being discovered by subscribed peers.}
 	\label{fig:boxplot-nr.of.devices-130}
 \end{figure}
+Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a number of devices to discover new content on a subscribed channel.
 The results show that within 4 seconds 9 devices have discovered the new content.
 From the 10th device and beyond an increase in discovery time is noticeable.
 % Conclusions
