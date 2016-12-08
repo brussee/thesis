@@ -15,13 +15,7 @@ The results also show that all requirements have been met.
 % Conclusions
 
 \section{Content discovery}\label{sec:content_discovery}
-%TODO: 2 subvragen: creation "req.X" (8) & adding "req.Y" (8) & discovery "req.Z" (15)
-% laat zien dat linair verband aannemelijk is voor creation & adding
-%TODO: acquisitie van data uitbreiden
-%meta info does not scale with content size
-%TODO: remove times from schematic scenario figure
 % Rationale
-New content is generated on the device, like for example a video that has been recorded.
 Before anyone can view that content it has to be added to a channel and discovered by other devices.
 % Metrics
 We measure the amount of time it takes for other devices, which are subscribed to the channel, to discover new content.
@@ -140,24 +134,19 @@ If not, other more powerful nodes could be queried to supply the necessary histo
 
 \section{Startup time}\label{sec:startup_time}
 %TODO previous chapter: implementation architecture startup sequence nice design, how does it perform?
-% when is gui ready for real? do not say gui is response blabla because we do not measure.
-
 % Rationale
 Key to user retention is a fast startup time.
-Therefore the service starts up in the background, separately from the GUI.
-This way at the GUI is responsive to user input while the service may still be loading.
-One of the design objectives for separating the front-end from the back-end was responsiveness.
-However before any task can be executed by the service it needs to be actually started.
+Therefore the GUI starts up in parallel with the background service.
+This way at the GUI is visible and responsive to user input, while the service may continue loading in the background.
+However, before any task can be executed by the service, it needs to be fully started.
 % Metrics
-To measure the startup time we register the time of launching the app and the moment the Tribler-started-event occurs.
-This event is sent over the API event-stream and signifies that Tribler is fully started and ready to accept all incoming requests.
+To measure the total startup time we register the time of launching the app and the moment the Tribler-started-event is registered by the GUI.
+This event is sent over the API event-stream and indicates that the service is fully started and ready to accept all incoming requests.
 % Expected / desired results
-We expect consistent loading times because right after starting we shut Tribler down again.
+We expect consistent loading times on each device, and potentially significant different loading times between devices, because of differences in hardware.
 % Setup
-%TODO consistency within device
-%consistency over different devices, explain
-To get a good idea of how the user experience may differ we measure the startup time 10 times on 5 different devices.
-The app is launched with Android Debug Bridge (adb) from a laptop and the Tribler-started-event is read from logcat over adb and timed on the same laptop so they use the same clock.
+Therefore, we measure the startup time 10 times on 5 different devices.
+The app is launched with Android Debug Bridge (ADB) from a laptop and the Tribler-started-event is read directly from the device's log over ADB and timed on the same laptop, so they use the same clock.
 % Results
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
@@ -190,11 +179,15 @@ This should be investigated further, including if anything can be done on the pa
 \section{Content creation}\label{sec:content_creation}
 %TODO grote scenario
 % Rationale
-How quick one can create content and distribute it depends not only on the discovery time, as measured in Section \ref{sec:content_discovery}, but firstly on the speed of the torrent creation process.
+New content can be generated with a smart-phone, like for example a video that has been recorded with the builtin camera.
+How quick one can create content and distribute it depends not only on the discovery time, as measured in Section \ref{sec:content_discovery}, but first, and perhaps foremost, on the speed of the torrent creation process.
 % Metrics
+In this experiment we measure the time needed to create a torrent file for different sizes of videos.
 % Expected / desired results
+In the torrent creation process a hash is calculated for each piece of the content.
+Because this is a CPU intensive task, we expect the time required to create a torrent file to follow the time complexity of the hash function.
 % Setup
-The setup for this measurement is exactly the same as in Section \ref{sec:content_discovery} with one phone creating the torrent file of the video content.
+The setup for this measurement is exactly the same as in Section \ref{sec:content_discovery}, but we only look at the source, creating the torrent file of the video content.
 % Results
 Figure \ref{fig:torrent-create-scatterplot} shows the relation between the size of the content and the time required to create a torrent file for it.
 \begin{figure}[H]
@@ -204,7 +197,11 @@ Figure \ref{fig:torrent-create-scatterplot} shows the relation between the size 
 	\label{fig:torrent-create-scatterplot}
 \end{figure}
 % Conclusions
-
+The results show a linear correlation between the size of a video and the torrent creation time, with one outlier to the right.
+However, due to differences in hardware acceleration of the hashing algorithm implementation and small amount of data, no claims can be made in general.
+However, the margin of error is also determined by the API response time, which we will measure in the next section.
+% is very large with respect to the data points
+Finally, to add content to a channel, only metadata is required, which does not scale with content size.
 
 
 \section{API responsiveness}\label{sec:api_responsiveness}
@@ -309,14 +306,14 @@ With the cProfile Python module and the visualisation tool SnakeViz we can see i
 A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used for profiling Tribler.
 The profiler was running for 10 minutes with Tribler during normal operation and without any user input.
 % Results
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{profile_1468515157-2}
-	\caption{Profiler results of 10 minutes Tribler run time (bright pink represents business logic upon receiving a torrent)}
-	\label{fig:profile}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\textwidth]{profile_1468515157-2}
+%	\caption{Profiler results of 10 minutes Tribler run time (bright pink represents business logic upon receiving a torrent)}
+%	\label{fig:profile}
+%\end{figure}
 \begin{table}
-	\begin{tabular}{*{3}{r} | l} \hline
+	\begin{tabular}{r | l | l | l} \hline
 		\# Calls & Total time (s) & Time per call (s) & Function \\ \hline \hline
 		15 & 0.4867 & 0.03245 & method 'commit' of 'sqlite3.Connection' objects \\ \hline
 		1 & 0.01692 & 0.01692 & method 'executescript' of 'sqlite3.Cursor' objects \\ \hline
@@ -365,7 +362,7 @@ This can be explained by the fact that torrents can be discovered outside of a c
 %TODO
 execute of apsw.Cursor
 execute of sqlite3.Cursor
-select.epoll \cite{http://stackoverflow.com/questions/2032598/caveats-of-select-poll-vs-epoll-reactors-in-twisted}
+reactor switchen? select.epoll \cite{http://stackoverflow.com/questions/2032598/caveats-of-select-poll-vs-epoll-reactors-in-twisted}
 % Conclusions
 %TODO
 The time per call is most important for optimization because...
@@ -403,6 +400,7 @@ If there is any performance to gain by releasing the GIL the CPU must be under-u
 % Setup
 A Galaxy S3 smart-phone with Android 6.0.1 Cyanogen mod was used for this measurement.
 % Results
+%TODO new images!
 \begin{figure}[H]
 \begin{minipage}{.4\textwidth}
 	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
