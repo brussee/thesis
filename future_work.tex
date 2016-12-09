@@ -1,11 +1,24 @@
 \section{Future work}\label{sec:future_work}
+% Research
+This work enables a new direction of research with Tribler fully geared towards mobile devices.
 % future phd's and new agenda thanks to this work?
+Future research can evaluate if, perhaps in the wild, smart-phones with Tribler can defeat the powerful adversary as described in Section \ref{sec:adversary_model}.
+One can setup a large scale experiment with various degrees of powerful censors, to evaluate Tribler in the intended use-cases.
+Or a live deployment of Tribler on mobile devices in areas with restricted Internet access, to evaluate the effectiveness of the .
 
-This work enables a new direction for future research with Tribler: mobile devices.
-A new user group, that does not own desktop computers, gains access to Tribler's privacy enhancing functionality.
+And study how the viral spreading of eyewitness content behaves in the real world.
+The influence on anonymity of local crowd effects on the onion routing protocol can be looked into, for example as well.
 
-The contributions of this work enable future research into Tribler's intended use-cases fully geared towards mobile devices.
-Like for example a large scale experiment with various degrees of a powerful censor or a live deployment of Tribler mobile in areas with restricted Internet access to evaluate the effectiveness.
+% Implementation
+The modularity of the current implementation of the design enables Tribler to be easily ported to other platforms.
+After our implementation was finished the standard Android integrated development environment (IDE) Android Studio started to officially support the Android NDK.
+So, we can now move from the experimental alpha release to the stable Gradle plugin.
+This enables Gradle to cross-compile the C/C++ libraries instead of the build tool-chain of Python-for-Android (P4A).
+%However, the Python bindings and Tribler's source code still require Setuptools to be run as part of the build tool-chain.
+This also makes it easier to replace P4A with for example Qt for Android, which gained support for Android services after our implementation was already finished.
+The new desktop GUI of Tribler is built with Qt, and it would be nice to re-use code.
+
+
 
 
 

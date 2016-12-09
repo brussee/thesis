@@ -4,6 +4,18 @@ Finally, in Section \ref{sec:future_work} we will describe possible avenues for 
 
 
 \section{How feasible is it to run all Tribler functionality on mobile devices?} % to defeat or mitigate large scale monitoring and censorship?
+We proposed an implementation on Android.
+% System architecture
+
+
+% Build toolchain
+
+
+All design objectives are gehaald.
+A new user group, that does not own desktop computers, can gain access to Tribler's privacy enhancing functionality.
+
+
+
 
 % Content discovery
 What can be concluded from this experiment is that on the same local network the first device discovers the new content in less than 2 seconds.
@@ -18,7 +30,9 @@ Creating torrents appears to scale linearly with the size of the content, but ad
 The API performs consistently, but slower on a smart-phone than on a laptop.
 The API also performs consistently slower, both on the laptop and the smart-phone, depending on the amount of data to be returned for a request, as expected because of JSON serialization.
 % Profilng
-
+The profiling revealed that crypto tasks are a significant part of processing messages.
+These tasks should be offloaded to a separate computational core to release the global interpreter lock.
+That would enable Python code to run in parallel, which in turn would improve performance and responsiveness.
 % Cpu utilization
 
 % Testing and coverage
@@ -26,9 +40,7 @@ The API also performs consistently slower, both on the laptop and the smart-phon
 
 
 
-
-
-
+% Challenges
 
 
 
@@ -56,6 +68,12 @@ It is only known to occur if hundreds of requests per minute are fired at the AP
 
 \section{Given the constraints and unique abilities of mobile devices, what functionality of Tribler can be added or enhanced?}
 % discovery is best snel
+
+
+
+% Opportunities
+
+
 
 Finally, to answer the secondary question: using the unique properties of mobile devices, what features can be added or enhanced?
 % Bluetooth

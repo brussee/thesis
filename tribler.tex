@@ -71,7 +71,7 @@ Syncing a global state is less scalable in terms of storage and network bandwidt
 \section{Anonymity}
 
 Tribler can protect the privacy of users by hiding their identity.
-To connect to others on the network anonymous connections are created on behalf of downloaders and uploaders.
+To connect to others on the network, anonymous connections are created on behalf of downloading peers (leechers) and uploading peers (seeders).
 By routing the network traffic over a circuit of multiple hops it becomes difficult to trace the origin and destination.
 This way the privacy of users remains protected while they actively participate on the platform
 
@@ -80,7 +80,7 @@ Every relay works on behalf of its predecessor so no relay knows the identity of
 Since all communication is properly encrypted no relay can perform a successful man-in-the-middle attack.
 
 This is similar to how Tor works, except Tribler uses UDP rather than TCP for performance reasons.
-%TODO: hidden seeding
+The hidden seeding protocol, modeled after the hidden services of TOR, allows for anonymous content sharing via said TOR-like onion routing \cite{rob_ruigrok}.
 The capability of hiding your identity is greatly advantageous to the user if his or her human rights are violated, like free speech.
 
 However, this privacy feature requires a lot more bandwidth of the network than without anonymity: a ratio of 13 GB for every anonymous 1 GB of data.
