@@ -27,8 +27,8 @@ The sample standard deviation is relatively small for all devices, which indicat
 % Content creation
 Creating torrents appears to scale linearly with the size of the content, but adding a torrent to a channel does not scale with content size.
 % Api responsiveness
-The API performs consistently, but slower on a smart-phone than on a laptop.
-The API also performs consistently slower, both on the laptop and the smart-phone, depending on the amount of data to be returned for a request, as expected because of JSON serialization.
+The API performs consistently, but slower on a smartphone than on a laptop.
+The API also performs consistently slower, both on the laptop and the smartphone, depending on the amount of data to be returned for a request, as expected because of JSON serialization.
 % Profilng
 The profiling revealed that crypto tasks are a significant part of processing messages.
 These tasks should be offloaded to a separate computational core to release the global interpreter lock.

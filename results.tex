@@ -22,7 +22,7 @@ We measure the amount of time it takes for other devices to discover new content
 % Expected / desired results
 Depending on the random walk in the channel's community content can be discovered either very quickly or after a while due to property of eventual consistency.
 % Setup
-Figure \ref{fig:phones_2} shows the experimental setup with various smart-phones and one tablet.
+Figure \ref{fig:phones_2} shows the experimental setup with various smartphones and one tablet.
 Each device is connected to the same wireless network and within 1 to 2 meters distance from the same access point.
 Different versions of Android OS are installed, ranging from 4.3 to 7.1, and some run a CyanogenMod.
 Each device is installed with the same version of Tribler and the same database, containing up to date information about existing channels and their content.
@@ -41,7 +41,7 @@ All devices devices are synced with NTP to be able to have a common timeline for
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{phones_2}
-	\caption{Experimental setup with various smart-phones and one tablet, all showing the About Android screen.}
+	\caption{Experimental setup with various smartphones and one tablet, all showing the About Android screen.}
 	\label{fig:phones_2}
 \end{figure}
 \begin{table}[H]
@@ -71,7 +71,7 @@ From the 10th device onward the dissemination slows down.
 
 \section{Multichain performance}\label{sec:multichain_perf}
 % Rationale
-If mobile devices are to become full-fletched nodes on the network they must support this feature.
+If mobile devices are to become full-fledged nodes on the network they must support this feature.
 % Metrics
 The creation and signing of these blocks is measured to determine if it scales well.
 Multichain signs a block every 10 minutes, meaning our experiment of generating 25.000 blocks represent about half a year (173,6 days) of continuous effort.
@@ -160,7 +160,7 @@ The sample standard deviation is relatively small for all devices, which indicat
 \section{Content creation}\label{sec:content_creation}
 %TODO grote scenario
 % Rationale
-New content can be generated with a smart-phone, like for example a video that has been recorded with the builtin camera.
+New content can be generated with a smartphone, like for example a video that has been recorded with the builtin camera.
 How quick one can create content and distribute it depends not only on the discovery time, as measured in Section \ref{sec:content_discovery}, but first, and perhaps foremost, on the speed of the torrent creation process.
 % Metrics
 In this experiment we measure the time required to create a torrent file for different sizes of videos.
@@ -212,7 +212,7 @@ It excludes the transfer time of the complete response, and subsequent processin
 % Expected / desired results
 We want to see that the response time is bounded, consistent and generally low.
 % Setup
-A Nexus 6 smart-phone with Android 7.1 CyanogenMod is connected to a laptop running JMeter and the API port is forwarded with ADB over USB.
+A Nexus 6 smartphone with Android 7.1 CyanogenMod is connected to a laptop running JMeter and the API port is forwarded with ADB over USB.
 With JMeter we request the discovered channels from the API a 1000 times at a constant rate of one request per second.
 A laptop is included to give some more perspective.
 Its specifications are listed in Table \ref{table:specs_laptop}.
@@ -228,7 +228,7 @@ Figures \ref{fig:api_Laptop}, \ref{fig:api_Nexus_6}, \ref{fig:api_Laptop-2} and 
 	~
 	\begin{minipage}{.49\textwidth}
 		\includegraphics[width=\textwidth]{api_Nexus_6}
-		\caption{API response times right after first launch on Nexus 6 smart-phone.}
+		\caption{API response times right after first launch on Nexus 6 smartphone.}
 		\label{fig:api_Nexus_6}
 	\end{minipage}
 	
@@ -240,7 +240,7 @@ Figures \ref{fig:api_Laptop}, \ref{fig:api_Nexus_6}, \ref{fig:api_Laptop-2} and 
 	~
 	\begin{minipage}{.49\textwidth}
 		\includegraphics[width=\textwidth]{api_Nexus_6-2}
-		\caption{API response times on a Nexus 6 smart-phone.}
+		\caption{API response times on a Nexus 6 smartphone.}
 		\label{fig:api_Nexus_6-2}
 	\end{minipage}
 \end{figure}
@@ -261,7 +261,7 @@ PC is added for reference.
   \caption{Statistics of API response times from Figures \ref{fig:api_Laptop}, \ref{fig:api_Nexus_6}, \ref{fig:api_Laptop-2} and \ref{fig:api_Nexus_6-2} respectively.}
   \label{table:api_benchmark}
 \end{table}
-The set rate of 300 requests per minute is clearly not reached by the smart-phone in our benchmark by a factor of 9.
+The set rate of 300 requests per minute is clearly not reached by the smartphone in our benchmark by a factor of 9.
 The difference in amount of response data turned out to be much bigger than expected with a factor of 35.
 % Conclusions
 %TODO: IO bound + crappy Python code WHY?
@@ -297,7 +297,7 @@ We focus on wall clock time instead of CPU time because...
 
 % Setup
 With the cProfile Python module and the visualisation tool SnakeViz we can see if any function takes a disproportionate amount of time.
-A Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used for profiling Tribler.
+A Nexus 6 smartphone with Android 6.0.1 CyanogenMod was used for profiling Tribler.
 The profiler was running for 10 minutes with Tribler during normal operation and without any user input.
 % Results
 %\begin{figure}[H]
@@ -369,11 +369,10 @@ As seen from the time per call for \_\_m2crypto.ecdsa\_verify in table \ref{tabl
 Another way to optimize is multiprocessing, which avoids the GIL completely \cite{quinten}.
 
 \section{CPU utilization}\label{sec:cpu_utilization}
-%IO bound or CPU bound?
 %TODO: tijdens HD streaming: net cpu over, nu nog steeds??
 % let it run and measure
-We saw in X that the cryptography takes a lot of time.
-We need to know if this is CPU bound or not for optimization purposes.
+We saw in Table \ref{table:profiling_details} that the cryptography tasks takes a lot of time.
+We need to know if this is CPU bounded or IO bounded for optimization purposes.
 
 % Rationale
 Python-for-Android supplies a CPython interpreter out of the box.
@@ -388,17 +387,18 @@ This negates all performance gains in terms of parallelism afforded by multi-cor
 As shown in the precious section the crypto function took a considerable amount of time to compute.
 To see if the releasing the GIL as put forward as a solution is feasible we measure if the CPU has more capacity than is being utilized right now.
 % Metrics
-During normal operation equivalent to the profiler measurement, we take a snapshot of the CPU utilization.
+Snapshots taken of the CPU utilization of the three separate processes involved in streaming HD video with Tribler.
 % Expected / desired results
-If there is any performance to gain by releasing the GIL the CPU must be under-utilized right now.
+If there is any performance to be gained by releasing the GIL, the CPU must be significantly under-utilized in this use case, because other processes may also take up considerable CPU time.
 % Setup
-A Galaxy S3 smart-phone with Android 6.0.1 Cyanogen mod was used for this measurement.
+A Galaxy S3 smartphone with Android 6.0.1 CyanogenMod was used for this measurement.
+The video has a bit rate of 4565 kb/s.
 % Results
 \begin{figure}[p]
 	\centering
 	\begin{minipage}{.3\textwidth}
 		\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-							CPU usage of the GUI, during HD video streaming on a Galaxy S3 smart-phone
+							CPU usage of the GUI, during HD video streaming on a Galaxy S3 smartphone
 				}\end{minipage}},rotate=90,center}
 			\includegraphics[scale=0.5]{monitor-cpu-streamingHD-GUI-2}
 		\end{adjustbox}
@@ -407,7 +407,7 @@ A Galaxy S3 smart-phone with Android 6.0.1 Cyanogen mod was used for this measur
 ~
 \begin{minipage}{.3\textwidth}
 	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-							CPU usage of the back-end service, during HD video streaming on a Galaxy S3 smart-phone
+							CPU usage of the back-end service, during HD video streaming on a Galaxy S3 smartphone
 			}\end{minipage}},rotate=90,center}
 		\includegraphics[scale=0.5]{monitor-cpu-streamingHD-Service-2}
 	\end{adjustbox}
@@ -416,14 +416,13 @@ A Galaxy S3 smart-phone with Android 6.0.1 Cyanogen mod was used for this measur
 ~
 \begin{minipage}{.3\textwidth}
 	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-							CPU usage of the video player VLC, during HD video streaming on a Galaxy S3 smart-phone
+							CPU usage of the video player VLC, during HD video streaming on a Galaxy S3 smartphone
 			}\end{minipage}},rotate=90,center}
 		\includegraphics[scale=0.5]{monitor-cpu-streamingHD-VLC-2}
 	\end{adjustbox}
 	\label{fig:monitor-cpu-streamingHD-VLC-2}
 \end{minipage}
 \end{figure}
-4565 kb/s
 
 The results show that indeed not al 4 cores of the CPU are utilized by a large margin.
 Even when performing the intensive crypto work of the Multichain experiment 2 CPU cores appear to be idling.
@@ -432,7 +431,7 @@ This suggests that releasing the GIL during heavy crypto work could result in a 
 However our results are inconclusive and warrant further research.
 
 
-\section{Testing and coverage}\label{sec:testing_coverage}
+\section{Software testing and code coverage}\label{sec:testing_coverage}
 % Rationale
 The design choice of reusing all Tribler core source code means we need to verify its correctness.
 To make sure all code on Android works the same as on other supported platforms we need to test all code.
@@ -444,7 +443,7 @@ We expect to see a line-rate value close to 1, but not 1 since we know the tests
 % Setup
 All tests were run two times on the same device with 11 weeks of development in between.
 The nose module was used for running the tests together with the coverage module for gathering coverage data.
-The same Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in both runs.
+The same Nexus 6 smartphone with Android 6.0.1 CyanogenMod was used in both runs.
 % Results
 Table \ref{table:testing_coverage} shows the results of both executions.
 \begin{table}[H]
