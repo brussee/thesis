@@ -1,90 +1,58 @@
 \chapter{Conclusions and future work}\label{ch:conclusions}
-After the performance analysis of our implementation in the previous chapter, we now come to the conclusions with regard to the research questions.
-Finally, in Section \ref{sec:future_work} we will describe possible avenues for future research based on this work.
+% After the performance analysis of our implementation in the previous chapter, we now come to the conclusions with regard to the research questions.
+% Finally, in Section \ref{sec:future_work} we will describe possible avenues for future research based on this work.
+
+All Tribler functionality runs on mobile devices with our implementation.
+The code is open source \cite{github_tribler_repo} and does not rely on any proprietary app store.
+This is the first successful attempt, to our knowledge, of creating a self-organizing video-on-demand platform that is attack-resilient and can operate autonomously on a mobile device.
+Millions of people that own a smartphone, and not a computer, can now benefit from Tribler's privacy enhancing functionality.
 
 
 \section{How feasible is it to run all Tribler functionality on mobile devices?} % to defeat or mitigate large scale monitoring and censorship?
-We proposed an implementation on Android.
+We proposed an Android implementation that fulfills are design requirements as specified in Chapter \ref{ch:design}.
+It performs consistently, and faster than expected compared to a decent laptop, as shown in Chapter \ref{ch:results}.
+
+% Content discovery
+From the content discovery experiment, we learned that 9 devices discover new content within 4 seconds.
+Therefore, with viral spreading, it seems realistic we can reach millions within minutes.
+% Multichain performance
+The Multichain experiment showed that creating blocks by the thousands is an IO bound process, rather than CPU bound, in the current implementation.
+It is also the most easy to optimize by keeping the hash of the last block for connected peers in memory .
+% Startup time
+In the startup time experiment, the sample standard deviation is relatively small for all devices, which indicates that the startup time of Tribler is consistent.
+% Content creation
+As expected, creating torrents appears to scale linearly with the size of the content, and adding a torrent to a channel does not scale with content size.
+% Api responsiveness
+The API performs consistently, but slower on a smartphone than on a decent laptop.
+The API also performs consistently slower, both on the laptop and the smartphone, depending on the amount of data to be returned for a request, as expected because of JSON serialization.
+% Profilng
+Profiling revealed that cryptographic tasks are a significant part of processing messages.
+These tasks should be offloaded to a separate computational core to release the global interpreter lock.
+That would enable Python code to run in parallel, which in turn would improve performance and responsiveness.
+% Cpu utilization
+The CPU utilization measurement showed this approach is likely to succeed, because the CPU utilization of Tribler and the video player VLC combined did not reach more 35\% while streaming HD video.
+% Testing and coverage
+All existing tests can be run on Android almost as well as on other platforms.
+
 % System architecture
 
 
 % Build toolchain
 
 
-All design objectives are gehaald.
-A new user group, that does not own desktop computers, can gain access to Tribler's privacy enhancing functionality.
-
-
-
-
-% Content discovery
-What can be concluded from this experiment is that on the same local network the first device discovers the new content in less than 2 seconds.
-From the 10th device onward the dissemination slows down.
-% Multichain performance
-However this is an indication that creating blocks by the thousands is an IO bound process, rather than CPU bound.
-% Startup time
-The sample standard deviation is relatively small for all devices, which indicates that the startup time of Tribler is consistent.
-% Content creation
-Creating torrents appears to scale linearly with the size of the content, but adding a torrent to a channel does not scale with content size.
-% Api responsiveness
-The API performs consistently, but slower on a smartphone than on a laptop.
-The API also performs consistently slower, both on the laptop and the smartphone, depending on the amount of data to be returned for a request, as expected because of JSON serialization.
-% Profilng
-The profiling revealed that crypto tasks are a significant part of processing messages.
-These tasks should be offloaded to a separate computational core to release the global interpreter lock.
-That would enable Python code to run in parallel, which in turn would improve performance and responsiveness.
-% Cpu utilization
-
-% Testing and coverage
-
-
-
-
 % Challenges
 
 
-
-The feasibility in terms of functionality, performance and scalability were measured.
-Several of these measurements give raise to some minor considerations.
-% Profiler
-The profiling revealed that crypto tasks are a significant part of processing messages.
-These tasks should be offloaded to a separate computational core to release the global interpreter lock.
-That would enable Python code to run in parallel, which in turn would improve performance and responsiveness.
-% cpu
-The CPU utilization measurement showed this approach is likely to succeed.
-% Multichain
-The Multichain measurement showed that database performance in that instance was stringent in the current implementation.
-It is also the most easy to resolve by keeping the hash of the last block for connected peers in memory .
-% Tests
-All existing tests can be run on Android just as well as on other platforms.
-This means, in combination with the modularity of the new design and re-use of the Tribler core, that maintainability and testability are very fit.
-% Startup
-In terms of user experience the measurement of startup time showed to be very consistent and reasonable.
-% Latency
-The latency of the API however seemingly showed a curious pattern that cannot be explained right away.
-It is only known to occur if hundreds of requests per minute are fired at the API, which is unexpected behavior from the user.
-
-% op mobiel is API consistent and consistently slower than PC
-
 \section{Given the constraints and unique abilities of mobile devices, what functionality of Tribler can be added or enhanced?}
-% discovery is best snel
-
-
-
 % Opportunities
 
-
-
-Finally, to answer the secondary question: using the unique properties of mobile devices, what features can be added or enhanced?
 % Bluetooth
-We added the capability to transfer the app to another device that doesn't have it yet via Bluetooth.
-% nfc
-If NFC is enabled on both devices the app can be transfered by just holding the devices next to each other.
-Also adding a channel to your favorites can be done this way.
-Using your real life social network you can build your on-line trusted network this way.
-% P2P Wifi
-And thanks to built-in hardware capability you can setup an ad hoc WiFi network to avoid any infrastructure completely.
-
-
-What this means in the context of privacy and censorship is that if content is detected by the censor it may have already crossed or will cross the freedom border thanks to the properties of viral spreading.
+For example, a feature was added that transfers Tribler to a nearby device, with NFC and Bluetooth enabled, without further requirements, like an Internet connection or a central app store.
+% Nfc
+By just holding to NFC equipped smartphones back to back, the transfer of the application started automatically.
+Also, you can add a channel to your favorites in the same manner.
+Using your real life social network, you can build your own on-line trust network this way.
+% WiFi Direct
+And thanks to built-in capability of Android you can setup an ad hoc WiFi network to avoid any infrastructure completely.
+In the context of privacy and censorship, this off-grid functionality means that if content is detected by the censor it may have already crossed, or will cross, the freedom border thanks to the properties of viral spreading.
 
