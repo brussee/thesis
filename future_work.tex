@@ -2,75 +2,39 @@
 % Research
 This work enables a new direction of research with Tribler fully geared towards mobile devices.
 % future phd's and new agenda thanks to this work?
-Future research can evaluate if, perhaps in the wild, smart-phones with Tribler can defeat the powerful adversary as described in Section \ref{sec:adversary_model}.
-One can setup a large scale experiment with various degrees of powerful censors, to evaluate Tribler in the intended use-cases.
-Or a live deployment of Tribler on mobile devices in areas with restricted Internet access, to evaluate the effectiveness of the .
-
-And study how the viral spreading of eyewitness content behaves in the real world.
-The influence on anonymity of local crowd effects on the onion routing protocol can be looked into, for example as well.
+Future research can evaluate how well smart-phones with Tribler can defeat the powerful adversary as described in Section \ref{sec:adversary_model}.
+One can setup a large scale experiment with various degrees of powerful censors.
+Or a live deployment of Tribler on mobile devices in areas with restricted Internet access to evaluate Tribler in the wild for the intended use-cases.
+Another possible research question can be about how viral spreading of eyewitness content behaves in the real world.
+And the effect on anonymity of local crowds, regarding the onion routing protocol, can also be studied for example.
+A different direction is to research the possible benefits of teaming a mobile device with a traditional desktop computer or server with a shared key chain for a single user.
+The more powerful computer could be credit mining, while the mobile device uses the credits to download faster.
 
 % Implementation
-The modularity of the current implementation of the design enables Tribler to be easily ported to other platforms.
+From the results in Chapter \ref{ch:results}, we found that performance can potentially be improved if the Python GIL is released during heavy cryptographic tasks by C/C++ libraries.
+We also suggest to cut long running methods into smaller pieces, to allow the Twisted reactor to interleave more threads, to improve responsiveness under heavy load in our multi-threaded use case.
+Also, a streaming API for big responses can improve the responsiveness of the API, as concluded in Section \ref{sec:api_responsiveness}.
+
+To remove the last potential hurdle for offline information exchange with Tribler between mobile devices, an updated list of bootstrap peers can be integrated into the APK, just before sending the app via Bluetooth.
+Or it can send via NFC, in the same way NFC is used to share channel identifiers between to NFC enabled devices.
+The Bluetooth transfer of the app itself can be made much faster if WiFi Direct is used instead.
+This can easily be done by directing the receiving device's browser to a local HTTP server on the sending device with a NFC Data Exchange Format (NDEF) URI Record.
+%In API version 18 support is added for Bluetooth Low Energy (LE), WiFi scan only mode, key store for app-private keys, hardware credential storage and automated UI testing.
+
+%No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later?
+%We won't modify the networking capabilities based on the opportunities because that would warrant a dedicated study.
+
 After our implementation was finished the standard Android integrated development environment (IDE) Android Studio started to officially support the Android NDK.
-So, we can now move from the experimental alpha release to the stable Gradle plugin.
+Therefore, we can now move from the experimental alpha release to the stable Gradle plugin.
 This enables Gradle to cross-compile the C/C++ libraries instead of the build tool-chain of Python-for-Android (P4A).
 %However, the Python bindings and Tribler's source code still require Setuptools to be run as part of the build tool-chain.
-This also makes it easier to replace P4A with for example Qt for Android, which gained support for Android services after our implementation was already finished.
-The new desktop GUI of Tribler is built with Qt, and it would be nice to re-use code.
+This in turn, makes it easier to replace P4A with for example Qt for Android, an alternative to P4A.
+The new desktop GUI of Tribler is built with Qt, and it would be nice to re-use code and improve maintainability.
+Qt for Android gained support for Android services after our implementation was already finished.
+This would also open the door to an iOS port, thanks to Qt for iOS.
+The modularity of the design and implementation enables Tribler to be easily ported to other platforms and embedded devices, like a smart-tv.
 
+Finally, to safeguard the user from an even more powerful adversary as observed in Egypt \cite{egypt_show_your_facebook_airport}, more measures can be taken.
+Embedding and encrypting all functionality in for example a binary blob of a random game, would add another layer of security.
+Our SelfCompileApp for example, capable of self-compilation from source, can be combined with this work to create a morphing stealth app for anonymous information sharing without the need for existing infrastructure.
 
-
-
-
-No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later.
-We won't modify the networking capabilities based on the opportunities because that would warrant a dedicated study.
-
-
-In API version 18 support is added for Bluetooth Low Energy (LE), WiFi scan only mode, key store for app-private keys, hardware credential storage and automated UI testing.
-
-
-The portability of our design and implementation allows it to be used in other applications like smart-tv's as well.
-
-
-
-shared keychain, credit minging laptop, server, mobile..
-
-
-NFC is used to share a channel id and to automatically setup a Bluetooth file transfer.
-In the future the same method can be used to exchange bootstrap peers for the Tribler network. Or integrate into apk just before sending via Bluetooth.
-The peer-to-peer Bluetooth file transfer could be made much faster if the WiFi Direct would be used.
-
-
-Thumbnails retrieval and distribution now that video is so important on mobile, could be added on top of groundwork by me.
-
-
-credit mining on device A, usage on device B
-
-
-comparative analysis
-
-Automate ad hoc WiFi direct like nfc-bluetooth!
-
-cutting long running methods in smaller pieces, so multi-threading is smoother (only discovered now, earlier: why is gui hanging?)
-release GIL in native C code, mainly for heavy crypto tasks
-streaming API for big responses (dumping all known channels from db)
-
-knippen voor twisted is gewenst, nu pas zichtbaar weakness in Tribler, nuttig om te verbeteren. (conclusion)
-
-
-iOS with QtPython
-
-
-% Research Limitations
-% Project scope
-% broad / narrow scope, scope of other system()s)
-% sub-problems
-% ultimate high-level goal
-Software development / technical aspect only
-Not policy making, organisational perspective, decision making, normative, ethical,
-Time limit of 9 months
-
-
-refereren aan eigen werk in verbergen app en mensen beschermen op bepaalde manier
-combine with selfcompileapp
-%mooie afsluiting, boog.
