@@ -1,8 +1,37 @@
 \chapter{Conclusions and future work}\label{ch:conclusions}
-After the performance analysis of our implementation in the previous chapter, we now come to the conclusions with regard to the main research question.
+After the performance analysis of our implementation in the previous chapter, we now come to the conclusions with regard to the research questions.
+Finally, in Section \ref{sec:future_work} we will describe possible avenues for future research based on this work.
 
 
 \section{How feasible is it to run all Tribler functionality on mobile devices?} % to defeat or mitigate large scale monitoring and censorship?
+
+% Content discovery
+What can be concluded from this experiment is that on the same local network the first device discovers the new content in less than 2 seconds.
+From the 10th device onward the dissemination slows down.
+% Multichain performance
+However this is an indication that creating blocks by the thousands is an IO bound process, rather than CPU bound.
+% Startup time
+The sample standard deviation is relatively small for all devices, which indicates that the startup time of Tribler is consistent.
+% Content creation
+Creating torrents appears to scale linearly with the size of the content, but adding a torrent to a channel does not scale with content size.
+% Api responsiveness
+The API performs consistently, but slower on a smart-phone than on a laptop.
+The API also performs consistently slower, both on the laptop and the smart-phone, depending on the amount of data to be returned for a request, as expected because of JSON serialization.
+% Profilng
+
+% Cpu utilization
+
+% Testing and coverage
+
+
+
+
+
+
+
+
+
+
 The feasibility in terms of functionality, performance and scalability were measured.
 Several of these measurements give raise to some minor considerations.
 % Profiler
