@@ -77,7 +77,7 @@ All devices devices are synced with NTP to be able to have a common timeline for
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={0.9cm 0 0 0},clip,width=\textwidth]{boxplot-nrofdevices-130}
-	\caption{Elapsed time from adding new content to a channel and it being discovered by subscribed peers.}
+	\caption{Elapsed time from having added new content to a channel and it being discovered by subscribed peers.}
 	\label{fig:boxplot-nr.of.devices-130}
 \end{figure}
 Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a number of devices to discover new content on a subscribed channel.
@@ -92,16 +92,7 @@ From the 10th device onwards the dissemination slows down.
 
 \section{Multichain performance}\label{sec:multichain_perf}
 % Rationale
-Multichain is the new accounting system of Tribler.
-This feature is central to the concept of trust in the Tribler network and is very important for the future as other functionality will be built upon it.
 If mobile devices are to become full-fletched nodes on the network they must support this feature.
-With Multichain any peer registers the bandwidth it exchanges with other peers.
-It aggregates these exchanges in blocks and signs them like a receipt and sends that to the other party to sign as well.
-These blocks are linked in a block-chain to foil attempts of cheating the system.
-
-Multichain is explicitly designed to not use a global state.
-Syncing a global state is less scalable in terms of storage and network bandwidth.
-
 % Metrics
 The creation and signing of these blocks is measured to determine if it scales well.
 Multichain signs a block every 10 minutes, meaning our experiment of generating 25.000 blocks represent about half a year (173,6 days) of continuous effort.
