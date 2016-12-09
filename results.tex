@@ -231,7 +231,7 @@ With JMeter we request the discovered channels from the API a 1000 times and mea
 JMeter is also capable of setting a desired number of requests per minute, provided the device can handle it.
 We set this parameter to 300 requests per minute, equal to the other benchmark.
 % Results
-The following figures show the response times for every request.
+Figures \ref{fig:api_Laptop}, \ref{fig:api_Nexus_6}, \ref{fig:api_Laptop-2} and \ref{fig:api_Nexus_6-2} show the response times for every request.
 \begin{figure}[H]
 	\centering
 	\begin{minipage}{.49\textwidth}
@@ -261,7 +261,7 @@ The following figures show the response times for every request.
 The plot shows large spikes and seemingly a curious and unexpected pattern.
 Table \ref{table:api_benchmark} shows the large difference in statistics.
 PC is added for reference.
-\begin{table}
+\begin{table}[H]
   \begin{tabular}{l | *{8}{r}} \hline
   	 & N & Avg. (ms) & Min. (ms) & Max. (ms) & $\sigma$ (ms) & Req./min. & KB/second & Avg. Bytes \\ \hline \hline
   	 Laptop   & 1000 & 65     & 1       & 1021 & 99.00 & 60.0 & 73.72 & 75410.6 \\ \hline
@@ -455,8 +455,8 @@ All tests were run two times on the same device with 11 weeks of development in 
 The nose module was used for running the tests together with the coverage module for gathering coverage data.
 The same Nexus 6 smart-phone with Android 6.0.1 Cyanogen mod was used in both runs.
 % Results
-The following table shows the results of both executions.
-\begin{table}
+Table \ref{table:testing_coverage} shows the results of both executions.
+\begin{table}[H]
 	\begin{tabular}{l | *{5}{r}} \hline
 		Run & Tests & Errors & Failures & Skipped & Line-rate \\ \hline \hline
 		1     & 711   & 14       & 13          & 30          & 0.7241 \\ \hline
