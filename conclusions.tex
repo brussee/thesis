@@ -10,7 +10,7 @@ Millions of people that own a smartphone, and not a computer, can now benefit fr
 
 \section{How feasible is it to run all Tribler functionality on mobile devices?} % to defeat or mitigate large scale monitoring and censorship?
 We proposed an Android implementation that fulfills are design requirements as specified in Chapter \ref{ch:design}.
-It performs consistently, and faster than expected compared to a decent laptop, as shown in Chapter \ref{ch:results}.
+It performs consistently, and faster than expected compared to a laptop, as shown in Chapter \ref{ch:results}.
 
 % Content discovery
 From the content discovery experiment, we learned that 9 devices discover new content within 4 seconds.
@@ -23,7 +23,7 @@ In the startup time experiment, the sample standard deviation is relatively smal
 % Content creation
 As expected, creating torrents appears to scale linearly with the size of the content, and adding a torrent to a channel does not scale with content size.
 % Api responsiveness
-The API performs consistently, but slower on a smartphone than on a decent laptop.
+The API performs consistently, but slower on a smartphone than on a laptop.
 The API also performs consistently slower, both on the laptop and the smartphone, depending on the amount of data to be returned for a request, as expected because of JSON serialization.
 % Profilng
 Profiling revealed that cryptographic tasks are a significant part of processing messages.

@@ -226,7 +226,7 @@ It excludes the transfer time of the complete response, and subsequent processin
 We want to see that the response time is bounded, consistent and generally low.
 % Setup
 A Nexus 6 smartphone with Android 7.1 CyanogenMod is connected to a laptop running JMeter and the API port is forwarded with ADB over USB.
-With JMeter we request the discovered channels from the API a 1,000 times at a constant rate of one request per second.
+With JMeter we request the discovered channels from the API a 1,000 times at a constant rate of one request per second sequentially.
 A laptop is included to give some more perspective.
 Its specifications are listed in Table \ref{table:specs_laptop}.
 The measurements are repeated for two scenarios: at first launch, and when almost no new channels are discovered anymore.
@@ -277,7 +277,9 @@ Therefore, because of the fixed amount of requests, proportionally more time ela
 This in turn, explains the significant difference in response size at the end of the measurements at first launch between the smartphone and the laptop.
 % Conclusions
 The throughput of the smartphone in the second scenario is higher than the throughput of the laptop in the first scenario.
-From this, we conclude that bandwidth is not an issue on the smartphone.
+From this, we can conclude that bandwidth is not a limiting factor in the first scenario for the smartphone.
+Since the requests are sequential, the measurements are not influencing each other.
+Therefore, to explain the jitter, we have to look at the Tribler core or the environment.
 
 %VERIFY results
 
