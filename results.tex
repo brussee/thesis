@@ -74,7 +74,7 @@ From the 10th device onward the dissemination slows down.
 If mobile devices are to become full-fledged nodes on the network they must support this feature.
 % Metrics
 The creation and signing of these blocks is measured to determine if it scales well.
-Multichain signs a block every 10 minutes, meaning our experiment of generating 25.000 blocks represent about half a year (173,6 days) of continuous effort.
+Multichain signs a block every 10 minutes, meaning our experiment of generating 25,000 blocks represent about half a year (173.6 days) of continuous effort.
 % Expected / desired results
 The database containing these blocks will grow over time, but should not slow down too much because of it.
 % Setup
@@ -86,7 +86,7 @@ Figure \ref{fig:multichain_25} show the performance graphs of every measurement.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{multichain_scale_2599_25k}
-	\caption{Creating and signing of 25.000 blocks between two peers}
+	\caption{Creating and signing of 25,000 blocks between two peers}
 	\label{fig:multichain_25}
 \end{figure}
 \begin{table}[H]
@@ -213,57 +213,59 @@ It excludes the transfer time of the complete response, and subsequent processin
 We want to see that the response time is bounded, consistent and generally low.
 % Setup
 A Nexus 6 smartphone with Android 7.1 CyanogenMod is connected to a laptop running JMeter and the API port is forwarded with ADB over USB.
-With JMeter we request the discovered channels from the API a 1000 times at a constant rate of one request per second.
+With JMeter we request the discovered channels from the API a 1,000 times at a constant rate of one request per second.
 A laptop is included to give some more perspective.
 Its specifications are listed in Table \ref{table:specs_laptop}.
+The measurements are repeated for two scenarios: at first launch, and when almost no new channels are discovered anymore.
 % Results
-Figures \ref{fig:api_Laptop}, \ref{fig:api_Nexus_6}, \ref{fig:api_Laptop-2} and \ref{fig:api_Nexus_6-2} show the response times for every request.
+Figure \ref{fig:api_combined} shows the response times for every request in both scenarios for the laptop and Nexus 6 smartphone.
 \begin{figure}[H]
 	\centering
-	\begin{minipage}{.49\textwidth}
+	\begin{subfigure}{.49\textwidth}
 		\includegraphics[width=\textwidth]{api_combined_Laptop}
-		\caption{API response times right after first launch on a decent laptop.}
+		\caption{Laptop, at first launch}
 		\label{fig:api_Laptop}
-	\end{minipage}
+	\end{subfigure}
 	~
-	\begin{minipage}{.49\textwidth}
+	\begin{subfigure}{.49\textwidth}
 		\includegraphics[width=\textwidth]{api_combined_Nexus_6}
-		\caption{API response times right after first launch on Nexus 6 smartphone.}
+		\caption{Nexus 6 smartphone, at first launch}
 		\label{fig:api_Nexus_6}
-	\end{minipage}
+	\end{subfigure}
 	
-	\begin{minipage}{.49\textwidth}
+	\begin{subfigure}{.49\textwidth}
 		\includegraphics[width=\textwidth]{api_combined_Laptop-2}
-		\caption{API response times on a decent laptop.}
+		\caption{Laptop, after most channels are discovered}
 		\label{fig:api_Laptop-2}
-	\end{minipage}
+	\end{subfigure}
 	~
-	\begin{minipage}{.49\textwidth}
+	\begin{subfigure}{.49\textwidth}
 		\includegraphics[width=\textwidth]{api_combined_Nexus_6-2}
-		\caption{API response times on a Nexus 6 smartphone.}
+		\caption{Nexus 6 smartphone, after most channels are discovered}
 		\label{fig:api_Nexus_6-2}
-	\end{minipage}
+	\end{subfigure}
+\caption{API response times (black) and sizes (red) at first launch (top), and when almost no new channels are discovered anymore (bottom)}
+\label{fig:api_combined}
 \end{figure}
-
-
-
-The plot shows large spikes and seemingly a curious and unexpected pattern.
-Table \ref{table:api_benchmark} shows the large difference in statistics.
-PC is added for reference.
 \begin{table}[H]
   \begin{tabular}{l | *{8}{r}} \hline
-  	 & N & Avg. (ms) & Min. (ms) & Max. (ms) & $\sigma$ (ms) & Req./min. & KB/second & Avg. Bytes \\ \hline \hline
+  	  & N & Avg. (ms) & Min. (ms) & Max. (ms) & $\sigma$ (ms) & Req./min. & KB/second & Avg. Bytes \\ \hline \hline
   	 Laptop   & 1000 & 65     & 1       & 1021 & 99.00 & 60.0 & 73.72 & 75410.6 \\ \hline
   	 Nexus 6 & 1000 & 3975 & 8       & 39477 & 5362.51 & 14.4 & 49.19 & 210506.8 \\ \hline
   	 Laptop   & 1000 & 181   & 101   & 416   & 42.72   & 60.0 & 579.49 & 592791.3 \\ \hline
   	 Nexus 6 & 1000 & 1671 & 1390 & 2925 & 174.14 & 35.9 & 345.94 & 592649.8 \\ \hline
   \end{tabular}
-  \caption{Statistics of API response times from Figures \ref{fig:api_Laptop}, \ref{fig:api_Nexus_6}, \ref{fig:api_Laptop-2} and \ref{fig:api_Nexus_6-2} respectively.}
+  \caption{Statistics of API response times and sizes from Figure \ref{fig:api_Laptop}, \ref{fig:api_Nexus_6}, \ref{fig:api_Laptop-2} and \ref{fig:api_Nexus_6-2} respectively}
   \label{table:api_benchmark}
 \end{table}
-The set rate of 300 requests per minute is clearly not reached by the smartphone in our benchmark by a factor of 9.
-The difference in amount of response data turned out to be much bigger than expected with a factor of 35.
+As shown in Table \ref{table:api_benchmark}, the smartphone achieved a considerable lower amount of requests per minute than the constant rate of one per second in both scenarios.
+Therefore, because of the fixed amount of requests, proportionally more time elapsed during the measurements on the smartphone than on the laptop.
+This in turn, explains the significant difference in response size at the end of the measurements at first launch between the smartphone and the laptop.
 % Conclusions
+The throughput of the smartphone in the second scenario is higher than the throughput of the laptop in the first scenario.
+From this, we conclude that bandwidth is not an issue on the smartphone.
+
+
 %TODO: IO bound + crappy Python code WHY?
 % busy Twisted reactor?
 Tribler uses the event-driven networking engine Twisted, which is also written in Python.
@@ -271,9 +273,8 @@ Twisted allows you to build inter-process communication protocols and provides a
 Twisted uses a single thread to coordinate all others, called the reactor thread.
 If this thread is busy, the REST API can not receive incoming requests resulting in timeouts.
 
-Considering the difference in amount of response data and the bandwidth of USB versus internal memory it is an unfair comparison.
-However, based on our result we may conclude that the API does not respond consistently and appear to behave differently than the other benchmark.
-The device not being able to process 5 requests per second possibly reveals information about the connection bandwidth and the multi-threaded processing capability.
+
+The device not being able to process one request per second could indicate the multi-threaded processing capability is ...
 We assume that the 480MB/s theoretical bandwidth of USB2.0 is not a bottleneck considering the 2,5 MB/s result of the PC.
 Being a mobile device also other aspects my be at play here, like CPU frequency scaling.
 However this was turned off by acquiring a wake lock from the Android OS.
@@ -392,36 +393,37 @@ Snapshots taken of the CPU utilization of the three separate processes involved 
 If there is any performance to be gained by releasing the GIL, the CPU must be significantly under-utilized in this use case, because other processes may also take up considerable CPU time.
 % Setup
 A Galaxy S3 smartphone with Android 6.0.1 CyanogenMod was used for this measurement.
-The video has a bit rate of 4565 kb/s.
+The video has a bit rate of 4,565 kb/s.
 % Results
 \begin{figure}[p]
 	\centering
-	\begin{minipage}{.3\textwidth}
+	\begin{subfigure}{.3\textwidth}
 		\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-							CPU usage of the GUI, during HD video streaming on a Galaxy S3 smartphone
+							Tribler GUI
 				}\end{minipage}},rotate=90,center}
 			\includegraphics[scale=0.5]{monitor-cpu-streamingHD-GUI-2}
 		\end{adjustbox}
 		\label{fig:monitor-cpu-streamingHD-GUI-2}
-	\end{minipage}
+	\end{subfigure}
 ~
-\begin{minipage}{.3\textwidth}
+\begin{subfigure}{.3\textwidth}
 	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-							CPU usage of the back-end service, during HD video streaming on a Galaxy S3 smartphone
+						Tribler back-end service
 			}\end{minipage}},rotate=90,center}
 		\includegraphics[scale=0.5]{monitor-cpu-streamingHD-Service-2}
 	\end{adjustbox}
 	\label{fig:monitor-cpu-streamingHD-Service-2}
-\end{minipage}
+\end{subfigure}
 ~
-\begin{minipage}{.3\textwidth}
+\begin{subfigure}{.3\textwidth}
 	\begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-							CPU usage of the video player VLC, during HD video streaming on a Galaxy S3 smartphone
+						Video player VLC
 			}\end{minipage}},rotate=90,center}
 		\includegraphics[scale=0.5]{monitor-cpu-streamingHD-VLC-2}
 	\end{adjustbox}
 	\label{fig:monitor-cpu-streamingHD-VLC-2}
-\end{minipage}
+\end{subfigure}
+\caption{CPU utilization during HD video streaming on a Galaxy S3 smartphone}
 \end{figure}
 
 The results show that indeed not al 4 cores of the CPU are utilized by a large margin.
