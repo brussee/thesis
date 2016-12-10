@@ -11,13 +11,14 @@ generate_response_time_graph <- function(path) {
 	plot = ggplot(data, aes(x=seq(1, length(Latency)), y=Latency)) +
 	    geom_line() +
 	    xlab("Request") +
-	    ylab("Response time (ms)")
+	    geom_line(data=data, aes(x=seq(1, length(bytes)), y=bytes/1024*.25), color="#FF0000") +
+	    scale_y_continuous("Response time (ms)", sec.axis=sec_axis(~./.25, name="Response size (KB)"))
 
 	return(plot)
 }
 
-current = "../Nexus_6.csv"
-upstream = "../Laptop.csv"
+current = "../Laptop-2.csv"
+upstream = "../Laptop_.csv"
 
 if(file.exists(current)){
 	# If we have an upstream version, we are going to make a side comparison graph
@@ -25,10 +26,10 @@ if(file.exists(current)){
 		current_response_times <- generate_response_time_graph(current)
 		upstream_response_times <- generate_response_time_graph(upstream)
 
-        create_comparison(upstream_response_times, current_response_times, "api_response_time_comparison.png")
+        create_comparison(upstream_response_times, current_response_times, "api_combined_comparison.png")
 	} else { # If not, we will just save this graph as-is.
 		current_response_times <- generate_response_time_graph(current)
 		current_response_times
-		ggsave(file="api_response_times.png", width=8, height=6, dpi=100)
+		ggsave(file="api_combined.png", width=8, height=6, dpi=100)
 	}
 }

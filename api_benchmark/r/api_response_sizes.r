@@ -8,10 +8,10 @@ source(paste(Sys.getenv('R_SCRIPTS_PATH', '.'), 'side_comparison.r', sep='/'))
 # Generates the response time graph given a path to a jmeter summary csv file
 generate_response_time_graph <- function(path) {
 	data = read.csv(path, header = T)
-	plot = ggplot(data, aes(x=seq(1, length(Latency)), y=Latency)) +
+	plot = ggplot(data, aes(x=seq(1, length(bytes)), y=bytes/1024)) +
 	    geom_line() +
 	    xlab("Request") +
-	    ylab("Response time (ms)")
+	    ylab("Response size (KB)")
 
 	return(plot)
 }
@@ -25,10 +25,10 @@ if(file.exists(current)){
 		current_response_times <- generate_response_time_graph(current)
 		upstream_response_times <- generate_response_time_graph(upstream)
 
-        create_comparison(upstream_response_times, current_response_times, "api_response_time_comparison.png")
+        create_comparison(upstream_response_times, current_response_times, "api_response_sizes_comparison.png")
 	} else { # If not, we will just save this graph as-is.
 		current_response_times <- generate_response_time_graph(current)
 		current_response_times
-		ggsave(file="api_response_times.png", width=8, height=6, dpi=100)
+		ggsave(file="api_response_sizes.png", width=8, height=6, dpi=100)
 	}
 }
