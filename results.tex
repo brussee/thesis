@@ -22,6 +22,22 @@ We measure the amount of time it takes for other devices to discover new content
 % Expected / desired results
 Depending on the random walk in the channel's community content can be discovered either very quickly or after a while due to property of eventual consistency.
 % Setup
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{phones_2}
+	\caption{Experimental setup with various smartphones and one tablet, all showing the About Android screen.}
+	\label{fig:phones_2}
+\end{figure}
+
+\begin{table}[H]
+	\begin{tabular}{l | *{6}{c} || c} \hline
+		Device & Nexus 5 & Nexus 6 & Galaxy Nexus & Galaxy S3 & OnePlus One & Nexus 10 & Total \\ \hline
+		Amount & 1 & 4 & 6 & 1 & 1 & 1 & 14 \\ \hline
+	\end{tabular}
+	\caption{Devices used in the content discovery experiment.}
+	\label{table:devices}
+\end{table}
+
 Figure \ref{fig:phones_2} shows the experimental setup with various smartphones and one tablet.
 Each device is connected to the same wireless network and within 1 to 2 meters distance from the same access point.
 Different versions of Android OS are installed, ranging from 4.3 to 7.1, and some run a CyanogenMod.
@@ -32,26 +48,13 @@ Then, repeatedly a new video is recorded and added to that channel by the source
 The new videos are discovered, and the event logged, by each device individually.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{content_dissemination}
+	\includegraphics[width=.8\textwidth]{content_dissemination}
 	\caption{Sequence of events when a video is recorded and distributed.}
 	\label{fig:content_dissemination}
 \end{figure}
 The sequence, as shown in Figure \ref{fig:content_dissemination}, of recording a new video, adding it the the same channel, and letting the subscribers discover it, is repeated 15 times for accuracy.
-All devices devices are synced with NTP to be able to have a common timeline for this experiment.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{phones_2}
-	\caption{Experimental setup with various smartphones and one tablet, all showing the About Android screen.}
-	\label{fig:phones_2}
-\end{figure}
-\begin{table}[H]
-	\begin{tabular}{l | *{6}{c} || c} \hline
-		Device & Nexus 5 & Nexus 6 & Galaxy Nexus & Galaxy S3 & OnePlus One & Nexus 10 & Total \\ \hline
-		Amount & 1 & 4 & 6 & 1 & 1 & 1 & 14 \\ \hline
-	\end{tabular}
-	\caption{Devices used in the content discovery experiment.}
-	\label{table:devices}
-\end{table}
+All devices are synced with NTP to be able to have a common timeline for this experiment.
+
 % Results
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
