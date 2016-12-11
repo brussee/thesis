@@ -26,7 +26,7 @@ Figure \ref{fig:phones_2} shows the experimental setup with various smartphones 
 Each device is connected to the same wireless network and within 1 to 2 meters distance from the same access point.
 Different versions of Android OS are installed, ranging from 4.3 to 7.1, and some run a CyanogenMod.
 Each device is installed with the same version of Tribler and the same database, containing up to date information about existing channels and their content.
-This database was gathered in the days before this experiment and installed manually.
+This database was gathered in the days before this experiment, serving as a hot cache.
 On one device, a Nexus 6, from now on referred to as the source, a new channel is created to which the other 13 devices subscribe via NFC.
 Then, repeatedly a new video is recorded and added to that channel by the source.
 The new videos are discovered, and the event logged, by each device individually.
@@ -117,8 +117,9 @@ If not, other more powerful nodes could be queried to supply the necessary histo
 %TODO previous chapter: implementation architecture startup sequence nice design, how does it perform?
 % Rationale
 Key to user retention is a fast startup time.
-Therefore the GUI starts up in parallel with the background service.
-This way at the GUI is visible and responsive to user input, while the service may continue loading in the background.
+The app starts the GUI first, followed by the service.
+Loading of the GUI is fast, because it is in fact a thin shell, thanks to the separation of the back-end and the front-end, and the asynchronous implementation.
+This enables the GUI to be visible and responsive to user input, as shown in Figure \ref{fig:menu-popular}, while the service may continue loading in the background.
 However, before any task can be executed by the service, it needs to be fully started.
 % Metrics
 To measure the total startup time we register the time of launching the app and the moment the Tribler-started-event is registered by the GUI.
@@ -278,7 +279,7 @@ This in turn, explains the significant difference in response size at the end of
 % Conclusions
 The throughput of the smartphone in the second scenario is higher than the throughput of the laptop in the first scenario.
 From this, we can conclude that bandwidth is not a limiting factor in the first scenario for the smartphone.
-Since the requests are sequential, the measurements are not influencing each other.
+Although the requests are sequential, they can still influence each other due to caching and 
 Therefore, to explain the jitter, we have to look at the Tribler core or the environment.
 
 %VERIFY results
