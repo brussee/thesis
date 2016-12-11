@@ -388,8 +388,8 @@ However, another way to optimize is to use multiprocessing for separate Tribler 
 \section{CPU utilization}\label{sec:cpu_utilization}
 %TODO: tijdens HD streaming: net cpu over, nu nog steeds??
 % let it run and measure
-We saw in Table \ref{table:profiling_details} that the cryptography tasks takes a lot of time.
-We need to know if this is CPU bounded or IO bounded for optimization purposes.
+In Section \ref{sec:profiling} we found that the cryptography tasks are taking a significant amount of time.
+For optimization purposes we need to confirm if this is CPU bounded.
 
 % Rationale
 Python-for-Android supplies a CPython interpreter out of the box.
@@ -398,18 +398,17 @@ This interpreter is limited by a global interpreter lock (GIL) in multi-threaded
 Tribler uses C extension modules for crypto tasks, which are CPU intensive.
 Tribler also uses the event-driven networking engine Twisted, which is written in Python.
 The core of the event loop within Twisted is the reactor, which runs on a single thread.
-The reactor provides a threading interface to offload long running tasks, such as IO or CPU intensive tasks to a thread pool.
-The GIL prohibits more than one thread to execute Python bytecode at a time.
+The reactor provides a threading interface to offload long running tasks, such as IO or CPU intensive tasks to a thread pool, but the GIL prohibits more than one thread to execute Python bytecode at a time.
 This negates all performance gains in terms of parallelism afforded by multi-core CPUs, making Python threads unusable for delegating CPU bound tasks to multiple cores.
-As shown in the precious section the crypto function took a considerable amount of time to compute.
-To see if the releasing the GIL as put forward as a solution is feasible we measure if the CPU has more capacity than is being utilized right now.
+As shown in the previous section the crypto function took a considerable amount of time to compute.
+To see if the releasing the GIL is a feasible solution we measure if the CPU has more capacity than is being utilized right now.
 % Metrics
 Snapshots taken of the CPU utilization of the three separate processes involved in streaming HD video with Tribler.
 % Expected / desired results
 If there is any performance to be gained by releasing the GIL, the CPU must be significantly under-utilized in this use case, because other processes may also take up considerable CPU time.
 % Setup
 A Galaxy S3 smartphone with Android 6.0.1 CyanogenMod was used for this measurement.
-The video has a bit rate of 4,565 kb/s.
+The HD video that was streamed has a bit rate of 4,565 kb/s.
 % Results
 \begin{figure}[p]
 	\centering
@@ -419,7 +418,6 @@ The video has a bit rate of 4,565 kb/s.
 				}\end{minipage}},rotate=90,center}
 			\includegraphics[scale=0.5]{monitor-cpu-streamingHD-GUI-2}
 		\end{adjustbox}
-		\label{fig:monitor-cpu-streamingHD-GUI-2}
 	\end{subfigure}
 ~
 \begin{subfigure}{.3\textwidth}
@@ -428,7 +426,6 @@ The video has a bit rate of 4,565 kb/s.
 			}\end{minipage}},rotate=90,center}
 		\includegraphics[scale=0.5]{monitor-cpu-streamingHD-Service-2}
 	\end{adjustbox}
-	\label{fig:monitor-cpu-streamingHD-Service-2}
 \end{subfigure}
 ~
 \begin{subfigure}{.3\textwidth}
@@ -437,16 +434,18 @@ The video has a bit rate of 4,565 kb/s.
 			}\end{minipage}},rotate=90,center}
 		\includegraphics[scale=0.5]{monitor-cpu-streamingHD-VLC-2}
 	\end{adjustbox}
-	\label{fig:monitor-cpu-streamingHD-VLC-2}
 \end{subfigure}
 \caption{CPU utilization during HD video streaming on a Galaxy S3 smartphone}
+\label{fig:monitor-cpu-streamingHD}
 \end{figure}
 
-The results show that indeed not al 4 cores of the CPU are utilized by a large margin.
-Even when performing the intensive crypto work of the Multichain experiment 2 CPU cores appear to be idling.
+Figure \ref{fig:monitor-cpu-streamingHD} shows that indeed not al 4 cores of the CPU are utilized by a large margin.
+The GUI is using the CPU barely, if at all, while VLC is playing the video at about 15\%.
+The service's CPU utilization, streaming the video, tops out at around 25\%.
+That leaves about 60\% of the CPU to be utilized by other background apps and the OS.
+%Even when performing the intensive crypto work of the Multichain experiment 2 CPU cores appear to be idling.
 % Conclusions
 This suggests that releasing the GIL during heavy crypto work could result in a significant performance gain.
-However our results are inconclusive and warrant further research.
 
 
 \section{Software testing and code coverage}\label{sec:testing_coverage}
