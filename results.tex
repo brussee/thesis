@@ -458,33 +458,32 @@ The ratio of tested lines of code with respect to the total number of lines of c
 % Expected / desired results
 We expect to see a line-rate value close to 1, but not 1 since we know the tests do not cover everything.
 % Setup
-All tests were run two times on the same device with 11 weeks of development in between.
 The nose module was used for running the tests together with the coverage module for gathering coverage data.
-The same Nexus 6 smartphone with Android 6.0.1 CyanogenMod was used in both runs.
+The same Nexus 6 device was used in all runs, with Android 6.0.1 CyanogenMod installed for the first two runs, and Android 7.1 CyanogenMod the third and fourth run.
 % Results
 Table \ref{table:testing_coverage} shows the results of both executions.
 \begin{table}[H]
-	\begin{tabular}{l | *{5}{r}} \hline
-		Run & Tests & Errors & Failures & Skipped & Line-rate \\ \hline \hline
-		1     & 711   & 14       & 13          & 30          & 0.7241 \\ \hline
-		2     & 749   & 12       & 15          & 3            & 0.7861 \\ \hline
-		3	  & 782	  & 10		 & 18		   & 4			  & 0.7871 \\ \hline
-		PC   & 812   & 0         & 0            & 30          & 0.7894 \\ \hline
-		PC   & 812   & 0         & 0            & 30          & 0.7901 \\ \hline
-		4     & 782   & 10       & 18          & 4            & 0.7897 \\ \hline
+	\begin{tabular}{l | l | *{5}{r}} \hline
+		Run                        & Device     & Tests & Errors & Failures & Skipped & Line-rate \\ \hline \hline
+		Sat, 16 Jul 2016	 & Nexus 6    & 711   & 14       & 13          & 30          & 0.7241 \\ \hline % 1468681674588
+		Tue, 01 Nov 2016  & Nexus 6    & 749   & 12       & 15          & 3            & 0.7861 \\ \hline % 1478016138747
+		Mon, 05 Dec 2016 & Nexus 6    & 782   & 10		& 18		   & 4			   & 0.7871 \\ \hline % 1480952971018
+		Mon, 05 Dec 2016 & PC            & 812   & 0         & 0            & 30          & 0.7894 \\ \hline % 1480972174090
+		Tue, 06 Dec 2016  & PC             & 812   & 0         & 0            & 30          & 0.7901 \\ \hline % 1481032393332
+		Tue, 06 Dec 2016  & Nexus 6     & 782   & 10       & 18          & 4            & 0.7897 \\ \hline % 1481034462430
 	\end{tabular}
 	\caption{Tests results and coverage line-rate at different points in time during development}
 	\label{table:testing_coverage}
 \end{table}
-%TODO explain failures and 30 vs 4 skipped
-%GUI test fail because import Qt above @skip
-
-The number of tests has increased as well as the coverage line-rate while the number of errors and skipped tests have decreased.
-A failure means an assertion was not met and an error represents an exception while running a test.
+Failures occur if a test crashes and cannot complete.
+Errors occur if a test does not pass, because an assertion fails during the test.
+The difference in total tests and skipped tests, between the smartphone and the PC, can be explained by an import error just before the 26 desktop GUI tests are about to be skipped.
 % Conclusions
-Therefore seeing that the number of failures increased is not that bad since the number of errors decreased.
-If the line-rate is 1 you still need the the branch-rate to be 1 as well before you can be confident the code will work as expected.
-The branch-rate is the number of code paths tested with respect to the total number of code paths possible.
-Unfortunately this metric is not part of the current test plan.
-Nevertheless the metrics show improvement overall.
+The total number of tests has increased over time, as well as the coverage line-rate, while the number of errors have decreased.
+Concluding, the metrics show improvement overall.
+%Therefore seeing that the number of failures increased is not that bad since the number of errors decreased.
+%If the line-rate is 1 you still need the the branch-rate to be 1 as well before you can be confident the code will work as expected.
+%The branch-rate is the number of code paths tested with respect to the total number of code paths possible.
+%Unfortunately this metric is not part of the current test plan.
+%Nevertheless the metrics show improvement overall.
 
