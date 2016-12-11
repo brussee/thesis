@@ -226,13 +226,13 @@ It excludes the transfer time of the complete response, and subsequent processin
 % Expected / desired results
 We want to see that the response time is bounded, consistent and generally low.
 % Setup
-A Nexus 6 smartphone with Android 7.1 CyanogenMod is connected to a laptop running JMeter and the API port is forwarded with ADB over USB.
+A Nexus 6 smartphone with Android 7.1 CyanogenMod is connected to a laptop running JMeter and the API port is forwarded with ADB over USB2.0.
 With JMeter we request the discovered channels from the API a 1,000 times at a constant rate of one request per second sequentially.
 A laptop is included to give some more perspective.
 Its specifications are listed in Table \ref{table:specs_laptop}.
 The measurements are repeated for two scenarios: at first launch, and when almost no new channels are discovered anymore.
 % Results
-Figure \ref{fig:api_combined} shows the response times for every request in both scenarios for the laptop and Nexus 6 smartphone.
+Figure \ref{fig:api_combined} shows the response times and sizes for every request in both scenarios for the laptop and Nexus 6 smartphone.
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{.49\textwidth}
@@ -278,29 +278,26 @@ Therefore, because of the fixed amount of requests, proportionally more time ela
 This in turn, explains the significant difference in response size at the end of the measurements at first launch between the smartphone and the laptop.
 % Conclusions
 The throughput of the smartphone in the second scenario is higher than the throughput of the laptop in the first scenario.
+The 480MB/s theoretical bandwidth of USB2.0 can not a bottleneck, considering the 579.49 KB/s result of the PC.
 From this, we can conclude that bandwidth is not a limiting factor in the first scenario for the smartphone.
-Although the requests are sequential, they can still influence each other due to caching and 
-Therefore, to explain the jitter, we have to look at the Tribler core or the environment.
+Although the requests are sequential, they can still influence each other, due to caching for example.
+Therefore, to explain the jitter, we have to look at the internals of the Tribler core, and the environment.
 
-%VERIFY results
-
-
-%TODO: IO bound + crappy Python code WHY?
-% busy Twisted reactor?
-Tribler uses the event-driven networking engine Twisted, which is also written in Python.
-Twisted allows you to build inter-process communication protocols and provides a HTTP server which was used to build the REST API.
+Tribler uses the event-driven networking engine Twisted, which is written in Python.
+Twisted allows you to build inter-process communication protocols, and provides the HTTP server used to build the REST API.
 Twisted uses a single thread to coordinate all others, called the reactor thread.
-If this thread is busy, the REST API can not receive incoming requests resulting in timeouts.
+If this thread is busy, the REST API can not receive incoming requests resulting in delays and potential timeouts.
+Also, only one thread can be executed at a time, because our implementation uses the CPython interpreter which has a global interpreter lock (GIL).
+CPython is optimized for single thread performance and compatibility with C extension modules, which are typically not thread-safe.
 
-
-The device not being able to process one request per second could indicate the multi-threaded processing capability is ...
-We assume that the 480MB/s theoretical bandwidth of USB2.0 is not a bottleneck considering the 2,5 MB/s result of the PC.
+The fact that the smartphone in our experiment is not able to process one request per second, could indicate the multi-threaded processing capability is severely flawed due to the effects of the GIL on the Twisted reactor.
+Although each measurement is a snapshot, they were taken in a short time span from each other, so the environment is not expected to have a larger impact than the aforementioned effect.
 Being a mobile device also other aspects my be at play here, like CPU frequency scaling.
-However this was turned off by acquiring a wake lock from the Android OS.
-It appears then that our design approach still suffers from performance issues due to imperfect multi-threaded performance.
-Because if the CPU is simply not powerful enough we expect to see a linear pattern instead of what we actually see in \ref{fig:api_benchmark}.
-This phenomenon is not of great importance though, because users are not expected to fire hundreds of requests per minute to the API.
-Further investigation should figure out if this phenomenon is also observed with lower amounts of requests per minute.
+However, this was turned off by acquiring a wake lock from the Android OS.
+There were no other active user-apps, but the OS itself contains system-apps that cannot be turned off.
+Finally, the derivative of the response size appears to coincide with a significant longer response time.
+If new content is discovered, that means other threads are active, which confirms our hypothesis that the GIL is to blame for poor multi-threaded performance.
+Further investigation should figure out if this phenomenon is also observed with lower amounts of requests per minute, in order to determine if the CPython has to be replaced by an interpreter without a GIL.
 
 
 \section{Profiling}\label{sec:profiling}
@@ -396,8 +393,8 @@ We need to know if this is CPU bounded or IO bounded for optimization purposes.
 
 % Rationale
 Python-for-Android supplies a CPython interpreter out of the box.
-CPython is optimized for single thread performance and compatibility with C extension modules.
-It is limited by a global interpreter lock (GIL) in multi-threaded use cases with shared memory.
+CPython is optimized for single thread performance and compatibility with C extension modules, which are typically not thread-safe.
+This interpreter is limited by a global interpreter lock (GIL) in multi-threaded use cases with shared memory.
 Tribler uses C extension modules for crypto tasks, which are CPU intensive.
 Tribler also uses the event-driven networking engine Twisted, which is written in Python.
 The core of the event loop within Twisted is the reactor, which runs on a single thread.
