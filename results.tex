@@ -5,7 +5,6 @@ To analyze how feasible is it to run all Tribler functionality on mobile devices
 We take several measurements on different devices to quantify the performance and resource usage in the context of the scenario in the problem description in Chapter \ref{ch:problem_desc}.
 The results will indicate the state of the art, before any optimization, in functionality of Tribler on mobile devices as described in Chapter \ref{ch:tribler}.
 From the results, possible angles for optimization will emerge and further described in Chapter \ref{ch:conclusions}.
-The results also show that all requirements have been met.
 
 % Rationale
 % Metrics
@@ -63,18 +62,18 @@ All devices are synced with NTP to be able to have a common timeline for this ex
 	\label{fig:boxplot-nr.of.devices-130}
 \end{figure}
 Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a number of devices to discover new content on a subscribed channel.
-The results show that within 4 seconds 9 devices have discovered the new content.
+The results show that the first device discovers new content in less than 2 seconds, while within 4 seconds 9 devices have discovered the new content.
 From the 10th device and beyond an increase in discovery time is noticeable.
 % Conclusions
-This could be explained by the fact that only 10 peers are connected at the a time.
-Much more peers are needed to give an accurate representation in terms of scalability.
+This could be explained by the fact that only 10 peers are connected at a time.
+Many more peers are needed to give an accurate representation in terms of scalability.
 What can be concluded from this experiment is that on the same local network the first device discovers the new content in less than 2 seconds.
 From the 10th device onward the dissemination slows down.
 
 
 \section{Multichain performance}\label{sec:multichain_perf}
 % Rationale
-If mobile devices are to become full-fledged nodes on the network they must support this feature.
+If mobile devices are to become full-fledged nodes on the network they must support the Multichain feature.
 % Metrics
 The creation and signing of these blocks is measured to determine if it scales well.
 Multichain signs a block every 10 minutes, meaning our experiment of generating 25,000 blocks represent about half a year (173.6 days) of continuous effort.
@@ -107,7 +106,7 @@ They also show that mobile devices are at least a factor of two slower than an o
 % Conclusions
 Due to the nature of blockchain every new block needs to contain the hash value of the previous block.
 If a database lookup is needed for this and the database is growing, that can explain the non-linear course of the graph.
-This can be easily optimize by keeping the last hash value for currently connected peers in memory.
+This can be easily optimized by keeping the last hash value for currently connected peers in memory.
 However this is an indication that creating blocks by the thousands is an IO bound process, rather than CPU bound.
 Finally, if mobile devices are to be full-fledged nodes on the Tribler network, they should not slow down significantly more than any other ordinary laptop, besides being slower in the first place.
 Hardware acceleration could close this gap without sacrificing battery life too much.
@@ -164,7 +163,7 @@ The sample standard deviation is relatively small for all devices, which indicat
 \section{Content creation}\label{sec:content_creation}
 %TODO grote scenario
 % Rationale
-New content can be generated with a smartphone, like for example a video that has been recorded with the builtin camera.
+New content can be generated with a smartphone, like for example a video that has been recorded with the built-in camera.
 How quick one can create content and distribute it depends not only on the discovery time, as measured in Section \ref{sec:content_discovery}, but first, and perhaps foremost, on the speed of the torrent creation process.
 % Metrics
 In this experiment we measure the time required to create a torrent file for different sizes of videos.
@@ -210,7 +209,7 @@ By design most functionality is operated through the API.
 % Metrics
 Therefore, measuring the responsiveness of the API will give a good indication of the responsiveness overall.
 We use Apache JMeter to fire requests at the API and measure the time it takes to respond to each request.
-JMeter's \texttt{latency} metric measures the time from just before sending the request, to just after the first part of the response has been received \cite{jmeter_glossary}.
+JMeter's 'latency' metric measures the time from just before sending the request, to just after the first part of the response has been received \cite{jmeter_glossary}.
 Thus, this metric includes the following:\\
 \begin{minipage}{\textwidth}
 \hspace{13em}
@@ -221,7 +220,7 @@ Thus, this metric includes the following:\\
 	+ latency towards the serve\\
 	+ time for processing the request by the server\\
 	+ time to generating a response by the server\\
-	+ latency back from the server\\
+	+ latency back from the server.\\
 }
 \end{minipage}
 \end{minipage}
@@ -281,7 +280,7 @@ Therefore, because of the fixed amount of requests, proportionally more time ela
 This in turn, explains the significant difference in response size at the end of the measurements at first launch between the smartphone and the laptop.
 % Conclusions
 The throughput of the smartphone in the second scenario is higher than the throughput of the laptop in the first scenario.
-The 480MB/s theoretical bandwidth of USB2.0 can not a bottleneck, considering the 579.49 KB/s result of the PC.
+The 480 MB/s theoretical bandwidth of USB2.0 cannot be a bottleneck, considering the 579.49 KB/s result of the PC.
 From this, we can conclude that bandwidth is not a limiting factor in the first scenario for the smartphone.
 Although the requests are sequential, they can still influence each other, due to caching for example.
 Therefore, to explain the jitter, we have to look at the internals of the Tribler core, and the environment.
@@ -305,20 +304,17 @@ Further investigation should figure out if this phenomenon is also observed with
 
 \section{Profiling}\label{sec:profiling}
 % Rationale
-Because of the challenges put forward in chapter \ref{ch:tribler_mobile} we investigate if time is spent disproportionately on some function.
+Because of the challenges put forward in Chapter \ref{ch:tribler_mobile} and multi-threading issues found in Section \ref{sec:api_responsiveness}, we investigate if time is spent disproportionately on some function.
 % Expected / desired results
 We expect that the limited resources of a mobile device may impact particular features more than others.
-If hardware acceleration is not present the less powerful CPU may struggle with encryption tasks.
+If hardware acceleration is not present a less powerful CPU may struggle with encryption tasks.
+Long running functions impact the responsiveness due to the GIL, as explained in Section \ref{sec:api_responsiveness}.
 % Metrics
-Instead of CPU time, time actually spent processing by the CPU, we measure wall-clock time.
-This way we measure the amount of time a user would have to wait for a certain function to be executed.
-%TODO
-We focus on wall clock time instead of CPU time because...
-
+We focus on wall clock time, instead of CPU time, because this metric indicates the amount of time a user has to wait for a certain function to be executed.
 % Setup
-With the cProfile Python module and the visualisation tool SnakeViz we can see if any function takes a disproportionate amount of time.
-A Nexus 6 smartphone with Android 6.0.1 CyanogenMod was used for profiling Tribler.
-The profiler was running for 10 minutes with Tribler during normal operation and without any user input.
+With the cProfile Python module we can measure wall clock time for each function call, to see if any function takes a disproportionate amount of time.
+A Nexus 6 smartphone with Android 6.0.1 CyanogenMod was used.
+The profiler was running for 10 minutes, with Tribler during normal operation and without any user input.
 % Results
 %\begin{figure}[H]
 %	\centering
@@ -326,6 +322,11 @@ The profiler was running for 10 minutes with Tribler during normal operation and
 %	\caption{Profiler results of 10 minutes Tribler run time (bright pink represents business logic upon receiving a torrent)}
 %	\label{fig:profile}
 %\end{figure}
+
+%The bright pink represents the update function, which signifies various business logic upon receiving a torrent.
+%Also notable is the same stack of functions within and outside of a community on top of the wrapper.
+%This can be explained by the fact that torrents can be discovered outside of a community too.
+
 \begin{table}
 	\begin{tabular}{r | l | l | l} \hline
 		\# Calls & Total time (s) & Time per call (s) & Function \\ \hline \hline
@@ -366,27 +367,23 @@ The profiler was running for 10 minutes with Tribler during normal operation and
 		140069 & 15.4 & 0.00011 & method 'execute' of 'sqlite3.Cursor' objects \\ \hline
 		16 & 0.001759 & 0.0001099 & method 'shutdown' of '\_socket.socket' objects \\ \hline
 	\end{tabular}
-	\caption{Native function calls wall clock time broken down per call during the 10 minute profiling (600 seconds total time)}
+	\caption{Native function calls, sorted by wall clock time per call, during the 10 minute profiling (600 seconds total time)}
 	\label{table:profiling_details}
 \end{table}
-Figure \ref{fig:profile} shows that 27\% of the time is spent on verifying cryptographic signatures.
-The bright pink represents the update function, which signifies various business logic upon receiving a torrent.
-Also notable is the same stack of functions within and outside of a community on top of the wrapper.
-This can be explained by the fact that torrents can be discovered outside of a community too.
-%TODO
-execute of apsw.Cursor
-execute of sqlite3.Cursor
-reactor switchen? select.epoll \cite{http://stackoverflow.com/questions/2032598/caveats-of-select-poll-vs-epoll-reactors-in-twisted}
+Table \ref{table:profiling_details} shows that 27\% of the time is spent on verifying cryptographic signatures, which is CPU bound.
+The database commit of SQLite3 is the slowest call, which is IO bound.
+Followed by the poll for new events by the Twisted reactor.
+The time per call, together with the number of calls, are the most important of the three measured metrics for effective optimization by parallelization.
+The reactor polling may be optimized by switching reactors, since there are many types with different behaviors
+The database commits can be optimized if less transactions are required by the protocol than are currently performed.
+The signature verification may be optimized by parallelization.
 % Conclusions
-%TODO
-The time per call is most important for optimization because...
-
 The significant chunk of time that the crypto takes is as expected.
 Since this task is actually delegated to the C library M2Crypto it should be possible to release the GIL of the Python interpreter so other Python code that does not depend on it can be executed.
-The main alternative provided in the standard library for CPU bound applications is the multiprocessing module, which works well for workloads that consist of relatively small numbers of long running computational tasks, but results in excessive message passing overhead if the duration of individual operations is short \cite{http://python-notes.curiousefficiency.org/en/latest/python3/multicore_python.html}.
-As seen from the time per call for \_\_m2crypto.ecdsa\_verify in table \ref{table:profiling_details} the multiprocessing module would likely cause too much overhead.
-%TODO
-Another way to optimize is multiprocessing, which avoids the GIL completely \cite{quinten}.
+The main alternative, provided in the standard library for CPU bound applications, is the multiprocessing module, which avoids the GIL completely, and works well for workloads that consist of relatively small numbers of long running computational tasks, but results in excessive message passing overhead if the duration of individual operations is short \cite{multicore_python}.
+As seen from the time per call for \_\_m2crypto.ecdsa\_verify in Table \ref{table:profiling_details} the multiprocessing module would likely cause too much overhead.
+However, another way to optimize is to use multiprocessing for separate Tribler communities, which is left for future work.
+
 
 \section{CPU utilization}\label{sec:cpu_utilization}
 %TODO: tijdens HD streaming: net cpu over, nu nog steeds??
