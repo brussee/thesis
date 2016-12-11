@@ -62,19 +62,15 @@ This way the user can be presented with the GUI, that indicates the service is l
 
 \subsection{Tribler Python core}
 Tribler is written entirely in Python, but Android does not support this natively.
-Python is an interpreted language, 
-Because our design requirements (\ref{rq:Independence}, \ref{rq:PythonClibs})  we incorporate a Python interpreter into our design.
-On top of that the entire core of Tribler can run, containing a REST HTTP API module also written in Python.
-
+Python is an interpreted language.
+Because of our design requirements (\ref{rq:Independence}, \ref{rq:PythonClibs}), we incorporate a Python interpreter into our design.
+On top of the entire core of Tribler can run, containing a REST HTTP API module also written in Python.
 %Re-usability is an important design objective that can greatly improve maintainability as well.
 %Therefore we aim to completely re-use the Tribler core, meaning everything but the GUI.
 %We focus on implementing all the features of Tribler as described Chapter \ref{ch:tribler}.
-
-
 %\subsubsection{REST API}
 % async front-back means rest api
 All communication with the front-end is done asynchronously via a REST API (req. \ref{rq:Async}).
-
 Finally, the REST API communicates with an HTTP Client on the user interface side via JSON.
 
 

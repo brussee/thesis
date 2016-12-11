@@ -297,9 +297,9 @@ Although each measurement is a snapshot, they were taken in a short time span fr
 Being a mobile device also other aspects my be at play here, like CPU frequency scaling.
 However, this was turned off by acquiring a wake lock from the Android OS.
 There were no other active user-apps, but the OS itself contains system-apps that cannot be turned off.
-Finally, the derivative of the response size appears to coincide with a significant longer response time.
+Finally, the first order derivative of the response size appears to coincide with a significant longer response time.
 If new content is discovered, that means other threads are active, which confirms our hypothesis that the GIL is to blame for poor multi-threaded performance.
-Further investigation should figure out if this phenomenon is also observed with lower amounts of requests per minute, in order to determine if the CPython has to be replaced by an interpreter without a GIL.
+Further investigation should be conducted whether this phenomenon is also observed with lower amounts of requests per minute, in order to determine if the CPython has to be replaced by an interpreter without a GIL.
 
 
 \section{Profiling}\label{sec:profiling}

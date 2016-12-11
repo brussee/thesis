@@ -9,7 +9,7 @@ Millions of people that own a smartphone, and not a computer, can now benefit fr
 
 
 \section{How feasible is it to run all Tribler functionality on mobile devices?} % to defeat or mitigate large scale monitoring and censorship?
-We proposed an Android implementation that fulfills are design requirements as specified in Chapter \ref{ch:design}.
+We proposed an Android implementation that fulfills all design requirements as specified in Chapter \ref{ch:design}.
 It performs consistently, and faster than expected compared to a laptop, as shown in Chapter \ref{ch:results}.
 
 % Content discovery
@@ -17,20 +17,22 @@ From the content discovery experiment, we learned that 9 devices discover new co
 Therefore, with viral spreading, it seems realistic we can reach millions within minutes.
 % Multichain performance
 The Multichain experiment showed that creating blocks by the thousands is an IO bound process, rather than CPU bound, in the current implementation.
-It is also the most easy to optimize by keeping the hash of the last block for connected peers in memory .
+It is also the most easy to optimize by keeping the hash of the last block for connected peers in memory.
 % Startup time
 In the startup time experiment, the sample standard deviation is relatively small for all devices, which indicates that the startup time of Tribler is consistent.
 % Content creation
 As expected, creating torrents appears to scale linearly with the size of the content, and adding a torrent to a channel does not scale with content size.
 % Api responsiveness
-The API performs consistently, but slower on a smartphone than on a laptop.
-The API also performs consistently slower, both on the laptop and the smartphone, depending on the amount of data to be returned for a request, as expected because of JSON serialization.
+The API performs consistently slower depending on the amount of data to be returned for a request, as expected because of JSON serialization.
+The API also performs consistently slower on a smartphone compared to a laptop.
+The first order derivative of the response size appears to coincide with a significant longer API response time.
+Further investigation should be conducted whether this phenomenon is also observed with lower amounts of requests per minute, in order to determine if the CPython has to be replaced by an interpreter without a GIL.
 % Profilng
 Profiling revealed that cryptographic tasks are a significant part of processing messages.
 These tasks should be offloaded to a separate computational core to release the global interpreter lock.
 That would enable Python code to run in parallel, which in turn would improve performance and responsiveness.
 % Cpu utilization
-The CPU utilization measurement showed this approach is likely to succeed, because the CPU utilization of Tribler and the video player VLC combined did not reach more 35\% while streaming HD video.
+The CPU utilization measurement showed this approach is likely to succeed, because the CPU utilization of Tribler and the video player VLC combined did not reach more 40\% while streaming HD video.
 % Testing and coverage
 All existing tests can be run on Android almost as well as on other platforms.
 
@@ -45,14 +47,17 @@ All existing tests can be run on Android almost as well as on other platforms.
 
 \section{Given the constraints and unique abilities of mobile devices, what functionality of Tribler can be added or enhanced?}
 % Opportunities
+Mobile devices with WiFi, Bluetooth and NFC are optimally equipped for local data exchange without reliance on centralized infrastructure.
+These abilities have been fully employed in the current prototype, making easy to use and attack-resilient information spreading with Tribler reality.
 
 % Bluetooth
-For example, a feature was added that transfers Tribler to a nearby device, with NFC and Bluetooth enabled, without further requirements, like an Internet connection or a central app store.
+A feature was added that transfers Tribler to a nearby device, with NFC and Bluetooth enabled, without further networking requirements, like an Internet connection or a central app store.
 % Nfc
 By just holding to NFC equipped smartphones back to back, the transfer of the application started automatically.
-Also, you can add a channel to your favorites in the same manner.
-Using your real life social network, you can build your own on-line trust network this way.
+Also, users can make a channel their favorite in the same manner, from one nearby phone to another.
+Using their real life social network, users can build their own on-line trust network this way.
 % WiFi Direct
-And thanks to built-in capability of Android you can setup an ad hoc WiFi network to avoid any infrastructure completely.
-In the context of privacy and censorship, this off-grid functionality means that if content is detected by the censor it may have already crossed, or will cross, the freedom border thanks to the properties of viral spreading.
+And thanks to built-in capability of Android, it is possible to setup an ad hoc WiFi network to avoid any infrastructure completely.
+In the context of privacy and censorship, this off-grid functionality means that fast viral spreading, independent of infrastructure, is possible.
+Thanks to the properties of viral spreading, if content is detected by the censor, it may have already crossed the freedom border, or will still be capable of crossing it within a short time span.
 

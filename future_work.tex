@@ -1,16 +1,6 @@
 \section{Future work}\label{sec:future_work}
-% Research
-This work enables a new direction of research with Tribler fully geared towards mobile devices.
-% future phd's and new agenda thanks to this work?
-Future research can evaluate how well smartphones with Tribler can defeat the powerful adversary as described in Section \ref{sec:adversary_model}.
-One can setup a large scale experiment with various degrees of powerful censors.
-Or a live deployment of Tribler on mobile devices in areas with restricted Internet access to evaluate Tribler in the wild for the intended use-cases.
-Another possible research question can be about how viral spreading of eyewitness content behaves in the real world.
-And the effect on anonymity of local crowds, regarding the onion routing protocol, can also be studied for example.
-A different direction is to research the possible benefits of teaming a mobile device with a traditional desktop computer or server with a shared key chain for a single user.
-The more powerful computer could be credit mining \cite{decentralized_credit_mining}, while the mobile device uses the credits to download faster.
 
-% Implementation
+\subsection{Implementation}
 From the results in Chapter \ref{ch:results}, we found that performance can potentially be improved if the Python GIL is released during heavy cryptographic tasks by C/C++ libraries.
 We also suggest to cut long running methods into smaller pieces, to allow the Twisted reactor to interleave more threads, to improve responsiveness under heavy load in our multi-threaded use case.
 Also, a streaming API for big responses can improve the responsiveness of the API, as concluded in Section \ref{sec:api_responsiveness}.
@@ -37,4 +27,15 @@ The modularity of the design and implementation enables Tribler to be easily por
 Finally, to safeguard the user from an even more powerful adversary as observed in Egypt \cite{egypt_show_your_facebook_airport} and China \cite{nyt2015china}, more measures can be taken.
 Embedding and encrypting all functionality in for example a binary blob of a random game, would add another layer of security.
 Our SelfCompileApp \cite{brussee2015autonomous} for example, capable of self-compilation from source, can be combined with this work to create a morphing stealth app for anonymous information sharing without the need for existing infrastructure.
+
+\subsection{Research}
+This work enables a new direction of research with Tribler fully geared towards mobile devices.
+% future phd's and new agenda thanks to this work?
+Future research can evaluate how well smartphones with Tribler can defeat the powerful adversary as described in Section \ref{sec:adversary_model}.
+One can setup a large scale experiment with various degrees of powerful censors.
+Or a live deployment of Tribler on mobile devices in areas with restricted Internet access to evaluate Tribler in the wild for the intended use-cases.
+Another possible research question can be about how viral spreading of eyewitness content behaves in the real world.
+And the effect on anonymity of local crowds, regarding the onion routing protocol, can also be studied for example.
+A different direction is to research the possible benefits of teaming a mobile device with a traditional desktop computer or server with a shared key chain for a single user.
+The more powerful computer could be credit mining \cite{decentralized_credit_mining}, while the mobile device uses the credits to download faster.
 
