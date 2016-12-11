@@ -477,7 +477,8 @@ Table \ref{table:testing_coverage} shows the results of both executions.
 \end{table}
 Failures occur if a test crashes and cannot complete.
 Errors occur if a test does not pass, because an assertion fails during the test.
-The difference in total tests and skipped tests, between the smartphone and the PC, can be explained by an import error just before the 26 desktop GUI tests are about to be skipped.
+The difference in skipped tests, between the smartphone and the PC, can be explained by an import error just before the 26 desktop GUI tests are about to be skipped.
+If a failure like that occurs, tests in the same file are not even discovered by nose.
 % Conclusions
 The total number of tests has increased over time, as well as the coverage line-rate, while the number of errors have decreased.
 Concluding, the metrics show improvement overall.
