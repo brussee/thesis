@@ -19,15 +19,15 @@ It offers privacy through layered encrypted tunnels similar to the TOR network \
 % youtube kan dat niet, geen hoofdfunctionaliteit
 Tribler introduces a server-less video-sharing platform with privacy enhancing technologies that provides a Youtube-like social media experience \cite{PawelOffloading}.
 Video-on-demand means that users can search for desired videos and simply click to play videos in a streaming fashion, so without waiting for the entire video to be present on the device.
-The user can search from within the application \cite{p2p_search} and browse for videos in channels rated automatically by popularity.
+Users can search from within the application \cite{p2p_search} and browse for videos in channels rated automatically by popularity.
 Recommendations are given based on the user's preferences and those of users with a large shared interest  \cite{Wang:SIGIR2007,ClementsIR2007}.
 Simply clicking on a video and watching it while streaming is supported via the BitTorrent-aware Tribler video server and integrated video player VLC.
 
 
 \section{Self-organizing}
 The BitTorrent protocol is used to download and upload the content.
-A BitTorrent swarm can use the "distributed sloppy hash table" (DHT) of a specific torrent to discover peers and gather meta-information \cite{secure_swarm_discovery, swarm_discovery}.
-Also part of the DHT protocol is the self-organizing behavior of maintaining a routing table of known good nodes.
+Tribler can use the distributed hash table (DHT) of a BitTorrent swarm for a specific torrent to discover peers and gather meta-information, as well as enhanced peer exchange protocols \cite{secure_swarm_discovery, swarm_discovery}.
+Part of the DHT protocol is the self-organizing behavior of maintaining a routing table of known good nodes.
 Tribler uses these features to coordinate the exchange of videos and meta-data fully automatically.
 Users do not have to manage any files or configuration manually at all to be active on the platform.
 
@@ -57,11 +57,12 @@ Multichain is the new accounting system of Tribler.
 This feature is central to the concept of trust in the Tribler network and is very important for the future as other functionality will be built upon it.
 With Multichain any peer registers the bandwidth it exchanges with other peers.
 It aggregates these exchanges in blocks and signs them like a receipt and sends that to the other party to sign as well.
-These blocks are linked in a block-chain to foil attempts of cheating the system.
+These blocks are linked in a blockchain to foil attempts of cheating the system.
 This is a significant improvement over previous attempts to prevent free-riders \cite{JanDavidFFFPaperIEEE2008,mol2008a,bartercast, multichain}.
+
 Multichain is explicitly designed to not use a global state.
 Syncing a global state is less scalable in terms of storage and network bandwidth.
-BitCoin does have a global state and partly because of that the average transaction confirmation time is in the tens of minutes \cite{bitcoin_avg-confirmation-time}.
+The Bitcoin blockchain, for example, does have a global state and partly because of that the average transaction confirmation time is in the tens of minutes \cite{bitcoin_avg-confirmation-time}.
 
 
 \section{Anonymity}
@@ -69,16 +70,14 @@ Tribler can protect the privacy of users by hiding their identity \cite{anon_int
 To connect to others on the network, anonymous connections are created on behalf of downloading peers (leechers) and uploading peers (seeders).
 By routing the network traffic over a circuit of multiple hops it becomes difficult to trace the origin and destination.
 This way the privacy of users remains protected while they actively participate on the platform.
-
 Multiple encrypted tunnels are layered such that every consecutive tunnel from the initiator to a relay is going through the previous tunnel.
 Every relay works on behalf of its predecessor so no relay knows the identity of the initiator save for the first relay.
 Since all communication is properly encrypted no relay can perform a successful man-in-the-middle attack.
-
 This is similar to how Tor works, except Tribler uses UDP rather than TCP for performance reasons.
 The hidden seeding protocol, modeled after the hidden services of TOR, allows for anonymous content sharing via said TOR-like onion routing \cite{tor_bittorrent}.
 The capability of hiding your identity is greatly advantageous to the user if his or her human rights are violated, like free speech.
-
 However, this privacy feature requires a lot more bandwidth of the network than without anonymity: a ratio of 13 GB for every anonymous 1 GB of data.
+
 Since bandwidth is limited and transitory it can be beneficial to exchange unused bandwidth for a promise of bandwidth in the future, or another reward.
-The research group behind Tribler is currently building a fully decentralized accounting system and open exchange market using block-chain technology with the purpose of building trust on-line and creating the Internet of Money.
+The research group behind Tribler is currently building a fully decentralized accounting system and open exchange market using blockchain technology with the purpose of building trust on-line and creating the Internet of Money.
 

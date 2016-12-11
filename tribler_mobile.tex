@@ -1,45 +1,41 @@
 \section{Towards Tribler on mobile devices}\label{ch:tribler_mobile}
-
 In the previous sections we discussed the features and applications of Tribler.
 So far Tribler only supports desktop and server versions of Linux, Mac and Windows.
 The necessity of moving to mobile devices calls for Tribler functionality to be enabled to run on these resource limited devices.
 All positive and negative properties that come from these features are transferred to mobile devices, which will add their own distinct properties to the mix.
+Bringing Tribler to mobile devices will give potentially millions of users access to these features, on the move.
+Expanding the Tribler network with mobile devices could also benefit the research that can be performed on the live network.
 
 
 % In terms of Functionality
 
 \subsection{Opportunities}
-
 What does mobile allow in addition to desktop?
 % Portable
 Mobile devices are inherently easy to move around and very portable.
+Since there are so many smartphones with builtin cameras around that may be brought in almost everywhere, eyewitnesses have the opportunity to record videos, as the story unfolds \cite{news_crowd}, and share those news stories instantly with the world, since the smartphone is very connectable.
 % Ad hoc WiFi
-In case of a breakdown in communication infrastructure the mobile devices with wireless radio transmitters can still connect ad hoc and moved within range if necessary.
+In case of a breakdown in communication infrastructure, mobile devices with wireless radio transmitters can still connect ad hoc and moved within range if necessary.
 % WiFi
-Via WiFi a device can connect to the Tribler network via existing infrastructure or other peers via ad hoc WiFi.
+Via WiFi, a device can connect to the Tribler network via existing infrastructure or other peers via ad hoc WiFi.
 % Bluetooth
-Using NFC Tribler can start a Bluetooth connection and transfer the installation package peer-to-peer.
+Using NFC, Tribler can start a Bluetooth connection and transfer the installation package peer-to-peer.
 % nfc
-Also via NFC Tribler can exchange channel ID's to subscribe to another Tribler channel peer-to-peer.
-
-Bringing Tribler to mobile devices will give potentially millions of users access to these features, on the move.
-Expanding the Tribler network with mobile devices could also benefit the research that can be performed on the live network.
-
-The connectability combined with the  innocuous nature of a smartphone, enables it to be used as a component to build an alternative network \cite{hasan2013dissent}.
+Also via NFC, Tribler can exchange channel ID's to subscribe to another Tribler channel peer-to-peer.
+Thanks to the  innocuous nature of a smartphone and its connectability, it can be used as a component to build an alternative network out of components that are not illegal in themselves \cite{hasan2013dissent}.
 
 
 \subsection{Challenges}
-
 What does working on mobile phone mean?
 The portability of mobile devices requires any network interface and power supply to be wireless.
 % Battery
 Mobile devices are typically equipped with batteries to operate without a power cord.
 Considering the size and weight the capacity is limited.
-Smartphone batteries usually barely hold a charge that would sustain a day of heavy usage.
+Smartphone batteries usually barely hold a charge that can sustain a day of heavy use.
 Tribler could potentially drain the battery much faster than normal.
 % Crypto
-Heavy encrypted network traffic not only demand constant radio transmissions, but also CPU processing.
-In case of hidden seeding building circuits of 3 tunnels with layered encryption quadruples  the amount of cryptographic work.
+Heavy encrypted network traffic does not only demand constant radio transmissions, but also CPU processing.
+In case of hidden seeding, building circuits of 3 tunnels with layered encryption quadruples  the amount of cryptographic work.
 % disk IO
 Because Multichain punishes cheating like double spending by a permanent ban, it must never loose information and flush everything to permanent storage before continuing.
 Mobile devices typically have flash memory with limited write-cycles compared to classic hard drives that are commonly found in desktop computers.

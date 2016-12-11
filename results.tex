@@ -102,11 +102,11 @@ Figure \ref{fig:multichain_25} show the performance graphs of every measurement.
 Clearly visible from the graphs is that Multichain does not scale linearly on any device.
 They also show that mobile devices are at least a factor of two slower than an ordinary laptop and scale worse.
 % Conclusions
-Due to the nature of block-chain every new block needs to contain the hash value of the previous block.
+Due to the nature of blockchain every new block needs to contain the hash value of the previous block.
 If a database lookup is needed for this and the database is growing, that can explain the non-linear course of the graph.
 This can be easily optimize by keeping the last hash value for currently connected peers in memory.
 However this is an indication that creating blocks by the thousands is an IO bound process, rather than CPU bound.
-Finally, if mobile devices are to be full-fletched nodes on the Tribler network, they should not slow down significantly more than any other ordinary laptop, besides being slower in the first place.
+Finally, if mobile devices are to be full-fledged nodes on the Tribler network, they should not slow down significantly more than any other ordinary laptop, besides being slower in the first place.
 Hardware acceleration could close this gap without sacrificing battery life too much.
 Because mobile devices are a bit behind on the technology curve with respect to desktop computers it is probable that the gap becomes smaller over the coming years.
 The capacity to store enough Multichain blocks to audit past exchanges should also be on par.
