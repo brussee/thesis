@@ -861,15 +861,30 @@ popular private tracker and results from a simple model (called
 }
 
 @InProceedings{hasan2013dissent,
-  Title                    = {Building dissent networks: Towards effective countermeasures against large-scale communications blackouts},
-  Author                   = {Hasan, Shaddi and Ben-David, Yahel and Fanti, Giulia and Brewer, Eric and Shenker, Scott},
-  Booktitle                = {Proceedings of the 2nd USENIX Workshop on Free and Open Communications on the Internet, FOCI},
-  Year                     = {2013},
-  Volume                   = {13},
-
-  Owner                    = {paul},
-  Timestamp                = {2015.10.09},
-  Url                      = {https://www.eecs.berkeley.edu/~yahel/papers/Building_Dissent_Networks-Towards_Effective_Countermeasures_against_Large-Scale_Communications_Blackouts.FOCI2013.pdf}
+  author    = {Hasan, Shaddi and Ben-David, Yahel and Fanti, Giulia and Brewer, Eric and Shenker, Scott},
+  title     = {Building dissent networks: Towards effective countermeasures against large-scale communications blackouts},
+  booktitle = {Proceedings of the 2nd USENIX Workshop on Free and Open Communications on the Internet, FOCI},
+  year      = {2013},
+  volume    = {13},
+  url       = {https://www.eecs.berkeley.edu/~yahel/papers/Building_Dissent_Networks-Towards_Effective_Countermeasures_against_Large-Scale_Communications_Blackouts.FOCI2013.pdf},
+  abstract  = {Large-scale communications blackouts, such as those
+carried out by Egypt and Libya in 2011 and Syria in
+2012 and 2013, have motivated a series of projects that
+aim to enable citizens to communicate even in the face
+of such heavy-handed censorship efforts. A common
+theme across these proposals has been the use of wireless
+mesh networks. We argue that such networks are
+poorly equipped to serve as a meaningful countermeasure
+against large-scale blackouts due to their intrinsically
+poor scaling properties. We further argue that
+projects in this space must consider user safety as first
+design priority and thus far have failed to preserve user
+anonymity and to rely only on innocuous hardware.
+From these two insights, we frame a definition of dissent
+networks to capture the essential requirements for
+blackout circumvention solutions.},
+  owner     = {paul},
+  timestamp = {2015.10.09},
 }
 
 @Misc{hoag2012syria,
@@ -1554,19 +1569,19 @@ preserving the secrecy of the circuit.},
 }
 
 @Article{pouwelse2012censorshipfree,
-  Title                    = {Moving Toward a Censorship-free Internet},
-  Author                   = {Johan Pouwelse},
-  Journal                  = {Internet Engineering Task Force},
-  Year                     = {2012},
-
-  Month                    = {October},
-  Number                   = {2},
-  Pages                    = {16-17},
-  Volume                   = {8},
-
-  Owner                    = {paul},
-  Timestamp                = {2015.10.09},
-  Url                      = {http://www.internetsociety.org/articles/moving-toward-censorship-free-internet}
+  author       = {Johan Pouwelse},
+  title        = {Moving Toward a Censorship-free Internet},
+  journaltitle = {Internet Engineering Task Force},
+  year         = {2012},
+  date         = {2012-10},
+  volume       = {8},
+  number       = {2},
+  month        = {October},
+  pages        = {16-17},
+  url          = {https://www.ietfjournal.org/moving-toward-a-censorship-free-internet/},
+  journal      = {Internet Engineering Task Force},
+  owner        = {paul},
+  timestamp    = {2015.10.09},
 }
 
 @InProceedings{iptps2005,
@@ -2156,12 +2171,12 @@ Paul Mozur and Katie Benner},
   Timestamp                = {2015.10.09}
 }
 
-@Article{triber2014at3,
-  Title                    = {Android Tor Tribler Tunneling (AT3)},
-  Author                   = {M.A. De Vos and R.M. Jagerman and L.F.D. Versluis},
-  Year                     = {2014},
-
-  Abstract                 = {Tribler is a decentralized peer-to-peer ﬁle sharing system. Recently the Tribler development team
+@Article{tribler2014at3,
+  author    = {M.A. De Vos and R.M. Jagerman and L.F.D. Versluis},
+  title     = {Android Tor Tribler Tunneling (AT3)},
+  year      = {2014},
+  url       = {http://repository.tudelft.nl/view/ir/uuid%3Ab258a5e8-002c-4631-9291-04be902119f6/},
+  abstract  = {Tribler is a decentralized peer-to-peer ﬁle sharing system. Recently the Tribler development team
 has introduced anonymous internet communication using a Tor-like protocol in their trial version.
 The goal of our bachelor project is to port this technology to Android devices. This is a challenging
 task because cross-compiling the necessary libraries to the ARM CPU architecture is uncharted
@@ -2174,11 +2189,10 @@ use encryption is very computationally expensive and modern smartphones can hard
 By using optimized cryptographic libraries such as gmp or with the recently announced ARMv8
 architecture which supports hardware-accelerated AES encryption, creating such circuits might
 become possible.},
-  File                     = {:Sources\\BSc Android Tor Tribler Tunneling.pdf:PDF},
-  Keywords                 = {tribler, anonymous, android, decentralized, tor},
-  Owner                    = {Paul Brussee},
-  Timestamp                = {2015.11.30},
-  Url                      = {http://repository.tudelft.nl/view/ir/uuid%3Ab258a5e8-002c-4631-9291-04be902119f6/}
+  file      = {:Sources\\BSc Android Tor Tribler Tunneling.pdf:PDF},
+  keywords  = {tribler, anonymous, android, decentralized, tor},
+  owner     = {Paul Brussee},
+  timestamp = {2015.11.30},
 }
 
 @Article{Wang:2008a,
@@ -2793,6 +2807,240 @@ In the United States alone, sales of smartphones are projected to be worth over 
   url       = {https://jmeter.apache.org/usermanual/glossary.html},
   owner     = {paul},
   timestamp = {2016-12-09},
+}
+
+@Thesis{p2p_search,
+  author      = {Niels Zeilemaker},
+  title       = {Improving P2P keyword search by combining .torrent metadata and user preference in a semantic overlay},
+  type        = {mathesis},
+  institution = {Delft University of Technology},
+  year        = {2010},
+  date        = {2010-02-12},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/MSc Improving P2P keyword search.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-12-11},
+}
+
+@Thesis{secure_swarm_discovery,
+  author      = {Jelle Roozenburg},
+  title       = {Secure Decentralized Swarm Discovery in Tribler},
+  type        = {mathesis},
+  institution = {Delft University of Technology},
+  year        = {2006},
+  date        = {2006-11-10},
+  abstract    = {The decentralized architecture of peer-to-peer ( P 2 P ) networks solves many of the
+limitations of conventional client-server networks. This decentralization, however,
+creates the need in P 2 P file sharing networks to find peers who are downloading
+the same file, a problem which is referred to as swarm discovery. In the BitTorrent
+file sharing network, swarm discovery is solved using a central server (a tracker),
+which is unreliable and unscalable.
+We have designed a decentralized swarm discovery protocol, called LITTLE BIRD .
+L ITTLE BIRD is an epidemic protocol that exchanges swarm information between
+peers that are currently or were recently members of a swarm. A quantitative mea-
+sure of the contribution of each peer is calculated to make the protocol efficient
+and secure against peers that pollute the system with malicious information. Fur-
+thermore, we have conducted detailed measurements of the BitTorrent community
+’Filelist.org’, in order to study download swarm behavior and optimize the design
+of our protocol. We have implemented the LITTLE BIRD protocol as an addition to
+the Tribler P 2 P network.
+For the evaluation of LITTLE BIRD , we have created an experimental environment
+called CROWDED , which enables us to conduct large-scale trace-based emulations
+of swarms on the DAS-2 supercomputer. Evaluation results show that our protocol
+scales with the swarm size, uses moderate bandwidth overhead, and is resilient
+against denial-of-service and pollution attacks. Therefore, LITTLE BIRD enables
+secure, scalable and reliable swarm discovery.},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/MSc Secure Decentralized Swarm Discovery in Tribler.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-12-11},
+}
+
+@Thesis{swarm_discovery,
+  author      = {Raynor Vliegendhart},
+  title       = {Swarm Discovery in Tribler using 2-Hop TorrentSmell},
+  type        = {mathesis},
+  institution = {Delft University of Technology},
+  year        = {2010},
+  date        = {2010-05-31},
+  abstract    = {Peer-to-peer (P2P) technology allows us to create self-organising and scalable sys-
+tems. The distributed nature of these systems requires a solution for finding inter-
+esting peers. In the context of P2P file sharing, finding peers who are downloading
+the same file is referred to as the swarm discovery problem. In BitTorrent, this
+problem is solved using a central server, called a tracker. This central component
+hinders the scalability of BitTorrent.
+We have designed a distributed swarm discovery algorithm, called 2-Hop Tor-
+rentSmell. It is composed of two parts. The first part builds on top of an existing
+keyword search system to find peers who have recently downloaded a certain file.
+The second part consists of an algorithm called RePEX, which allows a peer to
+stay in touch with swarms it is no longer in by periodically recontacting previously
+encountered swarm members. Our RePEX algorithm leverages a widely used Bit-
+Torrent extension for swarm discovery called PEX. We have conducted a study to
+understand the reliability and usability of PEX to optimize the design of our solu-
+tion. We have implemented the RePEX part of 2-Hop TorrentSmell as an addition
+to the Tribler P2P network.
+For the evaluation of our RePEX algorithm, we have tested it on the 10 largest
+swarms on a public tracker. In addition, we have deployed the algorithm in a
+beta version of Tribler and let it run on swarms the user has downloaded from.
+Evaluation results show our algorithm is scalable and effective in popular swarms.},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/MSc Swarm Discovery in Tribler using 2-Hop TorrentSmell.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-12-11},
+}
+
+@Thesis{multichain,
+  author      = {Steffan D. Norberhuis},
+  title       = {MultiChain: A cybercurrency for cooperation},
+  type        = {mathesis},
+  institution = {Delft University of Technology},
+  year        = {2015},
+  date        = {2015-12-07},
+  abstract    = {Peer-to-peer networks are often large, collaborative networks where peers can join
+openly. The essence of a collaborative, distributed system is that every node per-
+forms tasks for other nodes. The peers often help in singular interactions and with-
+out direct reciprocity. Malicious peers can abuse and freeride the public goods. The
+network without countermeasures can fall into a tragedy of the commons where no
+one helps another and everyone takes advantage of the generosity of peers. Only
+when the reputation of a peer is publicly available at scale and peers trust this repu-
+tation can the network escape the problems of freeriding and attain high utility for
+all participants.
+This thesis focuses on designing and implementing the first step of a tamper
+proof reputation system within Tribler. Tribler is a peer-to-peer BitTorrent system
+developed at the Delft University of Technology. This first step, made by this the-
+sis, is to create MultiChain, a proof-of-concept bookkeeping system. MultiChain
+tracks the upload and download amounts of peers to eliminate freeriding. Multi-
+Chain is cryptographically protected and validated. The bookkeeping system has
+to be scalable to be publicly available and be able to process enough transactions.
+The system has to work in an asynchronous network.
+A new design of a distributed data structure that can be used as a ledger is in-
+troduced by this thesis. This first step with MultiChain is already more resilient
+to tampering than previous work, like BarterCast. BarterCast has no security mea-
+sures against tampering records. The design of MultiChain is to have a chain of
+blocks for every peer as a ledger. Peers are participants of a peer-to-peer network.
+A block contains a transaction between two peers. This block is shared and added
+to both chains. This makes both chains of the peers intertwined and entangled at
+a shared block. The proposed design abandons the typical global, full ledger. The
+protocol of creating these blocks between peers is described. The problems faced
+by MultiChain in an asynchronous network are explained. The thesis proposes how
+the design can overcome these problems by only allowing atomic operations to be
+performed on the chain and to introduce unfinished blocks in the chain.
+The implementation of the design is tested and experimented with within this
+thesis to validate it to work correctly. Furthermore, a number of weak points are
+discussed. These weak points have to be addressed in the future to create a tamper
+proof reputation system.},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/MSc MultiChain.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-12-11},
+}
+
+@Article{decentralized_credit_mining,
+  author    = {Mihai Capotă and Johan Pouwelse and Dick Epema},
+  title     = {Decentralized credit mining in P2P systems},
+  year      = {2015},
+  abstract  = {Accounting mechanisms based on credit
+are used in peer-to-peer systems to track the con-
+tribution of peers to the community for the purpose
+of deterring freeriding and rewarding good behavior.
+Most often, peers earn credit for uploading files, but
+other activities might be rewarded in the future as
+well, such as making useful comments or reporting
+spam. Credit earned can be used for accessing new
+content, or for receiving preferential treatment in case
+of network congestion. We define credit mining as
+the activity performed by peers for the purpose of
+earning credit. In this paper, we design, implement, and
+evaluate a system for decentralized credit mining that
+maximizes the contribution of idle peers to the commu-
+nity by automatically uploading popular files. Building
+on previous theoretical insights into the economics
+of communities, we select autonomous algorithms for
+bandwidth investment as the basis of our credit mining
+system. Additionally, we describe our experience with
+important challenges arising from Internet deployment,
+that are frequently neglected in emulation, including
+duplicate content avoidance, spam prevention, and the
+cost of keeping peer information updated. Furthermore,
+we implement an archival mode of operation, which
+prevents the disappearance of old content from the
+community. We show the feasibility and usefulness of
+our credit mining system through measurements from
+our implementation on top of Tribler, an Internet-
+deployed peer-to-peer system.},
+  file      = {:home/paul/Documents/LiteratureSurvey/Sources/paper Decentralized credit mining in P2P systems.pdf:PDF},
+  owner     = {paul},
+  timestamp = {2016-12-11},
+}
+
+@Thesis{thesis_laurens,
+  author      = {Laurens F. D. Versluis},
+  title       = {Software Performance Engineering in Complex Distributed Systems},
+  type        = {mathesis},
+  institution = {Delft University of Technology},
+  year        = {2016},
+  date        = {2016-08-21},
+  abstract    = {Performance is a make-or-break quality for software. When making changes it
+is essential to ensure no performance regression has occurred i.e. the program
+performs more slowly or consumes more resources than previous versions. Tribler
+is the result of ten years scientific research in complex distributed systems. Over the
+course of years Tribler’s performance has fallen below acceptable user experience
+levels, mainly because there is a lack of software performance engineering.
+In this work, we lay the foundations for a regression testing system that allows de-
+velopers to continuously monitor the metrics that are having the most impact on the
+performance of Tribler. Applying this system gave us a deep insight in the greatest
+bottleneck of the performance of Tribler: synchronous, blocking disk operations.
+Resolution of this bottleneck includes a major refactoring effort of the message
+synchronization system Dispersy. Implementation of a novel, non-blocking disk
+operation framework allowed us to increase the throughput of Tribler’s API by up
+to 150% and reduce its response times by up to 57.5%.},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/MSc Software Performance Engineering in Complex Distributed Systems.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-12-11},
+}
+
+@Thesis{thesis_martijn,
+  author      = {Martijn A. de Vos},
+  title       = {Identifying and Managing Technical Debt in Complex Distributed Systems},
+  type        = {mathesis},
+  institution = {Delft University of Technology},
+  year        = {2016},
+  date        = {2016-08-30},
+  abstract    = {The term technical debt has been used to described the increased cost of changing or maintaining a system
+due to expedient shortcuts taken during development, possibly due to financial or time constraints. The term
+has gained significant attention in software engineering research and the agile community.
+
+Tribler, a platform to share and discover content in a complete decentralized way, has accumulated a tremen-
+dous amount of technical debt over the last ten years of scientific research in the area of peer-to-peer network-
+ing. The platform suffers from a complex architecture, an unintuitive user interface, an incomplete and un-
+stable testing framework and a large amount of unmaintained code. A new layered, flexible and component-
+based architecture that readies Tribler for the next decade of research is proposed and discussed. We lay the
+foundations for this new architecture by implementing a RESTful API and a new graphical user interface. By
+removing the old user interface, the amount of technical debt in Tribler is dramatically reduced.
+
+Additional work includes the pay off of various kind of technical debt by the means of major improvements
+to the testing framework, heavy modifications within the core of Tribler and changes in the infrastructure to
+make it more usable and robust. With the deletion of 12.581 lines, the modification of 765 lines and addition
+of 12.429 lines, we show that several important software metrics are improved and that we paid off a huge
+amount of technical debt. Raising awareness about technical debt in general is of uttermost importance if we
+wish to prevent deterioration of the system. Together with a code review policy and static code analysis tools
+to track code coverage and the amount of code violations, we hope to prevent huge amounts of technical debt
+in the future.
+
+We perform experiments to verify the stability and performance of various components in the core of Tri-
+bler and propose future work for the components that require more work. In our final experiment, we will
+test Tribler on a large scale and lay the foundations for an application testing framework that is useful for
+failure identification.},
+  file        = {:home/paul/Documents/LiteratureSurvey/Sources/MSc Identifying and Managing Technical Debt in Complex Distributed Systems.pdf:PDF},
+  owner       = {paul},
+  timestamp   = {2016-12-11},
+}
+
+@Electronic{bitcoin_avg-confirmation-time,
+  author    = {Blockchain Luxembourg S.A.},
+  title     = {BitCoin Average Confirmation Time},
+  year      = {2016},
+  date      = {2016-12-11},
+  url       = {https://blockchain.info/charts/avg-confirmation-time},
+  file      = {:home/paul/Downloads/bitcoin-7day-average-confirmation-time.pdf:PDF;:home/paul/Downloads/bitcoin-average-confirmation-time.pdf:PDF},
+  owner     = {paul},
+  timestamp = {2016-12-11},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

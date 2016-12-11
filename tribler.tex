@@ -6,11 +6,10 @@
 Tribler is a fully decentralized video-on-demand system. \cite{TriblerOverviewJournal, tribler2014play, tribler-anon-hd}
 It is autonomous, attack-resilient and self-organizing. \cite{votecast, tribler-gossip}
 It uses network overlays called communities to offer features like keyword search and managing contributions to channels for discover-ability of content.
-It offers privacy through layered encrypted tunnels similar to the TOR network.\cite{triber2014at3, dingledine2004tor, dingledine2006design}
+It offers privacy through layered encrypted tunnels similar to the TOR network \cite{tribler2014at3, dingledine2004tor, dingledine2006design}.
 
 
 \section{Video-on-demand}
-
 % digitaler, vod komt meer voor, videotheek was het al, youtube nu ook, netflix
 % mensen bepalen zelf wanneer ze wat zien, geen tv broadcast
 % ook streaming, no waiting
@@ -18,24 +17,22 @@ It offers privacy through layered encrypted tunnels similar to the TOR network.\
 % verschil is...
 % aangeven dat je anoniem wilt downloaden is nieuw
 % youtube kan dat niet, geen hoofdfunctionaliteit
-
-Tribler introduces a server-less video-sharing platform with privacy enhancing technologies that provides a Youtube-like social media experience.
-Video-on-demand means that users can simply click and play videos in a streaming fashion, so without waiting for the entire video to be present on the device. %dit is streaming, geen vod
-You can search from within the application and browse for videos in channels rated automatically by popularity.
+Tribler introduces a server-less video-sharing platform with privacy enhancing technologies that provides a Youtube-like social media experience \cite{PawelOffloading}.
+Video-on-demand means that users can search for desired videos and simply click to play videos in a streaming fashion, so without waiting for the entire video to be present on the device.
+The user can search from within the application \cite{p2p_search} and browse for videos in channels rated automatically by popularity.
+Recommendations are given based on the user's preferences and those of users with a large shared interest  \cite{Wang:SIGIR2007,ClementsIR2007}.
 Simply clicking on a video and watching it while streaming is supported via the BitTorrent-aware Tribler video server and integrated video player VLC.
 
 
 \section{Self-organizing}
-
 The BitTorrent protocol is used to download and upload the content.
-A BitTorrent swarm can use the "distributed sloppy hash table" (DHT) of a specific torrent to discover peers and gather meta-information.
+A BitTorrent swarm can use the "distributed sloppy hash table" (DHT) of a specific torrent to discover peers and gather meta-information \cite{secure_swarm_discovery, swarm_discovery}.
 Also part of the DHT protocol is the self-organizing behavior of maintaining a routing table of known good nodes.
 Tribler uses these features to coordinate the exchange of videos and meta-data fully automatically.
 Users do not have to manage any files or configuration manually at all to be active on the platform.
 
 
 \section{Autonomous operation}
-
 New content discovery can be discovered automatically via a "Channel"-community that users can subscribe to.
 Communities are network overlays used by Tribler to offer functionality like search, add, remove and comment on content.
 To discover all channels in existence Tribler is subscribed to the so called "AllChannel"-community and "Search"-community by default.
@@ -45,15 +42,13 @@ These communities operate autonomously and are transparent to the user, who only
 
 
 \section{Attack-resilience}
-
 The server-less technique of Tribler is resistant to large scale monitoring and censorship, because there is no central point that can be controlled to gather or block information easily.
 To monitor or censor the network effectively on a large scale you need control of a significant number of the communication links.
 Censorship does not have an effect if the majority of users does not cooperate with the censor.
 The beauty of a fully distributed design is that communicating directly between peers, or via a local network, works without the need for external communication links.
 This is why the server-less technique of Tribler is resistant to Internet kill-switches as well because, even if the attacker can block all communication-links, users can always connect off-grid.
-Such kill-switches are typically deployed for the purpose of censorship, but won't stop a connectible device, like a laptop, from physically moving.
+Such kill-switches are typically deployed for the purpose of censorship, but won't stop a connectable device, like a laptop, from physically moving.
 No network infrastructure is required for viral spreading of the entire video platform.
-
 These properties will ensure social media with resilience against Internet kill switches, natural disasters and censorship.
 
 
@@ -63,24 +58,24 @@ This feature is central to the concept of trust in the Tribler network and is ve
 With Multichain any peer registers the bandwidth it exchanges with other peers.
 It aggregates these exchanges in blocks and signs them like a receipt and sends that to the other party to sign as well.
 These blocks are linked in a block-chain to foil attempts of cheating the system.
-
+This is a significant improvement over previous attempts to prevent free-riders \cite{JanDavidFFFPaperIEEE2008,mol2008a,bartercast, multichain}.
 Multichain is explicitly designed to not use a global state.
 Syncing a global state is less scalable in terms of storage and network bandwidth.
+BitCoin does have a global state and partly because of that the average transaction confirmation time is in the tens of minutes \cite{bitcoin_avg-confirmation-time}.
 
 
 \section{Anonymity}
-
-Tribler can protect the privacy of users by hiding their identity.
+Tribler can protect the privacy of users by hiding their identity \cite{anon_internet, tribler-anon-hd, anon_HD_streaming}.
 To connect to others on the network, anonymous connections are created on behalf of downloading peers (leechers) and uploading peers (seeders).
 By routing the network traffic over a circuit of multiple hops it becomes difficult to trace the origin and destination.
-This way the privacy of users remains protected while they actively participate on the platform
+This way the privacy of users remains protected while they actively participate on the platform.
 
 Multiple encrypted tunnels are layered such that every consecutive tunnel from the initiator to a relay is going through the previous tunnel.
 Every relay works on behalf of its predecessor so no relay knows the identity of the initiator save for the first relay.
 Since all communication is properly encrypted no relay can perform a successful man-in-the-middle attack.
 
 This is similar to how Tor works, except Tribler uses UDP rather than TCP for performance reasons.
-The hidden seeding protocol, modeled after the hidden services of TOR, allows for anonymous content sharing via said TOR-like onion routing \cite{rob_ruigrok}.
+The hidden seeding protocol, modeled after the hidden services of TOR, allows for anonymous content sharing via said TOR-like onion routing \cite{tor_bittorrent}.
 The capability of hiding your identity is greatly advantageous to the user if his or her human rights are violated, like free speech.
 
 However, this privacy feature requires a lot more bandwidth of the network than without anonymity: a ratio of 13 GB for every anonymous 1 GB of data.

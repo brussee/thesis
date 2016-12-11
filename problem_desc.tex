@@ -36,8 +36,11 @@ As such, not everyone has unrestricted access to the Internet due to censorship 
 In fact a significant part of today's Internet users is affected by these attempts to hide or distort reality. %ref
 This interference directly affects the universal right to freedom of opinion and expression as stated in article 19 of the Universal Declaration of Human Rights (UDHR).
 
-
-For example: Arab Spring. Kill switches are real. \cite{Egypt left internet}
+Cuba offline Internet \cite{watts2014havana}.
+For example: Arab Spring, kill switches are real \cite{renesys2011egypt}, within half an hour all networks were unreachable. Syrian offline \cite{renesys2012syria}.
+China: Apple's news app deactivated \cite{nyt2015appleChina}, last year. Censorship in China \cite{hrw2006china}.
+BBC: China and Iran \cite{kathuria2010bypassing}. Censorship in Iran \cite{halderman2013iran}.
+Turkey social media block \cite{twitter2015turkey}.
 
 What are kill-switches?
 
@@ -115,6 +118,18 @@ The only way to take Tribler down is to take the entire Internet down.
 	\label{fig:youbroketheinternet}
 \end{figure}
 
+The following network properties are defined \cite{hasan2013dissent} to provide a technical solution that enables free expression in the face of an adversary as defined in Section \ref{sec:adversary_model}:
+\begin{itemize}
+	\item \emph{Resilient against communications blackouts.}
+	Should be challenging for any entity to disable.
+	\item \emph{Resistant to monitoring and tracking of users.}
+	Both who is using the network and any sensitive messages they send should be secret.
+	\item \emph{Able to be built from innocuous components.}
+	Should only require readily available hardware, and the possession and use of required hardware should not be illegal or suspicious.
+	\item \emph{Able to run at meaningful scales.}
+	Should be more effective at disseminating information than people with megaphones; more broadly, given a level of service, should be able to run at non-trivial scales.
+\end{itemize}
+ 
 Mobile devices are essential to take the next step in the face of censorship.
 If we can use smartphones to create a fully decentralized social network we can say:
 The only way to take Tribler down is to take everybody's smartphones away.
@@ -123,14 +138,14 @@ The importance of mobile devices in this context is crucial , if we want to do e
 
 Peer-to-peer communication technology is essential for a server-less distributed system.
 Mobile devices typically do not require infrastructure to exchange information, like those equipped with Bluetooth or capable of ad hoc Wi-Fi.
-Smart phones are ubiquitous everywhere in the world and used to access social media and retrieve information from the Internet.
+Smartphones are ubiquitous everywhere in the world and used to access social media and retrieve information from the Internet.
 Fortuitously these are also the type of mobile devices that can communicate peer-to-peer.
 
-Example: Arab spring \cite{Johan_2001}
+Example: Arab spring \cite{pouwelse2012censorshipfree}
 
 
 % Fragmented
-Various initiatives have been started to deal with one or both of these problems. \cite{re_decentralize}
+Various initiatives have been started to deal with one or both of these problems \cite{redecentralize2015alternativeinternet}.
 %FIG? From re-decentralized: top projects that match/compare.
 
 Figure \ref{fig:youbroketheinternet} shows a mapping of projects that are or have been working on that.
@@ -179,8 +194,8 @@ The resilience of Tribler against attacks on the Internet is greatly increased.
 The goal of Tribler is to become an information sharing platform that protects the privacy of its users and is resilient to attacks while not relying on existing infrastructure.
 
 % Previous Tribler-mobile app's
-Previous attempts failed to deliver all functionality. \cite{bsc_1,2,3}
-Maintainability issues with earlier designs were a large part of the reasons why.
+Previous attempts did not to deliver all functionality \cite{tribler2014play,tribler2014at3,tribler-anon-hd}.
+Maintainability issues with earlier designs, and large amounts of technical debt \cite{thesis_martijn}, were the major causes.
 We changed the architecture of Tribler for our approach.
 
 The scientific contributions of this work are the experiments to verify the feasibility of Tribler on mobile devices and the ability to perform research with Tribler fully geared towards mobile devices
