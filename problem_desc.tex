@@ -40,7 +40,6 @@ Increasingly though, Internet traffic is put under surveillance and obfuscation 
 \section{Adversary model}\label{sec:adversary_model}
 From the Arab Spring scenario we know Internet kill switches are real, so we must assume the existence of a powerful adversary.
 The following threats \cite{ietf-shadow-internet} have been identified for similar circumstances:
-
 \begin{itemize}
 \item{
 	The adversary can observe, block, delay, replay, and modify traffic on the underlying network.
@@ -77,6 +76,7 @@ The adversary cannot compromise smartphones or other participating devices.
 	\label{fig:viral_spreading}
 \end{figure}
 
+
 \section{Distributed solutions}\label{sec:distributed_solutions}
 %TODO: van een algemene naar specifieke case:
 %- fully distributed oplossingen geven meer resilience tegen kill switches etc
@@ -93,22 +93,9 @@ Finally, all users must be able to share, order and appreciate information of ot
 With everyone being able to interact in the same way we need to  distribute functionality over all users, creating a \emph{cooperation} system.
 % Solution
 Fully distributed systems capture the characteristics just mentioned.
-To render the effect mute of the Internet kill switches in existence shown to be used \cite{renesys2011egypt}, we propose a distributed solution.
-Without any central component in the system it is no longer susceptible to censorship without everyone participating.
-Leveraging the properties of mobile devices, like smartphones as stated above, together with the features of Tribler we see a perfect match.
-Because censorship and large scale monitoring is difficult in decentralized networks our proposed solution can work in these situations.
 
-% Eindig aantal servers points of failures
-Networks that are not fully decentralized can be disrupted by taking down a limited number of nodes, less than the total number of nodes.
-Thanks to a server-less design we can say:
-The only way to take Tribler down is to take the entire Internet down.
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{youbroketheinternet}
-	\caption{Various partial solutions to mend the broken Internet according to www.youbroketheinternet.org}
-	\label{fig:youbroketheinternet}
-\end{figure}
+Therefore, to render the effect mute of the Internet kill switches in existence, distributed solutions will be essential.
+Without any central component in the system, it becomes difficult to censor effectively without everyone participating.
 
 The following network properties are defined \cite{hasan2013dissent} to provide a technical solution that enables free expression in the face of an adversary as defined in Section \ref{sec:adversary_model}:
 \begin{itemize}
@@ -122,77 +109,46 @@ The following network properties are defined \cite{hasan2013dissent} to provide 
 	Should be more effective at disseminating information than people with megaphones; more broadly, given a level of service, should be able to run at non-trivial scales.
 \end{itemize}
 
-Mobile devices are essential to take the next step in the face of censorship.
-If we can use smartphones to create a fully decentralized social network, like in Figure \ref{fig:viral_spreading}, we can go further and say:
-Even if you can take down the Internet, the only way to take Tribler down is to take everybody's smartphones away.
+Tribler, which has been developed as a non-profit research project at Delft University of Technology, has been proposed as a solution to realize an information sharing platform that protects the privacy of its users and is resilient to attacks \cite{tor_bittorrent}.
+Thanks to the server-less design we can say: \emph{The only way to take Tribler down is to take the entire Internet down.}
 
-The importance of mobile devices in this context is crucial.
+Including mobile devices in this context is crucial.
+The ubiquity of these devices will be beneficial for viral spreading of information, as shown in Figure \ref{fig:viral_spreading}.
+At the same time, this ubiquity will also allow the creation of a fully decentralized social network.
+When bringing Tribler's functionality to mobile devices, with regard to resilience against censorship, an important next step will be taken, so we can say: \emph{Even if you can take down the Internet, the only way to take Tribler down is to take everybody's smartphones away.}
+% Eindig aantal servers points of failures
 
 Peer-to-peer communication technology is essential for a server-less distributed system.
-Mobile devices typically do not require infrastructure to exchange information, like those equipped with Bluetooth or capable of ad hoc Wi-Fi.
-Smartphones are ubiquitous everywhere in the world and used to access social media and retrieve information from the Internet.
-Fortuitously these are also the type of mobile devices that can communicate peer-to-peer.
+Mobile devices usually are already well equipped to exchange information without reliance on external infrastructure, for example through Bluetooth or ad hoc Wi-Fi or near-field communication (NFC).
+Therefore, they will be even more suitable as a solution for communicating peer-to-peer than PC.
 
-Example: Arab spring \cite{pouwelse2012censorshipfree}
-Decentralized solutions can work in these situations.
-Censorship and large scale monitoring is difficult in decentralized networks.
-
-
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{youbroketheinternet}
+	\caption{Various partial solutions to mend the broken Internet according to www.youbroketheinternet.org}
+	\label{fig:youbroketheinternet}
+\end{figure}
 
 % Fragmented
-Various initiatives have been started to deal with one or both of these problems \cite{redecentralize2015alternativeinternet}.
-%FIG? From re-decentralized: top projects that match/compare.
-
-Figure \ref{fig:youbroketheinternet} shows a mapping of projects that are or have been working on that.
-The fragmentation is clear from the figure.
-There are a few big players, as can be seen from the figure, but none of them provide a full solution.
-
-%potential skip:
-%being first
-%engineering perfection
-%time to market
-%popularity
-%make a difference
-%Tribler mobile vs periscope
-%fully functional prototype, but poor user interface (unpolished)
-%real world impact proven insufficient
-%we want to change the world implicit
-
-
-%\section{Define alternatives} %design space %solution space
-%\cite{https://www.ietf.org/mail-archive/web/ietf-privacy/current/msg00215.html}
-% why existing technology is not sufficient to
-% meet the described demands. The example proposed was the tor onion
-% network in combination with XMPP or the orbot smartphone app. After
-% much discussion the conclusion was that existing technologies, such as
-% tor facilitate protected point-to-point communication. However,
-% possible desired use cases focus more on current Twitter-like social
-% media practices, best typified as a "global conversation".
-% Furthermore, current social media revolves around video-rich,
-% real-time interaction with groups, hashtag-based discovery and social
-% networking. All of these aspects are not offered or are incompatible
-% with current-generation of privacy enhancing technology
-
-
-
-% Refereren aan eigen werk versplintering in oplossingen
-There is no de-facto solution available on mobile platforms.
-Previous research has shown that there is no solution that solves the problem entirely in a sustainable way. \cite{survey_brussee}
-Tribler is our attempt to solve this problem entirely in a sustainable way.
-To see if it is feasible to apply it in a mobile context as described above, we need to port it.
+The urgency for enabling attack-resilient media exchange on mobile devices becomes even stronger, considering that no de-facto solutions are available for this yet \cite{redecentralize2015alternativeinternet, survey_brussee}.
+As shown in Figure \ref{fig:youbroketheinternet}, various solutions have been proposed, but none of them provide a full solution.
 
 
 \section{Contributions}
-The main contribution of this thesis is making Tribler available on mobile devices and the utilization of their unique properties in the context of censorship and communication during crises.
-This work also enables a new direction for future research with Tribler: mobile devices.
-The resilience of Tribler against attacks on the Internet is greatly increased.
-The goal of Tribler is to become an information sharing platform, that protects the privacy of its users, and resilient to attacks while not relying on existing infrastructure.
-
-% Previous Tribler-mobile app's
-Previous attempts did not to deliver all functionality \cite{tribler2014play,tribler2014at3,tribler-anon-hd}.
+% requirements analysis
+% maintainable design & implementation
+% performance analysis
+Leveraging the properties of mobile devices like smartphones, together with the features of Tribler, we see a perfect match to enable attack-resilient media via phone-to-phone networking.
+However, previous attempts to bring Tribler to mobile did not deliver all functionality yet \cite{tribler2014play,tribler2014at3,tribler-anon-hd}.
 Maintainability issues with earlier designs and large amounts of technical debt were the major causes \cite{thesis_martijn}.
 We changed the architecture of Tribler for our approach.
 
-The scientific contributions of this work are the experiments to verify the feasibility of Tribler on mobile devices and the ability to perform research with Tribler fully geared towards mobile devices.
+The work in this thesis now provides the first prototype implementation that has all Tribler functionality fully enabled on mobile devices.
+The prototype has been designed for portability and maintainability.
+Our experiments will verify the feasibility of running Tribler on mobile devices.
+Generally, by enabling future research with Tribler fully geared towards mobile devices, the prototype makes an important contribution to the field.
 
+%The main contribution of this thesis is making Tribler available on mobile devices and the utilization of their unique properties in the context of censorship and communication during crises.
+%This work also enables a new direction for future research with Tribler: mobile devices.
+%The scientific contributions of this work are the experiments to verify the feasibility of Tribler on mobile devices and the ability to perform research with Tribler fully geared towards mobile devices.
 
