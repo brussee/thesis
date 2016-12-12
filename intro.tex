@@ -1,11 +1,10 @@
 \chapter{Introduction}\label{ch:intro}
 %% Shift to social media
-
 % Consumption
 Modern media and news consumption is shifting from traditional outlets to social media and mobile devices.
 People receive local and global news perceived relevant to their group on their social media feed.
-News is not bound to expert opinion or an editorial news desk anymore.
-%The ease of reaching a global audience by an individual with a smartphone diminishes the role of an expert curator handling incoming information.
+The ease of reaching a global audience by an individual with a smartphone diminishes the role of an expert curator handling incoming information.
+As such, news is not bound to expert opinion or an editorial news desk anymore.
 Young people in particular are shifting to social media as their number one source \cite{reuters_social_media}, shown in the age distribution graph, Figure \ref{fig:reuters-news-sources-ages}.
 \begin{figure}[H]
 	\centering
@@ -33,76 +32,39 @@ Eye-witnesses often have smartphones at hand to immediately record an event with
 No news desk or professional equipment is necessary to relay news directly from eye-witnesses to the masses anymore.
 The users themselves are turning from con-sumers into pro-sumers \cite{news_crowd}.
 
-
-
-
-
-
-
-
-
-
 %% Communication during crisis
 In crisis situations, like natural disaster or unrest, people need to communicate and coordinate their efforts to restore safety.
 In this context the smartphone becomes particularly important because it is often carried on person and provides connectability.
-
-In recent calamities \cite{earthquake-nepal, etc...}, people could mark themselves as safe on social media, effectively broadcasting that information to all their family and friends on social media instead of contacting them one by one or not at all due to congestion in the communication channels.
-
+In the wake of recent calamities, people could mark themselves as safe on social media \cite{fb-safety-check}, effectively broadcasting that information to all their family and friends on social media instead of contacting them one by one or not at all due to congestion in the communication channels.
 However, several natural disasters have taken out the necessary infrastructure on numerous occasions for a prolonged period of time \cite{renesys2005katrina}.
-Even during normal 
+Therefore we require a distributed solution using smartphones, that does not require infrastructure.
 
-Therefore we require a solution to enable social media on smartphones that does not require infrastructure. % persistent, established ??
-
-
-
-In crisis situations, like natural disasters or unrest, the smartphone becomes particularly important, exactly for the earlier mentioned properties, as under such conditions utilizing centralized infrastructure is undesired (censorship) or physically impossible.
-Decentralized solutions can work in these situations.
-Censorship and large scale monitoring is difficult in decentralized networks.
-\cite{pouwelse2012censorshipfree}
-
-
-
-
-
-
-
-
-
+%Censorship and large scale monitoring on the Internet can also be battled with decentralized solutions \cite{pouwelse2012censorshipfree}.
 
 Tribler is a fully decentralized video-on-demand system. \cite{TriblerOverviewJournal, tribler2014play, tribler-anon-hd}
 It is autonomous, attack-resilient and self-organizing. \cite{votecast, tribler-gossip}
 It uses network overlays called communities to offer features like keyword search and managing contributions to channels for discover-ability of content.
-It offers privacy through layered encrypted tunnels similar to the TOR network.\cite{tribler2014at3, dingledine2004tor, dingledine2006design}
+It offers privacy through layered encrypted tunnels similar to the TOR network.\cite{tor_bittorrent, tribler2014at3, dingledine2004tor, dingledine2006design}
 
 So far, Tribler only supports desktop and server versions of Linux, Mac and Windows.
 The necessity of moving to mobile devices calls for Tribler functionality to be enabled to run on these resource limited devices.
 In this thesis the first prototype is presented that has all Tribler functionality fully enabled on mobile devices.
-The prototype is build for Android OS since Android dominates the smartphone market.
-
-
-
-
-
+The prototype is build for Android OS, since Android currently dominates the smartphone market.
 
 %How to create a \emph{self-organising} \emph{video-on-demand} platform that is \emph{attack-resilient} and can \emph{operate autonomously} on a \emph{mobile device}?
-
-The main research question is: how feasible is it to run all Tribler functionality on mobile devices? % to defeat or mitigate large scale monitoring and censorship?
-
-Secondary question is: given the constraints and unique abilities of mobile devices, what functionality of Tribler can be added or enhanced?
-
-
-
+The research question are:
+\begin{enumerate}
+	\item How feasible is it to run all Tribler functionality on mobile devices? % to defeat or mitigate large scale monitoring and censorship?
+	\item Given the constraints and unique abilities of mobile devices, what functionality of Tribler can be added or enhanced?
+\end{enumerate}
 % Research Limitations
 % Project scope
 % broad / narrow scope, scope of other system()s)
 % sub-problems
 % ultimate high-level goal
-
 % Software development / technical aspect only
 % Not policy making, organisational perspective, decision making, normative, ethical,
 % Time limit of 9 months
-
-
 The problem this work is addressing using Tribler, is explained in detail in Chapter \ref{ch:problem_desc}.
 Tribler's functionality is described in Chapter \ref{ch:tribler}, as well as a short discussion of the specific opportunities and challenges that mobile devices bring with them.
 These lead to the requirements, which are listed in Chapter \ref{ch:design}, followed by a fitting system architecture design.
