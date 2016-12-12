@@ -26,15 +26,15 @@ Finally, the statistics of the implementation are presented in Section \ref{sec:
 \end{figure}
 
 
-\section{Android OS}
+\section{Android OS}\label{sec:android_os}
 Android is an operating system, based on the Linux kernel, that runs on smartphones, tables, wearables and smart-TVs.
 It provides a Java Virtual Machine (VM) and a Java application framework API.
 
 Since API version 14, near field communication (NFC) and Wi-Fi peer-to-peer (P2P) connections between compatible devices is supported.
-And since API version 16, a NFC push message can be used to start large file transfers over Bluetooth (req. \ref{rq:BeamApp}).
-This can be used in the context of the problem description, for Tribler needs to be able to spread wireless from phone to phone.
+And since API version 16, a NFC push message can be used to start large file transfers over Bluetooth.
+This can be used in the context of the problem description, for Tribler needs to be able to spread wireless from phone to phone (req. \ref{rq:BeamApp}).
 Using this NFC push message functionality, the transfer of the APK file is fully automated (req. \ref{rq:P2P}).
-Figure \ref{fig:beam} shows the instructions for the user of this effortless transfer: just hold the phones back to back.
+Effortless transfer is achieved by simply holding the phones back to back.
 Bluetooth, rather than Wi-Fi, is the technology of choice here, because the former has a standard file transfer protocol, built into Android OS, and the latter does not.
 This means there are no prerequisites on the receiving device for receiving and installing Tribler from a nearby phone via NFC+Bluetooth.
 If NFC is not available, all other options to transfer the APK are presented to the user to choose from instead.
@@ -62,9 +62,8 @@ This way the user can be presented with the GUI, that indicates the service is l
 
 \subsection{Tribler Python core}
 Tribler is written entirely in Python, but Android does not support this natively.
-Python is an interpreted language.
-Because of our design requirements (\ref{rq:Independence}, \ref{rq:PythonClibs}), we incorporate a Python interpreter into our design.
-On top of the entire core of Tribler can run, containing a REST HTTP API module also written in Python.
+Because of our design requirements (\ref{rq:Independence}, \ref{rq:PythonClibs}) and the fact that Python is an interpreted language, we incorporate a Python interpreter into our design.
+On top of which the entire core of Tribler can run, containing a REST HTTP API module also written in Python.
 %Re-usability is an important design objective that can greatly improve maintainability as well.
 %Therefore we aim to completely re-use the Tribler core, meaning everything but the GUI.
 %We focus on implementing all the features of Tribler as described Chapter \ref{ch:tribler}.
@@ -83,29 +82,20 @@ The Python interpreter is started by the Java service using JNI, after loading t
 
 
 \subsection{CPython interpreter}
-Tribler uses C++ implementation of torrent protocol, called libtorrent.
-To use this C/C++ library from within Python a certain capable interpreter is required.
-P4A offers such an interpreter: CPython.
-
-
+An interpreter to run Python code on Android is provided by the open-source project Python-for-Android (P4A) \cite{P4A}.
 % Alternatieven QT, P4A, oudere python projecten
-What alternatives are there, besides P4A, to run python code on Android?
-0. QPython: scripting, cannot build regular .apk
-1. QtAndroid, inmiddels alternative, niet gereed toen wij hieraan werkte (juni 2016, qt 5.7 android service)
-2. PGS4A: no longer in development
-3. SL4A: no longer in development
-% Verdedig P4A keuze
-Why is P4A chosen?
-% Keuze voor P4A door eerder werk en beste match (legacy)
-Because this project continued from previous work (legacy code) build on P4A.
-% Crosscompilen met python bindings libraries (en dependencies)
-Even though the revamp version was build from scratch, it still is the best choice because it not only provides the Python interpreter, it also is a complete tool-chain to cross-compile native libraries with bindings and build a standalone Android app installation package (.apk).
+Besides P4A, several alternatives exist to run Python code on Android, but with regard to maintainability and our requirements, these other alternatives are suboptimal.
+For example, QPython is for scripting and cannot build an Android app installation package (APK).
+Qt-for-Android, was not capable of creating the required Android service when this implementation was developed.
+Both PGS4A and SL4A were no longer in development.
+A further practical reason to choose P4A for the current implementation, is that it not only provides the Python interpreter, but also functions as a package manager and a complete build tool-chain, to cross-compile native libraries with bindings, and build an Android app installation package (APK).
+
 
 \subsection{Python modules}
-Tribler is written entirely in Python, but most of its dependencies are written in C/C++.
+While Tribler is written entirely in Python, most of its dependencies are written in C/C++.
 To use these libraries on a mobile device they need to be compiled for the right embedded-application binary interface (EABI) including all nonstandard dependencies.
 Figure \ref{fig:dependency_tree} shows the dependency tree.
-
+30 of the 41 recipes contain C/C++ components that have to be cross-compiled, the remainder are pure Python packages.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{dependency_tree}
@@ -119,11 +109,8 @@ The standard C library of Android differs from the GNU C Library (glibc), which 
 All C/C++ dependencies of Tribler were therefore linked against glibc and glibc is included as a shared library (req. \ref{rq:Independence}, \ref{rq:PythonClibs}).
 Static linking could result in unexpected behavior if more than one library is linked \cite{android-cpp}, and Tribler uses many, as shown in Figure \ref{fig:dependency_tree}.
 Since Android 4.3 (API version 18) shared libraries do not have to be loaded in order manually anymore.
-Therefore, 
+As such, the Python code can load other Python modules and C/C++ libraries at run-time.
 
-The Python code loads other Python and native modules directly.
-
-% https://kos.gd/posts/5-ways-to-use-python-with-native-code/
 Calling C code directly from Python is possible by using the Python ctypes module to load a native dynamic-link library (.so files on Android) or by using the Python/C API of CPython.
 This API enables a library to define functions that are written in C to be callable from Python.
 These Python bindings are the glue between pure Python and pure C code.
@@ -132,20 +119,19 @@ Libtorrent, one of Triblers' main components, uses Boost.Python to provide a sta
 %Kivy uses Cython, but was later dropped
 % Many parts are written in C using Cython. \cite{kivy.org}
 % The major alternative approach promoted by the community is best represented by Cython. Cython is a Python superset designed to be compiled down to CPython C extension modules. One of the features Cython offers (as is possible from any binary extension module) is the ability to explicitly release the GIL around a section of code. By releasing the GIL in this fashion, Cython code can fully exploit all cores on a machine for computationally intensive sections of the code, while retaining all the benefits of Python for other parts of the application. \cite{http://python-notes.curiousefficiency.org/en/latest/python3/multicore_python.html}
-
-The Python/C API is actually so powerful it even provides access to the internals of the interpreter to mess with the global interpreter lock (GIL) which could be released during native C calls to improve the multi-threading performance of Tribler crypto.
+The Python/C API is actually so powerful, it even provides access to the internals of the interpreter to release the global interpreter lock (GIL).
+This could be done during native C calls, to improve the multi-threading performance of Tribler crypto. \cite{python-native}
 
 
 \section{Tribler Java front-end}
 The requirements on asynchronous communication (\ref{rq:Async}) and responsiveness (\ref{rq:Responsive}) require the decoupling of the GUI from the back-end.
-
 The GUI is created by a native Android Java application, which talks to the REST API module.
 The API combined with Java is better for parallelization than the coarse grained locking by the CPython interpreter.
 Shared memory threading in Python code is restricted to single-thread performance because of the global interpreter lock (GIL).
-
-Having two separate Python interpreters in distinct processes talking to each other, because that means using a very resource heavy Python GUI instead of the regular and lightweight native Android Java XML GUI.
+In addition, a Python GUI is relatively resource heavy compared to the native Android Java XML GUI.
 The latter has tools available for automated UI testing.
 
+%The implementation of features dictated by our functional requirements in Section \ref{sec:func_req} is shown in the following screenshots.
 \begin{figure}[p]
 	\centering
 	\begin{subfigure}{.4\textwidth}
@@ -174,56 +160,56 @@ The latter has tools available for automated UI testing.
 \caption{Screenshots of the Java front-end}
 \end{figure}
 
-%The implementation of features dictated by our functional requirements in Section \ref{sec:func_req} is shown in the following screenshots.
-%TODO: Figuren en REQUIREMENTS verwijzen en doorspreken
-
 Figure \ref{fig:menu-popular} shows the main menu of the Tribler app.
 The first three items presented to the user are the main views: the user's favorite channels, their own channel and discovering popular content.
 The next four items are actions related to creating new content or related to the application.
-It is organized this way to benefit from the simplicity of a flat menu while the actions are grouped by context with a header for clarity.
+The menu is organized this way to benefit from the simplicity of a flat menu, while the actions are grouped by context, with a header for clarity.
 
 Users can browse through a list of popular channels or their own favorites.
 Each channel has an indicator of the amount of users that have added that channel to their list of favorites, as can be seen behind the menu in Figure \ref{fig:menu-popular}.
 Channels contain multi-media content added by their respective channel owner or everyone, depending on the security policy of that channel.
-Tribler allows three settings: open, semi-open and closed.
-
-%CHANNEL_CLOSED, CHANNEL_SEMI_OPEN, CHANNEL_OPEN, CHANNEL_MODERATOR = range(4)
-%CHANNEL_ALLOWED_MESSAGES = (
+%Tribler allows three settings: open, semi-open and closed.
+%%CHANNEL_CLOSED, CHANNEL_SEMI_OPEN, CHANNEL_OPEN, CHANNEL_MODERATOR = range(4)
+%%CHANNEL_ALLOWED_MESSAGES = (
 %[],
 %["comment", "mark_torrent"],
 %["torrent", "comment", "modification", "playlist_torrent", "moderation", "mark_torrent"],
 %["channel", "torrent", "playlist", "comment", "modification", "playlist_torrent", "moderation", "mark_torrent"]
 %)
 
-The favorite channels and popular channels views both show a list of channels  contain content
+As discussed in Section \ref{sec:android_os}, sharing the Tribler app, between two NFC enabled phones, can be achieved by holding the phones back to back, as shown in Figure \ref{fig:beam}.
+The same procedure can be used to share channels effortlessly between devices.
+The views 'Favorite channels' and 'Popular channels' both show a list of channels.
 
-Search is accessible from any channel view.
-Upon typing keywords into the search bar
-debounce
+Figure \ref{fig:channel-content-discovered} shows the channel 'Linux ISOs' with its content.
+When the user is viewing a channel and new content is discovered in this channel, the user is notified.
+It is also possible to automatically add the new content to the channel view.
 
-%TODO: Describe all screenshots
+Search is accessible from any channel view, and allows the user to start a keyword search.
+Upon typing keywords into the search bar, the search is automatically started after 600 miliseconds, via a debounce function.
+Results from the local database and remote peers will then start to show up on screen, as soon as they are received.
+Figure \ref{fig:search-pioneer} shows the search results for the query 'pioneer'.
 
 
 \subsection{HTTP Client}
 The HTTP client that talks in JSON with the REST API is build on the popular library OkHttp and fits perfectly to RxJava with a library called Retrofit.
 The Retrofit library enables a very declarative API client.
-%FIG code example
+\lstinputlisting[language=Java]{code_example_1.java}
 
 Because of the nature of Android to destroy interface elements if a configuration chance occurs, the asynchronous tasks running in the background must be registered and unregistered properly to avoid memory leaks.
-To detect notorious memory leaks on Android we use another library made to do exactly that: LeakCanary.
+To detect notorious memory leaks on Android, we use another library made to do exactly that: LeakCanary.
 Android provides a way to deal with continuity of activities with fragments that can remain in memory which were used in conjunction with composite subscriptions of RxJava.
 
 \subsection{XML GUI} % native gui
-Due to the fact that Android targets mobile devices it is very optimized for low resource usage.
+Due to the fact that Android targets mobile devices, it is very optimized for low resource usage.
 Therefore memory is freed more aggressively and the application is often paused or stopped and restarted if the user switches to another app.
 Running two interpreters with Python Kivy front-end and Python Tribler back-end would be doubling memory usage for the interpreter itself and require an inter-process protocol as well.
 Native Java with XML front-end and Python Tribler back-end brings the user experience seamlessly in line with the native UI.
 
 To run in the background Tribler uses an Android service and all communication is performed asynchronously.
 The reactive programming paradigm is a perfect fit for asynchronous tasks.
-Thanks to RxJava and RxAndroid asychronous multi-threaded coding is made very enjoyable:
-%FIG code example
-As shown in the code example performing IO tasks on the dedicated Android thread and making UI changes on the main thread becomes trivial.
+Thanks to RxJava and RxAndroid asychronous multi-threaded coding is made very enjoyable, as shown in the following code example performing IO tasks on the dedicated Android thread and making UI changes on the main thread becomes trivial.
+\lstinputlisting[language=Java]{code_example_2.java}
 
 
 \section{Video player}
@@ -235,14 +221,13 @@ Therefore, rather than implementing our own GUI, this APK is embedded as a whole
 If VLC is not yet installed on the device, the user is prompted to do so and offered the version from inside Tribler.
 This allows the user to install VLC without further requirements.
 %The video player VLC can be integrated as hard to maintain library and a custom GUI.
-%This was done first, but afterwards we decided to improve maintainability by packaging the entire Android app installation package (.apk).
+%This was done first, but afterwards we decided to improve maintainability by packaging the entire Android app installation package (APK).
 %Which was also much easier to accomplish in hindsight.
 
 
 \section{Build tool-chain}\label{sec:build_toolchain}
 %TODO: Build toolchain beter inleiden
-
-The Python-for-Android tool-chain uses recipes to cross compile the C/C++ libraries with Python bindings with the necessary build tools.
+The Python-for-Android tool-chain uses recipes to cross compile the C/C++ libraries with Python bindings with the necessary build tools, as shown in Figure \ref{fig:build_tool_chain}.
 These recipes are like a high level make file.
 
 \begin{figure}[H]
@@ -258,27 +243,22 @@ The libraries are compiled for any ARMv7 compatible platform, and little effort 
 
 
 \section{Implementation statistics}\label{sec:impl_stats}
-All requirements have been met.
-%TODO software stats, delivered, reference github
-%lang aan gewerkt
-The implementation consists of:
-12.806 + X lines of code in the Tribler repository in 35 pull requests and
-Y lines of code in the Python-for-Android (P4A) repository in 46 pull requests and
-2 lines of code in the M2Crypto repository in 1 pull request.
-This excludes the work of reviving the old P4A toolchain.
-
-%TODO: Stats fill-in
-Of the X lines (x \%) consists of unit testing code.
-Y lines (y \%) is made up of Android specific libraries, and the remainder is..
-Table \ref{table:loc}X shows the 25 largest source file contributions for this thesis work. 
+All requirements, as set out in Chapter \ref{ch:design}, have been met.
+The code is open source and available on GitHub \cite{tribler_brussee}.
+The implementation consists of: 14,000 lines of code in the Tribler repository in 34 pull requests, and 1,200 lines of code in the Python-for-Android (P4A) repository in 43 pull requests, and 2 lines of code in the M2Crypto repository in 1 pull request.
+This excludes the initial work of reviving the old P4A tool-chain.
+%Of the X lines (x \%) consists of unit testing code.
+%Y lines (y \%) is made up of Android specific libraries, and the remainder is..
+Table \ref{table:loc} shows the 25 largest source file contributions for this thesis work. 
+%Code coverage and testing details are further explained in Chapter \ref{ch:results}.
 
 \begin{table}
 	\begin{tabular}{l | l | l} \hline
 		LOC & File & Path \\ \hline \hline
 		718 &		MainActivity.java &		.../org/tribler/android/MainActivity.java \\ \hline
-		666 &		MyChannelFragment.java &		.../org/tribler/android/MyChannelFragment.java \\ \hline
+		667 &		MyChannelFragment.java &		.../org/tribler/android/MyChannelFragment.java \\ \hline
 		482 &		MyUtils.java &		.../org/tribler/android/MyUtils.java \\ \hline
-		403 &		DefaultInteractionListFragment.java &		.../org/tribler/android/DefaultInteractionListFragment.java \\ \hline
+		404 &		DefaultInteractionListFragment.java &		.../org/tribler/android/DefaultInteractionListFragment.java \\ \hline
 		318 &		start.c &		android/TriblerApp/app/src/main/jni/src/start.c \\ \hline
 		314 &		TriblerViewAdapter.java &		.../org/tribler/android/TriblerViewAdapter.java \\ \hline
 		281 &		build.gradle &		android/TriblerApp/app/build.gradle \\ \hline
@@ -303,7 +283,4 @@ Table \ref{table:loc}X shows the 25 largest source file contributions for this t
 	\caption{Top 25 of largest source file contributions}
 	\label{table:loc}
 \end{table}
-
-Code coverage and testing details are further explained in chapter \ref{ch:results}.
-
 
