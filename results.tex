@@ -19,12 +19,12 @@ Before anyone can view new content that has been added to a channel, it needs to
 % Metrics
 We measure the amount of time it takes for other devices to discover new content in a channel they are subscribed to, starting from the moment it is added to that channel.
 % Expected / desired results
-Depending on the random walk in the channel's community content can be discovered either very quickly or after a while due to property of eventual consistency.
+Depending on the random walk in the channel's community content can be discovered either very quickly or after a while due to eventual consistency.
 % Setup
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{phones_2}
-	\caption{Experimental setup with various smartphones and one tablet, all showing the About Android screen.}
+	\caption{Experimental setup with various smartphones and one tablet, all showing the About Android screen}
 	\label{fig:phones_2}
 \end{figure}
 
@@ -33,7 +33,7 @@ Depending on the random walk in the channel's community content can be discovere
 		Device & Nexus 5 & Nexus 6 & Galaxy Nexus & Galaxy S3 & OnePlus One & Nexus 10 & Total \\ \hline
 		Amount & 1 & 4 & 6 & 1 & 1 & 1 & 14 \\ \hline
 	\end{tabular}
-	\caption{Devices used in the content discovery experiment.}
+	\caption{Devices used in the content discovery experiment}
 	\label{table:devices}
 \end{table}
 
@@ -48,7 +48,7 @@ The new videos are discovered, and the event logged, by each device individually
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.8\textwidth]{content_dissemination}
-	\caption{Sequence of events when a video is recorded and distributed.}
+	\caption{Sequence of events when a video is recorded and distributed}
 	\label{fig:content_dissemination}
 \end{figure}
 The sequence, as shown in Figure \ref{fig:content_dissemination}, of recording a new video, adding it the the same channel, and letting the subscribers discover it, is repeated 15 times for accuracy.
@@ -58,7 +58,7 @@ All devices are synced with NTP to be able to have a common timeline for this ex
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={0.9cm 0 0 0},clip,width=\textwidth]{boxplot-nrofdevices-130}
-	\caption{Elapsed time after adding new content to a channel and it being discovered by subscribed peers.}
+	\caption{Elapsed time after adding new content to a channel and it being discovered by subscribed peers}
 	\label{fig:boxplot-nr.of.devices-130}
 \end{figure}
 Figure \ref{fig:boxplot-nr.of.devices-130} shows the amount of time it takes a number of devices to discover new content on a subscribed channel.
@@ -75,7 +75,7 @@ From the 10th device onward the dissemination slows down.
 % Rationale
 If mobile devices are to become full-fledged nodes on the network they must support the Multichain feature.
 % Metrics
-The creation and signing of these blocks is measured to determine if it scales well.
+The creation and signing of these blocks is measured to determine whether it scales on mobile devices.
 Multichain signs a block every 10 minutes, meaning our experiment of generating 25,000 blocks represent about half a year (173.6 days) of continuous effort.
 % Expected / desired results
 The database containing these blocks will grow over time, but should not slow down too much because of it.
@@ -98,19 +98,19 @@ Figure \ref{fig:multichain_25} shows the performance graphs of every measurement
 		RAM & 8 GB @ 1333 MHz \\ \hline %% NT4GC64B8HG0NS-CG
 		SSD & 80GB X25-M \\ \hline %% SSDSA2M080G2GC
 	\end{tabular}
-	\caption{Hardware specifications of the laptop used in the Multichain and API measurements.}
+	\caption{Hardware specifications of the laptop used in the Multichain and API measurements}
 	\label{table:specs_laptop}
 \end{table}
 Clearly visible from the graphs is that Multichain does not scale linearly on any device.
-They also show that mobile devices are at least a factor of two slower than an ordinary laptop and scale worse.
+Mobile devices are at least a factor of two slower than an ordinary laptop and scale worse.
 % Conclusions
-Due to the nature of blockchain every new block needs to contain the hash value of the previous block.
+Due to the nature of blockchain, every new block needs to contain the hash value of the previous block.
 If a database lookup is needed for this and the database is growing, that can explain the non-linear course of the graph.
 This can be easily optimized by keeping the last hash value for currently connected peers in memory.
-However this is an indication that creating blocks by the thousands is an IO bound process, rather than CPU bound.
+However, this is an indication that creating blocks by the thousands is an IO bound process, rather than CPU bound.
 Finally, if mobile devices are to be full-fledged nodes on the Tribler network, they should not slow down significantly more than any other ordinary laptop, besides being slower in the first place.
 Hardware acceleration could close this gap without sacrificing battery life too much.
-Because mobile devices are a bit behind on the technology curve with respect to desktop computers it is probable that the gap becomes smaller over the coming years.
+Because mobile devices are a bit behind on the technology curve with respect to desktop computers, the gap may become smaller over the coming years.
 The capacity to store enough Multichain blocks to audit past exchanges should also be on par.
 If not, other more powerful nodes could be queried to supply the necessary history about a peer, that requests your bandwidth, to verify if that peer is trustworthy.
 
@@ -124,7 +124,7 @@ Loading of the GUI is fast, because it is in fact a thin shell, thanks to the se
 This enables the GUI to be visible and responsive to user input, as shown in Figure \ref{fig:menu-popular}, while the service may continue loading in the background.
 However, before any task can be executed by the service, it needs to be fully started.
 % Metrics
-To measure the total startup time we register the time of launching the app and the moment the Tribler-started-event is registered by the GUI.
+To measure the total startup time, we register the time of launching the app and the moment the Tribler-started-event is registered by the GUI.
 This event is sent over the API event-stream and indicates that the service is fully started and ready to accept all incoming requests.
 % Expected / desired results
 We expect consistent loading times on each device, and potentially significant different loading times between devices, because of differences in hardware.
@@ -135,7 +135,7 @@ The app is launched with Android Debug Bridge (ADB) from a laptop and the Trible
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={4cm 0cm 4cm 0cm},clip,width=\textwidth]{boxplot-startup}
-	\caption{Startup time per device for 10 consecutive runs.}
+	\caption{Startup time per device for 10 consecutive runs}
 	\label{fig:boxplot-startup}
 \end{figure}
 \begin{table}[H]
@@ -147,7 +147,7 @@ The app is launched with Android Debug Bridge (ADB) from a laptop and the Trible
 		Galaxy Nexus & 10 & 7.086 & 6.161 & 7.772 & 0.454 \\ \hline
 		S3                   & 10 & 31.935 & 30.616 & 33.940 & 1.116 \\ \hline
 	\end{tabular}
-	\caption{Statistics of startup time per device.}
+	\caption{Statistics of startup time per device}
 	\label{table:startup_time}
 \end{table}
 Table \ref{table:startup_time} shows the statistics per device.
@@ -164,12 +164,12 @@ The sample standard deviation is relatively small for all devices, which indicat
 %TODO grote scenario
 % Rationale
 New content can be generated with a smartphone, like for example a video that has been recorded with the built-in camera.
-How quick one can create content and distribute it depends not only on the discovery time, as measured in Section \ref{sec:content_discovery}, but first, and perhaps foremost, on the speed of the torrent creation process.
+How quick one can create content and distribute it, depends not only on the discovery time, as measured in Section \ref{sec:content_discovery}, but first, and perhaps foremost, on the speed of the torrent creation process.
 % Metrics
 In this experiment we measure the time required to create a torrent file for different sizes of videos.
 We also measure the amount of time it takes to add that torrent to a channel.
 % Expected / desired results
-In the torrent creation process a hash is calculated for each piece of the content.
+In the torrent creation process, a hash is calculated for each piece of the content.
 Therefore, the amount of time it takes for a torrent to be created is relative to the size of the content.
 Because this is a CPU intensive task, we expect the time required to create a torrent file to follow the time complexity of the hash function.
 % Setup
@@ -181,7 +181,7 @@ Figure \ref{fig:scatterplot-torrent-create} shows the relation between the size 
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={3cm 7cm 3cm 7.5cm},clip,width=\textwidth]{scatterplot-torrent-create}
-	\caption{Creating a torrent for content of varying size.}
+	\caption{Creating a torrent for content of varying size}
 	\label{fig:scatterplot-torrent-create}
 \end{figure}
 \end{minipage}
@@ -190,7 +190,7 @@ Figure \ref{fig:scatterplot-torrent-create} shows the relation between the size 
 \begin{figure}[H]
 	\centering % trim={<left> <lower> <right> <upper>}
 	\includegraphics[trim={3cm 7cm 3cm 7.5cm},clip,width=\textwidth]{scatterplot-torrent-add}
-	\caption{Adding a torrent to a channel for content of varying size.}
+	\caption{Adding a torrent to a channel for content of varying size}
 	\label{fig:scatterplot-torrent-add}
 \end{figure}
 \end{minipage}
@@ -205,7 +205,7 @@ However, the margin of error is also determined by the API response time, which 
 
 \section{API responsiveness}\label{sec:api_responsiveness}
 % Rationale
-By design most functionality is operated through the API.
+By design, most functionality is operated through the API.
 % Metrics
 Therefore, measuring the responsiveness of the API will give a good indication of the responsiveness overall.
 We use Apache JMeter to fire requests at the API and measure the time it takes to respond to each request.
@@ -294,7 +294,7 @@ CPython is optimized for single thread performance and compatibility with C exte
 
 The fact that the smartphone in our experiment is not able to process one request per second, could indicate the multi-threaded processing capability is severely flawed due to the effects of the GIL on the Twisted reactor.
 Although each measurement is a snapshot, they were taken in a short time span from each other, so the environment is not expected to have a larger impact than the aforementioned effect.
-Being a mobile device also other aspects my be at play here, like CPU frequency scaling.
+Being a mobile device, also other aspects my be at play here, like CPU frequency scaling.
 However, this was turned off by acquiring a wake lock from the Android OS.
 There were no other active user-apps, but the OS itself contains system-apps that cannot be turned off.
 Finally, the first order derivative of the response size appears to coincide with a significant longer response time.
@@ -401,7 +401,7 @@ The core of the event loop within Twisted is the reactor, which runs on a single
 The reactor provides a threading interface to offload long running tasks, such as IO or CPU intensive tasks to a thread pool, but the GIL prohibits more than one thread to execute Python bytecode at a time.
 This negates all performance gains in terms of parallelism afforded by multi-core CPUs, making Python threads unusable for delegating CPU bound tasks to multiple cores.
 As shown in the previous section the crypto function took a considerable amount of time to compute.
-To see if the releasing the GIL is a feasible solution we measure if the CPU has more capacity than is being utilized right now.
+To see if the releasing the GIL is a feasible solution, we measure if the CPU has more capacity.
 % Metrics
 Snapshots taken of the CPU utilization of the three separate processes involved in streaming HD video with Tribler.
 % Expected / desired results
@@ -456,7 +456,7 @@ Tribler has some unit tests and integration tests that cover a large portion of 
 % Metrics
 The ratio of tested lines of code with respect to the total number of lines of code is the coverage line-rate.
 % Expected / desired results
-We expect to see a line-rate value close to 1, but not 1 since we know the tests do not cover everything.
+We expect to see a line-rate value close to 1, since we know the tests do not cover everything.
 % Setup
 The nose module was used for running the tests together with the coverage module for gathering coverage data.
 The same Nexus 6 device was used in all runs, with Android 6.0.1 CyanogenMod installed for the first two runs, and Android 7.1 CyanogenMod the third and fourth run.
@@ -481,10 +481,10 @@ The difference in skipped tests, between the smartphone and the PC, can be expla
 If a failure like that occurs, tests in the same file are not even discovered by nose.
 % Conclusions
 The total number of tests has increased over time, as well as the coverage line-rate, while the number of errors have decreased.
-Concluding, the metrics show improvement overall.
+Concluding, all existing tests can be run on Android almost as successfully as on PC.
 %Therefore seeing that the number of failures increased is not that bad since the number of errors decreased.
 %If the line-rate is 1 you still need the the branch-rate to be 1 as well before you can be confident the code will work as expected.
 %The branch-rate is the number of code paths tested with respect to the total number of code paths possible.
-%Unfortunately this metric is not part of the current test plan.
+%Unfortunately, this metric is not part of the current test plan.
 %Nevertheless the metrics show improvement overall.
 

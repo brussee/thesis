@@ -1,18 +1,14 @@
 \section{Future work}\label{sec:future_work}
+Possible future work is presented with regard to the extensibility and sustainability of our current implementation in Subsection \ref{subsec:impl}, and future research based on this work in Subsection \ref{subsec:research}. 
 
-\subsection{Implementation}
+\subsection{Implementation}\label{subsec:impl}
+To safeguard the user from an even more powerful adversary as observed in China \cite{nyt2015china}, more measures can be taken.
+Embedding and encrypting all functionality in for example a binary blob of a random game, would add another layer of security.
+Our SelfCompileApp \cite{brussee2015autonomous} for example, capable of self-compilation from source, can be combined with this work to create a morphing stealth app for anonymous information sharing without the need for existing infrastructure.
+
 From the results in Chapter \ref{ch:results}, we found that performance can potentially be improved if the Python GIL is released during heavy cryptographic tasks by C/C++ libraries.
 We also suggest to cut long running methods into smaller pieces, to allow the Twisted reactor to interleave more threads, to improve responsiveness under heavy load in our multi-threaded use case.
 Also, a streaming API for big responses can improve the responsiveness of the API, as concluded in Section \ref{sec:api_responsiveness}.
-
-To remove the last potential hurdle for offline information exchange with Tribler between mobile devices, an updated list of bootstrap peers can be integrated into the APK, just before sending the app via Bluetooth.
-Or it can send via NFC, in the same way NFC is used to share channel identifiers between to NFC enabled devices.
-The Bluetooth transfer of the app itself can be made much faster if WiFi Direct is used instead.
-This can easily be done by directing the receiving device's browser to a local HTTP server on the sending device with a NFC Data Exchange Format (NDEF) URI Record.
-%In API version 18 support is added for Bluetooth Low Energy (LE), WiFi scan only mode, key store for app-private keys, hardware credential storage and automated UI testing.
-
-%No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later?
-%We won't modify the networking capabilities based on the opportunities because that would warrant a dedicated study.
 
 After our implementation was finished the standard Android integrated development environment (IDE) Android Studio started to officially support the Android NDK.
 Therefore, we can now move from the experimental alpha release to the stable Gradle plugin.
@@ -24,18 +20,26 @@ Qt for Android gained support for Android services after our implementation was 
 This would also open the door to an iOS port, thanks to Qt for iOS.
 The modularity of the design and implementation enables Tribler to be easily ported to other platforms and embedded devices, like smart-TVs.
 
-Finally, to safeguard the user from an even more powerful adversary as observed in Egypt \cite{egypt_show_your_facebook_airport} and China \cite{nyt2015china}, more measures can be taken.
-Embedding and encrypting all functionality in for example a binary blob of a random game, would add another layer of security.
-Our SelfCompileApp \cite{brussee2015autonomous} for example, capable of self-compilation from source, can be combined with this work to create a morphing stealth app for anonymous information sharing without the need for existing infrastructure.
+Finally, to remove the last potential hurdle for offline information exchange with Tribler between mobile devices, an updated list of bootstrap peers can be integrated into the APK, just before sending the app via Bluetooth.
+Or it can send via NFC, in the same way NFC is used to share channel identifiers between to NFC enabled devices.
+The Bluetooth transfer of the app itself can be made much faster if WiFi Direct is used instead.
+This can easily be done by directing the receiving device's browser to a local HTTP server on the sending device with a NFC Data Exchange Format (NDEF) URI Record.
+%In API version 18 support is added for Bluetooth Low Energy (LE), WiFi scan only mode, key store for app-private keys, hardware credential storage and automated UI testing.
 
-\subsection{Research}
-This work enables a new direction of research with Tribler fully geared towards mobile devices.
+%No routing, no blutooth p2p, mesh networking: that is done by Serval. Out of scope of this work. Add as enhancement later?
+%We won't modify the networking capabilities based on the opportunities because that would warrant a dedicated study.
+
+\subsection{Research}\label{subsec:research}
+This work enables a new direction of research with Tribler, fully geared towards mobile devices.
 % future phd's and new agenda thanks to this work?
 Future research can evaluate how well smartphones with Tribler can defeat the powerful adversary as described in Section \ref{sec:adversary_model}.
-One can setup a large scale experiment with various degrees of powerful censors.
-Or a live deployment of Tribler on mobile devices in areas with restricted Internet access to evaluate Tribler in the wild for the intended use-cases.
-Another possible research question can be about how viral spreading of eyewitness content behaves in the real world.
-And the effect on anonymity of local crowds, regarding the onion routing protocol, can also be studied for example.
-A different direction is to research the possible benefits of teaming a mobile device with a traditional desktop computer or server with a shared key chain for a single user.
+Several experiments can be thought of in the context of this mission.
+
+As one example, one can setup a large-scale experiment with various degrees of powerful censors.
+Our implementation would enable the evaluation of Tribler in the wild, for the intended use-cases, as it can be live deployed on mobile devices in areas with restricted Internet access.
+Another possible research direction can consider how viral spreading of eyewitness content behaves in the real world.
+Furthermore, the effect on anonymity of local crowds, regarding the onion routing protocol, can also be studied.
+
+A different direction enabled by our work, is to research the possible benefits of teaming a mobile device with a traditional desktop computer or server, with a shared key chain for a single user.
 The more powerful computer could be credit mining \cite{decentralized_credit_mining}, while the mobile device uses the credits to download faster.
 
